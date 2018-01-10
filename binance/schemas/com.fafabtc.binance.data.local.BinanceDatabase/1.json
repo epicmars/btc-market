@@ -1,0 +1,175 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "2de55d1343b8484309e82b8b4030265c",
+    "entities": [
+      {
+        "tableName": "pair",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `symbol` TEXT, `base` TEXT, `quote` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "symbol",
+            "columnName": "symbol",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "base",
+            "columnName": "base",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quote",
+            "columnName": "quote",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_pair_symbol",
+            "unique": true,
+            "columnNames": [
+              "symbol"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_pair_symbol` ON `${TABLE_NAME}` (`symbol`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ticker",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `symbol` TEXT, `last_price` REAL NOT NULL, `price_change_percent` REAL NOT NULL, `ask_price` REAL NOT NULL, `bid_price` REAL NOT NULL, `high_price` REAL NOT NULL, `low_price` REAL NOT NULL, `volume` REAL NOT NULL, `quote_volume` REAL NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "symbol",
+            "columnName": "symbol",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastPrice",
+            "columnName": "last_price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priceChangePercent",
+            "columnName": "price_change_percent",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "askPrice",
+            "columnName": "ask_price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bidPrice",
+            "columnName": "bid_price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "highPrice",
+            "columnName": "high_price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lowPrice",
+            "columnName": "low_price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "volume",
+            "columnName": "volume",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quoteVolume",
+            "columnName": "quote_volume",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_ticker_symbol",
+            "unique": true,
+            "columnNames": [
+              "symbol"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_ticker_symbol` ON `${TABLE_NAME}` (`symbol`)"
+          },
+          {
+            "name": "index_ticker_timestamp",
+            "unique": false,
+            "columnNames": [
+              "timestamp"
+            ],
+            "createSql": "CREATE  INDEX `index_ticker_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"2de55d1343b8484309e82b8b4030265c\")"
+    ]
+  }
+}

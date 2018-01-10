@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- list item text-->
+    <style name="ListItemText"></style>
+
+    <style name="ListItemText.BlockchainName">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ListItemText.BlockchainVolume">
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="ListItemText.BlockchainQuantity">
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="ListItemText.BlockchainPercent">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- text divider-->
+    <style name="TextDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:background">@android:drawable/divider_horizontal_bright</item>"
+        <item name="android:gravity">center_vertical</item>
+    </style>
+</resources>

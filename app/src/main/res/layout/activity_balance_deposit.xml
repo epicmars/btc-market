@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="balanceAssets"
+            type="com.fafabtc.data.model.entity.exchange.BalanceAssets"/>
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/activity_padding"
+        tools:context="com.fafabtc.app.ui.activity.BalanceDepositActivity">
+
+        <include
+            layout="@layout/divider_light"/>
+
+        <EditText
+            style="@style/AppEditText"
+            android:id="@+id/et_balance"
+            android:inputType="number"
+            android:hint="@string/hint_balance_deposit"/>
+        <include
+            layout="@layout/divider_light"/>
+
+        <Button
+            style="@style/AppButton.Colored"
+            android:id="@+id/btn_confirm"
+            android:text="@string/confirm"/>
+
+    </LinearLayout>
+</layout>

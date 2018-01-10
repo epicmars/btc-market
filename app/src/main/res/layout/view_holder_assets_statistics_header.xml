@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.fafabtc.common.utils.NumberUtils"/>
+        <variable
+            name="data"
+            type="com.fafabtc.data.model.vo.AssetsStatisticsHeader"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextDivider"
+            android:text="@string/balance_assets" />
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/view_holder_padding"
+            tools:text="10000"
+            android:text="@{NumberUtils.formatCurrency(data.balanceTotal)}"/>
+
+        <TextView
+            style="@style/TextDivider"
+            android:text="@string/blockchain_assets" />
+    </LinearLayout>
+</layout>

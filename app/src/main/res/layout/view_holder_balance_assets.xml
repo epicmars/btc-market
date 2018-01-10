@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="java.lang.String" />
+        <import type="com.fafabtc.common.utils.NumberUtils"/>
+        <variable
+            name="balanceAssets"
+            type="com.fafabtc.data.model.entity.exchange.BlockchainAssets"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="vertical"
+        android:padding="@dimen/view_holder_padding_small"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{balanceAssets.name.toUpperCase()}"
+            tools:text="XXX"/>
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{NumberUtils.formatBlockchainQuantity(balanceAssets.available)}"
+            tools:text="9120.123"/>
+
+        <TextView
+            android:id="@+id/tv_principle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{NumberUtils.formatBlockchainQuantity(balanceAssets.principle)}"
+            tools:text="10000012.1234"/>
+    </LinearLayout>
+
+</layout>

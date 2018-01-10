@@ -1,0 +1,67 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fafabtc.analysis" >
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application>
+        <!-- LeanCloud Begin-->
+        <meta-data android:name="Channel ID" android:value="${APP_CHANNEL}"/>
+        <meta-data android:name="LEANCLOUD_APPID" android:value="${LEANCLOUD_APPID}"/>
+        <meta-data android:name="LEANCLOUD_APPKEY" android:value="${LEANCLOUD_APPKEY}"/>
+
+        <!-- 实时通信模块、推送（均需要加入以下声明） START -->
+        <!-- 实时通信模块、推送都要使用 PushService -->
+        <service android:name="com.avos.avoscloud.PushService"/>
+        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <!-- 实时通信模块、推送 END -->
+
+        <!-- 反馈组件（需要加入以下声明）START -->
+        <activity
+            android:name="com.avos.avoscloud.feedback.ThreadActivity"
+            android:theme="@android:style/Theme.Holo">
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/lc_fileprovider_path" />
+        </provider>
+        <!-- 反馈组件 END -->
+        <!-- LeanCloud End -->
+
+        <!-- Bugly Begin-->
+        <!-- 配置APP ID -->
+        <meta-data
+            android:name="BUGLY_APPID"
+            android:value="${BUGLY_APPID}" />
+        <!-- 配置APP版本号 -->
+        <meta-data
+            android:name="BUGLY_APP_VERSION"
+            android:value="${VERSION_NAME}" />
+        <!-- 配置APP渠道号 -->
+        <meta-data
+            android:name="BUGLY_APP_CHANNEL"
+            android:value="${APP_CHANNEL}" />
+        <!-- 配置Bugly调试模式（true或者false）-->
+        <meta-data
+            android:name="BUGLY_ENABLE_DEBUG"
+            android:value="${DEBUGGABLE}" />
+        <!-- Bugly End-->
+    </application>
+
+</manifest>

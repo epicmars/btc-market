@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.fafabtc.app.ui.TradeActivity">
+
+    <data>
+
+        <import type="com.fafabtc.common.utils.NumberUtils" />
+
+        <variable
+            name="ticker"
+            type="com.fafabtc.data.model.entity.exchange.Ticker" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_holder_padding_small">
+
+            <com.fafabtc.app.widgets.LabelValueView
+                android:id="@+id/tv_last"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:label="@string/trade_price_last"
+                app:layout_constraintEnd_toStartOf="@+id/tv_ask"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:value="@{NumberUtils.formatCurrency(ticker.last)}"
+                tools:text="last" />
+
+            <com.fafabtc.app.widgets.LabelValueView
+                android:id="@+id/tv_ask"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/trade_lowest_ask"
+                app:layout_constraintEnd_toStartOf="@+id/tv_bid"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="4"
+                app:layout_constraintStart_toEndOf="@+id/tv_last"
+                app:layout_constraintTop_toTopOf="@+id/tv_last"
+                app:value="@{NumberUtils.formatCurrency(ticker.ask)}"
+                tools:text="lowest_ask" />
+
+            <com.fafabtc.app.widgets.LabelValueView
+                android:id="@+id/tv_bid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/trade_highest_bid"
+                app:layout_constraintEnd_toStartOf="@+id/tv_precent_change"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="4"
+                app:layout_constraintStart_toEndOf="@+id/tv_ask"
+                app:layout_constraintTop_toTopOf="@+id/tv_ask"
+                app:value="@{NumberUtils.formatCurrency(ticker.bid)}"
+                tools:text="highest_bid" />
+
+            <com.fafabtc.app.widgets.LabelValueView
+                android:id="@+id/tv_precent_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/trade_percent_change"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="3"
+                app:layout_constraintStart_toEndOf="@+id/tv_bid"
+                app:layout_constraintTop_toTopOf="@+id/tv_bid"
+                app:value="@{NumberUtils.formatPercent(ticker.percentChange/100)}"
+                tools:text="precent_change" />
+
+
+            <com.fafabtc.app.widgets.LabelValueView
+                android:id="@+id/tv_highest_24hr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:label="@string/trade_highest_24hr"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_lowest_24hr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_last"
+                app:value="@{NumberUtils.formatCurrency(ticker.high24hr)}"
+                tools:text="lowest_24hr" />
+
+
+            <com.fafabtc.app.widgets.LabelValueView
+                android:id="@+id/tv_lowest_24hr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/trade_lowest_24hr"
+                app:layout_constraintEnd_toStartOf="@+id/tv_base_volume"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="4"
+                app:layout_constraintStart_toEndOf="@+id/tv_highest_24hr"
+                app:layout_constraintTop_toTopOf="@+id/tv_highest_24hr"
+                app:value="@{NumberUtils.formatCurrency(ticker.low24hr)}"
+                tools:text="highest_24hr" />
+
+            <com.fafabtc.app.widgets.LabelValueView
+                android:id="@+id/tv_base_volume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/trade_quantity_24hr"
+                app:layout_constraintEnd_toEndOf="@id/spacer"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="7"
+                app:layout_constraintStart_toEndOf="@+id/tv_lowest_24hr"
+                app:layout_constraintTop_toTopOf="@+id/tv_lowest_24hr"
+                app:value="@{NumberUtils.formatBlockchainQuantity(ticker.baseVolume)}"
+                tools:text="base_volume" />
+
+            <android.support.v4.widget.Space
+                android:id="@+id/spacer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_base_volume"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_base_volume"
+                app:layout_constraintTop_toTopOf="@id/tv_base_volume" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/trade_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"></FrameLayout>
+    </LinearLayout>
+</layout>

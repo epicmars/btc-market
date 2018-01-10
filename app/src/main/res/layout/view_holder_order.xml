@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.fafabtc.common.utils.NumberUtils"/>
+        <variable
+            name="order"
+            type="com.fafabtc.data.model.entity.exchange.Order"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <TextView
+            android:id="@+id/tv_pair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{order.pair.toUpperCase()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_order_type"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="pair" />
+
+        <TextView
+            android:id="@+id/tv_order_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{order.type.name()}"
+            app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_pair"
+            app:layout_constraintTop_toTopOf="@+id/tv_pair"
+            tools:text="type" />
+
+        <TextView
+            android:id="@+id/tv_order_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{order.state.name()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_price"
+            app:layout_constraintTop_toTopOf="@+id/tv_quantity"
+            tools:text="state" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{NumberUtils.formatBlockchainQuantity(order.quantity)}"
+            app:layout_constraintEnd_toStartOf="@+id/tv_price"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_order_type"
+            app:layout_constraintTop_toTopOf="@+id/tv_order_type"
+            tools:text="quantity" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/tv_order_state"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_quantity"
+            app:layout_constraintTop_toTopOf="@+id/tv_quantity"
+            tools:text="price"
+            android:text="@{NumberUtils.formatCurrency(order.price)}"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.fafabtc.app.ui.activity.AccountAssetsCreateActivity"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/activity_padding">
+
+        <include
+            layout="@layout/divider_light"/>
+
+        <EditText
+            android:id="@+id/et_account_assets_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:color/white"
+            android:padding="@dimen/et_padding"
+            android:hint="@string/hint_account_assets_name"/>
+
+        <include layout="@layout/divider_light"/>
+
+        <Button
+            style="@style/AppButton.Colored"
+            android:id="@+id/btn_confirm"
+            android:text="@string/confirm"/>
+
+        <FrameLayout
+            android:id="@+id/exchange_entry_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></FrameLayout>
+
+    </LinearLayout>
+</layout>

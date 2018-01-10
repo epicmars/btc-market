@@ -1,0 +1,81 @@
+package com.fafabtc.app.service;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
+
+import com.fafabtc.app.constants.Broadcast;
+import com.fafabtc.data.data.repo.OrderRepo;
+
+import javax.inject.Inject;
+
+import dagger.android.DaggerService;
+import io.reactivex.CompletableObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
+
+/**
+ * Created by jastrelax on 2018/1/14.
+ */
+
+public class TradeService extends DaggerService {
+
+    @Inject
+    OrderRepo orderRepo;
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, TradeService.class);
+        context.startService(starter);
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        registerReceiver(tickerUpdateReceiver, new IntentFilter(Broadcast.Actions.ACTION_TICKER_UPDATED));
+        return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(tickerUpdateReceiver);
+    }
+
+    private BroadcastReceiver tickerUpdateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Find all pending orders, check if the order can be deal.
+            orderRepo.dealPendingOrders()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new CompletableObserver() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            sendBroadcast(new Intent(Broadcast.Actions.ACTION_ORDER_DEAL));
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Timber.e(e);
+                        }
+                    });
+        }
+    };
+
+
+}

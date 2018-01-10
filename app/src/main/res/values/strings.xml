@@ -1,4 +1,58 @@
 <resources>
     <string name="app_name">Fafabtc</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Common -->
+    <string name="confirm">确认</string>
+
+    <string name="assets">资产</string>
+    <string name="tickers">行情</string>
+    <string name="mine">我的</string>
+
+    <string name="percent_float_format">%1$.2f%%</string>
+    <string name="dollar_float_format">%1$.2f$</string>
+    <string name="dollar_string_format">%1$s$</string>
+
+    <string name="usdt_upper">USDT</string>
+    <string name="usdt_float_format">%1$.2fUSDT</string>
+    <string name="usdt_string_format">%1$sUSDT</string>
+
+    <!--资产统计-->
+    <string name="statistics_label_market_volume">市值(USDT)</string>
+    <string name="balance_assets">余额资产</string>
+    <string name="blockchain_assets">区块链资产</string>
+
+    <!--账户资产-->
+    <string name="assets_group">资产组合</string>
+    <string name="create_assets">创建资产</string>
+    <string name="hint_account_assets_name">输入要创建的资产组合名称</string>
+
+    <!--Ticker-->
+    <string name="ticker_quote_name_format">/%1$s</string>
+
+    <!-- 交易 -->
+    <string name="trade_price_last">最新成交价</string>
+    <string name="trade_lowest_ask">最低要价</string>
+    <string name="trade_highest_bid">最高出价</string>
+    <string name="trade_percent_change">日涨跌</string>
+    <string name="trade_highest_24hr">24H最高</string>
+    <string name="trade_lowest_24hr">24H最低</string>
+    <string name="trade_quantity_24hr">交易量</string>
+
+    <string name="buy">买入</string>
+    <string name="sell">卖出</string>
+    <string name="orders">订单</string>
+    <string name="commission">佣金</string>
+    <string name="commission_rate">费率</string>
+    <string name="price_bid">卖一价</string>
+    <string name="price_ask">买一价</string>
+    <string name="quantity">数量</string>
+    <string name="volume">金额</string>
+    <string name="available_format">可用%1$s</string>
+
+    <!--资产充值-->
+    <string name="hint_balance_deposit">输入要充值的%1$s数量</string>
+
+    <!-- 用户反馈 -->
+    <string name="user_feed_back">用户反馈</string>
 </resources>

@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fafabtc.app">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".ClientApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,6 +24,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.TradeActivity" />
+        <activity android:name=".ui.activity.AccountAssetsCreateActivity" />
+        <activity android:name=".ui.activity.ExchangeEntryActivity" />
+        <activity android:name=".ui.activity.ExchangeAssetsActivity" />
+
+        <service android:name=".service.MainService"
+            android:process=":loader"/>
+        <service android:name=".service.TradeService"/>
+        <service android:name=".service.SyncService"/>
+
+        <activity android:name=".ui.activity.BalanceDepositActivity" />
+        <activity android:name=".ui.activity.BlockchainDepositActivity"></activity>
     </application>
 
 </manifest>

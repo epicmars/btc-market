@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/main_bottom_nav_assets"
+        android:title="@string/assets"
+        android:icon="@mipmap/ic_ethereum"/>
+
+    <item android:id="@+id/main_bottom_nav_tickers"
+        android:title="@string/tickers"
+        android:icon="@mipmap/ic_blockchain"/>
+
+    <item android:id="@+id/main_bottom_nav_account"
+        android:title="@string/mine"
+        android:icon="@mipmap/ic_customer"/>
+
+</menu>

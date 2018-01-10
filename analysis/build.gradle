@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    def BUGLY_APPID = properties.getProperty('bugly.appid')
+    def LEANCLOUD_APPID = properties.getProperty('leancloud.appid')
+    def LEANCLOUD_APPKEY = properties.getProperty('leancloud.appkey')
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [VERSION_NAME: defaultConfig.versionName,
+                                DEBUGGABLE: false,
+                                APP_CHANNEL: "dev",
+                                BUGLY_APPID: BUGLY_APPID,
+                                LEANCLOUD_APPID: LEANCLOUD_APPID,
+                                LEANCLOUD_APPKEY: LEANCLOUD_APPKEY]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            manifestPlaceholders = [DEBUGGABLE: debuggable]
+        }
+
+        debug {
+            debuggable true
+
+            manifestPlaceholders = [DEBUGGABLE: debuggable]
+        }
+    }
+
+    // leancloud begin
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions{
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
+    // leancloud end
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
+
+    // LeanCloud 基础包
+    implementation 'cn.leancloud.android:avoscloud-sdk:v4.4.4'
+    // LeanCloud 统计包
+    implementation 'cn.leancloud.android:avoscloud-statistics:v4.4.4'
+    // LeanCloud 用户反馈包
+    api 'cn.leancloud.android:avoscloud-feedback:v4.4.4@aar'
+    // 推送与实时聊天需要的包
+    implementation ('cn.leancloud.android:avoscloud-push:v4.4.4@aar'){transitive = true}
+}

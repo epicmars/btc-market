@@ -3,4 +3,7 @@
     <color name="colorPrimary">#FFC107</color>
     <color name="colorPrimaryDark">#c79100</color>
     <color name="colorAccent">#29b6f6</color>
+
+    <color name="textColorPercentNegative">#f44336</color>
+    <color name="textColorPercentPositive">#4caf50</color>
 </resources>

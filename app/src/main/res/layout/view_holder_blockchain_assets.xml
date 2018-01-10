@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="java.lang.String"/>
+        <import type="com.fafabtc.common.utils.NumberUtils"/>
+        <variable
+            name="blockchainAssets"
+            type="com.fafabtc.data.model.entity.exchange.BlockchainAssets"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_holder_height"
+        android:orientation="vertical"
+        android:padding="@dimen/view_holder_padding_small"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{blockchainAssets.name.toUpperCase()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="eth" />
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{NumberUtils.formatBlockchainQuantity(blockchainAssets.available)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10000" />
+
+        <TextView
+            android:id="@+id/tv_principle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{NumberUtils.formatBlockchainQuantity(blockchainAssets.principle)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="principle10000012.1234" />
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

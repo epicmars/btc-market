@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="java.lang.String"/>
+        <import type="com.fafabtc.common.utils.NumberUtils"/>
+        <variable
+            name="assetsStatistics"
+            type="com.fafabtc.data.model.vo.AssetsStatistics" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="vertical"
+        android:padding="@dimen/view_holder_padding">
+
+        <TextView
+            style="@style/ListItemText.BlockchainName"
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{assetsStatistics.name.toUpperCase()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="btc" />
+
+
+        <TextView
+            style="@style/ListItemText.BlockchainQuantity"
+            android:id="@+id/tv_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{NumberUtils.formatBlockchainQuantity(assetsStatistics.available + assetsStatistics.locked)}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="100" />
+
+        <TextView
+            style="@style/ListItemText.BlockchainVolume"
+            android:id="@+id/tv_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{NumberUtils.formatCurrency((assetsStatistics.available + assetsStatistics.locked) * assetsStatistics.usdtLast)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="2000000" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

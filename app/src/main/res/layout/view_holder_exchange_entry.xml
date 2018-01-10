@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_exchange_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_holder_height_small"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:padding="@dimen/view_holder_padding_small"
+        tools:text="exchange_entry" />
+
+</layout>

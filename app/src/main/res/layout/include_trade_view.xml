@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/divider_light" />
+
+            <EditText
+                android:id="@+id/et_price"
+                style="@style/AppEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                tools:hint="@string/price_ask" />
+
+            <include layout="@layout/divider_dark" />
+
+            <EditText
+                android:id="@+id/et_quantity"
+                style="@style/AppEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                tools:hint="@string/quantity" />
+
+            <include layout="@layout/divider_dark" />
+
+
+            <EditText
+                android:id="@+id/et_volume"
+                style="@style/AppEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                tools:hint="@string/volume" />
+
+            <include layout="@layout/divider_dark" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_commission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/commission" />
+
+            <TextView
+                android:id="@+id/tv_commission_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/commission_rate" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_label_balance_available"
+            style="@style/TextDivider"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            tools:text="可用BTC" />
+
+        <TextView
+            android:id="@+id/tv_balance_available"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:padding="@dimen/tv_padding"
+            android:text="\?"
+            tools:text="100" />
+
+        <Button
+            android:id="@+id/btn_commit"
+            style="@style/AppButton.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_colored_height"
+            android:text="@string/confirm"
+            tools:text="@string/confirm" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="LabelValueView">
+        <attr name="label" format="string|reference" />
+        <attr name="value" format="string|reference" />
+    </declare-styleable>
+
+</resources>

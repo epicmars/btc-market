@@ -1,3 +1,29 @@
 <resources>
+
+    <!--Status bar-->
+    <dimen name="app_status_bar_height">24dp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--Activity-->
+    <dimen name="activity_padding">16dp</dimen>
+
+    <!--Buttons-->
+    <dimen name="button_colored_height">56dp</dimen>
+
+    <!--Edittext-->
+    <dimen name="et_padding">8dp</dimen>
+
+    <!--View Holder-->
+    <dimen name="view_holder_padding">16dp</dimen>
+    <dimen name="view_holder_padding_small">8dp</dimen>
+    <dimen name="view_holder_height_tiny">56dp</dimen>
+    <dimen name="view_holder_height_small">64dp</dimen>
+    <dimen name="view_holder_height">72dp</dimen>
+
+
+    <!--TextView-->
+    <dimen name="tv_padding">8dp</dimen>
+
+
 </resources>

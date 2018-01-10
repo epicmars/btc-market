@@ -1,0 +1,52 @@
+ext {
+
+    // android
+    android = [
+            compile_sdk_version : 26,
+            build_tools_version : "27.0.0",
+            target_sdk_version : 26,
+            min_sdk_version: 19
+    ]
+
+    // android plugin
+    android_plugin_version = '2.3.2'
+
+    // android support library
+    android_support_version = '26.1.0'
+
+    // lifecycle architecture
+    arch_lifecycle_version = '1.0.3'
+    arch_lifecycle_ext_version = '1.0.0'
+
+    // dagger2
+    dagger2_version = '2.12'
+
+    // retrofit
+    retrofit_version = '2.3.0'
+
+    // okhttp3
+    okhttp3 = '3.8.0'
+
+    // gson
+    gson_version = '2.8.1'
+
+    // rxjava2
+    rxjava2_version = '2.1.0'
+    adapter_rxjava2_version = '2.3.0'
+
+    // rxandroid
+    rxandroid_version = '2.0.1'
+
+    // timber
+    // https://github.com/JakeWharton/timber
+    timber_version = '4.5.1'
+    // https://github.com/orhanobut/logger
+    logger_version = '2.1.1'
+
+    // zxing
+    zxing_version = '3.3.0'
+
+    // guava
+    guava_version = '22.0-android'
+
+}

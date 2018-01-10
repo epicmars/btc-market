@@ -1,0 +1,365 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "5ccfd07afd99c6adcaf6b488c106bd7b",
+    "entities": [
+      {
+        "tableName": "pair",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `name` TEXT, `base` TEXT, `quote` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "base",
+            "columnName": "base",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quote",
+            "columnName": "quote",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_pair_name",
+            "unique": true,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_pair_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "market_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `pair` TEXT, `decimal_places` INTEGER, `min_amount` REAL NOT NULL, `fee` REAL NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pair",
+            "columnName": "pair",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "decimalPlaces",
+            "columnName": "decimal_places",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "minAmount",
+            "columnName": "min_amount",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fee",
+            "columnName": "fee",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "market_list",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `no` INTEGER, `symbol` TEXT, `name` TEXT, `name_en` TEXT, `name_cn` TEXT, `pair` TEXT, `rate` TEXT, `vol_a` REAL NOT NULL, `vol_b` TEXT, `curr_a` TEXT, `curr_b` TEXT, `curr_suffix` TEXT, `rate_percent` TEXT, `trend` TEXT, `supply` INTEGER, `marketcap` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "no",
+            "columnName": "no",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "symbol",
+            "columnName": "symbol",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nameEn",
+            "columnName": "name_en",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nameCn",
+            "columnName": "name_cn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pair",
+            "columnName": "pair",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rate",
+            "columnName": "rate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "volA",
+            "columnName": "vol_a",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "volB",
+            "columnName": "vol_b",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currA",
+            "columnName": "curr_a",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currB",
+            "columnName": "curr_b",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currSuffix",
+            "columnName": "curr_suffix",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ratePercent",
+            "columnName": "rate_percent",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trend",
+            "columnName": "trend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "supply",
+            "columnName": "supply",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "marketcap",
+            "columnName": "marketcap",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ticker",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `pair` TEXT, `result` TEXT, `last` REAL NOT NULL, `lowest_ask` REAL NOT NULL, `highest_bid` REAL NOT NULL, `percent_change` REAL NOT NULL, `base_volume` REAL NOT NULL, `quote_volume` REAL NOT NULL, `high24hr` REAL NOT NULL, `low24hr` REAL NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pair",
+            "columnName": "pair",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "result",
+            "columnName": "result",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "last",
+            "columnName": "last",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lowestAsk",
+            "columnName": "lowest_ask",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "highestBid",
+            "columnName": "highest_bid",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "percentChange",
+            "columnName": "percent_change",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseVolume",
+            "columnName": "base_volume",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quoteVolume",
+            "columnName": "quote_volume",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "high24hr",
+            "columnName": "high24hr",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "low24hr",
+            "columnName": "low24hr",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_ticker_pair",
+            "unique": true,
+            "columnNames": [
+              "pair"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_ticker_pair` ON `${TABLE_NAME}` (`pair`)"
+          },
+          {
+            "name": "index_ticker_timestamp",
+            "unique": false,
+            "columnNames": [
+              "timestamp"
+            ],
+            "createSql": "CREATE  INDEX `index_ticker_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5ccfd07afd99c6adcaf6b488c106bd7b\")"
+    ]
+  }
+}
