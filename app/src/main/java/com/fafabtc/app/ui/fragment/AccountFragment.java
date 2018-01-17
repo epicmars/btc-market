@@ -7,25 +7,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.constants.Broadcast;
+import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.FragmentAccountBinding;
 import com.fafabtc.app.di.Injectable;
+import com.fafabtc.app.ui.activity.AboutActivity;
 import com.fafabtc.app.ui.activity.AccountAssetsCreateActivity;
+import com.fafabtc.app.ui.activity.SettingsActivity;
 import com.fafabtc.app.ui.base.BaseFragment;
 import com.fafabtc.app.ui.base.BindLayout;
-import com.fafabtc.app.ui.base.RecyclerAdapter;
-import com.fafabtc.app.ui.viewholder.AccountAssetsViewHolder;
 import com.fafabtc.app.vm.AccountViewModel;
-import com.fafabtc.common.analysis.AnalysisHelper;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
-
-import java.util.List;
+import com.fafabtc.data.consts.DataBroadcasts;
 
 /**
  * Created by jastrelax on 2018/1/8.
@@ -36,8 +31,6 @@ import java.util.List;
 public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
 
     private AccountViewModel viewModel;
-
-    private RecyclerAdapter adapter;
 
     private AccountFragmentHandler fragmentHandler;
 
@@ -59,9 +52,7 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
     @Override
     public void onStart() {
         super.onStart();
-        // return from assets creation activity, should be updated.
-        viewModel.updateAccountList();
-        getContext().registerReceiver(dataInitializationReceiver, new IntentFilter(Broadcast.Actions.ACTION_DATA_INITIALIZED));
+        getContext().registerReceiver(dataInitializationReceiver, new IntentFilter(DataBroadcasts.Actions.ACTION_DATA_INITIALIZED));
     }
 
     @Override
@@ -72,48 +63,60 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
 
     private void init() {
         viewModel = getViewModelOfActivity(AccountViewModel.class);
-        viewModel.getAccountAssetsList().observe(getActivity(), accountListObserver);
+        viewModel.isCurrentAccountChanged().observe(getActivity(), accountChangeObserver);
+        viewModel.isAssetsInitialized().observe(this, assetsInitializedObserver);
 
         fragmentHandler = new AccountFragmentHandler();
         binding.setHandler(fragmentHandler);
-
-        adapter = new RecyclerAdapter();
-        adapter.register(AccountAssetsViewHolder.class);
-        binding.recyclerAccountAssets.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.recyclerAccountAssets.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        binding.recyclerAccountAssets.setAdapter(adapter);
-        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-            @Override
-            public void onChanged() {
-                super.onChanged();
-                // do not update accout list again, it's a loop
-                viewModel.currentAccountChanged();
-            }
-        });
     }
 
     private BroadcastReceiver dataInitializationReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            viewModel.updateAccountList();
         }
     };
 
-    private Observer<List<AccountAssets>> accountListObserver = new Observer<List<AccountAssets>>() {
+    private Observer<Boolean> assetsInitializedObserver = new Observer<Boolean>() {
         @Override
-        public void onChanged(@Nullable List<AccountAssets> accountAssets) {
-            adapter.setPayloads(accountAssets);
+        public void onChanged(@Nullable Boolean aBoolean) {
+            if (aBoolean != null && aBoolean) {
+                binding.accountAssetsList.setVisibility(View.VISIBLE);
+            } else {
+                Toast.makeText(getContext(), "资产初始化中", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    private Observer<Boolean> accountChangeObserver = new Observer<Boolean>() {
+        @Override
+        public void onChanged(@Nullable Boolean aBoolean) {
+            if (aBoolean != null && aBoolean) {
+                getContext().sendBroadcast(new Intent(Broadcasts.Actions.ACTION_CURRENT_ASSETS_CHANGED));
+            }
         }
     };
 
     public class AccountFragmentHandler {
 
+        public void onClickAssetsGroup(View view) {
+            if (binding.accountAssetsList.getVisibility() == View.VISIBLE) {
+                binding.accountAssetsList.setVisibility(View.GONE);
+            } else {
+                viewModel.loadAccountList();
+            }
+        }
+
         public void onClickCreateAssets(View view) {
             AccountAssetsCreateActivity.start(getContext());
         }
 
-        public void onClickUserFeedBack(View view) {
-            AnalysisHelper.startFeedBackActivity(getActivity());
+        public void onClickAbout(View view) {
+            AboutActivity.start(getContext());
         }
+
+        public void onClickSettings(View view) {
+            SettingsActivity.start(getContext());
+        }
+
     }
 }

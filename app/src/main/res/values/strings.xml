@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Fafabtc</string>
+    <string name="app_name">fafaBTC</string>
     <string name="action_settings">Settings</string>
+    <string name="app_description">区块链资产行情与实盘模拟</string>
 
     <!-- Common -->
     <string name="confirm">确认</string>
@@ -21,38 +22,79 @@
     <string name="statistics_label_market_volume">市值(USDT)</string>
     <string name="balance_assets">余额资产</string>
     <string name="blockchain_assets">区块链资产</string>
-
-    <!--账户资产-->
-    <string name="assets_group">资产组合</string>
-    <string name="create_assets">创建资产</string>
-    <string name="hint_account_assets_name">输入要创建的资产组合名称</string>
+    <string name="assets_name_format">资产组合:%1$s</string>
+    <string name="update_time_format">更新于:%1$s</string>
+    <string name="balance_usdt_format">%1$s USDT</string>
+    <string name="label_market_volume_usdt">市值(USDT):</string>
 
     <!--Ticker-->
     <string name="ticker_quote_name_format">/%1$s</string>
+    <string name="ticker_base_volume_format">交易量 %1$s</string>
+    <string name="ticker_quote_volume_format">交易额(%1$s) %2$s</string>
 
     <!-- 交易 -->
+    <string name="trade_exchange_pair_format">%1$s/%2$s交易</string>
     <string name="trade_price_last">最新成交价</string>
     <string name="trade_lowest_ask">最低要价</string>
     <string name="trade_highest_bid">最高出价</string>
-    <string name="trade_percent_change">日涨跌</string>
+    <string name="trade_percent_change">涨跌幅</string>
     <string name="trade_highest_24hr">24H最高</string>
     <string name="trade_lowest_24hr">24H最低</string>
     <string name="trade_quantity_24hr">交易量</string>
+    <string name="trade_volume_24hr_format">交易额(%1$s)</string>
 
     <string name="buy">买入</string>
     <string name="sell">卖出</string>
     <string name="orders">订单</string>
     <string name="commission">佣金</string>
     <string name="commission_rate">费率</string>
-    <string name="price_bid">卖一价</string>
-    <string name="price_ask">买一价</string>
+    <string name="price_ask">卖价</string>
+    <string name="price_bid">买价</string>
     <string name="quantity">数量</string>
     <string name="volume">金额</string>
     <string name="available_format">可用%1$s</string>
+    <string name="trade_label_price_ask">卖出价格(%1$s)</string>
+    <string name="trade_label_price_bid">买入价格(%1$s)</string>
+    <string name="trade_label_commission_quantity">委托数量(%1$s)</string>
+    <string name="trade_label_commission_volume">委托金额(%1$s)</string>
+
+    <!--订单-->
+    <string name="order_type_buy">买</string>
+    <string name="order_type_sell">卖</string>
+    <string name="order_state_done">已成交</string>
+    <string name="order_state_cancelled">已取消</string>
+    <string name="order_state_pending">撤销</string>
+    <string name="order_pair_format">%1$s/%2$s</string>
+
+    <!-- 我的 -->
+    <!-- 资产管理 -->
+    <string name="assets_manage">资产管理</string>
+    <string name="assets_group">资产组合</string>
+    <string name="create_assets">创建资产</string>
+
+    <string name="exchange_entry_title_format">%1$s/交易所</string>
+    <string name="exchange_assets_title_format">%1$s/%2$s资产</string>
+    <string name="assets_deposit_title_format">%1$s充值</string>
+
+    <!--资产列表-->
+    <string name="deposit">充值</string>
 
     <!--资产充值-->
+    <string name="label_available_format">可用:%1$s</string>
+    <string name="label_locked_format">冻结:%1$s</string>
     <string name="hint_balance_deposit">输入要充值的%1$s数量</string>
 
     <!-- 用户反馈 -->
-    <string name="user_feed_back">用户反馈</string>
+    <string name="about">关于</string>
+    <string name="about_detail">主要功能为区块链资产行情与实盘模拟，通过建立不同的资产组合，可以根据市场实时行情查看实际资产市值，也可以用于模拟交易，对资产组合进行验证。</string>
+
+    <string name="about_and_feedback">关于与反馈</string>
+    <string name="user_feedback">用户反馈</string>
+
+    <string name="hint_feedback">建议与反馈</string>
+
+    <!--账户资产-->
+    <string name="hint_account_assets_name">输入要创建的资产组合名称</string>
+    <string name="settings">设置</string>
+
 </resources>

@@ -6,4 +6,6 @@
 
     <color name="textColorPercentNegative">#f44336</color>
     <color name="textColorPercentPositive">#4caf50</color>
+
+    <color name="black_overlay">#0f000000</color>
 </resources>

@@ -18,7 +18,12 @@ public class AnalysisHelper {
 
     public static void startFeedBackActivity(Context context) {
         FeedbackAgent agent = new FeedbackAgent(context);
+        agent.isContactEnabled(false);
         agent.startDefaultThreadActivity();
+    }
+
+    public static void sendFeedback(Context context, String feedback, final Runnable callback) {
+        LeanCloudHelper.sendFeedback(context, feedback, callback);
     }
 
     public static void test() {

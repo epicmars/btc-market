@@ -2,20 +2,23 @@ package com.fafabtc.data.data.repo.impl;
 
 import android.content.Context;
 
+import com.fafabtc.common.file.AndroidAssetsUtils;
 import com.fafabtc.common.file.FileUtils;
-import com.fafabtc.common.file.SharedPreferenceUtils;
 import com.fafabtc.common.json.GsonHelper;
 import com.fafabtc.common.utils.UUIDUtils;
 import com.fafabtc.data.data.local.dao.AccountAssetsDao;
 import com.fafabtc.data.data.repo.AccountAssetsRepo;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
 import com.fafabtc.data.data.repo.ExchangeRepo;
+import com.fafabtc.data.global.AssetsState;
+import com.fafabtc.data.global.AssetsStateRepository;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.AccountAssetsData;
 import com.fafabtc.data.model.vo.ExchangeAssets;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -49,6 +52,9 @@ public class AccountAssetsRepository implements AccountAssetsRepo {
 
     @Inject
     Context context;
+
+    @Inject
+    AssetsStateRepository assetsStateRepository;
 
     @Inject
     public AccountAssetsRepository() {
@@ -107,10 +113,12 @@ public class AccountAssetsRepository implements AccountAssetsRepo {
         return Single.fromCallable(new Callable<AccountAssets>() {
             @Override
             public AccountAssets call() throws Exception {
-                List<AccountAssets> assetsList = accountAssetsDao.findAll();
-                if (null == assetsList || assetsList.isEmpty()) {
-                    assets.setState(AccountAssets.State.CURRENT_ACTIVE);
+                AccountAssets current = accountAssetsDao.findCurrent();
+                if (null != current && !current.getUuid().equalsIgnoreCase(assets.getUuid())) {
+                    current.setState(AccountAssets.State.ACTIVE);
+                    accountAssetsDao.update(current);
                 }
+                assets.setState(AccountAssets.State.CURRENT_ACTIVE);
                 accountAssetsDao.insertOne(assets);
                 return assets;
             }
@@ -173,33 +181,46 @@ public class AccountAssetsRepository implements AccountAssetsRepo {
     @Override
     public Completable init() {
         // 初始化的逻辑，如果是第一次初始化建立默认资产，否则从本地恢复数据
-        return Single.fromCallable(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                return SharedPreferenceUtils.getPreference(context, ASSETS_PREFERENCE)
-                        .getBoolean(KEY_IS_INITIALIZED, false);
-            }
-        }).flatMapCompletable(new Function<Boolean, CompletableSource>() {
-            @Override
-            public CompletableSource apply(Boolean aBoolean) throws Exception {
-                if (aBoolean) {
-                    return initAllAccountAssets();
-                } else {
-                    return Observable.fromArray(GsonHelper.prettyGson().fromJson(FileUtils.readFile(ASSETS_DATA_FILE), AccountAssetsData[].class))
-                            .flatMapCompletable(new Function<AccountAssetsData, CompletableSource>() {
+        return assetsStateRepository.isAssetsInitialized()
+                .flatMapCompletable(new Function<Boolean, CompletableSource>() {
+                    @Override
+                    public CompletableSource apply(Boolean aBoolean) throws Exception {
+                        if (aBoolean) {
+                            return initAllAccountAssets();
+                        } else {
+                            return restoreFromFile().onErrorResumeNext(new Function<Throwable, CompletableSource>() {
                                 @Override
-                                public CompletableSource apply(AccountAssetsData accountAssetsData) throws Exception {
-                                    return restore(accountAssetsData);
+                                public CompletableSource apply(Throwable throwable) throws Exception {
+                                    return initAllAccountAssets();
                                 }
                             });
-                }
-            }
-        }).doOnComplete(new Action() {
-            @Override
-            public void run() throws Exception {
-                SharedPreferenceUtils.updateField(context, ASSETS_PREFERENCE, KEY_IS_INITIALIZED, true);
-            }
-        });
+                        }
+                    }
+                })
+                .concatWith(assetsStateRepository.assetsInitialized());
+    }
+
+    private Completable restoreFromFile() {
+        return Observable
+                .fromCallable(new Callable<AccountAssetsData[]>() {
+                    @Override
+                    public AccountAssetsData[] call() throws Exception {
+                        return GsonHelper.prettyGson().fromJson(FileUtils.readFile(AssetsState.ASSETS_DATA_FILE), AccountAssetsData[].class);
+                    }
+                })
+                .onErrorReturnItem(GsonHelper.prettyGson().fromJson(AndroidAssetsUtils.readFromAssets(context.getAssets(), AssetsState.ASSETS_DATA_FILE), AccountAssetsData[].class))
+                .flatMapIterable(new Function<AccountAssetsData[], Iterable<AccountAssetsData>>() {
+                    @Override
+                    public Iterable<AccountAssetsData> apply(AccountAssetsData[] accountAssetsData) throws Exception {
+                        return Arrays.asList(accountAssetsData);
+                    }
+                })
+                .flatMapCompletable(new Function<AccountAssetsData, CompletableSource>() {
+                    @Override
+                    public CompletableSource apply(AccountAssetsData accountAssetsData) throws Exception {
+                        return restore(accountAssetsData);
+                    }
+                });
     }
 
     @Override

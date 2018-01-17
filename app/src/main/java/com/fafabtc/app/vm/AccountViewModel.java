@@ -5,9 +5,8 @@ import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.global.AssetsStateRepository;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,31 +23,54 @@ public class AccountViewModel extends ViewModel{
     @Inject
     AccountAssetsRepo accountAssetsRepo;
 
+    @Inject
+    AssetsStateRepository assetsStateRepository;
+
     private MutableLiveData<AccountAssets> currentAccountAssets;
 
-    private MutableLiveData<Boolean> currentAccountChanged;
+    private MutableLiveData<Boolean> isCurrentAccountChanged;
 
-    private MutableLiveData<List<AccountAssets>> accountAssetsList;
+    private MutableLiveData<Boolean> isAssetsInitialized;
 
     @Inject
     public AccountViewModel() {
-        accountAssetsList = new MutableLiveData<>();
         currentAccountAssets = new MutableLiveData<>();
-        currentAccountChanged = new MutableLiveData<>();
+        isCurrentAccountChanged = new MutableLiveData<>();
+        isAssetsInitialized = new MutableLiveData<>();
     }
 
-    public void updateAccountList() {
-        accountAssetsRepo.getAllAssets()
-                .compose(RxUtils.<List<AccountAssets>>singleAsyncIO())
-                .subscribe(new SingleObserver<List<AccountAssets>>() {
+    public void loadAccountList() {
+        assetsStateRepository.isAssetsInitialized()
+                .subscribe(new SingleObserver<Boolean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onSuccess(List<AccountAssets> accountAssets) {
-                        accountAssetsList.setValue(accountAssets);
+                    public void onSuccess(Boolean aBoolean) {
+                        isAssetsInitialized.setValue(aBoolean);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e(e);
+                    }
+                });
+    }
+
+    public void loadCurrentAccount() {
+        accountAssetsRepo.getCurrent()
+                .compose(RxUtils.<AccountAssets>singleAsyncIO())
+                .subscribe(new SingleObserver<AccountAssets>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(AccountAssets accountAssets) {
+                        currentAccountAssets.setValue(accountAssets);
                     }
 
                     @Override
@@ -59,18 +81,19 @@ public class AccountViewModel extends ViewModel{
     }
 
     public void currentAccountChanged() {
-        currentAccountChanged.setValue(true);
+        isCurrentAccountChanged.setValue(true);
     }
 
-    public MutableLiveData<Boolean> getCurrentAccountChanged() {
-        return currentAccountChanged;
+    public MutableLiveData<Boolean> isAssetsInitialized() {
+        return isAssetsInitialized;
+    }
+
+    public MutableLiveData<Boolean> isCurrentAccountChanged() {
+        return isCurrentAccountChanged;
     }
 
     public MutableLiveData<AccountAssets> getCurrentAccountAssets() {
         return currentAccountAssets;
     }
 
-    public MutableLiveData<List<AccountAssets>> getAccountAssetsList() {
-        return accountAssetsList;
-    }
 }

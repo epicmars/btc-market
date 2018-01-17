@@ -7,19 +7,17 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.constants.Broadcast;
+import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.FragmentTickersBinding;
 import com.fafabtc.app.ui.base.BaseFragment;
+import com.fafabtc.app.ui.base.BaseListAdapter;
 import com.fafabtc.app.ui.base.BindLayout;
-import com.fafabtc.app.ui.base.RecyclerAdapter;
 import com.fafabtc.app.ui.viewholder.TickerViewHolder;
 import com.fafabtc.app.vm.TickersViewModel;
+import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.model.entity.exchange.Ticker;
 
 import java.util.List;
@@ -32,7 +30,7 @@ public class TickersFragment extends BaseFragment<FragmentTickersBinding> {
 
     private static final String ARGS_EXCHANGE = "TickersFragment.ARGS_EXCHANGE";
 
-    private RecyclerAdapter mAdapter;
+    private BaseListAdapter mAdapter;
     private TickersViewModel viewModel;
 
     private String exchange;
@@ -51,15 +49,9 @@ public class TickersFragment extends BaseFragment<FragmentTickersBinding> {
 
         exchange = getArguments().getString(ARGS_EXCHANGE);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_ticker);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(itemDecoration);
-        recyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerAdapter();
+        mAdapter = new BaseListAdapter();
         mAdapter.register(TickerViewHolder.class);
-        recyclerView.setAdapter(mAdapter);
+        binding.listTicker.setAdapter(mAdapter);
 
         viewModel = getViewModel(TickersViewModel.class);
         viewModel.setExchange(exchange);
@@ -70,7 +62,12 @@ public class TickersFragment extends BaseFragment<FragmentTickersBinding> {
     public void onStart() {
         super.onStart();
         viewModel.updateTickers();
-        getContext().registerReceiver(receiver, new IntentFilter(Broadcast.Actions.ACTION_TICKER_UPDATED));
+        getContext().registerReceiver(receiver, new IntentFilter(){
+            {
+                addAction(DataBroadcasts.Actions.ACTION_DATA_INITIALIZED);
+                addAction(Broadcasts.Actions.ACTION_TICKER_UPDATED);
+            }
+        });
     }
 
     @Override

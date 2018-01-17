@@ -25,7 +25,7 @@ public class ExchangeEntryViewHolder extends BaseViewHolder<ViewHolderExchangeEn
         if (data == null)
             return;
         final ExchangeEntry entry = (ExchangeEntry) data;
-        mBinding.tvExchangeName.setText(entry.getExchange().getName());
+        mBinding.tvExchangeName.setText(entry.getExchange().getName().toUpperCase());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

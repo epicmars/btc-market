@@ -1,0 +1,1953 @@
+[
+  {
+    "accountAssets": {
+      "balance": 0.0,
+      "locked": 0.0,
+      "name": "我的资产",
+      "state": "CURRENT_ACTIVE",
+      "uuid": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+      "timestamp": "Jan 18, 2018 6:04:03 PM"
+    },
+    "exchangeAssets": [
+      {
+        "accountAssets": {
+          "balance": 0.0,
+          "locked": 0.0,
+          "name": "我的资产",
+          "state": "CURRENT_ACTIVE",
+          "uuid": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+          "timestamp": "Jan 18, 2018 6:04:03 PM"
+        },
+        "blockchainAssetsList": [
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ada",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ae",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "arn",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bat",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bcd",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bcdn",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bch",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bcx",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bifi",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bnt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bnty",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bot",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 2.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "btc",
+            "principle": 2.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "btf",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "btg",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "btm",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bto",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "bts",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "cdt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ctr",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "cvc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "dai",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "dash",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "data",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "dbc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ddd",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "dgd",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "dnt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "doge",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "dpy",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "drgn",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "elf",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "eos",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "etc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 10.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "eth",
+            "principle": 10.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "fil",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "fuel",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "fun",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "gas",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "gnt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "gnx",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "god",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "gtc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "hsr",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "icx",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ink",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "iota",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "kick",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "knc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "lend",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "link",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "llt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "lrc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "lsk",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ltc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "lun",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "mana",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "mco",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "mda",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "mds",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "mdt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "med",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "mkr",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "nas",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "neo",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "oax",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "omg",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ost",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "pay",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "powr",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "pst",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "qash",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "qbt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "qlc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "qsp",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "qtum",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "rcn",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "rdn",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "rep",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "req",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "rlc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "salt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "sbtc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "smt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "snt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "storj",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "stx",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "theta",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "tio",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "tnt",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "trx",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "tsl",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "ven",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "waves",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "wings",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "xmr",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "xrp",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "xtz",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "zec",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "zrx",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "zsc",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          }
+        ],
+        "exchange": {
+          "commissionRate": 0.0,
+          "name": "gateio",
+          "id": 1,
+          "timestamp": "Jan 18, 2018 4:26:19 PM"
+        },
+        "quoteAssetsList": [
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 2.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "btc",
+            "principle": 2.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 3000.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "usdt",
+            "principle": 3000.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 10.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "eth",
+            "principle": 10.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "gateio",
+            "locked": 0.0,
+            "name": "qtum",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          }
+        ]
+      },
+      {
+        "accountAssets": {
+          "balance": 0.0,
+          "locked": 0.0,
+          "name": "我的资产",
+          "state": "CURRENT_ACTIVE",
+          "uuid": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+          "timestamp": "Jan 18, 2018 6:04:03 PM"
+        },
+        "blockchainAssetsList": [
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ADA",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ADX",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "AION",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "AMB",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "APPC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ARK",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ARN",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "AST",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BAT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BCC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BCD",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BCPT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BNB",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BNT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BQX",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BRD",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 1.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BTC",
+            "principle": 1.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BTG",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BTS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "CDT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "CMT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "CND",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "CTR",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "DASH",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "DGD",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "DLT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "DNT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "EDO",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ELF",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ENG",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ENJ",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "EOS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ETC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 8.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ETH",
+            "principle": 8.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "EVX",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "FUEL",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "FUN",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "GAS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "GTO",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "GVT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "GXS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "HSR",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ICN",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ICX",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "INS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "IOTA",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "KMD",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "KNC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "LEND",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "LINK",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "LRC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "LSK",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "LTC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "LUN",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "MANA",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "MCO",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "MDA",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "MOD",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "MTH",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "MTL",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "NAV",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "NEBL",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "NEO",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "NULS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "OAX",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "OMG",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "OST",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "POE",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "POWR",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "PPT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "QSP",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "QTUM",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "RCN",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "RDN",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "REQ",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "RLC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "SALT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "SNGLS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "SNM",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "SNT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "STORJ",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "STRAT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "SUB",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "TNB",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "TNT",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "TRIG",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "TRX",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "VEN",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "VIB",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "VIBE",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "WABI",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "WAVES",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "WINGS",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "WTC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "XLM",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "XMR",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "XRP",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "XVG",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "XZC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "YOYO",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ZEC",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ZRX",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          }
+        ],
+        "exchange": {
+          "commissionRate": 0.0,
+          "name": "binance",
+          "id": 2,
+          "timestamp": "Jan 18, 2018 4:26:23 PM"
+        },
+        "quoteAssetsList": [
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 1.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BTC",
+            "principle": 1.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 8.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "ETH",
+            "principle": 8.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 0.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "BNB",
+            "principle": 0.0,
+            "timestamp": "Jan 18, 2018 6:04:04 PM"
+          },
+          {
+            "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
+            "available": 2000.0,
+            "exchange": "binance",
+            "locked": 0.0,
+            "name": "USDT",
+            "principle": 2000.0,
+            "timestamp": "Jan 18, 2018 6:04:05 PM"
+          }
+        ]
+      }
+    ]
+  }
+]

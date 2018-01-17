@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="java.lang.String"/>
         <import type="com.fafabtc.common.utils.NumberUtils"/>
         <variable
             name="order"
@@ -12,67 +13,93 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
 
         <TextView
             android:id="@+id/tv_pair"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{order.pair.toUpperCase()}"
+            android:text="@{String.format(@string/order_pair_format, order.base.toUpperCase(), order.quote.toUpperCase())}"
+            app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_order_type"
+            app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/tv_order_type"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="pair" />
+            tools:text="base/quote" />
 
         <TextView
             android:id="@+id/tv_order_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{order.type.name()}"
-            app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_pair"
-            app:layout_constraintTop_toTopOf="@+id/tv_pair"
-            tools:text="type" />
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/tag_order_sell"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="买" />
 
-        <TextView
-            android:id="@+id/tv_order_state"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_order_state"
+            style="@style/AppButton.Colored"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:padding="0dp"
             android:text="@{order.state.name()}"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/tv_price"
-            app:layout_constraintTop_toTopOf="@+id/tv_quantity"
-            tools:text="state" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="已成交" />
 
         <TextView
             android:id="@+id/tv_quantity"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:text="@{NumberUtils.formatBlockchainQuantity(order.quantity)}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_price"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_order_type"
-            app:layout_constraintTop_toTopOf="@+id/tv_order_type"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_pair"
+            app:layout_constraintTop_toTopOf="parent"
+            android:lines="1"
+            android:ellipsize="end"
             tools:text="quantity" />
 
         <TextView
             android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/tv_order_state"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{NumberUtils.formatPrice(order.price)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_order_state"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintStart_toEndOf="@+id/tv_quantity"
-            app:layout_constraintTop_toTopOf="@+id/tv_quantity"
-            tools:text="price"
-            android:text="@{NumberUtils.formatCurrency(order.price)}"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="price" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

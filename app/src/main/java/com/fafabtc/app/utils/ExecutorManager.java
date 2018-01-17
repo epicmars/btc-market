@@ -11,10 +11,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ExecutorManager {
 
+    /**
+     * Used for slow network io or file io.
+     */
     private static final ExecutorService IO = Executors.newFixedThreadPool(3, new DefaultThreadFactory("io"));
 
     private static final ExecutorService STATISTICS = Executors.newSingleThreadExecutor(new DefaultThreadFactory("statistics"));
 
+    /**
+     * Used for business like database assets.
+     */
     private static final ExecutorService NOW = Executors.newFixedThreadPool(3, new DefaultThreadFactory("now"));
 
     public static ExecutorService getIO() {

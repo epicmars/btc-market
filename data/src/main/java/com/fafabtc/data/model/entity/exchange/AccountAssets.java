@@ -20,7 +20,7 @@ import java.util.Date;
         indices = {@Index(value = "name", unique = true)})
 public class AccountAssets extends BaseEntity implements Parcelable{
 
-    public static final String DEFAULT_NAME = "default";
+    public static final String DEFAULT_NAME = "我的资产";
 
     public static enum State {
         ACTIVE,

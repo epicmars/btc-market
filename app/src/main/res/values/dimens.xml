@@ -10,6 +10,7 @@
 
     <!--Buttons-->
     <dimen name="button_colored_height">56dp</dimen>
+    <dimen name="button_setting_height">56dp</dimen>
 
     <!--Edittext-->
     <dimen name="et_padding">8dp</dimen>
@@ -20,10 +21,12 @@
     <dimen name="view_holder_height_tiny">56dp</dimen>
     <dimen name="view_holder_height_small">64dp</dimen>
     <dimen name="view_holder_height">72dp</dimen>
+    <dimen name="view_holder_height_large">96dp</dimen>
 
 
     <!--TextView-->
     <dimen name="tv_padding">8dp</dimen>
+    <dimen name="tv_padding_small">4dp</dimen>
 
 
 </resources>

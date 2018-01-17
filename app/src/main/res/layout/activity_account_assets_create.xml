@@ -16,6 +16,9 @@
             android:id="@+id/et_account_assets_name"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"
             android:background="@android:color/white"
             android:padding="@dimen/et_padding"
             android:hint="@string/hint_account_assets_name"/>

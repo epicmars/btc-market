@@ -10,40 +10,93 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"
             android:orientation="vertical">
 
-            <include layout="@layout/divider_light" />
-
-            <EditText
-                android:id="@+id/et_price"
-                style="@style/AppEditText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                tools:hint="@string/price_ask" />
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
 
-            <include layout="@layout/divider_dark" />
+                <TextView
+                    android:id="@+id/tv_label_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:gravity="right|center_vertical"
+                    android:padding="8dp"
+                    android:textSize="12sp"
+                    tools:text="@string/trade_label_price_bid" />
 
-            <EditText
-                android:id="@+id/et_quantity"
-                style="@style/AppEditText"
+                <EditText
+                    android:id="@+id/et_price"
+                    style="@style/AppEditText.Border"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:inputType="numberDecimal"
+                    tools:hint="@string/price_bid" />
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                tools:hint="@string/quantity" />
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
 
-            <include layout="@layout/divider_dark" />
+                <TextView
+                    android:id="@+id/tv_label_quantity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:gravity="right|center_vertical"
+                    android:padding="8dp"
+                    tools:text="@string/trade_label_commission_quantity"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_quantity"
+                    style="@style/AppEditText.Border"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:inputType="numberDecimal"
+                    tools:hint="@string/quantity" />
+
+            </LinearLayout>
 
 
-            <EditText
-                android:id="@+id/et_volume"
-                style="@style/AppEditText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                tools:hint="@string/volume" />
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
 
-            <include layout="@layout/divider_dark" />
+                <TextView
+                    android:id="@+id/tv_label_commission_volume"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:gravity="right|center_vertical"
+                    android:padding="8dp"
+                    tools:text="@string/trade_label_commission_volume"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_volume"
+                    style="@style/AppEditText.Border"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:inputType="numberDecimal"
+                    tools:hint="@string/volume" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -66,28 +119,48 @@
                 tools:text="@string/commission_rate" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_label_balance_available"
-            style="@style/TextDivider"
-            android:paddingLeft="8dp"
-            android:paddingStart="8dp"
-            tools:text="可用BTC" />
-
-        <TextView
-            android:id="@+id/tv_balance_available"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
             android:background="@android:color/white"
-            android:gravity="center_vertical"
-            android:padding="@dimen/tv_padding"
-            android:text="\?"
-            tools:text="100" />
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_label_balance_available"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="right|center_vertical"
+                android:padding="8dp"
+                android:textSize="16sp"
+                tools:text="可用BTC" />
+
+            <TextView
+                android:id="@+id/tv_balance_available"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="3"
+                android:lines="1"
+                android:ellipsize="end"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:padding="@dimen/tv_padding"
+                android:fontFamily="monospace"
+                android:textSize="16sp"
+                android:text="\?"
+                tools:text="100000000" />
+
+        </LinearLayout>
+
+        <include layout="@layout/divider_dark" />
 
         <Button
             android:id="@+id/btn_commit"
             style="@style/AppButton.Colored"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_colored_height"
+            android:layout_marginTop="8dp"
             android:text="@string/confirm"
             tools:text="@string/confirm" />
 

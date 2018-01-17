@@ -56,8 +56,13 @@ public class BlockchainAssetsFragment extends BaseFragment<FragmentBlockchainAss
         viewModel = getViewModel(BlockchainAssetsViewModel.class);
         viewModel.setAccountAssets(accountAssets);
         viewModel.setExchange(exchange);
-        viewModel.loadBlockchainAssets();
         viewModel.getBlockchainAssetsData().observe(this, blockchainAssetsObserver);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        viewModel.loadBlockchainAssets();
     }
 
     private Observer<List<BlockchainAssets>> blockchainAssetsObserver = new Observer<List<BlockchainAssets>>() {

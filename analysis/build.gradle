@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion project.rootProject.android.compile_sdk_version
 
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -10,10 +10,10 @@ android {
     def LEANCLOUD_APPKEY = properties.getProperty('leancloud.appkey')
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.rootProject.android.min_sdk_version
+        targetSdkVersion project.rootProject.android.target_sdk_version
+        versionCode version_code
+        versionName version_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -25,22 +25,7 @@ android {
                                 LEANCLOUD_APPKEY: LEANCLOUD_APPKEY]
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            manifestPlaceholders = [DEBUGGABLE: debuggable]
-        }
-
-        debug {
-            debuggable true
-
-            manifestPlaceholders = [DEBUGGABLE: debuggable]
-        }
-    }
-
-    // leancloud begin
+    // LEANCLOUD BEGIN
     //为了解决部分第三方库重复打包了META-INF的问题
     packagingOptions{
         exclude 'META-INF/LICENSE.txt'
@@ -49,7 +34,21 @@ android {
     lintOptions {
         abortOnError false
     }
-    // leancloud end
+    // LEANCLOUD END
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [DEBUGGABLE: debuggable]
+        }
+
+        debug {
+            debuggable true
+            manifestPlaceholders = [DEBUGGABLE: debuggable]
+        }
+    }
+
 }
 
 dependencies {

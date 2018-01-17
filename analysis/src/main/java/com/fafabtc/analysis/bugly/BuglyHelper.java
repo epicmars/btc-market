@@ -12,8 +12,6 @@ public class BuglyHelper {
 
     public static void init(Context context) {
         CrashReport.initCrashReport(context);
-
-
     }
 
 }

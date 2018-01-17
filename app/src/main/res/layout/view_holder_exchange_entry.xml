@@ -2,13 +2,34 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_exchange_name"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/view_holder_height_small"
-        android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
-        android:padding="@dimen/view_holder_padding_small"
-        tools:text="exchange_entry" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/tv_exchange_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/view_holder_height_small"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="@dimen/view_holder_padding_small"
+            android:paddingLeft="@dimen/view_holder_padding"
+            android:paddingStart="@dimen/view_holder_padding"
+            tools:text="EXCHANGE_ENTRY"
+            android:textColor="@android:color/primary_text_light" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_holder_height_small"
+            android:gravity="center_vertical"
+            android:padding="@dimen/view_holder_padding_small"
+            android:paddingLeft="@dimen/view_holder_padding"
+            android:paddingStart="@dimen/view_holder_padding"
+            tools:text="@string/assets_manage"
+            android:text="@string/assets_manage"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right"/>
+    </LinearLayout>
 
 </layout>

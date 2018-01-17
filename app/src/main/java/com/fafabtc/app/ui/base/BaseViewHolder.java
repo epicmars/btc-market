@@ -101,7 +101,7 @@ public abstract class BaseViewHolder<VDB extends ViewDataBinding> extends Recycl
      * @param data
      * @param position
      */
-    public final void onBindViewHolder(Object data, int position) {
+    final void onBindInternal(Object data, int position) {
         if (null == data) {
             Timber.w("Data is null!");
             return;

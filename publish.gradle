@@ -1,0 +1,16 @@
+android {
+
+    flavorDimensions "main"
+
+    productFlavors {
+
+        dev {
+            manifestPlaceholders = [APP_CHANNEL: "dev"]
+        }
+
+        github {
+            manifestPlaceholders = [APP_CHANNEL: "github"]
+        }
+
+    }
+}

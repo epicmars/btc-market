@@ -27,16 +27,22 @@ public class TickerViewHolder extends BaseViewHolder<ViewHolderTickerBinding>{
 
         double percent = ticker.getPercentChange();
         int percentBackground = percent < 0 ? R.drawable.bg_tv_percent_negative : R.drawable.bg_tv_percent_positive;
-        mBinding.tvPrecentChange.setBackground(itemView.getResources().getDrawable(percentBackground));
+        mBinding.tvPercentChange.setBackground(itemView.getResources().getDrawable(percentBackground));
+//        mBinding.tvPercentChange.setText(NumberUtils.formatPercent(ticker.getPercentChange()/100));
+//
+//        mBinding.tvBase.setText(ticker.getBase().toUpperCase());
+//        mBinding.tvQuote.setText(itemView.getResources().getString(R.string.ticker_quote_name_format, ticker.getQuote().toUpperCase()));
+//        mBinding.tvLast.setText(NumberUtils.formatPrice(ticker.getLast()));
+//        mBinding.tvBaseVolume.setText(itemView.getResources().getString(R.string.ticker_base_volume_format, NumberUtils.formatVolumeCN(ticker.getBaseVolume())));
+//        mBinding.tvQuoteVolume.setText(itemView.getResources().getString(R.string.ticker_quote_volume_format, ticker.getQuote().toUpperCase(), NumberUtils.formatVolumeCN(ticker.getQuoteVolume())));
         mBinding.setTicker(ticker);
-        mBinding.executePendingBindings();
-
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TradeActivity.start(v.getContext(), ticker);
             }
         });
+        mBinding.executePendingBindings();
     }
 
     @Override

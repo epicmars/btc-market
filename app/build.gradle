@@ -1,19 +1,38 @@
 apply plugin: 'com.android.application'
+apply from: '../publish.gradle'
+
+def keystorePropertiesFile = rootProject.file("local.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion project.rootProject.android.compile_sdk_version
+
     defaultConfig {
         applicationId "com.fafabtc.app"
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.rootProject.android.min_sdk_version
+        targetSdkVersion project.rootProject.android.target_sdk_version
+        versionCode version_code
+        versionName version_name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -27,6 +46,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:support-vector-drawable:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -36,6 +57,8 @@ dependencies {
     implementation "android.arch.lifecycle:runtime:$arch_lifecycle_ext_version"
     implementation "android.arch.lifecycle:extensions:$arch_lifecycle_ext_version"
     annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_ext_version"
+
+    implementation 'com.android.support:multidex:1.0.2'
 
     // dagger2 android
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"

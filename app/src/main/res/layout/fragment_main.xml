@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.fafabtc.app.ui.fragment.MainFragment"
-    tools:showIn="@layout/activity_main"
-    android:orientation="vertical">
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager_main"
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"
+        tools:context="com.fafabtc.app.ui.fragment.MainFragment"
+        tools:showIn="@layout/activity_main"
+        android:orientation="vertical">
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_nav_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        android:layout_gravity="bottom"
-        app:menu="@menu/menu_main_bottom">
-    </android.support.design.widget.BottomNavigationView>
+        <TextView
+            android:id="@+id/tv_state_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="初始化数据..."
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:textColor="@android:color/primary_text_dark"
+            android:background="@color/colorAccent"
+            android:padding="@dimen/tv_padding_small"
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
-</LinearLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_nav_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            android:layout_gravity="bottom"
+            app:menu="@menu/menu_main_bottom"
+            app:elevation="4dp">
+        </android.support.design.widget.BottomNavigationView>
+
+    </LinearLayout>
+</layout>

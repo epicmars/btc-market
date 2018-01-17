@@ -1,6 +1,7 @@
 package com.fafabtc.app.di.component;
 
 import com.fafabtc.app.ui.viewholder.AccountAssetsViewHolder;
+import com.fafabtc.app.ui.viewholder.OrderViewHolder;
 
 import dagger.Subcomponent;
 
@@ -12,4 +13,6 @@ import dagger.Subcomponent;
 public interface ViewHolderComponent {
 
     void inject(AccountAssetsViewHolder accountAssetsViewHolder);
+
+    void inject(OrderViewHolder orderViewHolder);
 }

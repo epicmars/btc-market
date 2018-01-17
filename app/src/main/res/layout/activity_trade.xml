@@ -6,6 +6,7 @@
 
     <data>
 
+        <import type="java.lang.String"/>
         <import type="com.fafabtc.common.utils.NumberUtils" />
 
         <variable
@@ -21,6 +22,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:padding="@dimen/view_holder_padding_small">
 
             <com.fafabtc.app.widgets.LabelValueView
@@ -31,10 +33,10 @@
                 app:label="@string/trade_price_last"
                 app:layout_constraintEnd_toStartOf="@+id/tv_ask"
                 app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintHorizontal_weight="4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:value="@{NumberUtils.formatCurrency(ticker.last)}"
+                app:value="@{NumberUtils.formatPrice(ticker.last)}"
                 tools:text="last" />
 
             <com.fafabtc.app.widgets.LabelValueView
@@ -47,7 +49,7 @@
                 app:layout_constraintHorizontal_weight="4"
                 app:layout_constraintStart_toEndOf="@+id/tv_last"
                 app:layout_constraintTop_toTopOf="@+id/tv_last"
-                app:value="@{NumberUtils.formatCurrency(ticker.ask)}"
+                app:value="@{NumberUtils.formatPrice(ticker.ask)}"
                 tools:text="lowest_ask" />
 
             <com.fafabtc.app.widgets.LabelValueView
@@ -60,7 +62,7 @@
                 app:layout_constraintHorizontal_weight="4"
                 app:layout_constraintStart_toEndOf="@+id/tv_ask"
                 app:layout_constraintTop_toTopOf="@+id/tv_ask"
-                app:value="@{NumberUtils.formatCurrency(ticker.bid)}"
+                app:value="@{NumberUtils.formatPrice(ticker.bid)}"
                 tools:text="highest_bid" />
 
             <com.fafabtc.app.widgets.LabelValueView
@@ -81,62 +83,68 @@
                 android:id="@+id/tv_highest_24hr"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 app:label="@string/trade_highest_24hr"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_lowest_24hr"
                 app:layout_constraintEnd_toStartOf="@+id/tv_lowest_24hr"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_last"
-                app:value="@{NumberUtils.formatCurrency(ticker.high24hr)}"
+                app:layout_constraintTop_toTopOf="@+id/tv_lowest_24hr"
+                app:value="@{NumberUtils.formatPrice(ticker.high24hr)}"
+                app:layout_constraintHorizontal_weight="1"
                 tools:text="lowest_24hr" />
 
 
             <com.fafabtc.app.widgets.LabelValueView
                 android:id="@+id/tv_lowest_24hr"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
                 app:label="@string/trade_lowest_24hr"
-                app:layout_constraintEnd_toStartOf="@+id/tv_base_volume"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="4"
                 app:layout_constraintStart_toEndOf="@+id/tv_highest_24hr"
-                app:layout_constraintTop_toTopOf="@+id/tv_highest_24hr"
-                app:value="@{NumberUtils.formatCurrency(ticker.low24hr)}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_precent_change"
+                app:value="@{NumberUtils.formatPrice(ticker.low24hr)}"
+                app:layout_constraintHorizontal_weight="1"
                 tools:text="highest_24hr" />
 
             <com.fafabtc.app.widgets.LabelValueView
                 android:id="@+id/tv_base_volume"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:label="@string/trade_quantity_24hr"
-                app:layout_constraintEnd_toEndOf="@id/spacer"
+                app:layout_constraintEnd_toStartOf="@+id/spacer"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="7"
-                app:layout_constraintStart_toEndOf="@+id/tv_lowest_24hr"
-                app:layout_constraintTop_toTopOf="@+id/tv_lowest_24hr"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_highest_24hr"
                 app:value="@{NumberUtils.formatBlockchainQuantity(ticker.baseVolume)}"
                 tools:text="base_volume" />
 
-            <android.support.v4.widget.Space
+            <com.fafabtc.app.widgets.LabelValueView
                 android:id="@+id/spacer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="0dp"
+                app:label="@{String.format(@string/trade_volume_24hr_format, ticker.quote.toUpperCase())}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_base_volume"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_base_volume"
-                app:layout_constraintTop_toTopOf="@id/tv_base_volume" />
-
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/tv_base_volume"
+                app:layout_constraintTop_toTopOf="@id/tv_base_volume"
+                app:value="@{NumberUtils.formatBlockchainQuantity(ticker.quoteVolume)}"
+                tools:label="@string/trade_volume_24hr_format" />
 
         </android.support.constraint.ConstraintLayout>
+
+        <include layout="@layout/divider_dark"/>
 
         <FrameLayout
             android:id="@+id/trade_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"></FrameLayout>
+            android:layout_weight="1"/>
     </LinearLayout>
 </layout>

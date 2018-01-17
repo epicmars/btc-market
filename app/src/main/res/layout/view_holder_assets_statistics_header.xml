@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="java.lang.String"/>
         <import type="com.fafabtc.common.utils.NumberUtils"/>
         <variable
             name="data"
@@ -14,7 +15,8 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextDivider"
+            android:layout_marginTop="8dp"
+            style="@style/TextLabel"
             android:text="@string/balance_assets" />
 
         <TextView
@@ -22,12 +24,21 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/view_holder_padding"
+            android:padding="@dimen/view_holder_padding_small"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:fontFamily="monospace"
+            android:textSize="16sp"
+            android:textColor="@android:color/primary_text_light"
             tools:text="10000"
-            android:text="@{NumberUtils.formatCurrency(data.balanceTotal)}"/>
+            android:lines="1"
+            android:ellipsize="end"
+            android:text="@{String.format(@string/balance_usdt_format, NumberUtils.formatPrice(data.balanceTotal))}"/>
 
         <TextView
-            style="@style/TextDivider"
-            android:text="@string/blockchain_assets" />
+            style="@style/TextLabel"
+            android:text="@string/blockchain_assets"
+            android:layout_marginTop="8dp"
+            />
     </LinearLayout>
 </layout>

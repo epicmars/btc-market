@@ -13,9 +13,9 @@ import java.util.List;
 @Dao
 public interface AssetsStatisticsDao {
 
-    @Query("with max_timestamp(m) as (select max(timestamp) from ticker),\n" +
+    @Query("with \n" +
             "     all_quotes(q) as (select distinct quote from ticker),\n" +
-            "     quote_ticker as (select * from ticker where timestamp in max_timestamp and base in all_quotes and quote = 'usdt' COLLATE NOCASE),\n" +
+            "     quote_ticker as (select * from ticker where base in all_quotes and quote = 'usdt' COLLATE NOCASE),\n" +
             "     assets as (select blockchain_assets.assets_uuid,\n" +
             "     blockchain_assets.exchange,\n" +
             "     blockchain_assets.name,\n" +
@@ -27,7 +27,7 @@ public interface AssetsStatisticsDao {
             "     from blockchain_assets left outer join ticker\n" +
             "     on blockchain_assets.name = ticker.base\n" +
             "     and blockchain_assets.exchange = ticker.exchange\n" +
-            "     where blockchain_assets.assets_uuid = :assetsUUID and ticker.timestamp in max_timestamp),\n" +
+            "     where blockchain_assets.assets_uuid = :assetsUUID),\n" +
             "     statistics as (select assets.*, quote_ticker.last as quote_last,\n" +
             "        case\n" +
             "            when assets.quote = 'usdt' COLLATE NOCASE then assets.last\n" +

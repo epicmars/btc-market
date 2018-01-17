@@ -9,10 +9,11 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.constants.Broadcast;
+import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.ActivityBalanceDepositBinding;
 import com.fafabtc.app.ui.base.BaseActivity;
 import com.fafabtc.app.ui.base.BindLayout;
+import com.fafabtc.app.ui.fragment.LoadingDialog;
 import com.fafabtc.app.vm.BalanceDepositViewModel;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.domain.model.Resource;
@@ -27,7 +28,9 @@ public class BalanceDepositActivity extends BaseActivity<ActivityBalanceDepositB
 
     private BlockchainAssets blockchainAssets;
 
-    BalanceDepositViewModel viewModel;
+    private LoadingDialog loadingDialog;
+
+    private BalanceDepositViewModel viewModel;
 
     public static void start(Context context, BlockchainAssets balanceAssets) {
         Intent starter = new Intent(context, BalanceDepositActivity.class);
@@ -41,6 +44,7 @@ public class BalanceDepositActivity extends BaseActivity<ActivityBalanceDepositB
         Intent intent = getIntent();
         if (intent != null) {
             blockchainAssets = intent.getParcelableExtra(EXTRA_BALANCE_ASSETS);
+            setTitle(getString(R.string.assets_deposit_title_format, blockchainAssets.getName().toUpperCase()));
         }
         viewModel = getViewModel(BalanceDepositViewModel.class);
         viewModel.setBlockchainAssets(blockchainAssets);
@@ -67,15 +71,31 @@ public class BalanceDepositActivity extends BaseActivity<ActivityBalanceDepositB
                     return;
                 }
                 viewModel.depositBalance(balance);
+                showLoadingDialog();
             }
         });
+    }
+
+    private void showLoadingDialog() {
+        if (loadingDialog == null) {
+            loadingDialog = LoadingDialog.newInstance();
+            loadingDialog.show(getSupportFragmentManager(), null);
+        }
+    }
+
+    private void dismissLoadingDialog() {
+        if (loadingDialog != null) {
+            loadingDialog.dismissAllowingStateLoss();
+        }
     }
 
     private Observer<Resource<Boolean>> depositResultObserver = new Observer<Resource<Boolean>>() {
         @Override
         public void onChanged(@Nullable Resource<Boolean> booleanResource) {
-            if (booleanResource.isSuccess()) {
-                sendBroadcast(new Intent(Broadcast.Actions.ACTION_BALANCE_DEPOSITED));
+            dismissLoadingDialog();
+            if (booleanResource != null && booleanResource.isSuccess()) {
+                finish();
+                sendBroadcast(new Intent(Broadcasts.Actions.ACTION_BALANCE_DEPOSITED));
             }
         }
     };

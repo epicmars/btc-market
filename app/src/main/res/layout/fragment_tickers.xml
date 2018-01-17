@@ -3,23 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <ListView
+        android:id="@+id/list_ticker"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        app:fastScrollEnabled="true"
+        app:fastScrollHorizontalThumbDrawable="@drawable/fast_scroll_h_thumb"
+        app:fastScrollHorizontalTrackDrawable="@drawable/fast_scroll_h_track"
+        app:fastScrollVerticalThumbDrawable="@drawable/fast_scroll_vertical_thumb"
+        app:fastScrollVerticalTrackDrawable="@drawable/fast_scroll_vertical_track"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/view_holder_ticker" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_ticker"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/view_holder_ticker"/>
-
-    </android.support.constraint.ConstraintLayout>
 </layout>

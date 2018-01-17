@@ -129,6 +129,8 @@ public abstract class OrderDao {
             updateBlockchainAssets(out, in);
             order.setState(Order.State.DONE);
             updateOne(order);
+        } else {
+            throw new DaoException(String.format("Order not deal, price bid [%f] is lower than ask [%f]", priceBid, priceAsk));
         }
     }
 
@@ -136,7 +138,7 @@ public abstract class OrderDao {
     public void cancelOrder(String uuid) {
         Order order = findByUUID(uuid);
         if (order.getState() == Order.State.CANCELLED || order.getState() == Order.State.DONE)
-            return;
+            throw new DaoException("Order has been cancelled or done.");
         BlockchainAssets base = findBlockchainAssets(order.getAssetsUUID(), order.getExchange(), order.getBase());
         BlockchainAssets quote = findBlockchainAssets(order.getAssetsUUID(), order.getExchange(), order.getQuote());
 

@@ -1,48 +1,41 @@
 package com.fafabtc.app;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Service;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.fafabtc.app.di.AppInjector;
 import com.fafabtc.common.analysis.AnalysisHelper;
 
-import javax.inject.Inject;
-
 import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
-import dagger.android.HasServiceInjector;
+import dagger.android.DaggerApplication;
 import timber.log.Timber;
 
 /**
  * Created by jastrelax on 2018/1/7.
  */
 
-public class ClientApplication extends Application implements HasActivityInjector, HasServiceInjector {
-
-    @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
-
-    @Inject
-    DispatchingAndroidInjector<Service> serviceDispatchingAndroidInjector;
+public class ClientApplication extends DaggerApplication  {
 
     @Override
     public void onCreate() {
         super.onCreate();
         Timber.plant(new Timber.DebugTree());
         AnalysisHelper.init(this);
-
-        AppInjector.inject(this);
     }
 
     @Override
-    public AndroidInjector<Activity> activityInjector() {
-        return dispatchingAndroidInjector;
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     @Override
-    public AndroidInjector<Service> serviceInjector() {
-        return serviceDispatchingAndroidInjector;
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return new AndroidInjector<DaggerApplication>() {
+            @Override
+            public void inject(DaggerApplication instance) {
+                AppInjector.inject((ClientApplication) instance);
+            }
+        };
     }
 }

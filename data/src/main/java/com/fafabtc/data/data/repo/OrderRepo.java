@@ -32,5 +32,5 @@ public interface OrderRepo {
 
     Single<List<Order>> getAllPendingOrder();
 
-    Completable dealPendingOrders();
+    Single<List<Order>> dealPendingOrders();
 }

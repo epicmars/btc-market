@@ -33,6 +33,7 @@ public class ExchangeEntryActivity extends BaseActivity<ActivityExchangeEntryBin
         Intent intent = getIntent();
         if (intent != null) {
             accountAssets = intent.getParcelableExtra(EXTRA_ACCOUNT_ASSETS);
+            setTitle(getString(R.string.exchange_entry_title_format, accountAssets.getName()));
         }
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

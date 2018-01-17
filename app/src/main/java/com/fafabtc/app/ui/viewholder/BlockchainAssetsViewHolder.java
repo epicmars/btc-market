@@ -26,6 +26,13 @@ public class BlockchainAssetsViewHolder extends BaseViewHolder<ViewHolderBlockch
         mBinding.setBlockchainAssets(assets);
         mBinding.executePendingBindings();
 
+        mBinding.btnDeposit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BalanceDepositActivity.start(v.getContext(), assets);
+            }
+        });
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

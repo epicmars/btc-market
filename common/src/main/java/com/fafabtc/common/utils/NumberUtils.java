@@ -12,15 +12,21 @@ import timber.log.Timber;
 
 public class NumberUtils {
 
+    private static final String FORMAT_VOLUME = "0";
+    private static final String FORMAT_BALANCE_QUNITITY = "0.00";
     private static final String FORMAT_BLOCKCHAIN_QUANTITY = "#.#########";
     private static final String FORMAT_CURRENCY_QUANTITY = "#.########";
 
-    private static DecimalFormat currencyFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.CHINA);
+    private static DecimalFormat volumeFormat = (DecimalFormat) NumberFormat.getIntegerInstance(Locale.CHINA);
+    private static DecimalFormat balanceFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.CHINA);
+    private static DecimalFormat priceFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.CHINA);
     private static DecimalFormat blockchainQuantityFormat = (DecimalFormat) NumberFormat.getNumberInstance(Locale.CHINA);
     private static DecimalFormat percentFormat = (DecimalFormat) NumberFormat.getPercentInstance(Locale.CHINA);
 
     static {
-        currencyFormat.applyPattern(FORMAT_CURRENCY_QUANTITY);
+        volumeFormat.applyPattern(FORMAT_VOLUME);
+        balanceFormat.applyPattern(FORMAT_BALANCE_QUNITITY);
+        priceFormat.applyPattern(FORMAT_CURRENCY_QUANTITY);
         blockchainQuantityFormat.applyPattern(FORMAT_BLOCKCHAIN_QUANTITY);
         percentFormat.setMinimumFractionDigits(2);
     }
@@ -39,8 +45,12 @@ public class NumberUtils {
         return dNum != null && dNum > 0;
     }
 
-    public static String formatCurrency(double currency) {
-        return currencyFormat.format(currency);
+    public static String formatBalance(double balance) {
+        return balanceFormat.format(balance);
+    }
+
+    public static String formatPrice(double currency) {
+        return priceFormat.format(currency);
     }
 
     public static String formatBlockchainQuantity(double blockchain) {
@@ -53,5 +63,19 @@ public class NumberUtils {
 
     public static String formatPercent(double percentage) {
         return percentFormat.format(percentage);
+    }
+
+    public static String formatVolumeCN(double volume) {
+        if (volume < 1.0) {
+            return balanceFormat.format(volume);
+        }
+        if (volume < 1E4) {
+            return volumeFormat.format(volume);
+        }
+        if (volume < 1E8) {
+            return volumeFormat.format(volume / 1E4) + "万";
+        }
+        return (long)(volume / 1E8) + "亿" +
+                volumeFormat.format(volume % 1E8 / 1E4) + "万";
     }
 }

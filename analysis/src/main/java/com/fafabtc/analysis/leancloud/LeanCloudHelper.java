@@ -9,7 +9,12 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.SaveCallback;
+import com.avos.avoscloud.feedback.Comment;
+import com.avos.avoscloud.feedback.FeedbackAgent;
+import com.avos.avoscloud.feedback.FeedbackThread;
 import com.fafabtc.analysis.BuildConfig;
+
+import java.util.List;
 
 /**
  * Created by jastrelax on 2018/1/15.
@@ -31,6 +36,24 @@ public class LeanCloudHelper {
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, e.getMessage(), e);
         }
+    }
+
+    public static void sendFeedback(Context context, String feedback, final Runnable callback) {
+        Comment comment = new Comment(feedback);
+        FeedbackAgent agent = new FeedbackAgent(context);
+        FeedbackThread thread = agent.getDefaultThread();
+        thread.add(comment);
+        thread.sync(new FeedbackThread.SyncCallback() {
+            @Override
+            public void onCommentsSend(List<Comment> list, AVException e) {
+                callback.run();
+            }
+
+            @Override
+            public void onCommentsFetch(List<Comment> list, AVException e) {
+
+            }
+        });
     }
 
     public static void testLeancloud() {

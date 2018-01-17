@@ -55,8 +55,13 @@ public class BalanceAssetsFragment extends BaseFragment<FragmentBalanceAssetsBin
         viewModel = getViewModel(BalanceAssetsViewModel.class);
         viewModel.setAccountAssets(accountAssets);
         viewModel.setExchange(exchange);
-        viewModel.loadBalanceAssets();
         viewModel.getBalanceAssetsData().observe(this, balanceAssetsObserver);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        viewModel.loadBalanceAssets();
     }
 
     private Observer<List<BlockchainAssets>> balanceAssetsObserver = new Observer<List<BlockchainAssets>>() {

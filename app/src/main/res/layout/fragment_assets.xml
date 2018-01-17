@@ -28,6 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/assets_header_backgroud"
+                    android:minHeight="?attr/actionBarSize"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                     <FrameLayout
@@ -56,17 +57,46 @@
 
                             <TextView
                                 android:id="@+id/tv_total"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:layout_marginEnd="32dp"
+                                android:layout_marginStart="32dp"
                                 android:fontFamily="monospace"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                                android:maxLines="2"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                                 android:textColor="@android:color/white"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:text="600000" />
+
+                            <TextView
+                                android:id="@+id/tv_assets_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="16dp"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:textColor="@android:color/white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/tv_update_time"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="default" />
+
+                            <TextView
+                                android:id="@+id/tv_update_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="16dp"
+                                android:textColor="@android:color/white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:text="2018-1-16" />
                         </android.support.constraint.ConstraintLayout>
                     </FrameLayout>
                 </android.support.constraint.ConstraintLayout>

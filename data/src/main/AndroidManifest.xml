@@ -1,2 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fafabtc.data" />
+    package="com.fafabtc.data" >
+
+    <application>
+
+        <provider
+            android:authorities="com.fafabtc.data.provider"
+            android:name=".provider.AssetsStateProvider" />
+    </application>
+</manifest>

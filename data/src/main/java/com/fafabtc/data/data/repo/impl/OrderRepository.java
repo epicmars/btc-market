@@ -16,6 +16,8 @@ import javax.inject.Singleton;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
+import io.reactivex.Maybe;
+import io.reactivex.MaybeSource;
 import io.reactivex.Single;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Function;
@@ -66,10 +68,10 @@ public class OrderRepository implements OrderRepo {
                                       final String base,
                                       final String quote,
                                       final Order.Type type) {
-        return Completable.fromAction(new Action() {
+        return Single.fromCallable(new Callable<Order>() {
             @Override
-            public void run() throws Exception {
-                Order order = dao.createNewOrder(assetsUUID,
+            public Order call() throws Exception {
+                return dao.createNewOrder(assetsUUID,
                         exchangeName,
                         price,
                         quantity,
@@ -77,8 +79,17 @@ public class OrderRepository implements OrderRepo {
                         base,
                         quote,
                         type);
-                Ticker ticker = tickerDao.getLatest(exchangeName, pair);
-                dao.dealPendingOrder(order, ticker);
+            }
+        }).flatMapCompletable(new Function<Order, CompletableSource>() {
+            @Override
+            public CompletableSource apply(final Order order) throws Exception {
+                return Completable.fromAction(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Ticker ticker = tickerDao.getLatest(exchangeName, pair);
+                        dao.dealPendingOrder(order, ticker);
+                    }
+                }).onErrorComplete();
             }
         });
     }
@@ -114,7 +125,7 @@ public class OrderRepository implements OrderRepo {
     }
 
     @Override
-    public Completable dealPendingOrders() {
+    public Single<List<Order>> dealPendingOrders() {
         return getAllPendingOrder()
                 .flattenAsObservable(new Function<List<Order>, Iterable<Order>>() {
                     @Override
@@ -122,18 +133,19 @@ public class OrderRepository implements OrderRepo {
                         return orders;
                     }
                 })
-                .flatMapCompletable(new Function<Order, CompletableSource>() {
+                .flatMapMaybe(new Function<Order, MaybeSource<Order>>() {
                     @Override
-                    public CompletableSource apply(final Order order) throws Exception {
-                        return Completable.fromAction(new Action() {
+                    public MaybeSource<Order> apply(final Order order) throws Exception {
+                        return Maybe.fromCallable(new Callable<Order>() {
                             @Override
-                            public void run() throws Exception {
+                            public Order call() throws Exception {
                                 Ticker ticker = tickerDao.getLatest(order.getExchange(), order.getPair());
                                 dao.dealPendingOrder(order, ticker);
+                                return order;
                             }
                         }).onErrorComplete();
                     }
-                });
+                }).toList();
     }
 
     @Override

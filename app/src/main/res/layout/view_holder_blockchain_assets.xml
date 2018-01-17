@@ -14,42 +14,98 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_holder_height"
+        android:background="?attr/selectableItemBackground"
         android:orientation="vertical"
-        android:padding="@dimen/view_holder_padding_small"
-        android:background="?attr/selectableItemBackground">
+        android:padding="@dimen/view_holder_padding_small">
 
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@{blockchainAssets.name.toUpperCase()}"
+            android:textColor="@android:color/primary_text_light"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintEnd_toStartOf="@+id/tv_total"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="eth" />
+            tools:text="ETH" />
 
         <TextView
-            android:id="@+id/tv_balance"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_total"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{NumberUtils.formatBlockchainQuantity(blockchainAssets.available)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintHorizontal_weight="4"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:lines="1"
+            android:text="@{NumberUtils.formatBlockchainQuantity(blockchainAssets.available + blockchainAssets.locked)}"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_name"
+            app:layout_constraintEnd_toStartOf="@+id/btn_deposit_container"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
             tools:text="10000" />
 
         <TextView
-            android:id="@+id/tv_principle"
+            android:id="@+id/tv_available"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{String.format(@string/label_available_format, NumberUtils.formatBlockchainQuantity(blockchainAssets.available))}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_locked"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="可用：1000" />
+
+        <TextView
+            android:id="@+id/tv_locked"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{String.format(@string/label_locked_format, NumberUtils.formatBlockchainQuantity(blockchainAssets.locked))}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_deposit_container"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_available"
+            tools:text="冻结：1000" />
+
+        <FrameLayout
+            android:id="@+id/btn_deposit_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@{NumberUtils.formatBlockchainQuantity(blockchainAssets.principle)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="principle10000012.1234" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btn_deposit"
+                android:theme="@style/AppButton.Meta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?metaButtonBarButtonStyle"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/deposit"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right"
+                />
+            
+        </FrameLayout>
     </android.support.constraint.ConstraintLayout>
 
 </layout>

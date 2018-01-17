@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.constants.Broadcast;
+import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.ActivityTradeBinding;
 import com.fafabtc.app.ui.base.BaseActivity;
 import com.fafabtc.app.ui.base.BindLayout;
@@ -40,6 +40,7 @@ public class TradeActivity extends BaseActivity<ActivityTradeBinding> {
         if (intent != null) {
             ticker = intent.getParcelableExtra(EXTAR_TICKER);
         }
+        setTitle(getString(R.string.trade_exchange_pair_format, ticker.getBase(), ticker.getQuote()).toUpperCase());
 
         viewModel = getViewModel(TradeViewModel.class);
         viewModel.setTicker(ticker);
@@ -54,7 +55,7 @@ public class TradeActivity extends BaseActivity<ActivityTradeBinding> {
     @Override
     protected void onStart() {
         super.onStart();
-        registerReceiver(tickerReceiver, new IntentFilter(Broadcast.Actions.ACTION_TICKER_UPDATED));
+        registerReceiver(tickerReceiver, new IntentFilter(Broadcasts.Actions.ACTION_TICKER_UPDATED));
     }
 
     @Override

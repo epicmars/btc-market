@@ -14,11 +14,6 @@ import io.reactivex.Single;
 
 public interface AccountAssetsRepo {
 
-    public static final String ASSETS_DATA_FILE = "assets.json";
-    public static final String ASSETS_PREFERENCE = "assets_pref";
-
-    public static final String KEY_IS_INITIALIZED = "isAssetsInitialized";
-
     Completable initAllAccountAssets();
 
     Completable initAssets(AccountAssets accountAssets);

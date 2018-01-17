@@ -20,18 +20,24 @@ public class FileUtils {
     private static String DEFAULT_DIR = "fafabtc";
 
     public static File getExternalFile(String filename) {
+        if (!Environment.MEDIA_MOUNTED.equalsIgnoreCase(Environment.getExternalStorageState())) {
+            return null;
+        }
         File documentDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
         File defaultDir = new File(documentDir, DEFAULT_DIR);
         if (!documentDir.exists()) {
-            documentDir.mkdirs();
+            boolean result = documentDir.mkdirs();
+            Timber.d("create document directory: %b.", result);
         }
         if (!defaultDir.exists()) {
-            defaultDir.mkdirs();
+            boolean result = defaultDir.mkdirs();
+            Timber.d("create app data directory: %b.", result);
         }
         File file = new File(defaultDir, filename);
         try {
             if (!file.exists()) {
-                file.createNewFile();
+                boolean result = file.createNewFile();
+                Timber.d("create app data directory: %b.", result);
             }
         } catch (IOException e) {
             Timber.e(e);

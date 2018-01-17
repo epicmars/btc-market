@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.fafabtc.app.R;
@@ -14,7 +15,9 @@ import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.base.RecyclerAdapter;
 import com.fafabtc.app.ui.viewholder.OrderViewHolder;
 import com.fafabtc.app.vm.OrdersViewModel;
+import com.fafabtc.app.vm.TradeViewModel;
 import com.fafabtc.data.model.entity.exchange.Order;
+import com.fafabtc.domain.model.Resource;
 
 import java.util.List;
 
@@ -34,6 +37,9 @@ public class OrdersFragment extends BaseFragment<FragmentOrdersBinding> {
 
     @Inject
     OrdersViewModel viewModel;
+
+    @Inject
+    TradeViewModel tradeViewModel;
 
     public static OrdersFragment newInstance(String assetsUUID, String exchange, String pair) {
         Bundle args = new Bundle();
@@ -55,9 +61,13 @@ public class OrdersFragment extends BaseFragment<FragmentOrdersBinding> {
 
         adapter = new RecyclerAdapter();
         adapter.register(OrderViewHolder.class);
+        adapter.registerAdapterDataObserver(adapterDataObserver);
         binding.recyclerOrders.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerOrders.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         binding.recyclerOrders.setAdapter(adapter);
+
+        tradeViewModel = getViewModelOfActivity(TradeViewModel.class);
+        tradeViewModel.getIsOrderCreated().observe(this, orderCreationObserver);
 
         viewModel = getViewModel(OrdersViewModel.class);
         viewModel.setAssetsUUID(assetsUUID);
@@ -67,10 +77,34 @@ public class OrdersFragment extends BaseFragment<FragmentOrdersBinding> {
         viewModel.loadOrders();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        adapter.unregisterAdapterDataObserver(adapterDataObserver);
+    }
+
+    private RecyclerView.AdapterDataObserver adapterDataObserver = new RecyclerView.AdapterDataObserver() {
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            super.onItemRangeChanged(positionStart, itemCount);
+            tradeViewModel.updateBaseBalance();
+            tradeViewModel.updateQuoteBalance();
+        }
+    };
+
     private Observer<List<Order>> ordersObserver = new Observer<List<Order>>() {
         @Override
         public void onChanged(@Nullable List<Order> orders) {
             adapter.setPayloads(orders);
+        }
+    };
+
+    private Observer<Resource<Boolean>> orderCreationObserver = new Observer<Resource<Boolean>>() {
+        @Override
+        public void onChanged(@Nullable Resource<Boolean> booleanResource) {
+            if (booleanResource.isSuccess()) {
+                viewModel.loadOrders();
+            }
         }
     };
 }

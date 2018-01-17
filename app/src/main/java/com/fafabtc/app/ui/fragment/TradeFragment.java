@@ -32,6 +32,7 @@ public class TradeFragment extends BaseFragment<FragmentTradeBinding> {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ticker = getArguments().getParcelable(ARGS_TICKER);
+        binding.pagerTrade.setOffscreenPageLimit(2);
         binding.pagerTrade.setAdapter(new TradeFragmentPagerAdapter(getChildFragmentManager()));
     }
 

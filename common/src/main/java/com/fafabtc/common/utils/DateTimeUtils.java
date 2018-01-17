@@ -9,7 +9,7 @@ import java.util.Locale;
  * Created by jastrelax on 2018/1/11.
  */
 
-public class DateUtils {
+public class DateTimeUtils {
 
     public static final DateFormat FORMAT_STANDARD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINESE);
 

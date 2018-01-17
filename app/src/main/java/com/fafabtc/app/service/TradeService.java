@@ -7,13 +7,16 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.fafabtc.app.constants.Broadcast;
+import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.data.data.repo.OrderRepo;
+import com.fafabtc.data.model.entity.exchange.Order;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import dagger.android.DaggerService;
-import io.reactivex.CompletableObserver;
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -41,7 +44,7 @@ public class TradeService extends DaggerService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        registerReceiver(tickerUpdateReceiver, new IntentFilter(Broadcast.Actions.ACTION_TICKER_UPDATED));
+        registerReceiver(tickerUpdateReceiver, new IntentFilter(Broadcasts.Actions.ACTION_TICKER_UPDATED));
         return START_STICKY;
     }
 
@@ -58,15 +61,17 @@ public class TradeService extends DaggerService {
             orderRepo.dealPendingOrders()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new CompletableObserver() {
+                    .subscribe(new SingleObserver<List<Order>>() {
                         @Override
                         public void onSubscribe(Disposable d) {
 
                         }
 
                         @Override
-                        public void onComplete() {
-                            sendBroadcast(new Intent(Broadcast.Actions.ACTION_ORDER_DEAL));
+                        public void onSuccess(List<Order> orders) {
+                            if (orders.size() > 0) {
+                                sendBroadcast(new Intent(Broadcasts.Actions.ACTION_ORDER_DEAL));
+                            }
                         }
 
                         @Override

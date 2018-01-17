@@ -1,11 +1,13 @@
 package com.fafabtc.app.di.module;
 
 import com.fafabtc.app.di.scope.FragmentScope;
+import com.fafabtc.app.ui.fragment.AccountAssetsListFragment;
 import com.fafabtc.app.ui.fragment.AccountFragment;
 import com.fafabtc.app.ui.fragment.AssetsFragment;
 import com.fafabtc.app.ui.fragment.BalanceAssetsFragment;
 import com.fafabtc.app.ui.fragment.BlockchainAssetsFragment;
 import com.fafabtc.app.ui.fragment.ExchangeEntryFragment;
+import com.fafabtc.app.ui.fragment.MainFragment;
 import com.fafabtc.app.ui.fragment.OrdersFragment;
 import com.fafabtc.app.ui.fragment.TickerPagerFragment;
 import com.fafabtc.app.ui.fragment.TickersFragment;
@@ -22,6 +24,10 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class FragmentModel {
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    public abstract MainFragment mainFragment();
 
     @FragmentScope
     @ContributesAndroidInjector
@@ -66,4 +72,8 @@ public abstract class FragmentModel {
     @FragmentScope
     @ContributesAndroidInjector
     public abstract BlockchainAssetsFragment blockchainAssetsFragment();
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    public abstract AccountAssetsListFragment accountAssetsListFragment();
 }

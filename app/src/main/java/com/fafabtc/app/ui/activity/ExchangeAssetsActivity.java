@@ -48,6 +48,7 @@ public class ExchangeAssetsActivity extends BaseActivity<ActivityExchangeAssetsB
         if (intent != null) {
             accountAssets = intent.getParcelableExtra(EXTRA_ACCOUNT_ASSETS);
             exchange = intent.getParcelableExtra(EXTRA_EXCHANGE);
+            setTitle(getString(R.string.exchange_assets_title_format, accountAssets.getName(), exchange.getName().toUpperCase()));
         }
 
         pagerAdapter = new AssetsPagerAdapter(getSupportFragmentManager());

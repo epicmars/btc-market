@@ -50,6 +50,12 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
         if (data == null) return;
         final AccountAssets assets = (AccountAssets) data;
         mBinding.tvName.setText(assets.getName());
+        mBinding.radioContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBinding.radioChooser.toggle();
+            }
+        });
         mBinding.radioChooser.setChecked(assets.getState() == AccountAssets.State.CURRENT_ACTIVE ? true : false);
 
         mBinding.radioChooser.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -63,6 +69,13 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
                                     currentAssets.setState(AccountAssets.State.ACTIVE);
                                     assets.setState(AccountAssets.State.CURRENT_ACTIVE);
                                     return accountAssetsRepo.update(currentAssets, assets);
+                                }
+                            })
+                            .onErrorResumeNext(new Function<Throwable, CompletableSource>() {
+                                @Override
+                                public CompletableSource apply(Throwable throwable) throws Exception {
+                                    assets.setState(AccountAssets.State.CURRENT_ACTIVE);
+                                    return accountAssetsRepo.update(assets);
                                 }
                             })
                             .subscribeOn(Schedulers.from(ExecutorManager.getNOW()))
@@ -107,6 +120,7 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
     @Override
     public void onViewRecycled() {
         super.onViewRecycled();
+        mBinding.radioChooser.setOnCheckedChangeListener(null);
     }
 
     @Override

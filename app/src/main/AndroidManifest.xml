@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"/>
 
     <application
         android:name=".ClientApplication"
@@ -18,24 +20,53 @@
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".ui.TradeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.activity.AccountAssetsCreateActivity"
+            android:label="@string/create_assets"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".ui.activity.ExchangeEntryActivity" />
+        <activity android:name=".ui.activity.ExchangeAssetsActivity" />
+
+        <service
+            android:name=".service.MainService"
+            android:process=":loader" />
+        <service android:name=".service.TradeService" />
+        <service android:name=".service.SyncService" />
+
+        <activity
+            android:name=".ui.activity.BalanceDepositActivity"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".ui.activity.BlockchainDepositActivity" />
+        <activity
+            android:name=".ui.activity.SplashScreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.TradeActivity" />
-        <activity android:name=".ui.activity.AccountAssetsCreateActivity" />
-        <activity android:name=".ui.activity.ExchangeEntryActivity" />
-        <activity android:name=".ui.activity.ExchangeAssetsActivity" />
-
-        <service android:name=".service.MainService"
-            android:process=":loader"/>
-        <service android:name=".service.TradeService"/>
-        <service android:name=".service.SyncService"/>
-
-        <activity android:name=".ui.activity.BalanceDepositActivity" />
-        <activity android:name=".ui.activity.BlockchainDepositActivity"></activity>
+        <activity android:name=".ui.activity.AccountAssetsManageActivity" />
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:label="@string/settings" />
+        <activity android:name=".ui.activity.FeedbackActivity"
+            android:label="@string/user_feedback"/>
+        <activity android:name=".ui.activity.AboutActivity"
+            android:label="@string/about"></activity>
     </application>
 
 </manifest>

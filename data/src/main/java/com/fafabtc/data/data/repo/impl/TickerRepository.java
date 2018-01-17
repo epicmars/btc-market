@@ -20,6 +20,7 @@ import java.util.concurrent.Callable;
 import javax.inject.Inject;
 
 import io.reactivex.Completable;
+import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
@@ -124,13 +125,7 @@ public class TickerRepository implements TickerRepo {
                                 }
                             })
                             .toList()
-                            .doOnSuccess(saveTickers)
-                            .onErrorResumeNext(Single.fromCallable(new Callable<List<Ticker>>() {
-                                @Override
-                                public List<Ticker> call() throws Exception {
-                                    return tickerDao.getLatest(GateioRepo.GATEIO_EXCHANGE);
-                                }
-                            }));
+                            .doOnSuccess(saveTickers);
                 }
             };
 
@@ -169,13 +164,7 @@ public class TickerRepository implements TickerRepo {
                                 }
                             })
                             .toList()
-                            .doOnSuccess(saveTickers)
-                            .onErrorResumeNext(Single.fromCallable(new Callable<List<Ticker>>() {
-                                @Override
-                                public List<Ticker> call() throws Exception {
-                                    return tickerDao.getLatest(BinanceRepo.BINANCE_EXCHANGE);
-                                }
-                            }));
+                            .doOnSuccess(saveTickers);
                 }
             };
 
@@ -189,9 +178,8 @@ public class TickerRepository implements TickerRepo {
     @Override
     public Single<List<Ticker>> getAllLatestTickers() {
         Date timestamp = new Date();
-        return getLatestTickers(GateioRepo.GATEIO_EXCHANGE, timestamp)
-                .flattenAsObservable(tickerListFlatter)
-                .concatWith(getLatestTickers(BinanceRepo.BINANCE_EXCHANGE, timestamp)
-                        .flattenAsObservable(tickerListFlatter)).toList();
+        return Observable.mergeArrayDelayError(getLatestTickers(GateioRepo.GATEIO_EXCHANGE, timestamp).toObservable(),
+                getLatestTickers(BinanceRepo.BINANCE_EXCHANGE, timestamp).toObservable())
+                .flatMapIterable(tickerListFlatter).toList();
     }
 }

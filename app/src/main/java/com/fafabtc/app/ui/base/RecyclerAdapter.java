@@ -56,7 +56,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>{
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         Object item = mPayloads.get(position);
-        holder.onBindViewHolder(item, position);
+        holder.onBindInternal(item, position);
     }
 
     @Override
@@ -115,6 +115,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>{
         this.mPayloads.clear();
         this.mPayloads.addAll(payloads);
         notifyDataSetChanged();
+    }
+
+    public void updatePayloads(Collection<?> payloads) {
+        if (payloads == null) {
+            return;
+        }
+        if (mPayloads.size() != payloads.size()) {
+            this.mPayloads.clear();
+            this.mPayloads.addAll(payloads);
+            notifyItemRangeChanged(0, payloads.size());
+        } else {
+            this.mPayloads.clear();
+            this.mPayloads.addAll(payloads);
+            notifyDataSetChanged();
+        }
     }
 
     /**

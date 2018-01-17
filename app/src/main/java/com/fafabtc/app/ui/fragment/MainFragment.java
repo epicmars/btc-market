@@ -1,5 +1,10 @@
 package com.fafabtc.app.ui.fragment;
 
+import android.arch.lifecycle.Observer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,18 +14,22 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.SparseIntArray;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.fafabtc.app.R;
-import com.fafabtc.binance.data.repo.BinanceRepo;
+import com.fafabtc.app.databinding.FragmentMainBinding;
+import com.fafabtc.app.ui.base.BaseFragment;
+import com.fafabtc.app.ui.base.BindLayout;
+import com.fafabtc.app.utils.UiUtils;
+import com.fafabtc.app.vm.MainViewModel;
+import com.fafabtc.data.consts.DataBroadcasts;
 
 /**
  * Created by jastrelax on 2018/1/7.
  */
-public class MainFragment extends Fragment {
+@BindLayout(R.layout.fragment_main)
+public class MainFragment extends BaseFragment<FragmentMainBinding> {
 
     private static final int[] BOTTOM_NAV_IDS = {R.id.main_bottom_nav_assets,
             R.id.main_bottom_nav_tickers,
@@ -33,40 +42,83 @@ public class MainFragment extends Fragment {
         }
     };
 
-    private ViewPager vp;
-    private BottomNavigationView bnv;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
-    }
+    private MainViewModel mainViewModel;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        vp = view.findViewById(R.id.pager_main);
-        bnv = view.findViewById(R.id.bottom_nav_main);
 
-        vp.setOffscreenPageLimit(2);
-        vp.setAdapter(new MainFragmentPagerAdapter(getChildFragmentManager()));
-        vp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                if (position >= 0 && position < BOTTOM_NAV_IDS.length)
-                    bnv.setSelectedItemId(BOTTOM_NAV_IDS[position]);
+        getContext().registerReceiver(initiateReceiver, new IntentFilter(){
+            {
+                addAction(DataBroadcasts.Actions.ACTION_INITIATE_EXCHANGE);
+                addAction(DataBroadcasts.Actions.ACTION_INITIATE_ASSETS);
+                addAction(DataBroadcasts.Actions.ACTION_DATA_INITIALIZED);
             }
         });
 
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        mainViewModel = getViewModel(MainViewModel.class);
+        mainViewModel.isDataInitialized().observe(this, initiateObserver);
+        mainViewModel.queryIsDataInitialized();
+
+        binding.pagerMain.setOffscreenPageLimit(2);
+        binding.pagerMain.setAdapter(new MainFragmentPagerAdapter(getChildFragmentManager()));
+        binding.pagerMain.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                if (position >= 0 && position < BOTTOM_NAV_IDS.length)
+                    binding.bottomNavMain.setSelectedItemId(BOTTOM_NAV_IDS[position]);
+            }
+        });
+
+        binding.bottomNavMain.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                vp.setCurrentItem(BOTTOM_NAV_POSITION_MAP.get(id));
+                binding.pagerMain.setCurrentItem(BOTTOM_NAV_POSITION_MAP.get(id));
                 return true;
             }
         });
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        getContext().unregisterReceiver(initiateReceiver);
+    }
+
+    private Observer<Boolean> initiateObserver = new Observer<Boolean>() {
+        @Override
+        public void onChanged(@Nullable Boolean aBoolean) {
+            if (aBoolean != null && aBoolean) {
+                binding.tvStateTip.setVisibility(View.GONE);
+            } else {
+                binding.tvStateTip.setPadding(0, UiUtils.getStatusBarHeight(getContext()), 0, getResources().getDimensionPixelSize(R.dimen.tv_padding_small));
+                binding.tvStateTip.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    private BroadcastReceiver initiateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent != null && intent.getAction() != null) {
+                switch (intent.getAction()) {
+                    case DataBroadcasts.Actions.ACTION_INITIATE_EXCHANGE:
+                        binding.tvStateTip.setText("初始化交易所数据...");
+                        break;
+                    case DataBroadcasts.Actions.ACTION_INITIATE_ASSETS:
+                        binding.tvStateTip.setText("初始化资产...");
+                        break;
+                    case DataBroadcasts.Actions.ACTION_FETCH_TICKERS:
+                        binding.tvStateTip.setText("获取最新行情...");
+                        break;
+                    case DataBroadcasts.Actions.ACTION_DATA_INITIALIZED:
+                        binding.tvStateTip.setVisibility(View.GONE);
+                        break;
+                }
+            }
+        }
+    };
 
     private class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 

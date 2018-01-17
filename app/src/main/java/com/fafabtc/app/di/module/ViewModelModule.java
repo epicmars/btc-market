@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.fafabtc.app.vm.AccountAssetsCreateViewModel;
+import com.fafabtc.app.vm.AccountAssetsViewModel;
 import com.fafabtc.app.vm.AccountViewModel;
 import com.fafabtc.app.vm.AssetsViewModel;
 import com.fafabtc.app.vm.BalanceAssetsViewModel;
@@ -12,6 +13,7 @@ import com.fafabtc.app.vm.BlockchainAssetsViewModel;
 import com.fafabtc.app.vm.ExchangeAssetsViewModel;
 import com.fafabtc.app.vm.ExchangeEntryViewModel;
 import com.fafabtc.app.vm.GateioTradeViewModel;
+import com.fafabtc.app.vm.MainViewModel;
 import com.fafabtc.app.vm.OrdersViewModel;
 import com.fafabtc.app.vm.TickersViewModel;
 import com.fafabtc.app.vm.TradeBuyViewModel;
@@ -29,6 +31,11 @@ import dagger.multibindings.IntoMap;
 
 @Module
 public abstract class ViewModelModule {
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel.class)
+    abstract ViewModel mainViewModel(MainViewModel mainViewModel);
 
     @Binds
     @IntoMap
@@ -99,6 +106,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(BlockchainAssetsViewModel.class)
     abstract ViewModel blockchainAssetsViewModel(BlockchainAssetsViewModel blockchainAssetsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AccountAssetsViewModel.class)
+    abstract ViewModel accountAssetsViewModel(AccountAssetsViewModel accountAssetsViewModel);
 
     @Binds
     abstract ViewModelProvider.Factory viewModelFactory(ViewModelFactory viewModelFactory);

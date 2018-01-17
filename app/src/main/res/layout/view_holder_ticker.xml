@@ -1,82 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-        <import type="java.lang.String"/>
-        <import type="com.fafabtc.common.utils.NumberUtils"/>
+
+        <import type="java.lang.String" />
+
+        <import type="com.fafabtc.common.utils.NumberUtils" />
+
         <variable
             name="ticker"
-            type="com.fafabtc.data.model.entity.exchange.Ticker"/>
+            type="com.fafabtc.data.model.entity.exchange.Ticker" />
     </data>
-    <FrameLayout
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="4dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/view_holder_height_tiny"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/view_holder_padding_small"
-            android:background="?attr/selectableItemBackground">
-
-            <LinearLayout
-                android:id="@+id/tv_pair"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1000">
-
-                <TextView
-                    android:id="@+id/tv_base"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/primary_text_light"
-                    android:text="@{ticker.base.toUpperCase()}"
-                    tools:text="ETH" />
-
-                <TextView
-                    android:id="@+id/tv_quote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/secondary_text_light"
-                    android:text="@{String.format(@string/ticker_quote_name_format, ticker.quote.toUpperCase())}"
-                    tools:text="/USDT" />
-
-            </LinearLayout>
+            android:id="@+id/tv_pair"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_last"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tv_last"
-                android:layout_width="0dp"
+                android:id="@+id/tv_base"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1000"
-                android:fontFamily="monospace"
+                android:text="@{ticker.base.toUpperCase()}"
                 android:textColor="@android:color/primary_text_light"
                 android:textSize="16sp"
-                android:text="@{NumberUtils.formatCurrency(ticker.last)}"
-                tools:text="91134.00" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"/>
+                android:textStyle="bold"
+                tools:text="ETH" />
 
             <TextView
-                android:id="@+id/tv_precent_change"
-                android:layout_width="0dp"
+                android:id="@+id/tv_quote"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="608"
-                android:paddingVertical="4dp"
-                android:fontFamily="monospace"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                tools:background="@drawable/bg_tv_percent_positive"
-                android:textSize="16sp"
-                android:text="@{NumberUtils.formatPercent(ticker.percentChange/100)}"
-                tools:text="20%" />
+                android:text="@{String.format(@string/ticker_quote_name_format, ticker.quote.toUpperCase())}"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="12sp"
+                tools:text="/USDT" />
+
         </LinearLayout>
-    </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_last"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="monospace"
+            android:text="@{NumberUtils.formatPrice(ticker.last)}"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_pair"
+            app:layout_constraintEnd_toStartOf="@+id/tv_percent_change"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1000"
+            app:layout_constraintStart_toEndOf="@+id/tv_pair"
+            tools:text="91134.00" />
+
+        <TextView
+            android:id="@+id/tv_percent_change"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:paddingVertical="4dp"
+            android:text="@{NumberUtils.formatPercent(ticker.percentChange/100)}"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_last"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="608"
+            app:layout_constraintStart_toEndOf="@+id/tv_last"
+            tools:background="@drawable/bg_tv_percent_positive"
+            tools:text="20%" />
+
+        <TextView
+            android:id="@+id/tv_base_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="monospace"
+            android:text="@{String.format(@string/ticker_base_volume_format, NumberUtils.formatVolumeCN(ticker.baseVolume))}"
+            android:textColor="@android:color/tertiary_text_light"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pair"
+            tools:text="交易量 200万" />
+
+        <TextView
+            android:id="@+id/tv_quote_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="@{String.format(@string/ticker_quote_volume_format, ticker.quote.toUpperCase(), NumberUtils.formatVolumeCN(ticker.quoteVolume))}"
+            android:textColor="@android:color/tertiary_text_light"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_base_volume"
+            app:layout_constraintStart_toStartOf="@+id/tv_last"
+            tools:text="交易额(USDT) 200万" />
+    </android.support.constraint.ConstraintLayout>
 </layout>
