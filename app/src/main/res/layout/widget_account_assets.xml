@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/widget_margin"
+    android:background="@drawable/bg_assets_widget"
+    android:padding="@dimen/tv_padding">
+
+    <TextView
+        android:id="@+id/tv_assets_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:textSize="@dimen/text_size_small"
+        tools:text="default" />
+
+    <TextView
+        android:id="@+id/tv_label_market_volume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_assets_name"
+        android:gravity="center"
+        android:text="@string/statistics_label_market_volume"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fl_refresh"
+        android:layout_below="@id/tv_label_market_volume"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="@android:color/white"
+        tools:text="600000" />
+
+
+    <TextView
+        android:id="@+id/tv_update_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/fl_refresh"
+        android:layout_alignTop="@id/fl_refresh"
+        android:layout_alignBottom="@id/fl_refresh"
+        android:gravity="center_vertical|right"
+        android:textColor="@android:color/white"
+        android:layout_marginRight="16dp"
+        android:textSize="@dimen/text_size_small"
+        tools:text="2018-1-16" />
+
+    <FrameLayout
+        android:id="@+id/fl_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+
+        <ImageButton
+            android:id="@+id/btn_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_refresh_white" />
+
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:indeterminateDrawable="@drawable/pb_widget_progress" />
+
+</RelativeLayout>

@@ -22,7 +22,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:animateLayoutChanges="true">
 
                 <TextView
                     style="@style/TextDivider"
@@ -61,7 +62,7 @@
 
                 <TextView
                     style="@style/TextDivider"
-                    android:text="@string/about_and_feedback" />
+                    android:text="@string/settings" />
 
                 <include layout="@layout/divider_dark"/>
 
@@ -70,7 +71,7 @@
                     style="@style/AppButton.Setting"
                     android:background="?attr/selectableItemBackground"
                     android:onClick="@{handler::onClickAbout}"
-                    android:text="@string/about" />
+                    android:text="@string/about_and_feedback" />
 
                 <include layout="@layout/divider_dark" />
 
@@ -79,10 +80,9 @@
                     style="@style/AppButton.Setting"
                     android:background="?attr/selectableItemBackground"
                     android:text="@string/settings"
-                    android:onClick="@{handler::onClickSettings}"
-                    android:visibility="gone"/>
+                    android:onClick="@{handler::onClickSettings}" />
 
-                <!--<include layout="@layout/divider_dark" />-->
+                <include layout="@layout/divider_dark" />
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 

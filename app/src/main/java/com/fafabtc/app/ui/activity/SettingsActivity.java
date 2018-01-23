@@ -12,16 +12,22 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
 import com.fafabtc.app.R;
+import com.fafabtc.app.settings.BasePreferenceChangeListener;
+import com.fafabtc.app.settings.Settings;
+import com.fafabtc.app.utils.TickersAlarmUtils;
 
 import java.util.List;
+
+import static com.fafabtc.common.utils.DateTimeUtils.ONE_MINUTE;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -140,6 +146,16 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -164,7 +180,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
                 || GeneralPreferenceFragment.class.getName().equals(fragmentName)
-                || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
+                || AppWidgetPreferenceFragment.class.getName().equals(fragmentName)
                 || NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
 
@@ -257,5 +273,44 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    public static class AppWidgetPreferenceFragment extends PreferenceFragment {
+        private String currentUpdateFrequencyMinute;
+
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_app_widget);
+            setHasOptionsMenu(true);
+
+            Preference preference = findPreference(getString(R.string.pref_key_app_widget_update_frequency));
+            preference.setOnPreferenceChangeListener(updateFrequencyChangeListener);
+            currentUpdateFrequencyMinute = Settings.getTickerUpdateIntervalMinutes(getActivity());
+            updateFrequencyChangeListener.onPreferenceChange(preference, currentUpdateFrequencyMinute);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == android.R.id.home) {
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
+        private BasePreferenceChangeListener updateFrequencyChangeListener = new BasePreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                super.onPreferenceChange(preference, newValue);
+                if (!currentUpdateFrequencyMinute.equals(newValue)) {
+                    currentUpdateFrequencyMinute = newValue.toString();
+                    TickersAlarmUtils.frequencyChanged(getActivity(), Long.valueOf(currentUpdateFrequencyMinute) * ONE_MINUTE);
+                    return true;
+                }
+                return false;
+            }
+        };
     }
 }

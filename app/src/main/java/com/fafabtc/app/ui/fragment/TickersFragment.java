@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.FragmentTickersBinding;
 import com.fafabtc.app.ui.base.BaseFragment;
 import com.fafabtc.app.ui.base.BaseListAdapter;
@@ -65,7 +64,7 @@ public class TickersFragment extends BaseFragment<FragmentTickersBinding> {
         getContext().registerReceiver(receiver, new IntentFilter(){
             {
                 addAction(DataBroadcasts.Actions.ACTION_DATA_INITIALIZED);
-                addAction(Broadcasts.Actions.ACTION_TICKER_UPDATED);
+                addAction(DataBroadcasts.Actions.ACTION_TICKER_UPDATED);
             }
         });
     }

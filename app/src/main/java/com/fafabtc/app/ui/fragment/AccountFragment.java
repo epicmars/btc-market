@@ -81,6 +81,7 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
         public void onChanged(@Nullable Boolean aBoolean) {
             if (aBoolean != null && aBoolean) {
                 binding.accountAssetsList.setVisibility(View.VISIBLE);
+                binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down, 0);
             } else {
                 Toast.makeText(getContext(), "资产初始化中", Toast.LENGTH_SHORT).show();
             }
@@ -101,6 +102,7 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
         public void onClickAssetsGroup(View view) {
             if (binding.accountAssetsList.getVisibility() == View.VISIBLE) {
                 binding.accountAssetsList.setVisibility(View.GONE);
+                binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_right, 0);
             } else {
                 viewModel.loadAccountList();
             }

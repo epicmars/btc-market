@@ -19,6 +19,8 @@ import android.view.WindowManager;
 import com.fafabtc.app.R;
 import com.fafabtc.app.di.Injectable;
 import com.fafabtc.app.service.MainService;
+import com.fafabtc.app.utils.TickersAlarmUtils;
+import com.fafabtc.app.utils.WidgetUtils;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
@@ -49,7 +51,6 @@ public class MainActivity extends DaggerAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bindService(new Intent(this, MainService.class), serviceConnection, Service.BIND_AUTO_CREATE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -82,9 +83,26 @@ public class MainActivity extends DaggerAppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        bindService(new Intent(this, MainService.class), serviceConnection, Service.BIND_AUTO_CREATE);
+        if (WidgetUtils.isWidgetAvailable(this)) {
+            TickersAlarmUtils.cancelUpdate(this);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unbindService(serviceConnection);
+        if (WidgetUtils.isWidgetAvailable(this)) {
+            TickersAlarmUtils.scheduleUpdate(this);
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(serviceConnection);
         stopService(new Intent(this, MainService.class));
     }
 }

@@ -39,7 +39,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/lc_fileprovider_path" />
+                android:resource="@xml/fileprovider_path" />
         </provider>
         <!-- 反馈组件 END -->
         <!-- LeanCloud End -->
@@ -61,6 +61,12 @@
         <meta-data
             android:name="BUGLY_ENABLE_DEBUG"
             android:value="${DEBUGGABLE}" />
+
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+
         <!-- Bugly End-->
     </application>
 

@@ -10,12 +10,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.ActivityTradeBinding;
 import com.fafabtc.app.ui.base.BaseActivity;
 import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.fragment.TradeFragment;
 import com.fafabtc.app.vm.TradeViewModel;
+import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.model.entity.exchange.Ticker;
 
 @BindLayout(R.layout.activity_trade)
@@ -55,7 +55,7 @@ public class TradeActivity extends BaseActivity<ActivityTradeBinding> {
     @Override
     protected void onStart() {
         super.onStart();
-        registerReceiver(tickerReceiver, new IntentFilter(Broadcasts.Actions.ACTION_TICKER_UPDATED));
+        registerReceiver(tickerReceiver, new IntentFilter(DataBroadcasts.Actions.ACTION_TICKER_UPDATED));
     }
 
     @Override

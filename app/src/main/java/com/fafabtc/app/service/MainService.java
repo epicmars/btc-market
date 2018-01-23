@@ -7,7 +7,6 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.Nullable;
 
-import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.utils.ExecutorManager;
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.repo.DataRepo;
@@ -25,11 +24,8 @@ import io.reactivex.CompletableObserver;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
-
-import static com.fafabtc.data.consts.DataBroadcasts.Actions.ACTION_DATA_INITIALIZED;
 
 /**
  * Created by jastrelax on 2018/1/8.
@@ -68,19 +64,29 @@ public class MainService extends DaggerService {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        startRefreshTickers();
         return null;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         initData();
-        startRefreshTickers();
         return START_NOT_STICKY;
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        stopUpdating();
+        return false;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        stopUpdating();
+    }
+
+    private void stopUpdating() {
         if (scheduledExecutorService != null) {
             scheduledExecutorService.shutdownNow();
             scheduledExecutorService = null;
@@ -98,8 +104,7 @@ public class MainService extends DaggerService {
 
                     @Override
                     public void onComplete() {
-                        refreshUpdateTime();
-                        sendBroadcast(new Intent(ACTION_DATA_INITIALIZED));
+
                     }
 
                     @Override
@@ -124,6 +129,7 @@ public class MainService extends DaggerService {
 
     private long initialDelay = 0;
     private long getInitialDelay() {
+        initialDelay = 0;
         assetsStateRepository.getUpdateTime()
                 .subscribe(new SingleObserver<Date>() {
                     @Override
@@ -141,7 +147,7 @@ public class MainService extends DaggerService {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Timber.e(e);
                     }
                 });
         return initialDelay;
@@ -149,13 +155,6 @@ public class MainService extends DaggerService {
 
     private void refreshTickers() {
         dataRepo.refreshTickers()
-                .doOnComplete(new Action() {
-                    @Override
-                    public void run() throws Exception {
-                        refreshUpdateTime();
-                        sendBroadcast(new Intent(Broadcasts.Actions.ACTION_TICKER_UPDATED));
-                    }
-                })
                 .subscribeOn(Schedulers.from(ExecutorManager.getIO()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {
@@ -174,24 +173,5 @@ public class MainService extends DaggerService {
                         Timber.e(e);
                     }
                 });
-    }
-
-    private void refreshUpdateTime() {
-        assetsStateRepository.setUpdateTime(new Date()).subscribe(new CompletableObserver() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-        });
     }
 }

@@ -18,6 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:divider="@android:drawable/divider_horizontal_bright"
+        android:footerDividersEnabled="false"
         tools:listitem="@layout/view_holder_ticker" />
 
 </layout>

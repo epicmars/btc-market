@@ -62,6 +62,7 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    updateListUI(assets);
                     accountAssetsRepo.getCurrent()
                             .flatMapCompletable(new Function<AccountAssets, CompletableSource>() {
                                 @Override
@@ -88,15 +89,6 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
 
                                 @Override
                                 public void onComplete() {
-                                    RecyclerAdapter recyclerAdapter = (RecyclerAdapter) adapter;
-                                    List<Object> objects = recyclerAdapter.getPayloads();
-                                    for (Object object : objects) {
-                                        AccountAssets accountAssets = (AccountAssets) object;
-                                        if (accountAssets.getState() == AccountAssets.State.CURRENT_ACTIVE
-                                                && !accountAssets.getUuid().equals(assets.getUuid())) {
-                                            accountAssets.setState(AccountAssets.State.ACTIVE);
-                                        }
-                                    }
                                     adapter.notifyDataSetChanged();
                                 }
 
@@ -115,6 +107,20 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
                 ExchangeEntryActivity.start(v.getContext(), assets);
             }
         });
+    }
+
+    private void updateListUI(AccountAssets assets) {
+        assets.setState(AccountAssets.State.CURRENT_ACTIVE);
+        RecyclerAdapter recyclerAdapter = (RecyclerAdapter) adapter;
+        List<Object> objects = recyclerAdapter.getPayloads();
+        for (Object object : objects) {
+            AccountAssets accountAssets = (AccountAssets) object;
+            if (accountAssets.getState() == AccountAssets.State.CURRENT_ACTIVE
+                    && !accountAssets.getUuid().equals(assets.getUuid())) {
+                accountAssets.setState(AccountAssets.State.ACTIVE);
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
 
     @Override

@@ -5,7 +5,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -21,6 +23,7 @@ import com.fafabtc.app.R;
 import com.fafabtc.app.databinding.FragmentMainBinding;
 import com.fafabtc.app.ui.base.BaseFragment;
 import com.fafabtc.app.ui.base.BindLayout;
+import com.fafabtc.app.utils.NetworkUtils;
 import com.fafabtc.app.utils.UiUtils;
 import com.fafabtc.app.vm.MainViewModel;
 import com.fafabtc.data.consts.DataBroadcasts;
@@ -44,6 +47,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
 
     private MainViewModel mainViewModel;
 
+    private Handler handler = new Handler();
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -55,6 +60,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
                 addAction(DataBroadcasts.Actions.ACTION_DATA_INITIALIZED);
             }
         });
+
+        getContext().registerReceiver(networkStateReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         mainViewModel = getViewModel(MainViewModel.class);
         mainViewModel.isDataInitialized().observe(this, initiateObserver);
@@ -84,17 +91,18 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
     public void onDestroyView() {
         super.onDestroyView();
         getContext().unregisterReceiver(initiateReceiver);
+        getContext().unregisterReceiver(networkStateReceiver);
     }
 
     private Observer<Boolean> initiateObserver = new Observer<Boolean>() {
         @Override
         public void onChanged(@Nullable Boolean aBoolean) {
             if (aBoolean != null && aBoolean) {
-                binding.tvStateTip.setVisibility(View.GONE);
+                hideStateTip();
             } else {
-                binding.tvStateTip.setPadding(0, UiUtils.getStatusBarHeight(getContext()), 0, getResources().getDimensionPixelSize(R.dimen.tv_padding_small));
-                binding.tvStateTip.setVisibility(View.VISIBLE);
+                showStateTip();
             }
+            checkNetworkState();
         }
     };
 
@@ -113,8 +121,43 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
                         binding.tvStateTip.setText("获取最新行情...");
                         break;
                     case DataBroadcasts.Actions.ACTION_DATA_INITIALIZED:
-                        binding.tvStateTip.setVisibility(View.GONE);
+                        hideStateTip();
                         break;
+                }
+            }
+        }
+    };
+
+    private void checkNetworkState() {
+        if (!NetworkUtils.isConnected(getContext())) {
+            showNetworkState();
+        }
+    }
+
+    private void showStateTip() {
+        binding.tvStateTip.setPadding(0, UiUtils.getStatusBarHeight(getContext()), 0, getResources().getDimensionPixelSize(R.dimen.tv_padding_small));
+        binding.tvStateTip.setVisibility(View.VISIBLE);
+    }
+
+    private void hideStateTip() {
+        binding.tvStateTip.setVisibility(View.GONE);
+    }
+
+    private void showNetworkState() {
+        binding.tvAppTip.setPadding(0, UiUtils.getStatusBarHeight(getContext()), 0, getResources().getDimensionPixelSize(R.dimen.tv_padding_small));
+        binding.tvAppTip.setBackgroundColor(getContext().getResources().getColor(R.color.deep_orange));
+        binding.tvAppTip.setText("网络未连接");
+        binding.tvAppTip.setVisibility(View.VISIBLE);
+    }
+
+    private BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent != null) {
+                if (NetworkUtils.isConnected(context)) {
+                    binding.tvAppTip.setVisibility(View.GONE);
+                } else {
+                    showNetworkState();
                 }
             }
         }

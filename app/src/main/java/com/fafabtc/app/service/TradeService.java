@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.fafabtc.app.constants.Broadcasts;
+import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.data.repo.OrderRepo;
 import com.fafabtc.data.model.entity.exchange.Order;
 
@@ -44,7 +45,7 @@ public class TradeService extends DaggerService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        registerReceiver(tickerUpdateReceiver, new IntentFilter(Broadcasts.Actions.ACTION_TICKER_UPDATED));
+        registerReceiver(tickerUpdateReceiver, new IntentFilter(DataBroadcasts.Actions.ACTION_TICKER_UPDATED));
         return START_STICKY;
     }
 

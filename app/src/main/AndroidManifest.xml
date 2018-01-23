@@ -5,8 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
-    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"/>
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
 
     <application
         android:name=".ClientApplication"
@@ -63,10 +63,42 @@
         <activity
             android:name=".ui.activity.SettingsActivity"
             android:label="@string/settings" />
-        <activity android:name=".ui.activity.FeedbackActivity"
-            android:label="@string/user_feedback"/>
-        <activity android:name=".ui.activity.AboutActivity"
-            android:label="@string/about"></activity>
+        <activity
+            android:name=".ui.activity.FeedbackActivity"
+            android:label="@string/user_feedback" />
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:label="@string/about" />
+
+        <receiver
+            android:name=".receiver.AssetsWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.fafabtc.app.constants.Boradcast.WidgetActions.ACTION_UPDATE_WIDGET"/>
+                <action android:name="com.fafabtc.data.consts.DataBroadcasts.Actions.ACTION_DATA_INITIALIZED" />
+                <action android:name="com.fafabtc.data.consts.DataBroadcasts.Actions.ACTION_TICKER_UPDATED" />
+                <action android:name="com.fafabtc.app.constants.Boradcast.Actions.ACTION_CURRENT_ASSETS_CHANGED"/>
+                <action android:name="com.fafabtc.app.constants.Boradcast.WidgetActions.ACTION_MANUL_UPDATE_TICKERS"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_account_assets" />
+        </receiver>
+        <receiver android:name=".receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".service.WidgetService">
+            <intent-filter>
+                <action android:name="com.fafabtc.app.constants.Services.Actions.ACTION_UPDATE_TICKERS"/>
+                <action android:name="com.fafabtc.app.constants.Services.Actions.ACTION_UPDATE_WIDGET"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

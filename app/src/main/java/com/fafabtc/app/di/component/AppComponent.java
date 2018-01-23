@@ -5,6 +5,7 @@ import android.content.Context;
 import com.fafabtc.app.ClientApplication;
 import com.fafabtc.app.di.module.ActivityModule;
 import com.fafabtc.app.di.module.AppModule;
+import com.fafabtc.app.di.module.ReceiverModule;
 import com.fafabtc.app.di.module.ServiceModule;
 
 import javax.inject.Singleton;
@@ -21,7 +22,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidSupportInjectionModule.class,
         AppModule.class,
         ActivityModule.class,
-        ServiceModule.class})
+        ServiceModule.class,
+        ReceiverModule.class})
 public interface AppComponent {
 
     void inject(ClientApplication application);
@@ -34,4 +36,5 @@ public interface AppComponent {
     }
 
     ViewHolderComponent viewHolderComponent();
+    WidgetComponent widgetComponent();
 }

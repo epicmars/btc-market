@@ -1,6 +1,7 @@
 package com.fafabtc.app.di.module;
 
 import com.fafabtc.app.di.scope.ServiceScope;
+import com.fafabtc.app.service.WidgetService;
 import com.fafabtc.app.service.MainService;
 import com.fafabtc.app.service.SyncService;
 import com.fafabtc.app.service.TradeService;
@@ -26,5 +27,9 @@ public abstract class ServiceModule {
     @ServiceScope
     @ContributesAndroidInjector
     public abstract SyncService syncService();
+
+    @ServiceScope
+    @ContributesAndroidInjector
+    public abstract WidgetService dataService();
 
 }

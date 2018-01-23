@@ -74,4 +74,30 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
+    <!--桌面小部件-->
+    <string name="pref_header_app_widget">桌面小部件</string>
+
+    <string name="pref_key_app_widget_update_frequency">app_widget_update_frequency</string>
+    <string name="pref_title_app_widget">行情更新频率</string>
+    <string-array name="pref_app_widget_titles">
+        <item>1 分钟</item>
+        <item>2 分钟</item>
+        <item>3 分钟</item>
+        <item>5分钟</item>
+        <item>10分钟</item>
+        <item>15 分钟</item>
+        <item>30 分钟</item>
+        <item>1 小时</item>
+    </string-array>
+    <string-array name="pref_app_widget_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+
 </resources>

@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.FragmentAssetsBinding;
 import com.fafabtc.app.ui.base.BaseFragment;
 import com.fafabtc.app.ui.base.BindLayout;
@@ -52,7 +51,7 @@ public class AssetsFragment extends BaseFragment<FragmentAssetsBinding> {
         getContext().registerReceiver(tickerUpdateReceiver, new IntentFilter(){
             {
                 addAction(DataBroadcasts.Actions.ACTION_DATA_INITIALIZED);
-                addAction(Broadcasts.Actions.ACTION_TICKER_UPDATED);
+                addAction(DataBroadcasts.Actions.ACTION_TICKER_UPDATED);
             }
         });
 

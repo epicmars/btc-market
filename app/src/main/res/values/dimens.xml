@@ -27,6 +27,10 @@
     <!--TextView-->
     <dimen name="tv_padding">8dp</dimen>
     <dimen name="tv_padding_small">4dp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+
+    <!--Widget-->
+    <dimen name="widget_margin">16dp</dimen>
 
 
 </resources>

@@ -4,4 +4,9 @@
     <external-cache-path name="external-cache-path" path="analysis/"/>
     <files-path name="files_path" path="analysis/"/>
     <external-files-path name="external-files-path" path="analysis/"/>
+
+    <!-- /storage/emulated/0/Download/${applicationId}/.beta/apk-->
+    <external-path name="beta_external_path" path="Download/"/>
+    <!--/storage/emulated/0/Android/data/${applicationId}/files/apk/-->
+    <external-path name="beta_external_files_path" path="Android/data/"/>
 </paths>
