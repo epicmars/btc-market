@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+apply from: '../publish.gradle'
+
+
+android {
+    compileSdkVersion project.rootProject.android.compile_sdk_version
+
+    defaultConfig {
+        minSdkVersion project.rootProject.android.min_sdk_version
+        targetSdkVersion project.rootProject.android.target_sdk_version
+        versionCode version_code
+        versionName version_name
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
+
+        sourceSets {
+            androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "HUOBI_API_BASE_URL", "\"https://api.huobi.pro/\""
+        }
+
+        debug {
+            buildConfigField "String", "HUOBI_API_BASE_URL", "\"https://api.huobi.pro/\""
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    annotationProcessor "android.arch.persistence.room:compiler:$arch_lifecycle_ext_version"
+
+    // dagger2 android
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2_version"
+
+    api project(':domain')
+}

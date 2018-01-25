@@ -20,7 +20,7 @@ public enum GateioMarketInfoMapper implements Mapper<JsonObject, GateioMarketInf
     MAPPER;
 
     @Override
-    public GateioMarketInfo from(JsonObject source) {
+    public GateioMarketInfo apply(JsonObject source) {
         try {
             JsonArray pairs = source.getAsJsonArray("pairs");
             for (JsonElement e : pairs) {

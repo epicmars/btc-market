@@ -35,6 +35,6 @@ public interface AssetsStatisticsDao {
             "        end\n" +
             "        as usdt_last\n" +
             "     from assets left outer join quote_ticker on assets.quote = quote_ticker.base)\n" +
-            "     select *, avg(statistics.usdt_last) as usdt_avg, max(base_volume) from statistics group by statistics.name;")
+            "     select *, avg(statistics.usdt_last) as usdt_avg, max(base_volume) from statistics group by statistics.name, statistics.exchange;")
     List<AssetsStatistics> findAssetsStatistics(String assetsUUID);
 }

@@ -12,17 +12,14 @@ import com.fafabtc.app.databinding.FragmentTickerPagerBinding;
 import com.fafabtc.app.ui.base.BaseFragment;
 import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.utils.UiUtils;
-import com.fafabtc.binance.data.repo.BinanceRepo;
-import com.fafabtc.gateio.data.repo.GateioRepo;
+
+import static com.fafabtc.data.data.repo.ExchangeRepo.EXCHANGES;
 
 /**
  * Created by jastrelax on 2018/1/10.
  */
 @BindLayout(R.layout.fragment_ticker_pager)
 public class TickerPagerFragment extends BaseFragment<FragmentTickerPagerBinding>{
-
-    private static String[] EXCHANGES = {GateioRepo.GATEIO_EXCHANGE,
-            BinanceRepo.BINANCE_EXCHANGE};
 
     private TickerPagerAdapter adapter;
 
@@ -40,6 +37,7 @@ public class TickerPagerFragment extends BaseFragment<FragmentTickerPagerBinding
         binding.llTitle.setPadding(0, UiUtils.getStatusBarHeight(getContext()), 0, 0);
 
         adapter = new TickerPagerAdapter(getChildFragmentManager());
+        binding.pagerTickers.setOffscreenPageLimit(2);
         binding.pagerTickers.setAdapter(adapter);
     }
 

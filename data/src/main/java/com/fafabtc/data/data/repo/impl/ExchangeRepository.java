@@ -14,6 +14,8 @@ import com.fafabtc.data.model.entity.exchange.Pair;
 import com.fafabtc.data.model.entity.mapper.PairMapperFactory;
 import com.fafabtc.gateio.data.repo.GateioRepo;
 import com.fafabtc.gateio.model.entity.GateioPair;
+import com.fafabtc.huobi.data.repo.HuobiRepo;
+import com.fafabtc.huobi.domain.entity.HuobiPair;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -52,40 +54,29 @@ public class ExchangeRepository implements ExchangeRepo {
     BinanceRepo binanceRepo;
 
     @Inject
+    HuobiRepo huobiRepo;
+
+    @Inject
     public ExchangeRepository() {
     }
 
     @Override
     public Completable init() {
-        return initGateio()
-                .concatWith(initBinance());
+        return Completable.concatArray(
+                initGateio(),
+                initBinance(),
+                initHuobi()
+        );
     }
 
     @Override
     public Completable initGateio() {
         return gateioRepo.init()
-                .flattenAsObservable(new Function<List<GateioPair>, Iterable<GateioPair>>() {
-                    @Override
-                    public Iterable<GateioPair> apply(List<GateioPair> gateioPairs) throws Exception {
-                        return gateioPairs;
-                    }
-                })
-                .map(new Function<GateioPair, Pair>() {
-                    @Override
-                    public Pair apply(GateioPair gateioPair) throws Exception {
-                        return PairMapperFactory.gateioPairMapper.from(gateioPair);
-                    }
-                })
+                .flattenAsObservable(this.<GateioPair>flattenList())
+                .map(PairMapperFactory.GateioPairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .flatMapCompletable(new Function<List<Pair>, CompletableSource>() {
-                    @Override
-                    public CompletableSource apply(List<Pair> pairList) throws Exception {
-                        Exchange exchange = new Exchange();
-                        exchange.setName(GateioRepo.GATEIO_EXCHANGE);
-                        return save(exchange);
-                    }
-                });
+                .flatMapCompletable(saveExchangeCompletableMap(GateioRepo.GATEIO_EXCHANGE));
     }
 
     private Function<Pair, ObservableSource<Pair>> savePair = new Function<Pair, ObservableSource<Pair>>() {
@@ -104,28 +95,32 @@ public class ExchangeRepository implements ExchangeRepo {
     @Override
     public Completable initBinance() {
         return binanceRepo.initBinanceData()
-                .flattenAsObservable(new Function<List<BinancePair>, Iterable<BinancePair>>() {
-                    @Override
-                    public Iterable<BinancePair> apply(List<BinancePair> binancePairs) throws Exception {
-                        return binancePairs;
-                    }
-                })
-                .map(new Function<BinancePair, Pair>() {
-                    @Override
-                    public Pair apply(BinancePair binancePair) throws Exception {
-                        return PairMapperFactory.binancePairMapper.from(binancePair);
-                    }
-                })
+                .flattenAsObservable(this.<BinancePair>flattenList())
+                .map(PairMapperFactory.BinancePairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .flatMapCompletable(new Function<List<Pair>, CompletableSource>() {
-                    @Override
-                    public CompletableSource apply(List<Pair> pairList) throws Exception {
-                        Exchange exchange = new Exchange();
-                        exchange.setName(BinanceRepo.BINANCE_EXCHANGE);
-                        return save(exchange);
-                    }
-                });
+                .flatMapCompletable(saveExchangeCompletableMap(BinanceRepo.BINANCE_EXCHANGE));
+    }
+
+    @Override
+    public Completable initHuobi() {
+        return huobiRepo.init()
+                .flattenAsObservable(this.<HuobiPair>flattenList())
+                .map(PairMapperFactory.HuobiPairMapper.MAPPER)
+                .flatMap(savePair)
+                .toList()
+                .flatMapCompletable(saveExchangeCompletableMap(HuobiRepo.HUOBI_EXCHANGE));
+    }
+
+    public Function<List<Pair>, CompletableSource> saveExchangeCompletableMap(final String exchangeName) {
+        return new Function<List<Pair>, CompletableSource>() {
+            @Override
+            public CompletableSource apply(List<Pair> pairList) throws Exception {
+                Exchange exchange = new Exchange();
+                exchange.setName(exchangeName);
+                return save(exchange);
+            }
+        };
     }
 
     @Override
@@ -152,6 +147,15 @@ public class ExchangeRepository implements ExchangeRepo {
                 return dao.findAll();
             }
         });
+    }
+
+    private <T> Function<List<T>, Iterable<T>> flattenList() {
+        return new Function<List<T>, Iterable<T>>() {
+            @Override
+            public Iterable<T> apply(List<T> ts) throws Exception {
+                return ts;
+            }
+        };
     }
 
     private Exchange[] getExchangesFromAssets() {

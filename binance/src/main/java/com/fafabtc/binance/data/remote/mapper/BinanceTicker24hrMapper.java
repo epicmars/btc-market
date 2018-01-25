@@ -15,7 +15,7 @@ public enum BinanceTicker24hrMapper implements Mapper<BinanceTicker24hr, Binance
     MAPPER;
 
     @Override
-    public BinanceTicker from(BinanceTicker24hr source) {
+    public BinanceTicker apply(BinanceTicker24hr source) {
         if (source == null) return null;
         BinanceTicker ticker = new BinanceTicker();
         ticker.setSymbol(source.getSymbol());
@@ -30,9 +30,4 @@ public enum BinanceTicker24hrMapper implements Mapper<BinanceTicker24hr, Binance
         return ticker;
     }
 
-
-    @Override
-    public BinanceTicker apply(BinanceTicker24hr binanceTicker24hr) throws Exception {
-        return from(binanceTicker24hr);
-    }
 }

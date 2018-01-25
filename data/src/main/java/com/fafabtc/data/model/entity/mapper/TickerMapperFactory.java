@@ -4,6 +4,7 @@ import com.fafabtc.binance.model.BinanceTicker;
 import com.fafabtc.data.model.entity.exchange.Ticker;
 import com.fafabtc.domain.data.remote.Mapper;
 import com.fafabtc.gateio.model.entity.GateioTicker;
+import com.fafabtc.huobi.domain.entity.HuobiTicker;
 
 /**
  * Created by jastrelax on 2018/1/10.
@@ -11,21 +12,11 @@ import com.fafabtc.gateio.model.entity.GateioTicker;
 
 public class TickerMapperFactory {
 
-    private static final GateioTickerMapper gateioTickerMapper = new GateioTickerMapper();
-    private static final BinanceTickerMapper binanceTickerMapper = new BinanceTickerMapper();
+    public  enum  GateioTickerMapper implements Mapper<GateioTicker, Ticker> {
+        MAPPER;
 
-    public static <T> Ticker mapFrom(T sourceTicker) {
-        if (sourceTicker instanceof GateioTicker) {
-            return gateioTickerMapper.from((GateioTicker) sourceTicker);
-        } else if (sourceTicker instanceof BinanceTicker) {
-            return binanceTickerMapper.from((BinanceTicker) sourceTicker);
-        }
-        return null;
-    }
-
-    public static class GateioTickerMapper implements Mapper<GateioTicker, Ticker> {
         @Override
-        public Ticker from(GateioTicker source) {
+        public Ticker apply(GateioTicker source) {
             if (source == null) return null;
             Ticker ticker = new Ticker();
             ticker.setTimestamp(source.getTimestamp());
@@ -49,9 +40,11 @@ public class TickerMapperFactory {
         }
     }
 
-    public static class BinanceTickerMapper implements Mapper<BinanceTicker, Ticker> {
+    public enum  BinanceTickerMapper implements Mapper<BinanceTicker, Ticker> {
+        MAPPER;
+
         @Override
-        public Ticker from(BinanceTicker source) {
+        public Ticker apply(BinanceTicker source) {
             if (source == null) return null;
             Ticker ticker = new Ticker();
             ticker.setTimestamp(source.getTimestamp());
@@ -65,6 +58,29 @@ public class TickerMapperFactory {
             ticker.setQuoteVolume(source.getQuoteVolume());
             ticker.setHigh24hr(source.getHighPrice());
             ticker.setLow24hr(source.getLowPrice());
+            return ticker;
+        }
+    }
+
+    public enum  HuobiTickerMapper implements Mapper<HuobiTicker, Ticker> {
+        MAPPER;
+
+        @Override
+        public Ticker apply(HuobiTicker source) {
+            if (source == null) return null;
+            Ticker ticker = new Ticker();
+            ticker.setTimestamp(source.getTimestamp());
+            ticker.setExchange(source.getExchange());
+            ticker.setBaseVolume(source.getAmount());
+            ticker.setQuoteVolume(source.getVol());
+            ticker.setLow24hr(source.getLow());
+            ticker.setHigh24hr(source.getHigh());
+            ticker.setLast(source.getClose());
+            ticker.setPair(source.getSymbol());
+            ticker.setBid(source.getBid());
+            ticker.setAsk(source.getAsk());
+            double percentChange = (source.getClose() - source.getOpen()) * 100 / source.getOpen();
+            ticker.setPercentChange(percentChange);
             return ticker;
         }
     }

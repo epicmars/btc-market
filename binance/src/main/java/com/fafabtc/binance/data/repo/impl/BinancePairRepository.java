@@ -2,7 +2,6 @@ package com.fafabtc.binance.data.repo.impl;
 
 import com.fafabtc.binance.data.local.dao.BinancePairDao;
 import com.fafabtc.binance.data.remote.api.BinanceApi;
-import com.fafabtc.binance.data.remote.dto.BinanceExchangeInfo;
 import com.fafabtc.binance.data.remote.mapper.BinanceExchangeInfoMapper;
 import com.fafabtc.binance.data.repo.BinancePairRepo;
 import com.fafabtc.binance.model.BinancePair;
@@ -57,12 +56,7 @@ public class BinancePairRepository implements BinancePairRepo {
     @Override
     public Single<List<BinancePair>> getLatestBinancePairs() {
         return api.exchangeInfo()
-                .map(new Function<BinanceExchangeInfo, List<BinancePair>>() {
-                    @Override
-                    public List<BinancePair> apply(BinanceExchangeInfo binanceExchangeInfo) throws Exception {
-                        return BinanceExchangeInfoMapper.MAPPER.from(binanceExchangeInfo);
-                    }
-                })
+                .map(BinanceExchangeInfoMapper.MAPPER)
                 .flattenAsObservable(new Function<List<BinancePair>, Iterable<BinancePair>>() {
                     @Override
                     public Iterable<BinancePair> apply(List<BinancePair> pairs) throws Exception {

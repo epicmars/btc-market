@@ -19,7 +19,7 @@ public enum GateioTickersMapper implements Mapper<JsonObject, GateioTickers> {
     MAPPER;
 
     @Override
-    public GateioTickers from(JsonObject source) {
+    public GateioTickers apply(JsonObject source) {
         try {
             JsonObject result = new JsonObject();
             JsonArray array = new JsonArray();

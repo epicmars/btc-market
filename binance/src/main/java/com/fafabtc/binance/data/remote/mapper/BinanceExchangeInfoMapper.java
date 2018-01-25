@@ -16,7 +16,7 @@ public enum  BinanceExchangeInfoMapper implements Mapper<BinanceExchangeInfo, Li
     MAPPER;
 
     @Override
-    public List<BinancePair> from(BinanceExchangeInfo source) {
+    public List<BinancePair> apply(BinanceExchangeInfo source) {
         if (source == null) return null;
         List<BinanceExchangeInfo.SymbolsBean> symbolsBeanList = source.getSymbols();
         if (symbolsBeanList == null || symbolsBeanList.isEmpty()) return null;

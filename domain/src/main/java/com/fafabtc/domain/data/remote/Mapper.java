@@ -1,11 +1,11 @@
 package com.fafabtc.domain.data.remote;
 
+import io.reactivex.functions.Function;
+
 /**
  * Created by jastrelax on 2018/1/7.
  */
 
-public interface Mapper<F, T> {
-
-    T from(F source);
+public interface Mapper<F, T> extends Function<F, T> {
 
 }

@@ -3,21 +3,36 @@ package com.fafabtc.data.model.entity.mapper;
 import com.fafabtc.binance.model.BinancePair;
 import com.fafabtc.data.model.entity.exchange.Pair;
 import com.fafabtc.domain.data.remote.Mapper;
+import com.fafabtc.domain.data.remote.MapperFactory;
 import com.fafabtc.gateio.model.entity.GateioPair;
+import com.fafabtc.huobi.domain.entity.HuobiPair;
 
 /**
  * Created by jastrelax on 2018/1/10.
  */
 
-public class PairMapperFactory {
+public enum PairMapperFactory implements MapperFactory{
 
-    public static GateioPairMapper gateioPairMapper = new GateioPairMapper();
-    public static BinancePairMapper binancePairMapper = new BinancePairMapper();
+    FACTORY;
 
-    public static class GateioPairMapper implements Mapper<GateioPair, Pair> {
+    @Override
+    public Mapper create(Object object) {
+        if (object instanceof GateioPair) {
+            return GateioPairMapper.MAPPER;
+        } else if (object instanceof BinancePair) {
+            return BinancePairMapper.MAPPER;
+        } else if (object instanceof HuobiPair) {
+            return HuobiPairMapper.MAPPER;
+        }
+        return null;
+    }
+
+    public enum GateioPairMapper implements Mapper<GateioPair, Pair> {
+
+        MAPPER;
 
         @Override
-        public Pair from(GateioPair source) {
+        public Pair apply(GateioPair source) {
             if (source == null) return null;
             Pair pair = new Pair();
             pair.setExchange(source.getExchange());
@@ -28,16 +43,32 @@ public class PairMapperFactory {
         }
     }
 
-    public static class BinancePairMapper implements Mapper<BinancePair, Pair> {
+    public enum BinancePairMapper implements Mapper<BinancePair, Pair> {
+
+        MAPPER;
 
         @Override
-        public Pair from(BinancePair source) {
+        public Pair apply(BinancePair source) {
             if (source == null) return null;
             Pair pair = new Pair();
             pair.setExchange(source.getExchange());
             pair.setBase(source.getBase());
             pair.setQuote(source.getQuote());
             pair.setPair(source.getSymbol());
+            return pair;
+        }
+    }
+
+    public enum HuobiPairMapper implements Mapper<HuobiPair, Pair> {
+        MAPPER;
+        @Override
+        public Pair apply(HuobiPair source) {
+            if (source == null) return null;
+            Pair pair = new Pair();
+            pair.setExchange(source.getExchange());
+            pair.setPair(source.getSymbol());
+            pair.setBase(source.getBase());
+            pair.setQuote(source.getQuote());
             return pair;
         }
     }

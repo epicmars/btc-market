@@ -12,7 +12,7 @@ public enum GateioPairsMapper implements Mapper<String[], GateioPairs> {
     MAPPER;
 
     @Override
-    public GateioPairs from(String[] source) {
+    public GateioPairs apply(String[] source) {
         GateioPairs pairs = new GateioPairs();
         pairs.setPairs(source);
         return pairs;

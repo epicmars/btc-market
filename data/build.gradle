@@ -55,7 +55,8 @@ dependencies {
 
     api project(':common')
 
+    api project(':huobi')
+    api project(':binance')
     api project(':gateio')
     api project(':cex')
-    api project(':binance')
 }

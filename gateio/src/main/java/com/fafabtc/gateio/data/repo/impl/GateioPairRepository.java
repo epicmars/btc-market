@@ -6,6 +6,7 @@ import com.fafabtc.gateio.data.remote.api.GateioApi;
 import com.fafabtc.gateio.data.repo.GateioPairRepo;
 import com.fafabtc.gateio.model.entity.GateioPair;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -37,11 +38,10 @@ public class GateioPairRepository implements GateioPairRepo {
     @Override
     public Single<List<GateioPair>> getGateioPairs() {
         return api.pairs()
-                .toObservable()
-                .flatMap(new Function<String[], ObservableSource<String>>() {
+                .flattenAsObservable(new Function<String[], Iterable<String>>() {
                     @Override
-                    public ObservableSource<String> apply(String[] strings) throws Exception {
-                        return Observable.fromArray(strings);
+                    public Iterable<String> apply(String[] strings) throws Exception {
+                        return Arrays.asList(strings);
                     }
                 })
                 .filter(new Predicate<String>() {

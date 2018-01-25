@@ -10,7 +10,7 @@
 
     <!--Buttons-->
     <dimen name="button_colored_height">56dp</dimen>
-    <dimen name="button_setting_height">56dp</dimen>
+    <dimen name="button_setting_height">48dp</dimen>
 
     <!--Edittext-->
     <dimen name="et_padding">8dp</dimen>

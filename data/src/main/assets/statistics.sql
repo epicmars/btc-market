@@ -19,4 +19,4 @@ with
         end
         as usdt_last
      from assets left outer join quote_ticker on assets.quote = quote_ticker.base)
-     select *, avg(statistics.usdt_last) as usdt_avg, max(base_volume) from statistics group by statistics.name;
+     select *, avg(statistics.usdt_last) as usdt_avg, max(base_volume) from statistics group by statistics.name, statistics.exchange;

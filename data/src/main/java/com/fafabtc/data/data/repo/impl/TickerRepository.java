@@ -12,6 +12,11 @@ import com.fafabtc.data.model.entity.mapper.TickerMapperFactory;
 import com.fafabtc.gateio.data.repo.GateioRepo;
 import com.fafabtc.gateio.data.repo.GateioTickerRepo;
 import com.fafabtc.gateio.model.entity.GateioTicker;
+import com.fafabtc.huobi.data.repo.HuobiPairRepo;
+import com.fafabtc.huobi.data.repo.HuobiRepo;
+import com.fafabtc.huobi.data.repo.HuobiTickerRepo;
+import com.fafabtc.huobi.domain.entity.HuobiPair;
+import com.fafabtc.huobi.domain.entity.HuobiTicker;
 
 import java.util.Date;
 import java.util.List;
@@ -21,7 +26,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
 import io.reactivex.SingleTransformer;
@@ -46,6 +50,12 @@ public class TickerRepository implements TickerRepo {
 
     @Inject
     BinancePairRepo binancePairRepo;
+
+    @Inject
+    HuobiPairRepo huobiPairRepo;
+
+    @Inject
+    HuobiTickerRepo huobiTickerRepo;
 
     @Inject
     public TickerRepository() {
@@ -97,14 +107,62 @@ public class TickerRepository implements TickerRepo {
                 .compose(gateioTickerTransformer);
         Single<List<Ticker>> binanceTickers = binanceTickerRepo.getLatestBinanceTickers(timestamp)
                 .compose(binanceTickersTransformer);
+        Single<List<Ticker>> huobiTickers = huobiTickerRepo.getLatestTickers(timestamp)
+                .compose(huobiTickersTransformer);
         switch (exchange) {
             case GateioRepo.GATEIO_EXCHANGE:
                 return gateioTickers;
             case BinanceRepo.BINANCE_EXCHANGE:
                 return binanceTickers;
+            case HuobiRepo.HUOBI_EXCHANGE:
+                return huobiTickers;
         }
         return Single.error(new IllegalArgumentException("Can not find tickers of exchange: " + exchange));
     }
+
+    @Override
+    public Single<List<Ticker>> getAllLatestTickers() {
+        Date timestamp = new Date();
+        return Observable.mergeArrayDelayError(
+                getLatestTickers(GateioRepo.GATEIO_EXCHANGE, timestamp).toObservable(),
+                getLatestTickers(BinanceRepo.BINANCE_EXCHANGE, timestamp).toObservable(),
+                getLatestTickers(HuobiRepo.HUOBI_EXCHANGE, timestamp).toObservable())
+                .flatMapIterable(tickerListFlatter).toList();
+    }
+
+    private static <T> Function<List<T>, Iterable<T>> flattenList() {
+        return new Function<List<T>, Iterable<T>>() {
+            @Override
+            public Iterable<T> apply(List<T> ts) throws Exception {
+                return ts;
+            }
+        };
+    }
+
+    private SingleTransformer<List<HuobiTicker>, List<Ticker>> huobiTickersTransformer =
+            new SingleTransformer<List<HuobiTicker>, List<Ticker>>() {
+                @Override
+                public SingleSource<List<Ticker>> apply(Single<List<HuobiTicker>> upstream) {
+                    return upstream.flattenAsObservable(TickerRepository.<HuobiTicker>flattenList())
+                            .flatMapSingle(new Function<HuobiTicker, SingleSource<Ticker>>() {
+                                @Override
+                                public SingleSource<Ticker> apply(final HuobiTicker huobiTicker) throws Exception {
+                                    return huobiPairRepo.getPairFromDb(huobiTicker.getSymbol())
+                                            .map(new Function<HuobiPair, Ticker>() {
+                                                @Override
+                                                public Ticker apply(HuobiPair huobiPair) throws Exception {
+                                                    Ticker ticker = TickerMapperFactory.HuobiTickerMapper.MAPPER.apply(huobiTicker);
+                                                    ticker.setBase(huobiPair.getBase());
+                                                    ticker.setQuote(huobiPair.getQuote());
+                                                    return ticker;
+                                                }
+                                            });
+                                }
+                            })
+                            .toList()
+                            .doOnSuccess(saveTickers);
+                }
+            };
 
     private SingleTransformer<List<GateioTicker>, List<Ticker>> gateioTickerTransformer =
             new SingleTransformer<List<GateioTicker>, List<Ticker>>() {
@@ -118,23 +176,12 @@ public class TickerRepository implements TickerRepo {
                                     return gateioTickers;
                                 }
                             })
-                            .map(new Function<GateioTicker, Ticker>() {
-                                @Override
-                                public Ticker apply(GateioTicker gateioTicker) throws Exception {
-                                    return TickerMapperFactory.mapFrom(gateioTicker);
-                                }
-                            })
+                            .map(TickerMapperFactory.GateioTickerMapper.MAPPER)
                             .toList()
                             .doOnSuccess(saveTickers);
                 }
             };
 
-    private Consumer<List<Ticker>> saveTickers = new Consumer<List<Ticker>>() {
-        @Override
-        public void accept(List<Ticker> tickerList) throws Exception {
-            tickerDao.insertList(tickerList);
-        }
-    };
 
     private SingleTransformer<List<BinanceTicker>, List<Ticker>> binanceTickersTransformer =
             new SingleTransformer<List<BinanceTicker>, List<Ticker>>() {
@@ -147,12 +194,11 @@ public class TickerRepository implements TickerRepo {
                                     return tickerList;
                                 }
                             })
-                            .flatMap(new Function<BinanceTicker, ObservableSource<Ticker>>() {
+                            .flatMapSingle(new Function<BinanceTicker, SingleSource<Ticker>>() {
                                 @Override
-                                public ObservableSource<Ticker> apply(BinanceTicker binanceTicker) throws Exception {
-                                    final Ticker ticker = TickerMapperFactory.mapFrom(binanceTicker);
+                                public SingleSource<Ticker> apply(BinanceTicker binanceTicker) throws Exception {
+                                    final Ticker ticker = TickerMapperFactory.BinanceTickerMapper.MAPPER.apply(binanceTicker);
                                     return binancePairRepo.getBinancePair(binanceTicker.getSymbol())
-                                            .toObservable()
                                             .map(new Function<BinancePair, Ticker>() {
                                                 @Override
                                                 public Ticker apply(BinancePair binancePair) throws Exception {
@@ -168,18 +214,18 @@ public class TickerRepository implements TickerRepo {
                 }
             };
 
-    Function<List<Ticker>, Iterable<Ticker>> tickerListFlatter = new Function<List<Ticker>, Iterable<Ticker>>() {
+    private Consumer<List<Ticker>> saveTickers = new Consumer<List<Ticker>>() {
+        @Override
+        public void accept(List<Ticker> tickerList) throws Exception {
+            tickerDao.insertList(tickerList);
+        }
+    };
+
+    private Function<List<Ticker>, Iterable<Ticker>> tickerListFlatter = new Function<List<Ticker>, Iterable<Ticker>>() {
         @Override
         public Iterable<Ticker> apply(List<Ticker> tickerList) throws Exception {
             return tickerList;
         }
     };
 
-    @Override
-    public Single<List<Ticker>> getAllLatestTickers() {
-        Date timestamp = new Date();
-        return Observable.mergeArrayDelayError(getLatestTickers(GateioRepo.GATEIO_EXCHANGE, timestamp).toObservable(),
-                getLatestTickers(BinanceRepo.BINANCE_EXCHANGE, timestamp).toObservable())
-                .flatMapIterable(tickerListFlatter).toList();
-    }
 }

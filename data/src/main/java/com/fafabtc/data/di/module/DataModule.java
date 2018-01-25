@@ -18,6 +18,7 @@ import com.fafabtc.data.data.repo.impl.ExchangeRepository;
 import com.fafabtc.data.data.repo.impl.OrderRepository;
 import com.fafabtc.data.data.repo.impl.TickerRepository;
 import com.fafabtc.gateio.di.GateioModule;
+import com.fafabtc.huobi.di.HuobiModule;
 
 import javax.inject.Singleton;
 
@@ -29,7 +30,8 @@ import dagger.Module;
  */
 @Module(includes = {DataDbModule.class,
         GateioModule.class,
-        BinanceModule.class})
+        BinanceModule.class,
+        HuobiModule.class})
 public abstract class DataModule {
 
     @Binds

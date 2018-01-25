@@ -1,1 +1,1 @@
-include ':app', ':binance', ':cex', ':gateio', ':common', ':domain', ':data', ':analysis'
+include ':app', ':binance', ':cex', ':gateio', ':common', ':domain', ':data', ':analysis', ':huobi'

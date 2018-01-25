@@ -51,7 +51,7 @@ public class GateioTickerRepository implements GateioTickerRepo {
                 .flattenAsFlowable(new Function<JsonObject, Iterable<GateioTickers.PairTicker>>() {
                     @Override
                     public Iterable<GateioTickers.PairTicker> apply(JsonObject jsonObject) throws Exception {
-                        return GateioTickersMapper.MAPPER.from(jsonObject).getTickers();
+                        return GateioTickersMapper.MAPPER.apply(jsonObject).getTickers();
                     }
                 })
                 .map(new Function<GateioTickers.PairTicker, GateioTicker>() {

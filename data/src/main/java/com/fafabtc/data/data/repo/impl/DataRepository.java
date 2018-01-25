@@ -9,8 +9,6 @@ import com.fafabtc.data.data.repo.DataRepo;
 import com.fafabtc.data.data.repo.ExchangeRepo;
 import com.fafabtc.data.data.repo.TickerRepo;
 import com.fafabtc.data.global.AssetsStateRepository;
-import com.fafabtc.gateio.data.repo.GateioRepo;
-import com.fafabtc.gateio.data.repo.GateioTickerRepo;
 
 import java.util.Date;
 
@@ -29,12 +27,6 @@ import io.reactivex.functions.Predicate;
  */
 @Singleton
 public class DataRepository implements DataRepo {
-
-    @Inject
-    GateioRepo gateioRepo;
-
-    @Inject
-    GateioTickerRepo gateioTickerRepo;
 
     @Inject
     AccountAssetsRepo accountAssetsRepo;

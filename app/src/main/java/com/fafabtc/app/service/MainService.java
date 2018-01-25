@@ -104,7 +104,7 @@ public class MainService extends DaggerService {
 
                     @Override
                     public void onComplete() {
-
+                        Timber.d("initData complete");
                     }
 
                     @Override
@@ -165,7 +165,7 @@ public class MainService extends DaggerService {
 
                     @Override
                     public void onComplete() {
-
+                        Timber.d("refreshTickers complete");
                     }
 
                     @Override
