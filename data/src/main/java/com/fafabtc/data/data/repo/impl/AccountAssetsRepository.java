@@ -252,4 +252,14 @@ public class AccountAssetsRepository implements AccountAssetsRepo {
             }
         });
     }
+
+    @Override
+    public Completable deleteAssets(final AccountAssets accountAssets) {
+        return Completable.fromAction(new Action() {
+            @Override
+            public void run() throws Exception {
+                accountAssetsDao.deleteAssets(accountAssets);
+            }
+        });
+    }
 }

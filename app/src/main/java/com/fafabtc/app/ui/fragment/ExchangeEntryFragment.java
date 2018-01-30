@@ -58,7 +58,7 @@ public class ExchangeEntryFragment extends BaseFragment<FragmentExchangeEntryBin
         binding.recyclerExchangeEntry.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerExchangeEntry.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
-        viewModel = getViewModel(ExchangeEntryViewModel.class);
+        viewModel = getViewModelOfActivity(ExchangeEntryViewModel.class);
         viewModel.setAccountAssets(accountAssets);
         viewModel.getExchanges().observe(this, exchangeEntriesObserver);
         viewModel.loadExchanges();

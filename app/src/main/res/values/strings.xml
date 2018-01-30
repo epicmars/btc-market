@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">fafaBTC</string>
+    <string name="app_name">fafabtc</string>
     <string name="action_settings">Settings</string>
     <string name="app_description">区块链资产行情与实盘模拟</string>
 
@@ -78,6 +78,7 @@
 
     <!--资产列表-->
     <string name="deposit">充值</string>
+    <string name="delete">删除</string>
 
     <!--资产充值-->
     <string name="label_available_format">可用:%1$s</string>
@@ -86,15 +87,17 @@
 
     <!-- 用户反馈 -->
     <string name="about">关于</string>
-    <string name="about_detail">主要功能为区块链资产行情与实盘模拟，通过建立不同的资产组合，可以根据市场实时行情查看实际资产市值，也可以用于模拟交易，对资产组合进行验证。</string>
+    <string name="about_detail">主要功能为区块链资产行情查看与实盘模拟，通过建立不同的资产组合，可以根据市场行情计算实际资产市值，也可以用于模拟交易，对资产组合进行验证。</string>
 
     <string name="about_and_feedback">关于与反馈</string>
     <string name="user_feedback">用户反馈</string>
+    <string name="check_grade">版本更新</string>
 
     <string name="hint_feedback">建议与反馈</string>
 
     <!--账户资产-->
-    <string name="hint_account_assets_name">输入要创建的资产组合名称</string>
+    <string name="general">通用</string>
     <string name="settings">设置</string>
+    <string name="hint_account_assets_name">输入要创建的资产组合名称</string>
 
 </resources>

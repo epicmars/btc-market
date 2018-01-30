@@ -12,5 +12,17 @@ android {
             manifestPlaceholders = [APP_CHANNEL: "github"]
         }
 
+        baidu {
+            manifestPlaceholders = [APP_CHANNEL: "baidu"]
+        }
+
+        tencent {
+            manifestPlaceholders = [APP_CHANNEL: "tencent"]
+        }
+
+        alibaba {
+            manifestPlaceholders = [APP_CHANNEL: "alibaba"]
+        }
+
     }
 }

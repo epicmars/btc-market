@@ -13,7 +13,6 @@ import com.fafabtc.app.R;
 import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.constants.Services;
 import com.fafabtc.app.service.WidgetService;
-import com.fafabtc.app.utils.AppWidgetAlarmUtils;
 import com.fafabtc.app.utils.TickersAlarmUtils;
 import com.fafabtc.common.utils.NumberUtils;
 import com.fafabtc.data.consts.DataBroadcasts;
@@ -44,14 +43,12 @@ public class AssetsWidgetProvider extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
-        AppWidgetAlarmUtils.scheduleUpdate(context);
         TickersAlarmUtils.scheduleUpdate(context);
     }
 
     @Override
     public void onDisabled(Context context) {
         super.onDisabled(context);
-        AppWidgetAlarmUtils.clearUpdate(context);
         TickersAlarmUtils.cancelUpdate(context);
     }
 
@@ -82,14 +79,14 @@ public class AssetsWidgetProvider extends AppWidgetProvider {
         }
     }
 
-    private void hideLoadingProgress(Context context) {
+    public static void hideLoadingProgress(Context context) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(context, AssetsWidgetProvider.class));
         int n = appWidgetIds.length;
         for (int i = 0; i < n; i++) {
             final int appWidgetId = appWidgetIds[i];
             final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_account_assets);
-            rv.setViewVisibility(R.id.pb_loading, View.VISIBLE);
+            rv.setViewVisibility(R.id.pb_loading, View.INVISIBLE);
             appWidgetManager.updateAppWidget(appWidgetId, rv);
         }
     }

@@ -62,18 +62,9 @@
 
                 <TextView
                     style="@style/TextDivider"
-                    android:text="@string/settings" />
+                    android:text="@string/general" />
 
                 <include layout="@layout/divider_dark"/>
-
-                <TextView
-                    android:id="@+id/btn_about"
-                    style="@style/AppButton.Setting"
-                    android:background="?attr/selectableItemBackground"
-                    android:onClick="@{handler::onClickAbout}"
-                    android:text="@string/about_and_feedback" />
-
-                <include layout="@layout/divider_dark" />
 
                 <TextView
                     android:id="@+id/btn_settings"
@@ -83,6 +74,15 @@
                     android:onClick="@{handler::onClickSettings}" />
 
                 <include layout="@layout/divider_dark" />
+
+                <TextView
+                    android:id="@+id/btn_about"
+                    style="@style/AppButton.Setting"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{handler::onClickAbout}"
+                    android:text="@string/about_and_feedback" />
+                <include layout="@layout/divider_dark" />
+
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 

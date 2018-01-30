@@ -47,6 +47,19 @@
     <include
         layout="@layout/divider_dark" />
 
+
+    <TextView
+        android:id="@+id/btn_check_upgrade"
+        style="@style/AppButton.Setting"
+        android:background="?attr/selectableItemBackground"
+        android:text="@string/check_grade" />
+
+    <include
+        layout="@layout/divider_dark"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_gravity="bottom"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

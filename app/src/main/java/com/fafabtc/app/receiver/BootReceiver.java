@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.fafabtc.app.utils.AppWidgetAlarmUtils;
 import com.fafabtc.app.utils.TickersAlarmUtils;
 import com.fafabtc.app.utils.WidgetUtils;
 
@@ -21,7 +20,6 @@ public class BootReceiver extends BroadcastReceiver {
 
     private void scheduleWidgetUpdate(Context context) {
         if (WidgetUtils.isWidgetAvailable(context)) {
-            AppWidgetAlarmUtils.scheduleUpdate(context);
             TickersAlarmUtils.scheduleUpdate(context);
         }
     }

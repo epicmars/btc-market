@@ -20,7 +20,7 @@ public class ClientApplication extends DaggerApplication  {
     public void onCreate() {
         super.onCreate();
         Timber.plant(new Timber.DebugTree());
-        AnalysisHelper.init(this);
+        AnalysisHelper.init(this, R.mipmap.ic_launcher_round);
     }
 
     @Override

@@ -12,6 +12,7 @@ public interface Broadcasts {
         String ACTION_BALANCE_DEPOSITED = "com.fafabtc.app.constants.Boradcast.Actions.ACTION_BALANCE_DEPOSITED";
         String ACTION_ASSETS_CREATED = "com.fafabtc.app.constants.Boradcast.Actions.ACTION_ASSETS_CREATED";
         String ACTION_CURRENT_ASSETS_CHANGED = "com.fafabtc.app.constants.Boradcast.Actions.ACTION_CURRENT_ASSETS_CHANGED";
+        String ACTION_ASSETS_DELETED = "com.fafabtc.app.constants.Boradcast.Actions.ACTION_ASSETS_DELETED";
     }
 
     interface WidgetActions {

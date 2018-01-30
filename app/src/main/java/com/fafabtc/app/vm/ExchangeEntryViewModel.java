@@ -5,15 +5,19 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.ExecutorManager;
+import com.fafabtc.app.utils.RxUtils;
+import com.fafabtc.data.data.repo.AccountAssetsRepo;
 import com.fafabtc.data.data.repo.ExchangeRepo;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.ExchangeEntry;
+import com.fafabtc.domain.model.Resource;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.CompletableObserver;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -33,9 +37,14 @@ public class ExchangeEntryViewModel extends ViewModel {
     @Inject
     ExchangeRepo exchangeRepo;
 
+    @Inject
+    AccountAssetsRepo accountAssetsRepo;
+
     private AccountAssets accountAssets;
 
     MutableLiveData<List<ExchangeEntry>> exchangeList = new MutableLiveData<>();
+
+    MutableLiveData<Resource> deleteResult = new MutableLiveData<>();
 
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -76,6 +85,31 @@ public class ExchangeEntryViewModel extends ViewModel {
                     }
                 });
         compositeDisposable.add(disposable);
+    }
+
+    public void deleteAssets() {
+        accountAssetsRepo.deleteAssets(accountAssets)
+                .compose(RxUtils.completableAsyncIO())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        deleteResult.setValue(Resource.success());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        deleteResult.setValue(Resource.error());
+                    }
+                });
+    }
+
+    public MutableLiveData<Resource> getDeleteResult() {
+        return deleteResult;
     }
 
     public LiveData<List<ExchangeEntry>> getExchanges() {

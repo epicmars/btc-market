@@ -1,6 +1,7 @@
 package com.fafabtc.common.analysis;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 
 import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.fafabtc.analysis.bugly.BuglyHelper;
@@ -11,8 +12,8 @@ import com.fafabtc.analysis.leancloud.LeanCloudHelper;
  */
 
 public class AnalysisHelper {
-    public static void init(Context context) {
-        BuglyHelper.init(context);
+    public static void init(Context context, @DrawableRes int launchIcon) {
+        BuglyHelper.init(context, launchIcon);
         LeanCloudHelper.init(context);
     }
 
@@ -24,6 +25,10 @@ public class AnalysisHelper {
 
     public static void sendFeedback(Context context, String feedback, final Runnable callback) {
         LeanCloudHelper.sendFeedback(context, feedback, callback);
+    }
+
+    public static void checkUpgrade() {
+        BuglyHelper.checkUpgrade();
     }
 
     public static void test() {

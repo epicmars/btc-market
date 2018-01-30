@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.fafabtc.app.BuildConfig;
 import com.fafabtc.app.R;
+import com.fafabtc.common.analysis.AnalysisHelper;
 
 public class AboutActivity extends ThemeActivity {
 
@@ -22,6 +23,7 @@ public class AboutActivity extends ThemeActivity {
         setContentView(R.layout.activity_about);
 
         TextView btnFeedback = findViewById(R.id.btn_user_feed_back);
+        TextView btnCheckUpgrade = findViewById(R.id.btn_check_upgrade);
         btnFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,8 +31,16 @@ public class AboutActivity extends ThemeActivity {
             }
         });
 
+        btnCheckUpgrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AnalysisHelper.checkUpgrade();
+            }
+        });
+
         TextView tvVersion = findViewById(R.id.tv_version);
         tvVersion.setText(BuildConfig.VERSION_NAME);
+
 
     }
 }

@@ -11,7 +11,7 @@ import com.fafabtc.app.service.WidgetService;
 /**
  * Created by jastrelax on 2018/1/23.
  */
-
+@Deprecated
 public class AppWidgetAlarmUtils {
 
     public static final long INTERVAL_MILLIS = 60 * 1000;

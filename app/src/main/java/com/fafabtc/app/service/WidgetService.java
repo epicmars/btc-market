@@ -129,6 +129,7 @@ public class WidgetService extends DaggerService {
                     public void onError(Throwable e) {
                         isUpdating = false;
                         Timber.e(e);
+                        AssetsWidgetProvider.hideLoadingProgress(WidgetService.this);
                     }
                 });
     }

@@ -18,24 +18,22 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [VERSION_NAME: defaultConfig.versionName,
-                                DEBUGGABLE: false,
-                                APP_CHANNEL: "dev",
-                                BUGLY_APPID: BUGLY_APPID,
-                                LEANCLOUD_APPID: LEANCLOUD_APPID,
+        manifestPlaceholders = [VERSION_NAME    : defaultConfig.versionName,
+                                DEBUGGABLE      : false,
+                                APP_CHANNEL     : "dev",
+                                BUGLY_APPID     : BUGLY_APPID,
+                                LEANCLOUD_APPID : LEANCLOUD_APPID,
                                 LEANCLOUD_APPKEY: LEANCLOUD_APPKEY]
 
-        defaultConfig {
-            ndk {
-                //设置支持的SO库架构
-                abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-            }
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a'//, 'x86', 'x86_64', 'arm64-v8a'
         }
     }
 
     // LEANCLOUD BEGIN
     //为了解决部分第三方库重复打包了META-INF的问题
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
@@ -54,6 +52,10 @@ android {
         debug {
             debuggable true
             manifestPlaceholders = [DEBUGGABLE: debuggable]
+            ndk {
+                //设置支持的SO库架构
+                abiFilters 'armeabi', 'x86', 'armeabi-v7a'//, 'x86_64', 'arm64-v8a'
+            }
         }
     }
 
@@ -80,5 +82,5 @@ dependencies {
     // LeanCloud 用户反馈包
     api 'cn.leancloud.android:avoscloud-feedback:v4.4.4@aar'
     // 推送与实时聊天需要的包
-    implementation ('cn.leancloud.android:avoscloud-push:v4.4.4@aar'){transitive = true}
+    implementation('cn.leancloud.android:avoscloud-push:v4.4.4@aar') { transitive = true }
 }

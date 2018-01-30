@@ -20,6 +20,8 @@ public interface AccountAssetsRepo {
 
     Single<AccountAssets> createAssets(String assetsName);
 
+    Completable deleteAssets(AccountAssets accountAssets);
+
     Completable update(AccountAssets... accountAssets);
 
     Completable init();

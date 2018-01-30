@@ -49,7 +49,7 @@ public class TradeActivity extends BaseActivity<ActivityTradeBinding> {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.trade_content, TradeFragment.newInstance(ticker));
-        ft.commit();
+        ft.commitAllowingStateLoss();
     }
 
     @Override
