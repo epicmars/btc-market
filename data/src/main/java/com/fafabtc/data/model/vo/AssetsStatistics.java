@@ -25,7 +25,7 @@ public class AssetsStatistics {
     private double usdtLast;
     @ColumnInfo(name = "usdt_avg")
     private double usdtAvg;
-    @ColumnInfo(name = "base_volume")
+    @ColumnInfo(name = "max_base_volume")
     private double baseVolumeMax;
 
     public String getAssetsUUID() {

@@ -82,13 +82,13 @@ public class HuobiMarketDetailMerged {
         @SerializedName("high")
         private double high;
         @SerializedName("id")
-        private int id;
+        private long id;
         @SerializedName("count")
-        private int count;
+        private long count;
         @SerializedName("low")
         private double low;
         @SerializedName("version")
-        private int version;
+        private long version;
         @SerializedName("vol")
         private double vol;
         @SerializedName("ask")
@@ -128,19 +128,19 @@ public class HuobiMarketDetailMerged {
             this.high = high;
         }
 
-        public int getId() {
+        public long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(long id) {
             this.id = id;
         }
 
-        public int getCount() {
+        public long getCount() {
             return count;
         }
 
-        public void setCount(int count) {
+        public void setCount(long count) {
             this.count = count;
         }
 
@@ -152,11 +152,11 @@ public class HuobiMarketDetailMerged {
             this.low = low;
         }
 
-        public int getVersion() {
+        public long getVersion() {
             return version;
         }
 
-        public void setVersion(int version) {
+        public void setVersion(long version) {
             this.version = version;
         }
 

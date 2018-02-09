@@ -27,7 +27,7 @@ public class HuobiTicker extends HuobiEntity{
     @ColumnInfo(name = "low")
     private double low;
     @ColumnInfo(name = "version")
-    private int version;
+    private long version;
     @ColumnInfo(name = "vol")
     private double vol;
     @ColumnInfo(name = "ask")
@@ -99,11 +99,11 @@ public class HuobiTicker extends HuobiEntity{
         this.low = low;
     }
 
-    public int getVersion() {
+    public long getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(long version) {
         this.version = version;
     }
 

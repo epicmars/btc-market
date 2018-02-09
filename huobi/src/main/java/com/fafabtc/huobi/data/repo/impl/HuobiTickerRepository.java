@@ -19,6 +19,7 @@ import javax.inject.Singleton;
 import io.reactivex.Maybe;
 import io.reactivex.MaybeSource;
 import io.reactivex.Single;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
 /**
@@ -42,7 +43,6 @@ public class HuobiTickerRepository implements HuobiTickerRepo {
 
     @Override
     public Single<List<HuobiTicker>> getLatestTickers(final Date timestamp) {
-
         return Single
                 .fromCallable(new Callable<List<HuobiPair>>() {
                     @Override
@@ -64,25 +64,19 @@ public class HuobiTickerRepository implements HuobiTickerRepo {
                                     @Override
                                     public HuobiTicker apply(HuobiMarketDetailMerged huobiMarketDetailMerged) throws Exception {
                                         HuobiTicker ticker = HuobiMarketDetailMergedMapper.MAPPER.apply(huobiMarketDetailMerged);
+                                        ticker.setSymbol(huobiPair.getSymbol());
+                                        ticker.setTimestamp(timestamp);
                                         return ticker;
-                                    }
-                                })
-                                .flatMap(new Function<HuobiTicker, MaybeSource<HuobiTicker>>() {
-                                    @Override
-                                    public MaybeSource<HuobiTicker> apply(final HuobiTicker huobiTicker) throws Exception {
-                                        return Maybe.fromCallable(new Callable<HuobiTicker>() {
-                                            @Override
-                                            public HuobiTicker call() throws Exception {
-                                                huobiTicker.setSymbol(huobiPair.getSymbol());
-                                                huobiTicker.setTimestamp(timestamp);
-                                                tickerDao.insert(huobiTicker);
-                                                return huobiTicker;
-                                            }
-                                        });
                                     }
                                 }).onErrorComplete();
                     }
                 })
-                .toList();
+                .toList()
+                .doOnSuccess(new Consumer<List<HuobiTicker>>() {
+                    @Override
+                    public void accept(List<HuobiTicker> tickerList) throws Exception {
+                        tickerDao.insertList(tickerList);
+                    }
+                });
     }
 }

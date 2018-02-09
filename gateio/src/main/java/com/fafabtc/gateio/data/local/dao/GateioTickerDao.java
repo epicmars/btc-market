@@ -22,6 +22,6 @@ public interface GateioTickerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertList(List<GateioTicker> list);
 
-    @Query("with max_timestamp(t) as (select max(timestamp) from ticker) select * from ticker where timestamp in max_timestamp")
+    @Query("select * from ticker")
     List<GateioTicker> findLatestTickers();
 }

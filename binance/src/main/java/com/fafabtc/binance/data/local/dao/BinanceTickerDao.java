@@ -21,7 +21,7 @@ public interface BinanceTickerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertList(List<BinanceTicker> tickerList);
 
-    @Query("with max_timestamp(t) as (select max(timestamp) from ticker) select * from ticker where timestamp in max_timestamp")
+    @Query("select * from ticker")
     List<BinanceTicker> findLatestTickers();
 
 }
