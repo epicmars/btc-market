@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    annotationProcessor "android.arch.persistence.room:compiler:$arch_lifecycle_ext_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$arch_room_version"
 
     // dagger2 android
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"

@@ -43,11 +43,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    api "android.arch.persistence.room:runtime:$arch_lifecycle_ext_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$arch_lifecycle_ext_version"
-    androidTestApi "android.arch.persistence.room:testing:$arch_lifecycle_ext_version"
-    testApi "android.arch.persistence.room:testing:$arch_lifecycle_ext_version"
-    api "android.arch.persistence.room:rxjava2:$arch_lifecycle_ext_version"
+    api "android.arch.persistence.room:runtime:$arch_room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$arch_room_version"
+    androidTestApi "android.arch.persistence.room:testing:$arch_room_version"
+    testApi "android.arch.persistence.room:testing:$arch_room_version"
+    api "android.arch.persistence.room:rxjava2:$arch_room_version"
 
     // dagger2 android
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
