@@ -15,7 +15,7 @@ ext {
     android_plugin_version = '2.3.2'
 
     // android support library
-    android_support_version = '26.1.0'
+    android_support_version = '27.1.0'
 
     // lifecycle architecture
     arch_lifecycle_version = '1.0.3'
