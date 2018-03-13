@@ -29,11 +29,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "HUOBI_API_BASE_URL", "\"https://api.huobi.pro/\""
+            buildConfigField "String", "HUOBI_API_BASE_URL", "\"https://api.huobipro.com/\""
         }
 
         debug {
-            buildConfigField "String", "HUOBI_API_BASE_URL", "\"https://api.huobi.pro/\""
+            buildConfigField "String", "HUOBI_API_BASE_URL", "\"https://api.huobipro.com/\""
         }
     }
 

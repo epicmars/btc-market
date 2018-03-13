@@ -4,4 +4,7 @@ fafabtc
 
 ![img](docs/imgs/assets_statistics.png) | ![img](docs/imgs/tickers.png) | ![img](docs/imgs/assets_manager.png)
 ---------|--------|----------
+## 事件
+- 2018-03-13 15:38:26 +0800 貌似最近知名交易所都被墙了，之前的api已经不能正常访问，需要使用梯子才行。
 
+    当前行情：BTC 9000$ ETH 700$
