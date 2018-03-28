@@ -46,7 +46,7 @@ dependencies {
     api "android.arch.persistence.room:runtime:$arch_room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$arch_room_version"
     androidTestApi "android.arch.persistence.room:testing:$arch_room_version"
-    testApi "android.arch.persistence.room:testing:$arch_room_version"
+    testImplementation "android.arch.persistence.room:testing:$arch_room_version"
     api "android.arch.persistence.room:rxjava2:$arch_room_version"
 
     // dagger2 android
