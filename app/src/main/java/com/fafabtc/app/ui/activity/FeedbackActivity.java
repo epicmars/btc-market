@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.fafabtc.app.R;
 import com.fafabtc.app.ui.fragment.LoadingDialog;
-import com.fafabtc.common.analysis.AnalysisHelper;
+import com.fafabtc.analysis.AnalysisHelper;
 import com.fafabtc.common.file.SharedPreferenceUtils;
 import com.fafabtc.common.json.GsonHelper;
 

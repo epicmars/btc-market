@@ -3,8 +3,8 @@ package com.fafabtc.app;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.fafabtc.analysis.AnalysisHelper;
 import com.fafabtc.app.di.AppInjector;
-import com.fafabtc.common.analysis.AnalysisHelper;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.fafabtc.app.BuildConfig;
 import com.fafabtc.app.R;
-import com.fafabtc.common.analysis.AnalysisHelper;
+import com.fafabtc.analysis.AnalysisHelper;
 
 public class AboutActivity extends ThemeActivity {
 

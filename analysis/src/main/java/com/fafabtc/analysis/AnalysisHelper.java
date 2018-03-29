@@ -1,4 +1,4 @@
-package com.fafabtc.common.analysis;
+package com.fafabtc.analysis;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
