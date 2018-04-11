@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5ccfd07afd99c6adcaf6b488c106bd7b",
+    "identityHash": "0ce29f45da1059d8c17282acc813d016",
     "entities": [
       {
         "tableName": "pair",
@@ -344,14 +344,6 @@
               "pair"
             ],
             "createSql": "CREATE UNIQUE INDEX `index_ticker_pair` ON `${TABLE_NAME}` (`pair`)"
-          },
-          {
-            "name": "index_ticker_timestamp",
-            "unique": false,
-            "columnNames": [
-              "timestamp"
-            ],
-            "createSql": "CREATE  INDEX `index_ticker_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
           }
         ],
         "foreignKeys": []
@@ -359,7 +351,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5ccfd07afd99c6adcaf6b488c106bd7b\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"0ce29f45da1059d8c17282acc813d016\")"
     ]
   }
 }

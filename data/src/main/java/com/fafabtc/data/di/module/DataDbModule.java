@@ -8,6 +8,7 @@ import com.fafabtc.data.data.local.dao.AccountAssetsDao;
 import com.fafabtc.data.data.local.dao.AssetsStatisticsDao;
 import com.fafabtc.data.data.local.dao.BlockchainAssetsDao;
 import com.fafabtc.data.data.local.dao.ExchangeDao;
+import com.fafabtc.data.data.local.dao.ExchangeRateDao;
 import com.fafabtc.data.data.local.dao.OrderDao;
 import com.fafabtc.data.data.local.dao.PairDao;
 import com.fafabtc.data.data.local.dao.TickerDao;
@@ -78,5 +79,11 @@ public class DataDbModule {
     @Singleton
     public static AssetsStatisticsDao assetsStatisticsDao(ExchangeDatabase database) {
         return database.assetsStatisticsDao();
+    }
+
+    @Provides
+    @Singleton
+    public static ExchangeRateDao exchangeRateDao(ExchangeDatabase database) {
+        return database.exchangeRateDao();
     }
 }

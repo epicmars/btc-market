@@ -8,7 +8,9 @@ import io.reactivex.Completable;
 
 public interface DataRepo {
 
-    Completable init();
+    Completable initiate();
 
     Completable refreshTickers();
+
+    Completable refreshTickers(String exchange);
 }

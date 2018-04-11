@@ -4,9 +4,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.RxUtils;
-import com.fafabtc.app.vm.exception.ViewModelException;
+import com.fafabtc.data.data.global.AssetsStateRepository;
 import com.fafabtc.data.data.repo.AccountAssetsRepo;
-import com.fafabtc.data.global.AssetsStateRepository;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
 import com.fafabtc.domain.model.Resource;
 
@@ -16,9 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.SingleObserver;
-import io.reactivex.SingleSource;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
 import timber.log.Timber;
 
 /**
@@ -43,17 +40,7 @@ public class AccountAssetsViewModel extends ViewModel {
 
 
     public void loadAccountAssetsList() {
-        assetsStateRepository.isAssetsInitialized()
-                .flatMap(new Function<Boolean, SingleSource<List<AccountAssets>>>() {
-                    @Override
-                    public SingleSource<List<AccountAssets>> apply(Boolean aBoolean) throws Exception {
-                        if (aBoolean) {
-                            return accountAssetsRepo.getAllAssets();
-                        } else {
-                            throw new ViewModelException("资产初始化中");
-                        }
-                    }
-                })
+        accountAssetsRepo.getAll()
                 .compose(RxUtils.<List<AccountAssets>>singleAsyncIO())
                 .subscribe(new SingleObserver<List<AccountAssets>>() {
                     @Override

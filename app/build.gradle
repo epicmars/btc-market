@@ -56,7 +56,7 @@ dependencies {
 
     implementation "android.arch.lifecycle:runtime:$arch_lifecycle_version"
     implementation "android.arch.lifecycle:extensions:$arch_lifecycle_ext_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_ext_version"
+    annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_compiler_version"
 
     implementation 'com.android.support:multidex:1.0.3'
 

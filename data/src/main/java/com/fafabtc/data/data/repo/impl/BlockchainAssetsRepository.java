@@ -116,6 +116,12 @@ public class BlockchainAssetsRepository implements BlockchainAssetsRepo {
                 });
     }
 
+    /**
+     * Restore block chain assets of an exchange from an {@link ExchangeAssets}.
+     * @param exchangeAssets
+     *              assets belong to an exchange and an assets account.
+     * @return a Completable
+     */
     @Override
     public Completable restoreExchangeBlockchainAssets(ExchangeAssets exchangeAssets) {
         return Observable.fromIterable(exchangeAssets.getQuoteAssetsList())
@@ -128,7 +134,7 @@ public class BlockchainAssetsRepository implements BlockchainAssetsRepo {
                             public void run() throws Exception {
                                 blockchainAssets.setAvailable(blockchainAssets.getAvailable() + blockchainAssets.getLocked());
                                 blockchainAssets.setLocked(0.0);
-                                blockchainAssetsDao.insert(blockchainAssets);
+                                blockchainAssetsDao.update(blockchainAssets);
                             }
                         }).onErrorComplete();
                     }

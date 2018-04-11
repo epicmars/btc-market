@@ -58,6 +58,7 @@ public class TradeService extends DaggerService {
     private BroadcastReceiver tickerUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            final String exchange = intent.getStringExtra(DataBroadcasts.Extras.EXTRA_EXCHANGE_NAME);
             // Find all pending orders, check if the order can be deal.
             orderRepo.dealPendingOrders()
                     .subscribeOn(Schedulers.io())
@@ -71,7 +72,9 @@ public class TradeService extends DaggerService {
                         @Override
                         public void onSuccess(List<Order> orders) {
                             if (orders.size() > 0) {
-                                sendBroadcast(new Intent(Broadcasts.Actions.ACTION_ORDER_DEAL));
+                                Intent actionDeal = new Intent(Broadcasts.Actions.ACTION_ORDER_DEAL);
+                                actionDeal.putExtra(Broadcasts.Extras.EXTRAS_EXCHANGE_NAME, exchange);
+                                sendBroadcast(actionDeal);
                             }
                         }
 

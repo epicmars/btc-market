@@ -25,7 +25,16 @@ public class ExchangeAssets {
     }
 
     public void setAccountAssets(AccountAssets accountAssets) {
+        if (null == accountAssets) return;
         this.accountAssets = accountAssets;
+        if (blockchainAssetsList != null) {
+            for (BlockchainAssets assets : blockchainAssetsList)
+                assets.setAssetsUUID(accountAssets.getUuid());
+        }
+        if (quoteAssetsList != null) {
+            for (BlockchainAssets assets : quoteAssetsList)
+                assets.setAssetsUUID(accountAssets.getUuid());
+        }
     }
 
     public List<BlockchainAssets> getBlockchainAssetsList() {

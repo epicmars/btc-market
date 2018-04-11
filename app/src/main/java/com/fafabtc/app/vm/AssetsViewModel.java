@@ -7,7 +7,7 @@ import com.fafabtc.app.utils.ExecutorManager;
 import com.fafabtc.data.data.repo.AccountAssetsRepo;
 import com.fafabtc.data.data.repo.AssetsStatisticsRepo;
 import com.fafabtc.data.data.repo.BlockchainAssetsRepo;
-import com.fafabtc.data.global.AssetsStateRepository;
+import com.fafabtc.data.data.global.AssetsStateRepository;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
 import com.fafabtc.data.model.vo.AssetsStatistics;
 import com.fafabtc.data.model.vo.AssetsStatisticsHeader;
@@ -106,24 +106,24 @@ public class AssetsViewModel extends ViewModel {
     }
 
     public void loadUpdateTime() {
-        assetsStateRepository.getFormatedUpdateTime()
-//                .compose(RxUtils.<String>singleAsyncIO())
-                .subscribe(new SingleObserver<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(String s) {
-                        updateTime.setValue(s);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                });
+//        assetsStateRepository.getFormatedUpdateTime()
+////                .compose(RxUtils.<String>singleAsyncIO())
+//                .subscribe(new SingleObserver<String>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(String s) {
+//                        updateTime.setValue(s);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//                });
     }
 
     public MutableLiveData<Double> getTotalMarketValue() {

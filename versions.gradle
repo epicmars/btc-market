@@ -1,7 +1,7 @@
 ext {
 
-    version_code = 4
-    version_name = '1.0.3'
+    version_code = 5
+    version_name = '1.1.0'
 
     // android
     android = [
@@ -15,15 +15,16 @@ ext {
     android_plugin_version = '2.3.2'
 
     // android support library
-    android_support_version = '27.1.0'
+    android_support_version = '27.1.1'
 
     // lifecycle architecture
-    arch_lifecycle_version = '1.0.3'
-    arch_lifecycle_ext_version = '1.1.0'
+    arch_lifecycle_version = '1.1.1'
+    arch_lifecycle_ext_version = '1.1.1'
+    arch_lifecycle_compiler_version = '1.1.0'
     arch_room_version = '1.0.0'
 
     // dagger2
-    dagger2_version = '2.12'
+    dagger2_version = '2.15'
 
     // retrofit
     retrofit_version = '2.3.0'

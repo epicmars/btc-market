@@ -11,10 +11,12 @@ import com.fafabtc.data.data.local.dao.AccountAssetsDao;
 import com.fafabtc.data.data.local.dao.AssetsStatisticsDao;
 import com.fafabtc.data.data.local.dao.BlockchainAssetsDao;
 import com.fafabtc.data.data.local.dao.ExchangeDao;
+import com.fafabtc.data.data.local.dao.ExchangeRateDao;
 import com.fafabtc.data.data.local.dao.OrderDao;
 import com.fafabtc.data.data.local.dao.PairDao;
 import com.fafabtc.data.data.local.dao.TickerDao;
 import com.fafabtc.data.data.local.dao.TradeDao;
+import com.fafabtc.data.model.entity.ExchangeRate;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
@@ -38,8 +40,9 @@ import com.fafabtc.domain.data.local.StringArrayConverter;
                 Order.class,
                 Trade.class,
                 Ticker.class,
+                ExchangeRate.class
         },
-        version = 1)
+        version = 2)
 @TypeConverters(
         {
                 DateConverter.class,
@@ -65,4 +68,6 @@ public abstract class ExchangeDatabase extends RoomDatabase {
     public abstract TickerDao tickerDao();
 
     public abstract AssetsStatisticsDao assetsStatisticsDao();
+
+    public abstract ExchangeRateDao exchangeRateDao();
 }

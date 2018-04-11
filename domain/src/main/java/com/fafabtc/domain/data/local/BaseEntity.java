@@ -1,6 +1,5 @@
 package com.fafabtc.domain.data.local;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Date;
@@ -14,7 +13,6 @@ public class BaseEntity {
     @PrimaryKey(autoGenerate = true)
     public Long id;
 
-    @ColumnInfo(index = true)
     public Date timestamp = new Date();
 
     public Long getId() {

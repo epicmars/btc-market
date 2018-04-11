@@ -9,14 +9,12 @@ import android.support.annotation.Nullable;
 
 import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.utils.ExecutorManager;
-import com.fafabtc.common.file.FileUtils;
-import com.fafabtc.common.json.GsonHelper;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.global.AssetsStateRepository;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
-import com.fafabtc.data.global.AssetsStateRepository;
-import com.fafabtc.data.model.vo.AccountAssetsData;
+import com.fafabtc.data.data.repo.ExchangeRepo;
+import com.fafabtc.data.model.entity.exchange.Exchange;
 
-import java.util.List;
+import java.util.Arrays;
 
 import javax.inject.Inject;
 
@@ -30,8 +28,6 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
-import static com.fafabtc.data.global.AssetsState.ASSETS_DATA_FILE;
-
 /**
  * Created by jastrelax on 2018/1/15.
  */
@@ -42,7 +38,7 @@ public class SyncService extends DaggerService {
     ExchangeAssetsRepo exchangeAssetsRepo;
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    ExchangeRepo exchangeRepo;
 
     @Inject
     AssetsStateRepository assetsStateRepository;
@@ -83,23 +79,28 @@ public class SyncService extends DaggerService {
     private BroadcastReceiver assetsSyncReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            assetsStateRepository.isAssetsInitialized()
-                    .flatMapCompletable(new Function<Boolean, CompletableSource>() {
+            // Eliminate business coupling of different exchanges.
+            exchangeRepo.getExchanges()
+                    .flattenAsObservable(new Function<Exchange[], Iterable<Exchange>>() {
                         @Override
-                        public CompletableSource apply(Boolean aBoolean) throws Exception {
-                            if (aBoolean) {
-                                return exchangeAssetsRepo.getAllAccountAssetsData()
-                                        .flatMapCompletable(new Function<List<AccountAssetsData>, CompletableSource>() {
-                                            @Override
-                                            public CompletableSource apply(List<AccountAssetsData> exchangeAssets) throws Exception {
-                                                if (!exchangeAssets.isEmpty()) {
-                                                    FileUtils.writeFile(ASSETS_DATA_FILE, GsonHelper.prettyGson().toJson(exchangeAssets));
-                                                }
-                                                return Completable.complete();
+                        public Iterable<Exchange> apply(Exchange[] exchanges) throws Exception {
+                            return Arrays.asList(exchanges);
+                        }
+                    })
+                    .singleOrError()
+                    .flatMapCompletable(new Function<Exchange, CompletableSource>() {
+                        @Override
+                        public CompletableSource apply(final Exchange exchange) throws Exception {
+                            return exchangeAssetsRepo.isExchangeAssetsInitialized(exchange.getName())
+                                    .flatMapCompletable(new Function<Boolean, CompletableSource>() {
+                                        @Override
+                                        public CompletableSource apply(Boolean aBoolean) throws Exception {
+                                            if (aBoolean) {
+                                                return exchangeAssetsRepo.cacheExchangeAssetsToFile(exchange);
                                             }
-                                        });
-                            }
-                            return Completable.complete();
+                                            return Completable.complete();
+                                        }
+                                    });
                         }
                     })
                     .subscribeOn(Schedulers.from(ExecutorManager.getIO()))

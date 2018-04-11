@@ -88,7 +88,7 @@ public class ExchangeEntryViewModel extends ViewModel {
     }
 
     public void deleteAssets() {
-        accountAssetsRepo.deleteAssets(accountAssets)
+        accountAssetsRepo.delete(accountAssets)
                 .compose(RxUtils.completableAsyncIO())
                 .subscribe(new CompletableObserver() {
                     @Override

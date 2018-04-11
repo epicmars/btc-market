@@ -14,7 +14,7 @@ import com.fafabtc.app.utils.WidgetUtils;
 import com.fafabtc.data.data.repo.AccountAssetsRepo;
 import com.fafabtc.data.data.repo.AssetsStatisticsRepo;
 import com.fafabtc.data.data.repo.DataRepo;
-import com.fafabtc.data.global.AssetsStateRepository;
+import com.fafabtc.data.data.global.AssetsStateRepository;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
 import com.fafabtc.data.model.vo.WidgetData;
 
@@ -35,8 +35,6 @@ import timber.log.Timber;
 
 public class WidgetService extends DaggerService {
 
-    private static final int MSG_MANUL_UPDATE_TICKERS = 1;
-
     @Inject
     DataRepo dataRepo;
 
@@ -52,16 +50,6 @@ public class WidgetService extends DaggerService {
     public static final int MIN_UPDATE_INTERVAL = 60 * 1000;
 
     private boolean isUpdating = false;
-    private boolean isManulUpdateQueued = false;
-
-    private Handler handler = new Handler(new Handler.Callback() {
-        @Override
-        public boolean handleMessage(Message msg) {
-            updateTickers(WidgetService.this);
-            isManulUpdateQueued = false;
-            return true;
-        }
-    });
 
     public WidgetService() {
     }
@@ -85,11 +73,11 @@ public class WidgetService extends DaggerService {
         if (intent != null && intent.getAction() != null) {
             switch (intent.getAction()) {
                 case Services.Actions.ACTION_UPDATE_TICKERS:
-                    updateTickers(this);
+                    updateTickers();
                     break;
-                case Services.Actions.ACTION_MANUL_UPDATE_TICKERS:
+                case Services.Actions.ACTION_MANUAL_UPDATE_TICKERS:
                     AssetsWidgetProvider.showLoadingProgress(this);
-                    queueUpdateTickers();
+                    updateTickers();
                     break;
                 case Services.Actions.ACTION_UPDATE_WIDGET:
                     updateWidgetData();
@@ -99,15 +87,7 @@ public class WidgetService extends DaggerService {
         return START_STICKY;
     }
 
-    private void queueUpdateTickers() {
-        if (isManulUpdateQueued) return;
-        isManulUpdateQueued = true;
-        handler.removeMessages(MSG_MANUL_UPDATE_TICKERS);
-        handler.sendEmptyMessageDelayed(MSG_MANUL_UPDATE_TICKERS, getDelay());
-    }
-
-    private void updateTickers(final Context context) {
-        if (getDelay() > 0) return;
+    private void updateTickers() {
         if (isUpdating) return;
         isUpdating = true;
         dataRepo.refreshTickers()
@@ -134,30 +114,6 @@ public class WidgetService extends DaggerService {
                 });
     }
 
-    long initialDelay = 0;
-    private long getDelay() {
-        initialDelay = 0;
-        assetsStateRepository.getUpdateTime()
-                .subscribe(new SingleObserver<Date>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Date date) {
-                        long elapsed = System.currentTimeMillis() - date.getTime();
-                        initialDelay = elapsed > MIN_UPDATE_INTERVAL ? 0 : MIN_UPDATE_INTERVAL - elapsed;
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                });
-        return initialDelay;
-    }
-
     private void updateWidgetData() {
         final WidgetData widgetData = new WidgetData();
         accountAssetsRepo.getCurrent()
@@ -168,11 +124,10 @@ public class WidgetService extends DaggerService {
                         return assetsStatisticsRepo.getAccountTotalVolume(accountAssets.getUuid());
                     }
                 })
-                .zipWith(assetsStateRepository.getFormatedUpdateTime(), new BiFunction<Double, String, WidgetData>() {
+                .map(new Function<Double, WidgetData>() {
                     @Override
-                    public WidgetData apply(Double aDouble, String s) throws Exception {
+                    public WidgetData apply(Double aDouble) throws Exception {
                         widgetData.setVolume(aDouble);
-                        widgetData.setUpdateTime(s);
                         return widgetData;
                     }
                 })

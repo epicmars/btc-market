@@ -16,8 +16,8 @@ import java.util.Date;
  */
 
 @Entity(tableName = "account_assets",
-        primaryKeys = "uuid",
-        indices = {@Index(value = "name", unique = true)})
+        indices = {@Index(value = "name", unique = true),
+        @Index(value = "uuid", unique = true)})
 public class AccountAssets extends BaseEntity implements Parcelable{
 
     public static final String DEFAULT_NAME = "我的资产";

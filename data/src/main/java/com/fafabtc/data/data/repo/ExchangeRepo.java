@@ -28,7 +28,11 @@ public interface ExchangeRepo {
 
     Completable initHuobi();
 
+    Completable init(String exchange);
+
     Completable save(Exchange exchange);
 
     Single<Exchange[]> getExchanges();
+
+    Single<Exchange> getExchange(String name);
 }

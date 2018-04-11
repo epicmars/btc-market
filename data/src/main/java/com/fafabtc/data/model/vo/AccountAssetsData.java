@@ -8,6 +8,7 @@ import java.util.List;
  * Created by jastrelax on 2018/1/15.
  */
 
+@Deprecated
 public class AccountAssetsData {
 
     private AccountAssets accountAssets;

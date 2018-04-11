@@ -4,11 +4,9 @@ import android.content.Context;
 
 import com.fafabtc.binance.data.repo.BinanceRepo;
 import com.fafabtc.binance.model.BinancePair;
-import com.fafabtc.common.file.AndroidAssetsUtils;
-import com.fafabtc.common.json.GsonHelper;
 import com.fafabtc.data.data.local.dao.ExchangeDao;
-import com.fafabtc.data.data.local.dao.PairDao;
 import com.fafabtc.data.data.repo.ExchangeRepo;
+import com.fafabtc.data.data.repo.PairRepo;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.entity.exchange.Pair;
 import com.fafabtc.data.model.entity.mapper.PairMapperFactory;
@@ -24,7 +22,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
-import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.functions.Action;
@@ -36,16 +33,14 @@ import io.reactivex.functions.Function;
 
 public class ExchangeRepository implements ExchangeRepo {
 
-    private static final String EXCHANGE_FILE_NAME = "exchanges.json";
+    @Inject
+    Context context;
 
     @Inject
-    Context appContext;
+    ExchangeDao exchangeDao;
 
     @Inject
-    ExchangeDao dao;
-
-    @Inject
-    PairDao pairDao;
+    PairRepo pairRepo;
 
     @Inject
     GateioRepo gateioRepo;
@@ -62,7 +57,7 @@ public class ExchangeRepository implements ExchangeRepo {
 
     @Override
     public Completable init() {
-        return Completable.concatArray(
+        return Completable.mergeArrayDelayError(
                 initGateio(),
                 initBinance(),
                 initHuobi()
@@ -71,6 +66,7 @@ public class ExchangeRepository implements ExchangeRepo {
 
     @Override
     public Completable initGateio() {
+        // Initiate exchange and assets data, refresh tickers after exchange and assets initiation have complete.
         return gateioRepo.init()
                 .flattenAsObservable(this.<GateioPair>flattenList())
                 .map(PairMapperFactory.GateioPairMapper.MAPPER)
@@ -79,18 +75,6 @@ public class ExchangeRepository implements ExchangeRepo {
                 .flatMapCompletable(saveExchangeCompletableMap(GateioRepo.GATEIO_EXCHANGE));
     }
 
-    private Function<Pair, ObservableSource<Pair>> savePair = new Function<Pair, ObservableSource<Pair>>() {
-        @Override
-        public ObservableSource<Pair> apply(final Pair pair) throws Exception {
-            return Observable.fromCallable(new Callable<Pair>() {
-                @Override
-                public Pair call() throws Exception {
-                    pairDao.insertOne(pair);
-                    return pair;
-                }
-            }).onErrorReturnItem(pair);
-        }
-    };
 
     @Override
     public Completable initBinance() {
@@ -112,6 +96,31 @@ public class ExchangeRepository implements ExchangeRepo {
                 .flatMapCompletable(saveExchangeCompletableMap(HuobiRepo.HUOBI_EXCHANGE));
     }
 
+    /**
+     * Initiate a exchange and it's trade pairs.
+     *
+     * @param exchange a exchange
+     * @return a Completable
+     */
+    public Completable init(String exchange) {
+        switch (exchange) {
+            case GateioRepo.GATEIO_EXCHANGE:
+                return initGateio();
+            case BinanceRepo.BINANCE_EXCHANGE:
+                return initBinance();
+            case HuobiRepo.HUOBI_EXCHANGE:
+                return initHuobi();
+        }
+        return Completable.complete();
+    }
+
+    private Function<Pair, ObservableSource<Pair>> savePair = new Function<Pair, ObservableSource<Pair>>() {
+        @Override
+        public ObservableSource<Pair> apply(final Pair pair) throws Exception {
+            return pairRepo.save(pair).toSingleDefault(pair).toObservable().onErrorReturnItem(pair);
+        }
+    };
+
     public Function<List<Pair>, CompletableSource> saveExchangeCompletableMap(final String exchangeName) {
         return new Function<List<Pair>, CompletableSource>() {
             @Override
@@ -128,12 +137,12 @@ public class ExchangeRepository implements ExchangeRepo {
         return Completable.fromAction(new Action() {
             @Override
             public void run() throws Exception {
-                Exchange cached = dao.findByName(exchange.getName());
+                Exchange cached = exchangeDao.findByName(exchange.getName());
                 if (cached == null) {
-                    dao.insertOne(exchange);
+                    exchangeDao.insertOne(exchange);
                 } else {
                     exchange.setId(cached.getId());
-                    dao.updateOne(exchange);
+                    exchangeDao.updateOne(exchange);
                 }
             }
         });
@@ -144,7 +153,17 @@ public class ExchangeRepository implements ExchangeRepo {
         return Single.fromCallable(new Callable<Exchange[]>() {
             @Override
             public Exchange[] call() throws Exception {
-                return dao.findAll();
+                return exchangeDao.findAll();
+            }
+        });
+    }
+
+    @Override
+    public Single<Exchange> getExchange(final String name) {
+        return Single.fromCallable(new Callable<Exchange>() {
+            @Override
+            public Exchange call() throws Exception {
+                return exchangeDao.findByName(name);
             }
         });
     }
@@ -158,9 +177,4 @@ public class ExchangeRepository implements ExchangeRepo {
         };
     }
 
-    private Exchange[] getExchangesFromAssets() {
-        String exchangeJSON = AndroidAssetsUtils.readFromAssets(appContext.getAssets(), EXCHANGE_FILE_NAME);
-        Exchange[] exchangeArray = GsonHelper.gson().fromJson(exchangeJSON, Exchange[].class);
-        return exchangeArray;
-    }
 }

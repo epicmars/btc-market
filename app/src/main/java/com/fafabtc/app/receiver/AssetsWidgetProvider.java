@@ -100,7 +100,12 @@ public class AssetsWidgetProvider extends AppWidgetProvider {
             final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_account_assets);
             rv.setOnClickPendingIntent(R.id.btn_refresh, manulUpdateTickers(context));
             rv.setTextViewText(R.id.tv_assets_name, data.getAccountAssets().getName());
-            rv.setTextViewText(R.id.tv_update_time, context.getString(R.string.update_time_format, data.getUpdateTime()));
+            if (data.getUpdateTime() == null) {
+                rv.setViewVisibility(R.id.tv_update_time, View.INVISIBLE);
+            } else {
+                rv.setViewVisibility(R.id.tv_update_time, View.VISIBLE);
+                rv.setTextViewText(R.id.tv_update_time, context.getString(R.string.update_time_format, data.getUpdateTime()));
+            }
             rv.setTextViewText(R.id.tv_total, NumberUtils.formatBalance(data.getVolume()));
             rv.setViewVisibility(R.id.pb_loading, View.INVISIBLE);
             appWidgetManager.updateAppWidget(appWidgetId, rv);
@@ -116,7 +121,7 @@ public class AssetsWidgetProvider extends AppWidgetProvider {
 
     public static PendingIntent manulUpdateTickers(Context context) {
         Intent intent = new Intent(context, WidgetService.class);
-        intent.setAction(Services.Actions.ACTION_MANUL_UPDATE_TICKERS);
+        intent.setAction(Services.Actions.ACTION_MANUAL_UPDATE_TICKERS);
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, 0);
         return pendingIntent;
     }

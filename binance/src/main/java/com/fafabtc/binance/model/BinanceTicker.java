@@ -11,8 +11,7 @@ import android.arch.persistence.room.Index;
         indices = @Index(
                 value = "symbol",
                 unique = true
-        ),
-        inheritSuperIndices = true)
+        ))
 public class BinanceTicker extends BinanceEntity {
 
     private String symbol;

@@ -44,7 +44,6 @@ public class AccountAssetsCreateActivity extends BaseActivity<ActivityAccountAss
             public void onClick(View v) {
                 String assetsName = binding.etAccountAssetsName.getText().toString();
                 if (TextUtils.isEmpty(assetsName)) {
-//                    Toast.makeText(AccountAssetsCreateActivity.this, "资产组合名为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 mViewModel.createAccountAssets(assetsName);

@@ -26,8 +26,7 @@ import java.util.Date;
  */
 
 @Entity(tableName = "ticker",
-        indices = @Index(value = "pair", unique = true),
-        inheritSuperIndices = true)
+        indices = @Index(value = "pair", unique = true))
 public class GateioTicker extends GateioEntity implements Parcelable {
 
     private String pair;

@@ -17,6 +17,10 @@ public interface Broadcasts {
 
     interface WidgetActions {
         String ACTION_UPDATE_WIDGET = "com.fafabtc.app.constants.Boradcast.WidgetActions.ACTION_UPDATE_WIDGET";
-        String ACTION_MANUL_UPDATE_TICKERS = "com.fafabtc.app.constants.Boradcast.WidgetActions.ACTION_MANUL_UPDATE_TICKERS";
+        String ACTION_MANUL_UPDATE_TICKERS = "com.fafabtc.app.constants.Boradcast.WidgetActions.ACTION_MANUAL_UPDATE_TICKERS";
+    }
+
+    interface Extras {
+        String EXTRAS_EXCHANGE_NAME = "com.fafabtc.app.constants.Boradcast.Extras.EXTRAS_EXCHANGE_NAME";
     }
 }

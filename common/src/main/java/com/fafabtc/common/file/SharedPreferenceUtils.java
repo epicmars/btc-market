@@ -40,6 +40,13 @@ public class SharedPreferenceUtils {
         editor.apply();
     }
 
+    public static String getString(Context context, String preference, String key) {
+        if (context == null || preference == null || key == null)
+            return null;
+        SharedPreferences pref = context.getSharedPreferences(preference, 0);
+        return pref.getString(key, "");
+    }
+
     public static SharedPreferences getPreference(Context context, String preference) {
         if (context == null || preference == null)
             return null;

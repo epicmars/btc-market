@@ -1,7 +1,6 @@
 package com.fafabtc.data.data.repo;
 
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
-import com.fafabtc.data.model.vo.AccountAssetsData;
 
 import java.util.List;
 
@@ -14,23 +13,21 @@ import io.reactivex.Single;
 
 public interface AccountAssetsRepo {
 
-    Completable initAllAccountAssets();
+    Completable save(AccountAssets... accountAssets);
 
-    Completable initAssets(AccountAssets accountAssets);
-
-    Single<AccountAssets> createAssets(String assetsName);
-
-    Completable deleteAssets(AccountAssets accountAssets);
+    Completable delete(AccountAssets accountAssets);
 
     Completable update(AccountAssets... accountAssets);
-
-    Completable init();
-
-    Completable restore(AccountAssetsData accountAssetsData);
 
     Single<AccountAssets> getCurrent();
 
     Single<AccountAssets> getByUUID(String uuid);
 
-    Single<List<AccountAssets>> getAllAssets();
+    Single<AccountAssets> getByName(String name);
+
+    Single<Boolean> isCreated(String name);
+
+    Single<List<AccountAssets>> getAll();
+
+    Single<AccountAssets> create(String assetsName);
 }

@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.repo.AccountAssetsRepo;
-import com.fafabtc.data.global.AssetsStateRepository;
+import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
 import com.fafabtc.data.model.entity.exchange.AccountAssets;
 
 import javax.inject.Inject;
@@ -24,7 +24,7 @@ public class AccountViewModel extends ViewModel{
     AccountAssetsRepo accountAssetsRepo;
 
     @Inject
-    AssetsStateRepository assetsStateRepository;
+    ExchangeAssetsRepo exchangeAssetsRepo;
 
     private MutableLiveData<AccountAssets> currentAccountAssets;
 
@@ -40,7 +40,8 @@ public class AccountViewModel extends ViewModel{
     }
 
     public void loadAccountList() {
-        assetsStateRepository.isAssetsInitialized()
+        exchangeAssetsRepo.isExchangeAssetsInitialized()
+                .compose(RxUtils.<Boolean>singleAsyncIO())
                 .subscribe(new SingleObserver<Boolean>() {
                     @Override
                     public void onSubscribe(Disposable d) {

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -46,8 +45,6 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
     };
 
     private MainViewModel mainViewModel;
-
-    private Handler handler = new Handler();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -110,15 +107,16 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent != null && intent.getAction() != null) {
+                String exchange = intent.getStringExtra(DataBroadcasts.Extras.EXTRA_EXCHANGE_NAME);
                 switch (intent.getAction()) {
                     case DataBroadcasts.Actions.ACTION_INITIATE_EXCHANGE:
-                        binding.tvStateTip.setText("初始化交易所数据...");
+                        binding.tvStateTip.setText(String.format("初始化%s交易所数据...", exchange));
                         break;
                     case DataBroadcasts.Actions.ACTION_INITIATE_ASSETS:
-                        binding.tvStateTip.setText("初始化资产...");
+                        binding.tvStateTip.setText(String.format("初始化%s资产...", exchange));
                         break;
                     case DataBroadcasts.Actions.ACTION_FETCH_TICKERS:
-                        binding.tvStateTip.setText("获取最新行情...");
+                        binding.tvStateTip.setText(String.format("获取%s最新行情...", exchange));
                         break;
                     case DataBroadcasts.Actions.ACTION_DATA_INITIALIZED:
                         hideStateTip();

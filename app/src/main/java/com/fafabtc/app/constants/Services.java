@@ -9,6 +9,6 @@ public interface Services {
     interface Actions {
         String ACTION_UPDATE_TICKERS = "com.fafabtc.app.constants.Services.Actions.ACTION_UPDATE_TICKERS";
         String ACTION_UPDATE_WIDGET = "com.fafabtc.app.constants.Services.Actions.ACTION_UPDATE_WIDGET";
-        String ACTION_MANUL_UPDATE_TICKERS = "com.fafabtc.app.constants.Services.Actions.ACTION_MANUL_UPDATE_TICKERS";
+        String ACTION_MANUAL_UPDATE_TICKERS = "com.fafabtc.app.constants.Services.Actions.ACTION_MANUAL_UPDATE_TICKERS";
     }
 }

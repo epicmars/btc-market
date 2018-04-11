@@ -10,7 +10,8 @@ import android.support.annotation.Nullable;
 import com.fafabtc.app.utils.ExecutorManager;
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.repo.DataRepo;
-import com.fafabtc.data.global.AssetsStateRepository;
+import com.fafabtc.data.data.global.AssetsStateRepository;
+import com.fafabtc.data.data.repo.ExchangeRepo;
 
 import java.util.Date;
 import java.util.concurrent.Executors;
@@ -35,6 +36,7 @@ public class MainService extends DaggerService {
 
     private static final int MSG_REFRESH_TICKER = 1;
     public static final int UPDATE_PERIOD = 60 * 1000;
+    private static final String KEY_EXCHANGE = "MainService.KEY_EXCHANGE";
 
     @Inject
     DataRepo dataRepo;
@@ -47,7 +49,7 @@ public class MainService extends DaggerService {
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_REFRESH_TICKER:
-                    refreshTickers();
+                    refreshTickers(msg.getData().getString(KEY_EXCHANGE));
                     return true;
             }
             return false;
@@ -70,8 +72,8 @@ public class MainService extends DaggerService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        initData();
-        return START_NOT_STICKY;
+        initiateData();
+        return START_STICKY;
     }
 
     @Override
@@ -93,8 +95,8 @@ public class MainService extends DaggerService {
         }
     }
 
-    private void initData() {
-        dataRepo.init()
+    private void initiateData() {
+        dataRepo.initiate()
                 .compose(RxUtils.completableAsyncIO())
                 .subscribe(new CompletableObserver() {
                     @Override
@@ -104,7 +106,7 @@ public class MainService extends DaggerService {
 
                     @Override
                     public void onComplete() {
-                        Timber.d("initData complete");
+                        Timber.d("initiateData complete");
                     }
 
                     @Override
@@ -119,18 +121,26 @@ public class MainService extends DaggerService {
             scheduledExecutorService.shutdownNow();
         }
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        for (String exchange : ExchangeRepo.EXCHANGES) {
+            startRefreshTickers(exchange);
+        }
+    }
+
+    private void startRefreshTickers(final String exchange) {
         scheduledExecutorService.scheduleWithFixedDelay(new Runnable() {
             @Override
             public void run() {
-                handler.obtainMessage(MSG_REFRESH_TICKER).sendToTarget();
+                Message message = handler.obtainMessage(MSG_REFRESH_TICKER);
+                message.getData().putString(KEY_EXCHANGE, exchange);
+                message.sendToTarget();
             }
-        }, getInitialDelay(), UPDATE_PERIOD, TimeUnit.MILLISECONDS);
+        }, getInitialDelay(exchange), UPDATE_PERIOD, TimeUnit.MILLISECONDS);
     }
 
     private long initialDelay = 0;
-    private long getInitialDelay() {
+    private long getInitialDelay(String exchange) {
         initialDelay = 0;
-        assetsStateRepository.getUpdateTime()
+        assetsStateRepository.getUpdateTime(exchange)
                 .subscribe(new SingleObserver<Date>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -153,8 +163,8 @@ public class MainService extends DaggerService {
         return initialDelay;
     }
 
-    private void refreshTickers() {
-        dataRepo.refreshTickers()
+    private void refreshTickers(String exchange) {
+        dataRepo.refreshTickers(exchange)
                 .subscribeOn(Schedulers.from(ExecutorManager.getIO()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {

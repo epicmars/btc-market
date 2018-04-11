@@ -15,4 +15,8 @@ public interface DataBroadcasts {
         // update
         String ACTION_TICKER_UPDATED = "com.fafabtc.data.consts.DataBroadcasts.Actions.ACTION_TICKER_UPDATED";
     }
+
+    interface Extras {
+        String EXTRA_EXCHANGE_NAME = "com.fafabtc.data.consts.DataBroadcasts.Extras.EXTRA_EXCHANGE_NAME";
+    }
 }

@@ -6,10 +6,9 @@ package com.fafabtc.data.provider;
 
 public interface Providers {
 
-    interface AssetsState {
-        String URI = "content://com.fafabtc.data.provider/assets_state";
-        // columns
-        String UPDATE_TIME = "updateTime";
-        String IS_ASSETS_INITIALIZED = "isAssetsInitialized";
-    }
+    String XML_URL = "content://com.fafabtc.data.provider/xml/";
+    String FILE_URL = "content://com.fafabtc.data.provider/file/";
+
+    String ASSETS_DATA_FILE = "_assets.json";
+    String ASSETS_PREF = "assets_pref";
 }

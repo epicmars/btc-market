@@ -2,6 +2,7 @@ package com.fafabtc.data.model.entity.exchange;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -16,7 +17,7 @@ import java.util.Date;
  * 即多个订单可以属于同一交易所，或者同一项资产。
  * Created by jastrelax on 2018/1/9.
  */
-@Entity(tableName = "orders")
+@Entity(tableName = "orders", indices = @Index(value = "uuid", unique = true))
 public class Order extends BaseEntity implements Parcelable{
 
     public enum Type {
@@ -36,7 +37,6 @@ public class Order extends BaseEntity implements Parcelable{
     @ColumnInfo(name = "exchange")
     private String exchange;
 
-    @PrimaryKey
     @NonNull
     private String uuid;
 

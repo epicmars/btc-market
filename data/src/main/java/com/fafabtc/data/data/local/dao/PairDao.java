@@ -29,4 +29,7 @@ public interface PairDao {
 
     @Query("with t(base) as (select distinct base from pair) select distinct quote collate nocase from pair where quote not in t")
     String[] findQuotesAsBalance();
+
+    @Query("select count(distinct base) from pair where exchange = :exchange")
+    int countBases(String exchange);
 }

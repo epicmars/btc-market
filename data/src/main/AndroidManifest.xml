@@ -2,9 +2,8 @@
     package="com.fafabtc.data" >
 
     <application>
-
         <provider
             android:authorities="com.fafabtc.data.provider"
-            android:name=".provider.AssetsStateProvider" />
+            android:name=".provider.SharedPreferenceDataProvider" />
     </application>
 </manifest>
