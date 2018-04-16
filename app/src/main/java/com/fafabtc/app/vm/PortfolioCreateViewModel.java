@@ -6,9 +6,9 @@ import android.arch.lifecycle.ViewModel;
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.app.vm.exception.ViewModelException;
 import com.fafabtc.data.data.global.AssetsStateRepository;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.domain.model.Resource;
 
 import javax.inject.Inject;
@@ -24,10 +24,10 @@ import timber.log.Timber;
  * Created by jastrelax on 2018/1/8.
  */
 
-public class AccountAssetsCreateViewModel extends ViewModel {
+public class PortfolioCreateViewModel extends ViewModel {
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
     @Inject
     ExchangeAssetsRepo exchangeAssetsRepo;
@@ -35,10 +35,10 @@ public class AccountAssetsCreateViewModel extends ViewModel {
     @Inject
     AssetsStateRepository assetsStateRepository;
 
-    MutableLiveData<Resource<AccountAssets>> assetsMutableLiveData = new MutableLiveData<>();
+    MutableLiveData<Resource<Portfolio>> portfolioMutableLiveData = new MutableLiveData<>();
 
     @Inject
-    public AccountAssetsCreateViewModel() {
+    public PortfolioCreateViewModel() {
     }
 
     /**
@@ -46,48 +46,48 @@ public class AccountAssetsCreateViewModel extends ViewModel {
      *
      * @param assetsName
      */
-    public void createAccountAssets(final String assetsName) {
-        final Single<AccountAssets> created = exchangeAssetsRepo.isExchangeAssetsInitialized()
-                .flatMap(new Function<Boolean, SingleSource<AccountAssets>>() {
+    public void createPortfolio(final String assetsName) {
+        final Single<Portfolio> created = exchangeAssetsRepo.isExchangeAssetsInitialized()
+                .flatMap(new Function<Boolean, SingleSource<Portfolio>>() {
                     @Override
-                    public SingleSource<AccountAssets> apply(Boolean aBoolean) throws Exception {
+                    public SingleSource<Portfolio> apply(Boolean aBoolean) throws Exception {
                         if (aBoolean)
-                            return exchangeAssetsRepo.createAccountAssetsOfExchange(assetsName);
+                            return exchangeAssetsRepo.createPortfolioOfExchange(assetsName);
                         throw new ViewModelException("资产初始化中");
                     }
                 });
 
-        accountAssetsRepo.isCreated(assetsName)
-                .flatMap(new Function<Boolean, SingleSource<AccountAssets>>() {
+        portfolioRepo.isCreated(assetsName)
+                .flatMap(new Function<Boolean, SingleSource<Portfolio>>() {
                     @Override
-                    public SingleSource<AccountAssets> apply(Boolean aBoolean) throws Exception {
+                    public SingleSource<Portfolio> apply(Boolean aBoolean) throws Exception {
                         if (aBoolean)
                             throw new ViewModelException(String.format("已存在\"%s\"资产组合", assetsName));
                         return created;
                     }
                 })
-                .compose(RxUtils.<AccountAssets>singleAsyncIO())
-                .subscribe(new SingleObserver<AccountAssets>() {
+                .compose(RxUtils.<Portfolio>singleAsyncIO())
+                .subscribe(new SingleObserver<Portfolio>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onSuccess(AccountAssets accountAssets) {
-                        assetsMutableLiveData.setValue(Resource.success(accountAssets));
+                    public void onSuccess(Portfolio portfolio) {
+                        portfolioMutableLiveData.setValue(Resource.success(portfolio));
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Timber.e(e);
                         String message = e.getMessage();
-                        assetsMutableLiveData.setValue(Resource.error(message, new AccountAssets()));
+                        portfolioMutableLiveData.setValue(Resource.error(message, new Portfolio()));
                     }
                 });
     }
 
-    public MutableLiveData<Resource<AccountAssets>> getAccountAssets() {
-        return assetsMutableLiveData;
+    public MutableLiveData<Resource<Portfolio>> getPortfolio() {
+        return portfolioMutableLiveData;
     }
 }

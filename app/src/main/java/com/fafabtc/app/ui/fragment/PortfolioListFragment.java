@@ -14,15 +14,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.databinding.FragmentAccountAssetsListBinding;
+import com.fafabtc.app.databinding.FragmentPortfolioListBinding;
 import com.fafabtc.app.ui.base.BaseDialogFragment;
 import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.base.RecyclerAdapter;
-import com.fafabtc.app.ui.viewholder.AccountAssetsViewHolder;
-import com.fafabtc.app.vm.AccountAssetsViewModel;
-import com.fafabtc.app.vm.AccountViewModel;
+import com.fafabtc.app.ui.viewholder.PortfolioViewHolder;
+import com.fafabtc.app.vm.PortfolioListViewModel;
+import com.fafabtc.app.vm.PortfolioViewModel;
 import com.fafabtc.data.consts.DataBroadcasts;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.domain.model.Resource;
 
 import java.util.List;
@@ -30,18 +30,18 @@ import java.util.List;
 /**
  * Created by jastrelax on 2018/1/17.
  */
-@BindLayout(R.layout.fragment_account_assets_list)
-public class AccountAssetsListFragment extends BaseDialogFragment<FragmentAccountAssetsListBinding>{
+@BindLayout(R.layout.fragment_portfolio_list)
+public class PortfolioListFragment extends BaseDialogFragment<FragmentPortfolioListBinding>{
 
     private RecyclerAdapter adapter;
 
-    private AccountAssetsViewModel viewModel;
+    private PortfolioListViewModel viewModel;
 
-    private AccountViewModel accountViewModel;
+    private PortfolioViewModel portfolioViewModel;
 
-    public static AccountAssetsListFragment newInstance() {
+    public static PortfolioListFragment newInstance() {
         Bundle args = new Bundle();
-        AccountAssetsListFragment fragment = new AccountAssetsListFragment();
+        PortfolioListFragment fragment = new PortfolioListFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,32 +60,32 @@ public class AccountAssetsListFragment extends BaseDialogFragment<FragmentAccoun
             }
         });
 
-        accountViewModel = getViewModelOfActivity(AccountViewModel.class);
-        viewModel = getViewModelOfActivity(AccountAssetsViewModel.class);
-        viewModel.getAccountAssetsList().observe(this, accountListObserver);
+        portfolioViewModel = getViewModelOfActivity(PortfolioViewModel.class);
+        viewModel = getViewModelOfActivity(PortfolioListViewModel.class);
+        viewModel.getPortfolioList().observe(this, accountListObserver);
 
         adapter = new RecyclerAdapter();
-        adapter.register(AccountAssetsViewHolder.class);
-        binding.recyclerAccountAssets.setNestedScrollingEnabled(false);
-        binding.recyclerAccountAssets.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.recyclerAccountAssets.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        binding.recyclerAccountAssets.setAdapter(adapter);
+        adapter.register(PortfolioViewHolder.class);
+        binding.recyclerPortfolio.setNestedScrollingEnabled(false);
+        binding.recyclerPortfolio.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerPortfolio.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        binding.recyclerPortfolio.setAdapter(adapter);
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
                 super.onChanged();
                 // do not update accout list again, it's a loop
-                accountViewModel.currentAccountChanged();
+                portfolioViewModel.currentAccountChanged();
             }
         });
-        viewModel.loadAccountAssetsList();
+        viewModel.loadPortfolioList();
     }
 
     @Override
     public void onStart() {
         super.onStart();
         // return from assets creation activity, should be updated.
-        viewModel.loadAccountAssetsList();
+        viewModel.loadPortfolioList();
     }
 
     @Override
@@ -97,15 +97,15 @@ public class AccountAssetsListFragment extends BaseDialogFragment<FragmentAccoun
     private BroadcastReceiver initiateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            viewModel.loadAccountAssetsList();
+            viewModel.loadPortfolioList();
         }
     };
 
-    private Observer<Resource<List<AccountAssets>>> accountListObserver = new Observer<Resource<List<AccountAssets>>>() {
+    private Observer<Resource<List<Portfolio>>> accountListObserver = new Observer<Resource<List<Portfolio>>>() {
         @Override
-        public void onChanged(@Nullable Resource<List<AccountAssets>> accountAssets) {
-            if (accountAssets != null && accountAssets.isSuccess()) {
-                adapter.setPayloads(accountAssets.data);
+        public void onChanged(@Nullable Resource<List<Portfolio>> portfolioResource) {
+            if (portfolioResource != null && portfolioResource.isSuccess()) {
+                adapter.setPayloads(portfolioResource.data);
             }
         }
     };

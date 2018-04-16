@@ -4,10 +4,10 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
-import com.fafabtc.data.data.local.converter.AccountAssetsStateConverter;
+import com.fafabtc.data.data.local.converter.PortfolioStateConverter;
 import com.fafabtc.data.data.local.converter.OrderStateConverter;
 import com.fafabtc.data.data.local.converter.OrderTypeConverter;
-import com.fafabtc.data.data.local.dao.AccountAssetsDao;
+import com.fafabtc.data.data.local.dao.PortfolioDao;
 import com.fafabtc.data.data.local.dao.AssetsStatisticsDao;
 import com.fafabtc.data.data.local.dao.BlockchainAssetsDao;
 import com.fafabtc.data.data.local.dao.ExchangeDao;
@@ -17,7 +17,7 @@ import com.fafabtc.data.data.local.dao.PairDao;
 import com.fafabtc.data.data.local.dao.TickerDao;
 import com.fafabtc.data.data.local.dao.TradeDao;
 import com.fafabtc.data.model.entity.ExchangeRate;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.entity.exchange.Order;
@@ -33,7 +33,7 @@ import com.fafabtc.domain.data.local.StringArrayConverter;
 
 @Database(
         entities = {
-                AccountAssets.class,
+                Portfolio.class,
                 BlockchainAssets.class,
                 Exchange.class,
                 Pair.class,
@@ -42,12 +42,12 @@ import com.fafabtc.domain.data.local.StringArrayConverter;
                 Ticker.class,
                 ExchangeRate.class
         },
-        version = 2)
+        version = 1)
 @TypeConverters(
         {
                 DateConverter.class,
                 StringArrayConverter.class,
-                AccountAssetsStateConverter.class,
+                PortfolioStateConverter.class,
                 OrderStateConverter.class,
                 OrderTypeConverter.class,
         })
@@ -55,7 +55,7 @@ public abstract class ExchangeDatabase extends RoomDatabase {
 
     public abstract ExchangeDao exchangeDao();
 
-    public abstract AccountAssetsDao accountAssetsDao();
+    public abstract PortfolioDao portfolioDao();
 
     public abstract BlockchainAssetsDao blockchainAssetsDao();
 

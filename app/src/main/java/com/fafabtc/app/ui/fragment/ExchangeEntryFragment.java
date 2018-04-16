@@ -16,7 +16,7 @@ import com.fafabtc.app.ui.base.RecyclerAdapter;
 import com.fafabtc.app.ui.viewholder.ExchangeEntryViewHolder;
 import com.fafabtc.app.vm.ExchangeEntryViewModel;
 import com.fafabtc.app.vm.ViewModelFactory;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.vo.ExchangeEntry;
 
 import java.util.List;
@@ -30,7 +30,7 @@ import javax.inject.Inject;
 @BindLayout(R.layout.fragment_exchange_entry)
 public class ExchangeEntryFragment extends BaseFragment<FragmentExchangeEntryBinding> {
 
-    private static final String ARGS_ACCOUNT_ASSETS = "ExchangeEntryFragment.ARGS_ACCOUNT_ASSETS";
+    private static final String ARGS_PORTFOLIO = "ExchangeEntryFragment.ARGS_PORTFOLIO";
 
     private RecyclerAdapter adapter;
 
@@ -39,9 +39,9 @@ public class ExchangeEntryFragment extends BaseFragment<FragmentExchangeEntryBin
     @Inject
     ViewModelFactory viewModelFactory;
 
-    public static ExchangeEntryFragment newInstance(AccountAssets accountAssets) {
+    public static ExchangeEntryFragment newInstance(Portfolio portfolio) {
         Bundle args = new Bundle();
-        args.putParcelable(ARGS_ACCOUNT_ASSETS, accountAssets);
+        args.putParcelable(ARGS_PORTFOLIO, portfolio);
         ExchangeEntryFragment fragment = new ExchangeEntryFragment();
         fragment.setArguments(args);
         return fragment;
@@ -50,7 +50,7 @@ public class ExchangeEntryFragment extends BaseFragment<FragmentExchangeEntryBin
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AccountAssets accountAssets = getArguments().getParcelable(ARGS_ACCOUNT_ASSETS);
+        Portfolio portfolio = getArguments().getParcelable(ARGS_PORTFOLIO);
 
         adapter = new RecyclerAdapter();
         adapter.register(ExchangeEntryViewHolder.class);
@@ -59,7 +59,7 @@ public class ExchangeEntryFragment extends BaseFragment<FragmentExchangeEntryBin
         binding.recyclerExchangeEntry.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
         viewModel = getViewModelOfActivity(ExchangeEntryViewModel.class);
-        viewModel.setAccountAssets(accountAssets);
+        viewModel.setPortfolio(portfolio);
         viewModel.getExchanges().observe(this, exchangeEntriesObserver);
         viewModel.loadExchanges();
     }

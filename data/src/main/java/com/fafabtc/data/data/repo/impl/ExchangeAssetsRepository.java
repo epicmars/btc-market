@@ -10,13 +10,13 @@ import com.fafabtc.common.file.FileUtils;
 import com.fafabtc.common.json.GsonHelper;
 import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.data.global.AssetsStateRepository;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.BlockchainAssetsRepo;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
 import com.fafabtc.data.data.repo.ExchangeRepo;
 import com.fafabtc.data.data.repo.PairRepo;
 import com.fafabtc.data.data.repo.TickerRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.ExchangeAssets;
@@ -59,7 +59,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     BlockchainAssetsRepo blockchainAssetsRepo;
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
     @Inject
     ExchangeRepo exchangeRepo;
@@ -134,7 +134,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     /**
      * Initiate assets of a exchange.
      * <p>
-     * Every blockchain assets belong to a {@link AccountAssets} and a {@link Exchange},
+     * Every blockchain assets belong to a {@link Portfolio} and a {@link Exchange},
      * If assets of a exchange is already initiated, which means the blockchain assets of
      * all assets account of an exchange have been initiated.
      * <p>
@@ -171,27 +171,27 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      */
     @Override
     public Single<Boolean> isExchangeAssetsInitialized(final String exchange) {
-        final SingleTransformer<List<AccountAssets>, Boolean> transformer = new SingleTransformer<List<AccountAssets>, Boolean>() {
+        final SingleTransformer<List<Portfolio>, Boolean> transformer = new SingleTransformer<List<Portfolio>, Boolean>() {
             @Override
-            public SingleSource<Boolean> apply(Single<List<AccountAssets>> upstream) {
+            public SingleSource<Boolean> apply(Single<List<Portfolio>> upstream) {
                 return upstream
-                        .flattenAsObservable(new Function<List<AccountAssets>, Iterable<AccountAssets>>() {
+                        .flattenAsObservable(new Function<List<Portfolio>, Iterable<Portfolio>>() {
                             @Override
-                            public Iterable<AccountAssets> apply(List<AccountAssets> accountAssets) throws Exception {
-                                return accountAssets;
+                            public Iterable<Portfolio> apply(List<Portfolio> portfolioList) throws Exception {
+                                return portfolioList;
                             }
                         })
                         .zipWith(exchangeRepo.getExchange(exchange).toObservable(),
-                                new BiFunction<AccountAssets, Exchange, Pair<AccountAssets, Exchange>>() {
+                                new BiFunction<Portfolio, Exchange, Pair<Portfolio, Exchange>>() {
                                     @Override
-                                    public Pair<AccountAssets, Exchange> apply(AccountAssets accountAssets, Exchange exchange) {
-                                        return new Pair<>(accountAssets, exchange);
+                                    public Pair<Portfolio, Exchange> apply(Portfolio portfolio, Exchange exchange) {
+                                        return new Pair<>(portfolio, exchange);
                                     }
                                 })
-                        .flatMapSingle(new Function<Pair<AccountAssets, Exchange>, SingleSource<ExchangeAssets>>() {
+                        .flatMapSingle(new Function<Pair<Portfolio, Exchange>, SingleSource<ExchangeAssets>>() {
                             @Override
-                            public SingleSource<ExchangeAssets> apply(Pair<AccountAssets, Exchange> accountAssetsExchangePair) throws Exception {
-                                return getExchangeAssets(accountAssetsExchangePair.first, accountAssetsExchangePair.second);
+                            public SingleSource<ExchangeAssets> apply(Pair<Portfolio, Exchange> portfolioExchangePair) throws Exception {
+                                return getExchangeAssets(portfolioExchangePair.first, portfolioExchangePair.second);
                             }
                         })
                         .zipWith(pairRepo.baseCount(exchange).toObservable(),
@@ -214,13 +214,13 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                         });
             }
         };
-        return accountAssetsRepo.getAll()
-                .flatMap(new Function<List<AccountAssets>, SingleSource<? extends Boolean>>() {
+        return portfolioRepo.getAll()
+                .flatMap(new Function<List<Portfolio>, SingleSource<? extends Boolean>>() {
                     @Override
-                    public SingleSource<? extends Boolean> apply(List<AccountAssets> accountAssets) throws Exception {
-                        if (accountAssets.isEmpty())
+                    public SingleSource<? extends Boolean> apply(List<Portfolio> portfolioList) throws Exception {
+                        if (portfolioList.isEmpty())
                             return Single.just(false);
-                        return Single.just(accountAssets).compose(transformer);
+                        return Single.just(portfolioList).compose(transformer);
                     }
                 });
     }
@@ -272,14 +272,14 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * @return a Completable
      */
     private Completable restoreExchangeAssets(final ExchangeAssets exchangeAssets) {
-        final String accountAssetsName = exchangeAssets.getAccountAssets().getName();
-        Single<AccountAssets> accountAssets = accountAssetsRepo.getByName(accountAssetsName)
-                .onErrorResumeNext(createAccountAssetsOfExchange(accountAssetsName, exchangeAssets.getExchange().getName()));
-        return accountAssets
-                .flatMapCompletable(new Function<AccountAssets, CompletableSource>() {
+        final String portfolioName = exchangeAssets.getPortfolio().getName();
+        Single<Portfolio> portfolioSingle = portfolioRepo.getByName(portfolioName)
+                .onErrorResumeNext(createPortfolioOfExchange(portfolioName, exchangeAssets.getExchange().getName()));
+        return portfolioSingle
+                .flatMapCompletable(new Function<Portfolio, CompletableSource>() {
                     @Override
-                    public CompletableSource apply(AccountAssets accountAssets) throws Exception {
-                        exchangeAssets.setAccountAssets(accountAssets);
+                    public CompletableSource apply(Portfolio portfolio) throws Exception {
+                        exchangeAssets.setPortfolio(portfolio);
                         return blockchainAssetsRepo.restoreExchangeBlockchainAssets(exchangeAssets);
                     }
                 })
@@ -289,7 +289,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     /**
      * Initiate account assets of an exchange.
      * <p>
-     * Every blockchain assets belong to a {@link AccountAssets} and a {@link Exchange},
+     * Every blockchain assets belong to a {@link Portfolio} and a {@link Exchange},
      * If assets of a exchange is already initiated, which means the blockchain assets of
      * all assets account of an exchange have been initiated.
      * <p>
@@ -300,18 +300,18 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * @return a Completable
      */
     private Completable doInitExchangeAssets(final String exchange) {
-        return accountAssetsRepo.getAll()
-                .flatMapCompletable(new Function<List<AccountAssets>, CompletableSource>() {
+        return portfolioRepo.getAll()
+                .flatMapCompletable(new Function<List<Portfolio>, CompletableSource>() {
                     @Override
-                    public CompletableSource apply(List<AccountAssets> accountAssets) throws Exception {
-                        if (accountAssets.isEmpty()) {
-                            return createAccountAssetsOfExchange(AccountAssets.DEFAULT_NAME, exchange).toCompletable();
+                    public CompletableSource apply(List<Portfolio> portfolioList) throws Exception {
+                        if (portfolioList.isEmpty()) {
+                            return createPortfolioOfExchange(Portfolio.DEFAULT_NAME, exchange).toCompletable();
                         } else {
-                            return Observable.fromIterable(accountAssets)
-                                    .flatMapCompletable(new Function<AccountAssets, CompletableSource>() {
+                            return Observable.fromIterable(portfolioList)
+                                    .flatMapCompletable(new Function<Portfolio, CompletableSource>() {
                                         @Override
-                                        public CompletableSource apply(AccountAssets accountAssets) throws Exception {
-                                            return initAccountAssetsOfExchange(accountAssets, exchange).toCompletable();
+                                        public CompletableSource apply(Portfolio portfolio) throws Exception {
+                                            return initPortfoliosOfExchange(portfolio, exchange).toCompletable();
                                         }
                                     });
                         }
@@ -328,20 +328,20 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * <p>
      * If the account assets already existed, no need to save it again. If current
      * account assets is not the account assets to be created, update it's state to
-     * {@link AccountAssets.State#ACTIVE}.
+     * {@link Portfolio.State#ACTIVE}.
      *
      * @param assetsName name of the account to be created
      * @param exchange   name of the exchange
      * @return a Single
-     * @see #initAccountAssetsOfExchange(AccountAssets, String)
+     * @see #initPortfoliosOfExchange(Portfolio, String)
      */
     @Override
-    public Single<AccountAssets> createAccountAssetsOfExchange(final String assetsName, final String exchange) {
-        return accountAssetsRepo.create(assetsName)
-                .flatMap(new Function<AccountAssets, SingleSource<AccountAssets>>() {
+    public Single<Portfolio> createPortfolioOfExchange(final String assetsName, final String exchange) {
+        return portfolioRepo.create(assetsName)
+                .flatMap(new Function<Portfolio, SingleSource<Portfolio>>() {
                     @Override
-                    public SingleSource<AccountAssets> apply(AccountAssets accountAssets) throws Exception {
-                        return initAccountAssetsOfExchange(accountAssets, exchange);
+                    public SingleSource<Portfolio> apply(Portfolio portfolio) throws Exception {
+                        return initPortfoliosOfExchange(portfolio, exchange);
                     }
                 });
     }
@@ -354,7 +354,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * @return a Single
      */
     @Override
-    public Single<AccountAssets> createAccountAssetsOfExchange(final String assetsName) {
+    public Single<Portfolio> createPortfolioOfExchange(final String assetsName) {
         return exchangeRepo.getExchanges()
                 .flattenAsObservable(new Function<Exchange[], Iterable<Exchange>>() {
                     @Override
@@ -362,10 +362,10 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                         return Arrays.asList(exchanges);
                     }
                 })
-                .flatMapSingle(new Function<Exchange, SingleSource<AccountAssets>>() {
+                .flatMapSingle(new Function<Exchange, SingleSource<Portfolio>>() {
                     @Override
-                    public SingleSource<AccountAssets> apply(Exchange exchange) throws Exception {
-                        return createAccountAssetsOfExchange(assetsName, exchange.getName());
+                    public SingleSource<Portfolio> apply(Exchange exchange) throws Exception {
+                        return createPortfolioOfExchange(assetsName, exchange.getName());
                     }
                 })
                 .firstOrError();
@@ -374,36 +374,36 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     /**
      * Initiate block chain assets of an account assets which belong to an exchange.
      *
-     * @param accountAssets the account assets to be initialized
+     * @param portfolio the account assets to be initialized
      * @param exchangeName  the name of the exchange
      * @return a Completable
      */
-    private Single<AccountAssets> initAccountAssetsOfExchange(final AccountAssets accountAssets, final String exchangeName) {
+    private Single<Portfolio> initPortfoliosOfExchange(final Portfolio portfolio, final String exchangeName) {
         return exchangeRepo.getExchange(exchangeName)
                 .flatMapCompletable(new Function<Exchange, CompletableSource>() {
                     @Override
                     public CompletableSource apply(Exchange exchange) throws Exception {
                         ExchangeAssets exchangeAssets = new ExchangeAssets();
-                        exchangeAssets.setAccountAssets(accountAssets);
+                        exchangeAssets.setPortfolio(portfolio);
                         exchangeAssets.setExchange(exchange);
-                        AccountAssets accountAssets = exchangeAssets.getAccountAssets();
-                        return blockchainAssetsRepo.initExchangeBlockchainAssets(accountAssets.getUuid(), exchange.getName());
+                        Portfolio portfolio = exchangeAssets.getPortfolio();
+                        return blockchainAssetsRepo.initExchangeBlockchainAssets(portfolio.getUuid(), exchange.getName());
                     }
-                }).toSingleDefault(accountAssets);
+                }).toSingleDefault(portfolio);
     }
 
     /**
      * Get all exchange assets which belong to an account assets.
      *
-     * @param accountAssets the account assets
+     * @param portfolio the account assets
      * @return a Single
      */
     @Override
-    public Single<List<ExchangeAssets>> getAllExchangeAssetsOfAccount(AccountAssets accountAssets) {
-        return Single.just(accountAssets)
-                .flatMapObservable(new Function<AccountAssets, ObservableSource<Pair<AccountAssets, Exchange>>>() {
+    public Single<List<ExchangeAssets>> getAllExchangeAssetsOfAccount(Portfolio portfolio) {
+        return Single.just(portfolio)
+                .flatMapObservable(new Function<Portfolio, ObservableSource<Pair<Portfolio, Exchange>>>() {
                     @Override
-                    public ObservableSource<Pair<AccountAssets, Exchange>> apply(final AccountAssets accountAssets) throws Exception {
+                    public ObservableSource<Pair<Portfolio, Exchange>> apply(final Portfolio portfolio) throws Exception {
                         return exchangeRepo.getExchanges()
                                 .flattenAsObservable(new Function<Exchange[], Iterable<Exchange>>() {
                                     @Override
@@ -411,17 +411,17 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                                         return Arrays.asList(exchanges);
                                     }
                                 })
-                                .map(new Function<Exchange, Pair<AccountAssets, Exchange>>() {
+                                .map(new Function<Exchange, Pair<Portfolio, Exchange>>() {
                                     @Override
-                                    public Pair<AccountAssets, Exchange> apply(Exchange exchange) throws Exception {
-                                        return new Pair<>(accountAssets, exchange);
+                                    public Pair<Portfolio, Exchange> apply(Exchange exchange) throws Exception {
+                                        return new Pair<>(portfolio, exchange);
                                     }
                                 });
                     }
-                }).flatMap(new Function<Pair<AccountAssets, Exchange>, ObservableSource<ExchangeAssets>>() {
+                }).flatMap(new Function<Pair<Portfolio, Exchange>, ObservableSource<ExchangeAssets>>() {
                     @Override
-                    public ObservableSource<ExchangeAssets> apply(Pair<AccountAssets, Exchange> accountAssetsExchangePair) throws Exception {
-                        return getExchangeAssets(accountAssetsExchangePair.first, accountAssetsExchangePair.second).toObservable();
+                    public ObservableSource<ExchangeAssets> apply(Pair<Portfolio, Exchange> portfolioExchangePair) throws Exception {
+                        return getExchangeAssets(portfolioExchangePair.first, portfolioExchangePair.second).toObservable();
                     }
                 }).toList();
     }
@@ -434,16 +434,16 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      */
     @Override
     public Single<List<ExchangeAssets>> getAllExchangeAssetsOfExchange(final Exchange exchange) {
-        return accountAssetsRepo.getAll()
-                .flattenAsObservable(new Function<List<AccountAssets>, Iterable<AccountAssets>>() {
+        return portfolioRepo.getAll()
+                .flattenAsObservable(new Function<List<Portfolio>, Iterable<Portfolio>>() {
                     @Override
-                    public Iterable<AccountAssets> apply(List<AccountAssets> accountAssets) throws Exception {
-                        return accountAssets;
+                    public Iterable<Portfolio> apply(List<Portfolio> portfolioList) throws Exception {
+                        return portfolioList;
                     }
-                }).flatMap(new Function<AccountAssets, ObservableSource<ExchangeAssets>>() {
+                }).flatMap(new Function<Portfolio, ObservableSource<ExchangeAssets>>() {
                     @Override
-                    public ObservableSource<ExchangeAssets> apply(AccountAssets accountAssets) throws Exception {
-                        return getExchangeAssets(accountAssets, exchange).toObservable();
+                    public ObservableSource<ExchangeAssets> apply(Portfolio portfolio) throws Exception {
+                        return getExchangeAssets(portfolio, exchange).toObservable();
                     }
                 }).toList();
     }
@@ -455,11 +455,11 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      */
     @Override
     public Single<List<ExchangeAssets>> getAllExchangeAssetsOfCurrentAccount() {
-        return accountAssetsRepo.getCurrent()
-                .flatMap(new Function<AccountAssets, SingleSource<? extends List<ExchangeAssets>>>() {
+        return portfolioRepo.getCurrent()
+                .flatMap(new Function<Portfolio, SingleSource<? extends List<ExchangeAssets>>>() {
                     @Override
-                    public SingleSource<? extends List<ExchangeAssets>> apply(AccountAssets accountAssets) throws Exception {
-                        return getAllExchangeAssetsOfAccount(accountAssets);
+                    public SingleSource<? extends List<ExchangeAssets>> apply(Portfolio portfolio) throws Exception {
+                        return getAllExchangeAssetsOfAccount(portfolio);
                     }
                 });
     }
@@ -467,16 +467,16 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     /**
      * Get exchange assets of an account assets and an exchange.
      *
-     * @param accountAssets the account assets
+     * @param portfolio the account assets
      * @param exchange      the exchange
      * @return a Single
      */
     @Override
-    public Single<ExchangeAssets> getExchangeAssets(AccountAssets accountAssets, Exchange exchange) {
+    public Single<ExchangeAssets> getExchangeAssets(Portfolio portfolio, Exchange exchange) {
         final ExchangeAssets exchangeAssets = new ExchangeAssets();
-        exchangeAssets.setAccountAssets(accountAssets);
+        exchangeAssets.setPortfolio(portfolio);
         exchangeAssets.setExchange(exchange);
-        String assetUUID = accountAssets.getUuid();
+        String assetUUID = portfolio.getUuid();
         String exchangeName = exchange.getName();
         return blockchainAssetsRepo
                 .getBaseBlockchainAssets(assetUUID, exchangeName)

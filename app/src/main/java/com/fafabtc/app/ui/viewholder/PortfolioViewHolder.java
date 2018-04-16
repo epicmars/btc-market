@@ -4,15 +4,15 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.fafabtc.app.R;
-import com.fafabtc.app.databinding.ViewHolderAccountAssetsBinding;
+import com.fafabtc.app.databinding.ViewHolderPortfolioBinding;
 import com.fafabtc.app.di.component.DaggerAppComponent;
 import com.fafabtc.app.ui.activity.ExchangeEntryActivity;
 import com.fafabtc.app.ui.base.BaseViewHolder;
 import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.base.RecyclerAdapter;
 import com.fafabtc.app.utils.ExecutorManager;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.data.repo.PortfolioRepo;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 
 import java.util.List;
 
@@ -30,13 +30,13 @@ import timber.log.Timber;
  * Created by jastrelax on 2018/1/8.
  */
 
-@BindLayout(value = R.layout.view_holder_account_assets, dataTypes = AccountAssets.class)
-public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAssetsBinding> {
+@BindLayout(value = R.layout.view_holder_portfolio, dataTypes = Portfolio.class)
+public class PortfolioViewHolder extends BaseViewHolder<ViewHolderPortfolioBinding> {
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
-    public AccountAssetsViewHolder(View itemView) {
+    public PortfolioViewHolder(View itemView) {
         super(itemView);
         DaggerAppComponent.builder()
                 .appContext(itemView.getContext().getApplicationContext())
@@ -48,7 +48,7 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
     @Override
     public <T> void onBindView(T data, int position) {
         if (data == null) return;
-        final AccountAssets assets = (AccountAssets) data;
+        final Portfolio assets = (Portfolio) data;
         mBinding.tvName.setText(assets.getName());
         mBinding.radioContainer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,27 +56,27 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
                 mBinding.radioChooser.toggle();
             }
         });
-        mBinding.radioChooser.setChecked(assets.getState() == AccountAssets.State.CURRENT_ACTIVE ? true : false);
+        mBinding.radioChooser.setChecked(assets.getState() == Portfolio.State.CURRENT_ACTIVE ? true : false);
 
         mBinding.radioChooser.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     updateListUI(assets);
-                    accountAssetsRepo.getCurrent()
-                            .flatMapCompletable(new Function<AccountAssets, CompletableSource>() {
+                    portfolioRepo.getCurrent()
+                            .flatMapCompletable(new Function<Portfolio, CompletableSource>() {
                                 @Override
-                                public CompletableSource apply(AccountAssets currentAssets) throws Exception {
-                                    currentAssets.setState(AccountAssets.State.ACTIVE);
-                                    assets.setState(AccountAssets.State.CURRENT_ACTIVE);
-                                    return accountAssetsRepo.update(currentAssets, assets);
+                                public CompletableSource apply(Portfolio portfolio) throws Exception {
+                                    portfolio.setState(Portfolio.State.ACTIVE);
+                                    assets.setState(Portfolio.State.CURRENT_ACTIVE);
+                                    return portfolioRepo.update(portfolio, assets);
                                 }
                             })
                             .onErrorResumeNext(new Function<Throwable, CompletableSource>() {
                                 @Override
                                 public CompletableSource apply(Throwable throwable) throws Exception {
-                                    assets.setState(AccountAssets.State.CURRENT_ACTIVE);
-                                    return accountAssetsRepo.update(assets);
+                                    assets.setState(Portfolio.State.CURRENT_ACTIVE);
+                                    return portfolioRepo.update(assets);
                                 }
                             })
                             .subscribeOn(Schedulers.from(ExecutorManager.getNOW()))
@@ -109,15 +109,15 @@ public class AccountAssetsViewHolder extends BaseViewHolder<ViewHolderAccountAss
         });
     }
 
-    private void updateListUI(AccountAssets assets) {
-        assets.setState(AccountAssets.State.CURRENT_ACTIVE);
+    private void updateListUI(Portfolio assets) {
+        assets.setState(Portfolio.State.CURRENT_ACTIVE);
         RecyclerAdapter recyclerAdapter = (RecyclerAdapter) adapter;
         List<Object> objects = recyclerAdapter.getPayloads();
         for (Object object : objects) {
-            AccountAssets accountAssets = (AccountAssets) object;
-            if (accountAssets.getState() == AccountAssets.State.CURRENT_ACTIVE
-                    && !accountAssets.getUuid().equals(assets.getUuid())) {
-                accountAssets.setState(AccountAssets.State.ACTIVE);
+            Portfolio portfolio = (Portfolio) object;
+            if (portfolio.getState() == Portfolio.State.CURRENT_ACTIVE
+                    && !portfolio.getUuid().equals(assets.getUuid())) {
+                portfolio.setState(Portfolio.State.ACTIVE);
             }
         }
         adapter.notifyDataSetChanged();

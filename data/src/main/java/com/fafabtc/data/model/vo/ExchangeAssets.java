@@ -1,6 +1,6 @@
 package com.fafabtc.data.model.vo;
 
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ExchangeAssets {
 
-    private AccountAssets accountAssets;
+    private Portfolio portfolio;
 
     private Exchange exchange;
 
@@ -20,20 +20,20 @@ public class ExchangeAssets {
 
     private List<BlockchainAssets> blockchainAssetsList;
 
-    public AccountAssets getAccountAssets() {
-        return accountAssets;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setAccountAssets(AccountAssets accountAssets) {
-        if (null == accountAssets) return;
-        this.accountAssets = accountAssets;
+    public void setPortfolio(Portfolio portfolio) {
+        if (null == portfolio) return;
+        this.portfolio = portfolio;
         if (blockchainAssetsList != null) {
             for (BlockchainAssets assets : blockchainAssetsList)
-                assets.setAssetsUUID(accountAssets.getUuid());
+                assets.setAssetsUUID(portfolio.getUuid());
         }
         if (quoteAssetsList != null) {
             for (BlockchainAssets assets : quoteAssetsList)
-                assets.setAssetsUUID(accountAssets.getUuid());
+                assets.setAssetsUUID(portfolio.getUuid());
         }
     }
 

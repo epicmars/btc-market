@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "380fde1613b8fed4f5eb3a5f3b318d79",
+    "identityHash": "772064ab205c0d458ba699446c994110",
     "entities": [
       {
-        "tableName": "account_assets",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `timestamp` INTEGER, `name` TEXT, `uuid` TEXT NOT NULL, `balance` REAL NOT NULL, `locked` REAL NOT NULL, `state` TEXT, PRIMARY KEY(`uuid`))",
+        "tableName": "portfolio",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `name` TEXT, `uuid` TEXT NOT NULL, `balance` REAL NOT NULL, `locked` REAL NOT NULL, `state` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -53,18 +53,26 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "uuid"
+            "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [
           {
-            "name": "index_account_assets_name",
+            "name": "index_portfolio_name",
             "unique": true,
             "columnNames": [
               "name"
             ],
-            "createSql": "CREATE UNIQUE INDEX `index_account_assets_name` ON `${TABLE_NAME}` (`name`)"
+            "createSql": "CREATE UNIQUE INDEX `index_portfolio_name` ON `${TABLE_NAME}` (`name`)"
+          },
+          {
+            "name": "index_portfolio_uuid",
+            "unique": true,
+            "columnNames": [
+              "uuid"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_portfolio_uuid` ON `${TABLE_NAME}` (`uuid`)"
           }
         ],
         "foreignKeys": []
@@ -248,7 +256,7 @@
       },
       {
         "tableName": "orders",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `timestamp` INTEGER, `assets_uuid` TEXT, `exchange` TEXT, `uuid` TEXT NOT NULL, `type` TEXT, `state` TEXT, `pair` TEXT, `base` TEXT, `quote` TEXT, `quantity` REAL NOT NULL, `price` REAL NOT NULL, `commission` REAL NOT NULL, `commission_asset` TEXT, PRIMARY KEY(`uuid`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `assets_uuid` TEXT, `exchange` TEXT, `uuid` TEXT NOT NULL, `type` TEXT, `state` TEXT, `pair` TEXT, `base` TEXT, `quote` TEXT, `quantity` REAL NOT NULL, `price` REAL NOT NULL, `commission` REAL NOT NULL, `commission_asset` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -337,11 +345,20 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "uuid"
+            "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_orders_uuid",
+            "unique": true,
+            "columnNames": [
+              "uuid"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_orders_uuid` ON `${TABLE_NAME}` (`uuid`)"
+          }
+        ],
         "foreignKeys": []
       },
       {
@@ -518,14 +535,6 @@
             "createSql": "CREATE UNIQUE INDEX `index_ticker_exchange_pair` ON `${TABLE_NAME}` (`exchange`, `pair`)"
           },
           {
-            "name": "index_ticker_timestamp",
-            "unique": false,
-            "columnNames": [
-              "timestamp"
-            ],
-            "createSql": "CREATE  INDEX `index_ticker_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
-          },
-          {
             "name": "index_ticker_exchange",
             "unique": false,
             "columnNames": [
@@ -559,11 +568,76 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "exchange_rate",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `currency_code` TEXT, `delay` REAL, `last` REAL, `buy` REAL, `sell` REAL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currencyCode",
+            "columnName": "currency_code",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "delay",
+            "columnName": "delay",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "last",
+            "columnName": "last",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buy",
+            "columnName": "buy",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sell",
+            "columnName": "sell",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_exchange_rate_currency_code",
+            "unique": true,
+            "columnNames": [
+              "currency_code"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_exchange_rate_currency_code` ON `${TABLE_NAME}` (`currency_code`)"
+          }
+        ],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"380fde1613b8fed4f5eb3a5f3b318d79\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"772064ab205c0d458ba699446c994110\")"
     ]
   }
 }

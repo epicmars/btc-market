@@ -3,9 +3,9 @@ package com.fafabtc.app.di.module;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
-import com.fafabtc.app.vm.AccountAssetsCreateViewModel;
-import com.fafabtc.app.vm.AccountAssetsViewModel;
-import com.fafabtc.app.vm.AccountViewModel;
+import com.fafabtc.app.vm.PortfolioCreateViewModel;
+import com.fafabtc.app.vm.PortfolioListViewModel;
+import com.fafabtc.app.vm.PortfolioViewModel;
 import com.fafabtc.app.vm.AssetsViewModel;
 import com.fafabtc.app.vm.BalanceAssetsViewModel;
 import com.fafabtc.app.vm.BalanceDepositViewModel;
@@ -44,13 +44,13 @@ public abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(AccountAssetsCreateViewModel.class)
-    abstract ViewModel accountAssetsCreateViewModel(AccountAssetsCreateViewModel viewModel);
+    @ViewModelKey(PortfolioCreateViewModel.class)
+    abstract ViewModel portfolioCreateViewModel(PortfolioCreateViewModel viewModel);
 
     @Binds
     @IntoMap
-    @ViewModelKey(AccountViewModel.class)
-    abstract ViewModel accountViewModel(AccountViewModel viewModel);
+    @ViewModelKey(PortfolioViewModel.class)
+    abstract ViewModel accountViewModel(PortfolioViewModel viewModel);
 
     @Binds
     @IntoMap
@@ -109,8 +109,8 @@ public abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(AccountAssetsViewModel.class)
-    abstract ViewModel accountAssetsViewModel(AccountAssetsViewModel accountAssetsViewModel);
+    @ViewModelKey(PortfolioListViewModel.class)
+    abstract ViewModel portfolioListViewModel(PortfolioListViewModel portfolioListViewModel);
 
     @Binds
     abstract ViewModelProvider.Factory viewModelFactory(ViewModelFactory viewModelFactory);

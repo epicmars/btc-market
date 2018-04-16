@@ -30,7 +30,7 @@ public class ExchangeEntryViewHolder extends BaseViewHolder<ViewHolderExchangeEn
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExchangeAssetsActivity.start(v.getContext(), entry.getAccountAssets(), entry.getExchange());
+                ExchangeAssetsActivity.start(v.getContext(), entry.getPortfolio(), entry.getExchange());
             }
         });
     }

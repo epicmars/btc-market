@@ -1,6 +1,6 @@
 package com.fafabtc.data.data.repo;
 
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.ExchangeAssets;
 
@@ -25,17 +25,17 @@ public interface ExchangeAssetsRepo {
 
     Single<Boolean> isExchangeAssetsInitialized(String exchange);
 
-    Single<AccountAssets> createAccountAssetsOfExchange(final String assetsName);
+    Single<Portfolio> createPortfolioOfExchange(final String assetsName);
 
-    Single<AccountAssets> createAccountAssetsOfExchange(final String assetsName, final String exchange);
+    Single<Portfolio> createPortfolioOfExchange(final String assetsName, final String exchange);
 
     Single<List<ExchangeAssets>> getAllExchangeAssetsOfCurrentAccount();
 
-    Single<List<ExchangeAssets>> getAllExchangeAssetsOfAccount(AccountAssets accountAssets);
+    Single<List<ExchangeAssets>> getAllExchangeAssetsOfAccount(Portfolio portfolio);
 
     Single<List<ExchangeAssets>> getAllExchangeAssetsOfExchange(Exchange exchange);
 
-    Single<ExchangeAssets> getExchangeAssets(AccountAssets accountAssets, Exchange exchange);
+    Single<ExchangeAssets> getExchangeAssets(Portfolio portfolio, Exchange exchange);
 
     Completable cacheExchangeAssetsToFile(final Exchange exchange);
 }

@@ -11,14 +11,16 @@ import com.fafabtc.domain.data.local.BaseEntity;
 import java.util.Date;
 
 /**
- * 账户资产。可以具有多个模拟的资产组合，它们之间相互独立。
+ * 资产组合。
+ *
+ * 可以具有多个模拟的资产组合，它们之间相互独立。
  * Created by jastrelax on 2018/1/7.
  */
 
-@Entity(tableName = "account_assets",
+@Entity(tableName = "portfolio",
         indices = {@Index(value = "name", unique = true),
         @Index(value = "uuid", unique = true)})
-public class AccountAssets extends BaseEntity implements Parcelable{
+public class Portfolio extends BaseEntity implements Parcelable{
 
     public static final String DEFAULT_NAME = "我的资产";
 
@@ -83,7 +85,7 @@ public class AccountAssets extends BaseEntity implements Parcelable{
         this.state = state;
     }
 
-    public AccountAssets() {
+    public Portfolio() {
     }
 
     @Override
@@ -102,7 +104,7 @@ public class AccountAssets extends BaseEntity implements Parcelable{
         dest.writeLong(this.timestamp != null ? this.timestamp.getTime() : -1);
     }
 
-    protected AccountAssets(Parcel in) {
+    protected Portfolio(Parcel in) {
         this.name = in.readString();
         this.uuid = in.readString();
         this.balance = in.readDouble();
@@ -114,15 +116,15 @@ public class AccountAssets extends BaseEntity implements Parcelable{
         this.timestamp = tmpTimestamp == -1 ? null : new Date(tmpTimestamp);
     }
 
-    public static final Creator<AccountAssets> CREATOR = new Creator<AccountAssets>() {
+    public static final Creator<Portfolio> CREATOR = new Creator<Portfolio>() {
         @Override
-        public AccountAssets createFromParcel(Parcel source) {
-            return new AccountAssets(source);
+        public Portfolio createFromParcel(Parcel source) {
+            return new Portfolio(source);
         }
 
         @Override
-        public AccountAssets[] newArray(int size) {
-            return new AccountAssets[size];
+        public Portfolio[] newArray(int size) {
+            return new Portfolio[size];
         }
     };
 }

@@ -41,14 +41,14 @@
                 <include layout="@layout/divider_dark" />
 
                 <FrameLayout
-                    android:id="@+id/account_assets_list"
+                    android:id="@+id/portfolio_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone">
                     <fragment
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:name="com.fafabtc.app.ui.fragment.AccountAssetsListFragment" />
+                        android:name="com.fafabtc.app.ui.fragment.PortfolioListFragment" />
                 </FrameLayout>
 
                 <TextView

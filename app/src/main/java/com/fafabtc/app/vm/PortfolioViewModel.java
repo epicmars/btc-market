@@ -4,9 +4,9 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.RxUtils;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 
 import javax.inject.Inject;
 
@@ -18,24 +18,24 @@ import timber.log.Timber;
  * Created by jastrelax on 2018/1/8.
  */
 
-public class AccountViewModel extends ViewModel{
+public class PortfolioViewModel extends ViewModel{
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
     @Inject
     ExchangeAssetsRepo exchangeAssetsRepo;
 
-    private MutableLiveData<AccountAssets> currentAccountAssets;
+    private MutableLiveData<Portfolio> currentPortfolio;
 
-    private MutableLiveData<Boolean> isCurrentAccountChanged;
+    private MutableLiveData<Boolean> isCurrentPortfolioChanged;
 
     private MutableLiveData<Boolean> isAssetsInitialized;
 
     @Inject
-    public AccountViewModel() {
-        currentAccountAssets = new MutableLiveData<>();
-        isCurrentAccountChanged = new MutableLiveData<>();
+    public PortfolioViewModel() {
+        currentPortfolio = new MutableLiveData<>();
+        isCurrentPortfolioChanged = new MutableLiveData<>();
         isAssetsInitialized = new MutableLiveData<>();
     }
 
@@ -61,17 +61,17 @@ public class AccountViewModel extends ViewModel{
     }
 
     public void loadCurrentAccount() {
-        accountAssetsRepo.getCurrent()
-                .compose(RxUtils.<AccountAssets>singleAsyncIO())
-                .subscribe(new SingleObserver<AccountAssets>() {
+        portfolioRepo.getCurrent()
+                .compose(RxUtils.<Portfolio>singleAsyncIO())
+                .subscribe(new SingleObserver<Portfolio>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onSuccess(AccountAssets accountAssets) {
-                        currentAccountAssets.setValue(accountAssets);
+                    public void onSuccess(Portfolio portfolio) {
+                        currentPortfolio.setValue(portfolio);
                     }
 
                     @Override
@@ -82,19 +82,19 @@ public class AccountViewModel extends ViewModel{
     }
 
     public void currentAccountChanged() {
-        isCurrentAccountChanged.setValue(true);
+        isCurrentPortfolioChanged.setValue(true);
     }
 
     public MutableLiveData<Boolean> isAssetsInitialized() {
         return isAssetsInitialized;
     }
 
-    public MutableLiveData<Boolean> isCurrentAccountChanged() {
-        return isCurrentAccountChanged;
+    public MutableLiveData<Boolean> isCurrentPortfolioChanged() {
+        return isCurrentPortfolioChanged;
     }
 
-    public MutableLiveData<AccountAssets> getCurrentAccountAssets() {
-        return currentAccountAssets;
+    public MutableLiveData<Portfolio> getCurrentPortfolio() {
+        return currentPortfolio;
     }
 
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.fafabtc.data.data.local.ExchangeDatabase;
 import com.fafabtc.data.data.local.ExchangeDatabaseHelper;
-import com.fafabtc.data.data.local.dao.AccountAssetsDao;
+import com.fafabtc.data.data.local.dao.PortfolioDao;
 import com.fafabtc.data.data.local.dao.AssetsStatisticsDao;
 import com.fafabtc.data.data.local.dao.BlockchainAssetsDao;
 import com.fafabtc.data.data.local.dao.ExchangeDao;
@@ -34,8 +34,8 @@ public class DataDbModule {
 
     @Provides
     @Singleton
-    public static AccountAssetsDao accountAssetsDao(ExchangeDatabase database) {
-        return database.accountAssetsDao();
+    public static PortfolioDao portfolioDao(ExchangeDatabase database) {
+        return database.portfolioDao();
     }
 
     @Provides

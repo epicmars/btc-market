@@ -98,6 +98,6 @@
     <!--账户资产-->
     <string name="general">通用</string>
     <string name="settings">设置</string>
-    <string name="hint_account_assets_name">输入要创建的资产组合名称</string>
+    <string name="hint_account_portfolio">输入要创建的资产组合名称</string>
 
 </resources>

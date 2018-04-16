@@ -4,11 +4,11 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.ExecutorManager;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.AssetsStatisticsRepo;
 import com.fafabtc.data.data.repo.BlockchainAssetsRepo;
 import com.fafabtc.data.data.global.AssetsStateRepository;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.vo.AssetsStatistics;
 import com.fafabtc.data.model.vo.AssetsStatisticsHeader;
 import com.fafabtc.data.model.vo.AssetsStatisticsHolder;
@@ -37,7 +37,7 @@ public class AssetsViewModel extends ViewModel {
     BlockchainAssetsRepo blockchainAssetsRepo;
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
     @Inject
     AssetsStatisticsRepo assetsStatisticsRepo;
@@ -76,13 +76,13 @@ public class AssetsViewModel extends ViewModel {
                         return holder;
                     }
                 };
-        accountAssetsRepo.getCurrent()
-                .flatMap(new Function<AccountAssets, SingleSource<AssetsStatisticsHolder>>() {
+        portfolioRepo.getCurrent()
+                .flatMap(new Function<Portfolio, SingleSource<AssetsStatisticsHolder>>() {
                     @Override
-                    public SingleSource<AssetsStatisticsHolder> apply(AccountAssets accountAssets) throws Exception {
+                    public SingleSource<AssetsStatisticsHolder> apply(Portfolio portfolio) throws Exception {
                         return assetsStatisticsRepo
-                                .getAccountStatistics(accountAssets.getUuid())
-                                .zipWith(blockchainAssetsRepo.getUsdtBalanceFromAccount(accountAssets.getUuid()), zipFunction);
+                                .getAccountStatistics(portfolio.getUuid())
+                                .zipWith(blockchainAssetsRepo.getUsdtBalanceFromAccount(portfolio.getUuid()), zipFunction);
                     }
                 })
                 .subscribeOn(Schedulers.from(ExecutorManager.getSTATISTICS()))

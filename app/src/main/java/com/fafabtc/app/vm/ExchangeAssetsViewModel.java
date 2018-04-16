@@ -6,7 +6,7 @@ import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.ExchangeAssets;
 
@@ -25,7 +25,7 @@ public class ExchangeAssetsViewModel extends ViewModel{
     @Inject
     ExchangeAssetsRepo exchangeAssetsRepo;
 
-    private AccountAssets accountAssets;
+    private Portfolio portfolio;
     private Exchange exchange;
 
     private MutableLiveData<ExchangeAssets> exchangeAssets = new MutableLiveData<>();
@@ -35,7 +35,7 @@ public class ExchangeAssetsViewModel extends ViewModel{
     }
 
     public void updateExchangeAssets() {
-        exchangeAssetsRepo.getExchangeAssets(accountAssets, exchange)
+        exchangeAssetsRepo.getExchangeAssets(portfolio, exchange)
                 .compose(RxUtils.<ExchangeAssets>singleAsyncIO())
                 .subscribe(new SingleObserver<ExchangeAssets>() {
                     @Override
@@ -59,8 +59,8 @@ public class ExchangeAssetsViewModel extends ViewModel{
         return exchangeAssets;
     }
 
-    public void setAccountAssets(AccountAssets accountAssets) {
-        this.accountAssets = accountAssets;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public void setExchange(Exchange exchange) {

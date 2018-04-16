@@ -3,19 +3,19 @@ package com.fafabtc.data.model.vo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 
 public class WidgetData implements Parcelable {
-    private AccountAssets accountAssets;
+    private Portfolio portfolio;
     private String updateTime;
     private double volume;
 
-    public AccountAssets getAccountAssets() {
-        return accountAssets;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setAccountAssets(AccountAssets accountAssets) {
-        this.accountAssets = accountAssets;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public String getUpdateTime() {
@@ -41,7 +41,7 @@ public class WidgetData implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(this.accountAssets, flags);
+        dest.writeParcelable(this.portfolio, flags);
         dest.writeString(this.updateTime);
         dest.writeDouble(this.volume);
     }
@@ -50,7 +50,7 @@ public class WidgetData implements Parcelable {
     }
 
     protected WidgetData(Parcel in) {
-        this.accountAssets = in.readParcelable(AccountAssets.class.getClassLoader());
+        this.portfolio = in.readParcelable(Portfolio.class.getClassLoader());
         this.updateTime = in.readString();
         this.volume = in.readDouble();
     }

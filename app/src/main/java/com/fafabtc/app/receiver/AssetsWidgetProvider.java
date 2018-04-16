@@ -73,7 +73,7 @@ public class AssetsWidgetProvider extends AppWidgetProvider {
         int n = appWidgetIds.length;
         for (int i = 0; i < n; i++) {
             final int appWidgetId = appWidgetIds[i];
-            final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_account_assets);
+            final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_portfolio);
             rv.setViewVisibility(R.id.pb_loading, View.VISIBLE);
             appWidgetManager.updateAppWidget(appWidgetId, rv);
         }
@@ -85,7 +85,7 @@ public class AssetsWidgetProvider extends AppWidgetProvider {
         int n = appWidgetIds.length;
         for (int i = 0; i < n; i++) {
             final int appWidgetId = appWidgetIds[i];
-            final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_account_assets);
+            final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_portfolio);
             rv.setViewVisibility(R.id.pb_loading, View.INVISIBLE);
             appWidgetManager.updateAppWidget(appWidgetId, rv);
         }
@@ -97,9 +97,9 @@ public class AssetsWidgetProvider extends AppWidgetProvider {
         int n = appWidgetIds.length;
         for (int i = 0; i < n; i++) {
             final int appWidgetId = appWidgetIds[i];
-            final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_account_assets);
+            final RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_portfolio);
             rv.setOnClickPendingIntent(R.id.btn_refresh, manulUpdateTickers(context));
-            rv.setTextViewText(R.id.tv_assets_name, data.getAccountAssets().getName());
+            rv.setTextViewText(R.id.tv_assets_name, data.getPortfolio().getName());
             if (data.getUpdateTime() == null) {
                 rv.setViewVisibility(R.id.tv_update_time, View.INVISIBLE);
             } else {

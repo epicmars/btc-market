@@ -15,11 +15,11 @@ import com.fafabtc.app.constants.Broadcasts;
 import com.fafabtc.app.databinding.FragmentAccountBinding;
 import com.fafabtc.app.di.Injectable;
 import com.fafabtc.app.ui.activity.AboutActivity;
-import com.fafabtc.app.ui.activity.AccountAssetsCreateActivity;
+import com.fafabtc.app.ui.activity.PortfolioCreateActivity;
 import com.fafabtc.app.ui.activity.SettingsActivity;
 import com.fafabtc.app.ui.base.BaseFragment;
 import com.fafabtc.app.ui.base.BindLayout;
-import com.fafabtc.app.vm.AccountViewModel;
+import com.fafabtc.app.vm.PortfolioViewModel;
 import com.fafabtc.data.consts.DataBroadcasts;
 
 /**
@@ -30,7 +30,7 @@ import com.fafabtc.data.consts.DataBroadcasts;
 @BindLayout(R.layout.fragment_account)
 public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
 
-    private AccountViewModel viewModel;
+    private PortfolioViewModel viewModel;
 
     private AccountFragmentHandler fragmentHandler;
 
@@ -62,8 +62,8 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
     }
 
     private void init() {
-        viewModel = getViewModelOfActivity(AccountViewModel.class);
-        viewModel.isCurrentAccountChanged().observe(getActivity(), accountChangeObserver);
+        viewModel = getViewModelOfActivity(PortfolioViewModel.class);
+        viewModel.isCurrentPortfolioChanged().observe(getActivity(), accountChangeObserver);
         viewModel.isAssetsInitialized().observe(this, assetsInitializedObserver);
 
         fragmentHandler = new AccountFragmentHandler();
@@ -80,7 +80,7 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
         @Override
         public void onChanged(@Nullable Boolean aBoolean) {
             if (aBoolean != null && aBoolean) {
-                binding.accountAssetsList.setVisibility(View.VISIBLE);
+                binding.portfolioList.setVisibility(View.VISIBLE);
                 binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down, 0);
             } else {
                 Toast.makeText(getContext(), "资产初始化中", Toast.LENGTH_SHORT).show();
@@ -100,8 +100,8 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
     public class AccountFragmentHandler {
 
         public void onClickAssetsGroup(View view) {
-            if (binding.accountAssetsList.getVisibility() == View.VISIBLE) {
-                binding.accountAssetsList.setVisibility(View.GONE);
+            if (binding.portfolioList.getVisibility() == View.VISIBLE) {
+                binding.portfolioList.setVisibility(View.GONE);
                 binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_right, 0);
             } else {
                 viewModel.loadAccountList();
@@ -109,7 +109,7 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
         }
 
         public void onClickCreateAssets(View view) {
-            AccountAssetsCreateActivity.start(getContext());
+            PortfolioCreateActivity.start(getContext());
         }
 
         public void onClickAbout(View view) {

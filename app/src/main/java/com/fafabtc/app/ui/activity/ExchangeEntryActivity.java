@@ -18,20 +18,20 @@ import com.fafabtc.app.ui.base.BaseActivity;
 import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.fragment.ExchangeEntryFragment;
 import com.fafabtc.app.vm.ExchangeEntryViewModel;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.domain.model.Resource;
 
 @Injectable
 @BindLayout(R.layout.activity_exchange_entry)
 public class ExchangeEntryActivity extends BaseActivity<ActivityExchangeEntryBinding> {
 
-    private static final String EXTRA_ACCOUNT_ASSETS = "ExchangeEntryActivity.EXTRA_ACCOUNT_ASSETS";
+    private static final String EXTRA_PORTFOLIO = "ExchangeEntryActivity.EXTRA_PORTFOLIO";
 
     private ExchangeEntryViewModel viewModel;
 
-    public static void start(Context context, AccountAssets assets) {
+    public static void start(Context context, Portfolio assets) {
         Intent starter = new Intent(context, ExchangeEntryActivity.class);
-        starter.putExtra(EXTRA_ACCOUNT_ASSETS, assets);
+        starter.putExtra(EXTRA_PORTFOLIO, assets);
         context.startActivity(starter);
     }
 
@@ -39,19 +39,19 @@ public class ExchangeEntryActivity extends BaseActivity<ActivityExchangeEntryBin
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AccountAssets accountAssets = null;
+        Portfolio portfolio = null;
         Intent intent = getIntent();
         if (intent != null) {
-            accountAssets = intent.getParcelableExtra(EXTRA_ACCOUNT_ASSETS);
-            setTitle(getString(R.string.exchange_entry_title_format, accountAssets.getName()));
+            portfolio = intent.getParcelableExtra(EXTRA_PORTFOLIO);
+            setTitle(getString(R.string.exchange_entry_title_format, portfolio.getName()));
         }
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content, ExchangeEntryFragment.newInstance(accountAssets));
+        ft.replace(R.id.content, ExchangeEntryFragment.newInstance(portfolio));
         ft.commitAllowingStateLoss();
 
         viewModel = getViewModel(ExchangeEntryViewModel.class);
-        viewModel.setAccountAssets(accountAssets);
+        viewModel.setPortfolio(portfolio);
         viewModel.getDeleteResult().observe(this, deleteResultObserver);
     }
 
@@ -79,7 +79,7 @@ public class ExchangeEntryActivity extends BaseActivity<ActivityExchangeEntryBin
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         switch (itemId) {
-            case R.id.action_delete_account_assets:
+            case R.id.action_delete_portfolio:
                 viewModel.deleteAssets();
                 return true;
         }

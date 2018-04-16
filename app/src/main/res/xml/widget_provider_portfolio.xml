@@ -3,7 +3,7 @@
     android:minWidth="250dp"
     android:minHeight="110dp"
     android:updatePeriodMillis="1800000"
-    android:previewImage="@mipmap/account_assets_widget_preview"
+    android:previewImage="@mipmap/portfolio_widget_preview"
     android:widgetCategory="home_screen"
-    android:initialLayout="@layout/widget_account_assets">
+    android:initialLayout="@layout/widget_portfolio">
 </appwidget-provider>

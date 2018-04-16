@@ -16,27 +16,27 @@ import com.fafabtc.app.ui.fragment.BalanceAssetsFragment;
 import com.fafabtc.app.ui.fragment.BlockchainAssetsFragment;
 import com.fafabtc.app.ui.fragment.ErrorFragment;
 import com.fafabtc.app.vm.ExchangeAssetsViewModel;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 
 @Injectable
 @BindLayout(R.layout.activity_exchange_assets)
 public class ExchangeAssetsActivity extends BaseActivity<ActivityExchangeAssetsBinding> {
 
-    private static final String EXTRA_ACCOUNT_ASSETS = "ExchangeAssetsActivity.EXTRA_ACCOUNT_ASSETS";
+    private static final String EXTRA_PORTFOLIO = "ExchangeAssetsActivity.EXTRA_PORTFOLIO";
     private static final String EXTRA_EXCHANGE = "ExchangeAssetsActivity.EXTRA_EXCHANGE";
 
     private static int[] ASSETS_NAMES = {R.string.balance_assets, R.string.blockchain_assets};
 
-    private AccountAssets accountAssets;
+    private Portfolio portfolio;
     private Exchange exchange;
 
     private ExchangeAssetsViewModel viewModel;
     private AssetsPagerAdapter pagerAdapter;
 
-    public static void start(Context context, AccountAssets accountAssets, Exchange exchange) {
+    public static void start(Context context, Portfolio portfolio, Exchange exchange) {
         Intent starter = new Intent(context, ExchangeAssetsActivity.class);
-        starter.putExtra(EXTRA_ACCOUNT_ASSETS, accountAssets);
+        starter.putExtra(EXTRA_PORTFOLIO, portfolio);
         starter.putExtra(EXTRA_EXCHANGE, exchange);
         context.startActivity(starter);
     }
@@ -46,16 +46,16 @@ public class ExchangeAssetsActivity extends BaseActivity<ActivityExchangeAssetsB
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         if (intent != null) {
-            accountAssets = intent.getParcelableExtra(EXTRA_ACCOUNT_ASSETS);
+            portfolio = intent.getParcelableExtra(EXTRA_PORTFOLIO);
             exchange = intent.getParcelableExtra(EXTRA_EXCHANGE);
-            setTitle(getString(R.string.exchange_assets_title_format, accountAssets.getName(), exchange.getName().toUpperCase()));
+            setTitle(getString(R.string.exchange_assets_title_format, portfolio.getName(), exchange.getName().toUpperCase()));
         }
 
         pagerAdapter = new AssetsPagerAdapter(getSupportFragmentManager());
         binding.pagerExchageAssets.setAdapter(pagerAdapter);
 
         viewModel = getViewModel(ExchangeAssetsViewModel.class);
-        viewModel.setAccountAssets(accountAssets);
+        viewModel.setPortfolio(portfolio);
         viewModel.setExchange(exchange);
 //        viewModel.updateExchangeAssets();
     }
@@ -70,9 +70,9 @@ public class ExchangeAssetsActivity extends BaseActivity<ActivityExchangeAssetsB
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return BalanceAssetsFragment.newInstance(accountAssets, exchange);
+                    return BalanceAssetsFragment.newInstance(portfolio, exchange);
                 case 1:
-                    return BlockchainAssetsFragment.newInstance(accountAssets, exchange);
+                    return BlockchainAssetsFragment.newInstance(portfolio, exchange);
                 default:
                     return ErrorFragment.newInstance();
             }

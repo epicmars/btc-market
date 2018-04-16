@@ -15,7 +15,7 @@ import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.base.RecyclerAdapter;
 import com.fafabtc.app.ui.viewholder.BlockchainAssetsViewHolder;
 import com.fafabtc.app.vm.BlockchainAssetsViewModel;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 
@@ -27,16 +27,16 @@ import java.util.List;
 @BindLayout(R.layout.fragment_blockchain_assets)
 public class BlockchainAssetsFragment extends BaseFragment<FragmentBlockchainAssetsBinding> {
 
-    private static final String ARGS_ACCOUNT_ASSETS = "BalanceAssetsFragment.ARGS_ACCOUNT_ASSETS";
+    private static final String ARGS_PORTFOLIO = "BalanceAssetsFragment.ARGS_PORTFOLIO";
     private static final String ARGS_EXCHANGE = "BalanceAssetsFragment.ARGS_EXCHANGE";
 
     private RecyclerAdapter adapter;
 
     private BlockchainAssetsViewModel viewModel;
 
-    public static BlockchainAssetsFragment newInstance(AccountAssets accountAssets, Exchange exchange) {
+    public static BlockchainAssetsFragment newInstance(Portfolio portfolio, Exchange exchange) {
         Bundle args = new Bundle();
-        args.putParcelable(ARGS_ACCOUNT_ASSETS, accountAssets);
+        args.putParcelable(ARGS_PORTFOLIO, portfolio);
         args.putParcelable(ARGS_EXCHANGE, exchange);
         BlockchainAssetsFragment fragment = new BlockchainAssetsFragment();
         fragment.setArguments(args);
@@ -46,7 +46,7 @@ public class BlockchainAssetsFragment extends BaseFragment<FragmentBlockchainAss
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AccountAssets accountAssets = getArguments().getParcelable(ARGS_ACCOUNT_ASSETS);
+        Portfolio portfolio = getArguments().getParcelable(ARGS_PORTFOLIO);
         Exchange exchange = getArguments().getParcelable(ARGS_EXCHANGE);
 
         adapter = new RecyclerAdapter();
@@ -54,7 +54,7 @@ public class BlockchainAssetsFragment extends BaseFragment<FragmentBlockchainAss
         initRecyclerView(binding.recyclerBlockchainAssets, adapter);
 
         viewModel = getViewModel(BlockchainAssetsViewModel.class);
-        viewModel.setAccountAssets(accountAssets);
+        viewModel.setPortfolio(portfolio);
         viewModel.setExchange(exchange);
         viewModel.getBlockchainAssetsData().observe(this, blockchainAssetsObserver);
     }

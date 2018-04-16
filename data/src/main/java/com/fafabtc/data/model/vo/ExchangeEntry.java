@@ -1,6 +1,6 @@
 package com.fafabtc.data.model.vo;
 
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 
 /**
@@ -9,16 +9,16 @@ import com.fafabtc.data.model.entity.exchange.Exchange;
 
 public class ExchangeEntry {
 
-    private AccountAssets accountAssets;
+    private Portfolio portfolio;
 
     private Exchange exchange;
 
-    public AccountAssets getAccountAssets() {
-        return accountAssets;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setAccountAssets(AccountAssets accountAssets) {
-        this.accountAssets = accountAssets;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public Exchange getExchange() {

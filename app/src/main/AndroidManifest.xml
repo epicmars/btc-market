@@ -32,7 +32,7 @@
             android:name=".ui.TradeActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.activity.AccountAssetsCreateActivity"
+            android:name=".ui.activity.PortfolioCreateActivity"
             android:label="@string/create_assets"
             android:windowSoftInputMode="stateVisible" />
         <activity android:name=".ui.activity.ExchangeEntryActivity" />
@@ -59,7 +59,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.AccountAssetsManageActivity" />
+        <activity android:name=".ui.activity.PortfolioManageActivity" />
         <activity
             android:name=".ui.activity.SettingsActivity"
             android:label="@string/settings" />
@@ -84,7 +84,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_provider_account_assets" />
+                android:resource="@xml/widget_provider_portfolio" />
         </receiver>
         <receiver android:name=".receiver.BootReceiver">
             <intent-filter>

@@ -6,9 +6,9 @@ import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.ExecutorManager;
 import com.fafabtc.app.utils.RxUtils;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.ExchangeRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.ExchangeEntry;
 import com.fafabtc.domain.model.Resource;
@@ -38,9 +38,9 @@ public class ExchangeEntryViewModel extends ViewModel {
     ExchangeRepo exchangeRepo;
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
-    private AccountAssets accountAssets;
+    private Portfolio portfolio;
 
     MutableLiveData<List<ExchangeEntry>> exchangeList = new MutableLiveData<>();
 
@@ -66,7 +66,7 @@ public class ExchangeEntryViewModel extends ViewModel {
                     public ExchangeEntry apply(Exchange exchange) throws Exception {
                         ExchangeEntry entry = new ExchangeEntry();
                         entry.setExchange(exchange);
-                        entry.setAccountAssets(accountAssets);
+                        entry.setPortfolio(portfolio);
                         return entry;
                     }
                 })
@@ -88,7 +88,7 @@ public class ExchangeEntryViewModel extends ViewModel {
     }
 
     public void deleteAssets() {
-        accountAssetsRepo.delete(accountAssets)
+        portfolioRepo.delete(portfolio)
                 .compose(RxUtils.completableAsyncIO())
                 .subscribe(new CompletableObserver() {
                     @Override
@@ -116,8 +116,8 @@ public class ExchangeEntryViewModel extends ViewModel {
         return exchangeList;
     }
 
-    public void setAccountAssets(AccountAssets accountAssets) {
-        this.accountAssets = accountAssets;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     @Override

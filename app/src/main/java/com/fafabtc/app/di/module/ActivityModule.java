@@ -2,7 +2,7 @@ package com.fafabtc.app.di.module;
 
 import com.fafabtc.app.di.scope.ActivityScope;
 import com.fafabtc.app.ui.TradeActivity;
-import com.fafabtc.app.ui.activity.AccountAssetsCreateActivity;
+import com.fafabtc.app.ui.activity.PortfolioCreateActivity;
 import com.fafabtc.app.ui.MainActivity;
 import com.fafabtc.app.ui.activity.ExchangeAssetsActivity;
 import com.fafabtc.app.ui.activity.ExchangeEntryActivity;
@@ -28,7 +28,7 @@ public abstract class ActivityModule {
 
     @ActivityScope
     @ContributesAndroidInjector
-    public abstract AccountAssetsCreateActivity contributeAccountAssetsCreateActivity();
+    public abstract PortfolioCreateActivity contributePortfolioCreateActivity();
 
     @ActivityScope
     @ContributesAndroidInjector

@@ -1,24 +1,19 @@
 package com.fafabtc.app.service;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 
 import com.fafabtc.app.constants.Services;
 import com.fafabtc.app.receiver.AssetsWidgetProvider;
 import com.fafabtc.app.utils.ExecutorManager;
 import com.fafabtc.app.utils.TickersAlarmUtils;
 import com.fafabtc.app.utils.WidgetUtils;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.AssetsStatisticsRepo;
 import com.fafabtc.data.data.repo.DataRepo;
 import com.fafabtc.data.data.global.AssetsStateRepository;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.vo.WidgetData;
-
-import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -28,7 +23,6 @@ import io.reactivex.SingleObserver;
 import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
@@ -39,7 +33,7 @@ public class WidgetService extends DaggerService {
     DataRepo dataRepo;
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
     @Inject
     AssetsStatisticsRepo assetsStatisticsRepo;
@@ -116,12 +110,12 @@ public class WidgetService extends DaggerService {
 
     private void updateWidgetData() {
         final WidgetData widgetData = new WidgetData();
-        accountAssetsRepo.getCurrent()
-                .flatMap(new Function<AccountAssets, SingleSource<Double>>() {
+        portfolioRepo.getCurrent()
+                .flatMap(new Function<Portfolio, SingleSource<Double>>() {
                     @Override
-                    public SingleSource<Double> apply(AccountAssets accountAssets) throws Exception {
-                        widgetData.setAccountAssets(accountAssets);
-                        return assetsStatisticsRepo.getAccountTotalVolume(accountAssets.getUuid());
+                    public SingleSource<Double> apply(Portfolio portfolio) throws Exception {
+                        widgetData.setPortfolio(portfolio);
+                        return assetsStatisticsRepo.getAccountTotalVolume(portfolio.getUuid());
                     }
                 })
                 .map(new Function<Double, WidgetData>() {

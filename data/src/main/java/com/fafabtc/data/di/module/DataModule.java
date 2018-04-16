@@ -1,7 +1,7 @@
 package com.fafabtc.data.di.module;
 
 import com.fafabtc.binance.di.BinanceModule;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.AssetsStatisticsRepo;
 import com.fafabtc.data.data.repo.BlockchainAssetsRepo;
 import com.fafabtc.data.data.repo.DataRepo;
@@ -11,7 +11,7 @@ import com.fafabtc.data.data.repo.ExchangeRepo;
 import com.fafabtc.data.data.repo.OrderRepo;
 import com.fafabtc.data.data.repo.PairRepo;
 import com.fafabtc.data.data.repo.TickerRepo;
-import com.fafabtc.data.data.repo.impl.AccountAssetsRepository;
+import com.fafabtc.data.data.repo.impl.PortfolioRepository;
 import com.fafabtc.data.data.repo.impl.AssetsStatisticsRepository;
 import com.fafabtc.data.data.repo.impl.BlockchainAssetsRepository;
 import com.fafabtc.data.data.repo.impl.DataRepository;
@@ -47,7 +47,7 @@ public abstract class DataModule {
 
     @Binds
     @Singleton
-    public abstract AccountAssetsRepo accountAssetsRepo(AccountAssetsRepository repository);
+    public abstract PortfolioRepo portfolioRepo(PortfolioRepository repository);
 
     @Binds
     @Singleton

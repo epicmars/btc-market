@@ -1,7 +1,7 @@
 package com.fafabtc.app.di.module;
 
 import com.fafabtc.app.di.scope.FragmentScope;
-import com.fafabtc.app.ui.fragment.AccountAssetsListFragment;
+import com.fafabtc.app.ui.fragment.PortfolioListFragment;
 import com.fafabtc.app.ui.fragment.AccountFragment;
 import com.fafabtc.app.ui.fragment.AssetsFragment;
 import com.fafabtc.app.ui.fragment.BalanceAssetsFragment;
@@ -75,5 +75,5 @@ public abstract class FragmentModel {
 
     @FragmentScope
     @ContributesAndroidInjector
-    public abstract AccountAssetsListFragment accountAssetsListFragment();
+    public abstract PortfolioListFragment portfolioListFragment();
 }

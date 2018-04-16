@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.fafabtc.app.ui.activity.AccountAssetsCreateActivity"
+        tools:context="com.fafabtc.app.ui.activity.PortfolioCreateActivity"
         android:orientation="vertical"
         android:paddingTop="@dimen/activity_padding">
 
@@ -13,7 +13,7 @@
             layout="@layout/divider_light"/>
 
         <EditText
-            android:id="@+id/et_account_assets_name"
+            android:id="@+id/et_portfolio_name"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:singleLine="true"
@@ -21,7 +21,7 @@
             android:maxLines="1"
             android:background="@android:color/white"
             android:padding="@dimen/et_padding"
-            android:hint="@string/hint_account_assets_name"/>
+            android:hint="@string/hint_account_portfolio"/>
 
         <include layout="@layout/divider_light"/>
 

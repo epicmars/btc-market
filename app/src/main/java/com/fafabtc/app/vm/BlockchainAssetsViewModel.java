@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.repo.BlockchainAssetsRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 
@@ -23,7 +23,7 @@ import timber.log.Timber;
 
 public class BlockchainAssetsViewModel extends ViewModel{
 
-    private AccountAssets accountAssets;
+    private Portfolio portfolio;
     private Exchange exchange;
 
     MutableLiveData<List<BlockchainAssets>> blockchainAssetsData = new MutableLiveData<>();
@@ -36,7 +36,7 @@ public class BlockchainAssetsViewModel extends ViewModel{
     }
 
     public void loadBlockchainAssets() {
-        blockchainAssetsRepo.getBaseBlockchainAssets(accountAssets.getUuid(), exchange.getName())
+        blockchainAssetsRepo.getBaseBlockchainAssets(portfolio.getUuid(), exchange.getName())
                 .compose(RxUtils.<List<BlockchainAssets>>singleAsyncIO())
                 .subscribe(new SingleObserver<List<BlockchainAssets>>() {
                     @Override
@@ -66,8 +66,8 @@ public class BlockchainAssetsViewModel extends ViewModel{
         return blockchainAssetsData;
     }
 
-    public void setAccountAssets(AccountAssets accountAssets) {
-        this.accountAssets = accountAssets;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public void setExchange(Exchange exchange) {

@@ -4,9 +4,9 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.fafabtc.app.utils.RxUtils;
-import com.fafabtc.data.data.repo.AccountAssetsRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.OrderRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.Order;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class OrdersViewModel extends ViewModel {
     private MutableLiveData<List<Order>> ordersData = new MutableLiveData<>();
 
     @Inject
-    AccountAssetsRepo accountAssetsRepo;
+    PortfolioRepo portfolioRepo;
 
     @Inject
     OrderRepo orderRepo;
@@ -44,11 +44,11 @@ public class OrdersViewModel extends ViewModel {
 
     public void loadOrders() {
         Single<String> assetsUuidSingle = assetsUUID == null ?
-                accountAssetsRepo.getCurrent()
-                        .map(new Function<AccountAssets, String>() {
+                portfolioRepo.getCurrent()
+                        .map(new Function<Portfolio, String>() {
                             @Override
-                            public String apply(AccountAssets accountAssets) throws Exception {
-                                return accountAssets.getUuid();
+                            public String apply(Portfolio portfolio) throws Exception {
+                                return portfolio.getUuid();
                             }
                         })
                 : Single.just(assetsUUID);

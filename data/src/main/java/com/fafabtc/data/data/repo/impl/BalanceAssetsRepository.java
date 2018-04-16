@@ -1,9 +1,9 @@
 package com.fafabtc.data.data.repo.impl;
 
-import com.fafabtc.data.data.local.dao.AccountAssetsDao;
+import com.fafabtc.data.data.local.dao.PortfolioDao;
 import com.fafabtc.data.data.local.dao.BalanceAssetsDao;
 import com.fafabtc.data.data.repo.BalanceAssetsRepo;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.BalanceAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 
@@ -33,7 +33,7 @@ public class BalanceAssetsRepository implements BalanceAssetsRepo {
     BalanceAssetsDao balanceAssetsDao;
 
     @Inject
-    AccountAssetsDao accountAssetsDao;
+    PortfolioDao portfolioDao;
 
     @Inject
     public BalanceAssetsRepository() {
@@ -65,15 +65,15 @@ public class BalanceAssetsRepository implements BalanceAssetsRepo {
 
     @Override
     public Single<BalanceAssets> getCurrentBalanceAssets(final String exchange, final String name) {
-        return Single.fromCallable(new Callable<AccountAssets>() {
+        return Single.fromCallable(new Callable<Portfolio>() {
             @Override
-            public AccountAssets call() throws Exception {
-                return accountAssetsDao.findCurrent();
+            public Portfolio call() throws Exception {
+                return portfolioDao.findCurrent();
             }
-        }).flatMap(new Function<AccountAssets, SingleSource<? extends BalanceAssets>>() {
+        }).flatMap(new Function<Portfolio, SingleSource<? extends BalanceAssets>>() {
             @Override
-            public SingleSource<? extends BalanceAssets> apply(AccountAssets accountAssets) throws Exception {
-                return getBalanceAssets(accountAssets.getUuid(), exchange, name);
+            public SingleSource<? extends BalanceAssets> apply(Portfolio portfolio) throws Exception {
+                return getBalanceAssets(portfolio.getUuid(), exchange, name);
             }
         });
     }

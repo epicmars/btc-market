@@ -18,11 +18,11 @@ import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.base.RecyclerAdapter;
 import com.fafabtc.app.ui.viewholder.AssetsStatisticsHeaderViewHolder;
 import com.fafabtc.app.ui.viewholder.AssetsStatisticsViewHolder;
-import com.fafabtc.app.vm.AccountViewModel;
+import com.fafabtc.app.vm.PortfolioViewModel;
 import com.fafabtc.app.vm.AssetsViewModel;
 import com.fafabtc.common.utils.NumberUtils;
 import com.fafabtc.data.consts.DataBroadcasts;
-import com.fafabtc.data.model.entity.exchange.AccountAssets;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.vo.AssetsStatisticsHolder;
 
 /**
@@ -32,7 +32,7 @@ import com.fafabtc.data.model.vo.AssetsStatisticsHolder;
 @BindLayout(R.layout.fragment_assets)
 public class AssetsFragment extends BaseFragment<FragmentAssetsBinding> {
 
-    private AccountViewModel accountViewModel;
+    private PortfolioViewModel portfolioViewModel;
     private AssetsViewModel viewModel;
     private RecyclerAdapter adapter;
 
@@ -64,9 +64,9 @@ public class AssetsFragment extends BaseFragment<FragmentAssetsBinding> {
                 AssetsStatisticsViewHolder.class);
         binding.recyclerStatistics.setAdapter(adapter);
 
-        accountViewModel = getViewModelOfActivity(AccountViewModel.class);
-        accountViewModel.isCurrentAccountChanged().observe(getActivity(), currentAccountChangeObserver);
-        accountViewModel.getCurrentAccountAssets().observe(this, currentAccountAssetsObserver);
+        portfolioViewModel = getViewModelOfActivity(PortfolioViewModel.class);
+        portfolioViewModel.isCurrentPortfolioChanged().observe(getActivity(), currentPortfolioChangeObserver);
+        portfolioViewModel.getCurrentPortfolio().observe(this, currentPortfolioObserver);
 
         viewModel = getViewModel(AssetsViewModel.class);
         viewModel.getTotalMarketValue().observe(this, totalVolumeObserver);
@@ -80,10 +80,10 @@ public class AssetsFragment extends BaseFragment<FragmentAssetsBinding> {
         showCurrentAssets();
     }
 
-    private Observer<AccountAssets> currentAccountAssetsObserver = new Observer<AccountAssets>() {
+    private Observer<Portfolio> currentPortfolioObserver = new Observer<Portfolio>() {
         @Override
-        public void onChanged(@Nullable AccountAssets accountAssets) {
-            binding.tvAssetsName.setText(getString(R.string.assets_name_format, accountAssets.getName()));
+        public void onChanged(@Nullable Portfolio portfolio) {
+            binding.tvAssetsName.setText(getString(R.string.assets_name_format, portfolio.getName()));
         }
     };
 
@@ -102,11 +102,11 @@ public class AssetsFragment extends BaseFragment<FragmentAssetsBinding> {
         }
     };
 
-    private Observer<Boolean> currentAccountChangeObserver = new Observer<Boolean>() {
+    private Observer<Boolean> currentPortfolioChangeObserver = new Observer<Boolean>() {
         @Override
         public void onChanged(@Nullable Boolean aBoolean) {
             viewModel.updateStatistics();
-            accountViewModel.loadCurrentAccount();
+            portfolioViewModel.loadCurrentAccount();
         }
     };
 
@@ -128,7 +128,7 @@ public class AssetsFragment extends BaseFragment<FragmentAssetsBinding> {
     private void showCurrentAssets() {
         viewModel.updateStatistics();
         viewModel.loadUpdateTime();
-        accountViewModel.loadCurrentAccount();
+        portfolioViewModel.loadCurrentAccount();
     }
 
 
