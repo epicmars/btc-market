@@ -15,6 +15,9 @@ import io.reactivex.Single;
 
 public interface ExchangeAssetsRepo {
 
+    String DIR_DOCUMENTS = "Documents";
+    String DIR_DEFAULT = "fafabtc";
+
     Completable init();
 
     Completable initExchange(String exchange);

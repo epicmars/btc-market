@@ -21,6 +21,7 @@
             android:textColor="@android:color/primary_text_light" />
 
         <TextView
+            android:id="@+id/tv_eaction"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/view_holder_height_small"
             android:gravity="center_vertical"
@@ -28,8 +29,7 @@
             android:paddingLeft="@dimen/view_holder_padding"
             android:paddingStart="@dimen/view_holder_padding"
             tools:text="@string/assets_manage"
-            android:text="@string/assets_manage"
-            android:drawableRight="@drawable/ic_keyboard_arrow_right"/>
+            android:text="@string/assets_manage"/>
     </LinearLayout>
 
 </layout>

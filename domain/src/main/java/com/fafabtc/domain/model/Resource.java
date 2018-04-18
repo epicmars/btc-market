@@ -50,15 +50,15 @@ public class Resource<T> {
         return new Resource<>(LOADING, data, null);
     }
 
-    public static Resource success() {
-        return new Resource(SUCCESS, null, null);
+    public static <T> Resource<T> success() {
+        return new Resource<>(SUCCESS, null, null);
     }
 
     public static Resource error() {
-        return new Resource(ERROR, null, null);
+        return new Resource<>(ERROR, null, null);
     }
 
-    public static Resource loading() {
+    public static <T> Resource<T> loading() {
         return new Resource<>(LOADING, null, null);
     }
 

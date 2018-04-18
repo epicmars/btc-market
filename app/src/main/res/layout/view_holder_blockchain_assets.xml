@@ -102,7 +102,6 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:text="@string/deposit"
-                android:drawableRight="@drawable/ic_keyboard_arrow_right"
                 />
             
         </FrameLayout>

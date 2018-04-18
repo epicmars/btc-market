@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,10 @@ import dagger.android.support.DaggerAppCompatActivity;
  */
 @Injectable
 public class MainActivity extends DaggerAppCompatActivity {
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override

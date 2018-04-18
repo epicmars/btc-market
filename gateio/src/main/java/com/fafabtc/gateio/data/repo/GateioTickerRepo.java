@@ -16,5 +16,5 @@ public interface GateioTickerRepo {
 
     Single<List<GateioTicker>> getTickers();
 
-    Flowable<List<GateioTicker>> getLatestTickers(final Date timestamp);
+    Single<List<GateioTicker>> getLatestTickers(final Date timestamp);
 }

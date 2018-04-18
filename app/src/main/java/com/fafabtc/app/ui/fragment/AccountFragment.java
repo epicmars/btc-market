@@ -5,8 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.Toast;
 
@@ -65,6 +68,9 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
         viewModel = getViewModelOfActivity(PortfolioViewModel.class);
         viewModel.isCurrentPortfolioChanged().observe(getActivity(), accountChangeObserver);
         viewModel.isAssetsInitialized().observe(this, assetsInitializedObserver);
+        Drawable rightArrowDrawable = VectorDrawableCompat.create(getResources(), R.drawable.ic_keyboard_arrow_right, null);
+        binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(null, null, rightArrowDrawable, null);
+        binding.btnCreateAssets.setCompoundDrawablesWithIntrinsicBounds(null, null, rightArrowDrawable, null);
 
         fragmentHandler = new AccountFragmentHandler();
         binding.setHandler(fragmentHandler);
@@ -81,7 +87,8 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
         public void onChanged(@Nullable Boolean aBoolean) {
             if (aBoolean != null && aBoolean) {
                 binding.portfolioList.setVisibility(View.VISIBLE);
-                binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down, 0);
+                Drawable rightDownDrawable = VectorDrawableCompat.create(getResources(), R.drawable.ic_keyboard_arrow_down, null);
+                binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(null, null, rightDownDrawable, null);
             } else {
                 Toast.makeText(getContext(), "资产初始化中", Toast.LENGTH_SHORT).show();
             }
@@ -102,7 +109,8 @@ public class AccountFragment extends BaseFragment<FragmentAccountBinding> {
         public void onClickAssetsGroup(View view) {
             if (binding.portfolioList.getVisibility() == View.VISIBLE) {
                 binding.portfolioList.setVisibility(View.GONE);
-                binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_right, 0);
+                Drawable rightArrowDrawable = VectorDrawableCompat.create(getResources(), R.drawable.ic_keyboard_arrow_right, null);
+                binding.btnAssetsGroup.setCompoundDrawablesWithIntrinsicBounds(null, null, rightArrowDrawable, null);
             } else {
                 viewModel.loadAccountList();
             }

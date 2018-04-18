@@ -35,6 +35,7 @@ public class PortfolioCreateViewModel extends ViewModel {
     @Inject
     AssetsStateRepository assetsStateRepository;
 
+
     MutableLiveData<Resource<Portfolio>> portfolioMutableLiveData = new MutableLiveData<>();
 
     @Inject

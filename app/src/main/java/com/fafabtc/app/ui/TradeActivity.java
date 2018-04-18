@@ -17,6 +17,7 @@ import com.fafabtc.app.ui.fragment.TradeFragment;
 import com.fafabtc.app.vm.TradeViewModel;
 import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.model.entity.exchange.Ticker;
+import com.fafabtc.domain.model.Resource;
 
 @BindLayout(R.layout.activity_trade)
 public class TradeActivity extends BaseActivity<ActivityTradeBinding> {
@@ -71,10 +72,11 @@ public class TradeActivity extends BaseActivity<ActivityTradeBinding> {
         }
     };
 
-    private Observer<Ticker> tickerObserver = new Observer<Ticker>() {
+    private Observer<Resource<Ticker>> tickerObserver = new Observer<Resource<Ticker>>() {
         @Override
-        public void onChanged(@Nullable Ticker ticker) {
-            binding.setTicker(ticker);
+        public void onChanged(@Nullable Resource<Ticker> ticker) {
+            if (ticker != null && ticker.isSuccess())
+                binding.setTicker(ticker.data);
         }
     };
 }

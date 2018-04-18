@@ -138,7 +138,6 @@ public class TickerRepository implements TickerRepo {
         switch (exchange) {
             case GateioRepo.GATEIO_EXCHANGE:
                 latestTickers = gateioTickerRepo.getLatestTickers(timestamp)
-                        .singleOrError()
                         .compose(gateioTickerTransformer);
                 break;
             case BinanceRepo.BINANCE_EXCHANGE:
@@ -214,7 +213,8 @@ public class TickerRepository implements TickerRepo {
             new SingleTransformer<List<HuobiTicker>, List<Ticker>>() {
                 @Override
                 public SingleSource<List<Ticker>> apply(Single<List<HuobiTicker>> upstream) {
-                    return upstream.flattenAsObservable(TickerRepository.<HuobiTicker>flattenList())
+                    return upstream
+                            .flattenAsObservable(TickerRepository.<HuobiTicker>flattenList())
                             .flatMapSingle(new Function<HuobiTicker, SingleSource<Ticker>>() {
                                 @Override
                                 public SingleSource<Ticker> apply(final HuobiTicker huobiTicker) throws Exception {
@@ -240,8 +240,7 @@ public class TickerRepository implements TickerRepo {
                 @Override
                 public SingleSource<List<Ticker>> apply(Single<List<GateioTicker>> upstream) {
                     return upstream
-                            .toFlowable()
-                            .flatMapIterable(new Function<List<GateioTicker>, Iterable<GateioTicker>>() {
+                            .flattenAsObservable(new Function<List<GateioTicker>, Iterable<GateioTicker>>() {
                                 @Override
                                 public Iterable<GateioTicker> apply(List<GateioTicker> gateioTickers) throws Exception {
                                     return gateioTickers;

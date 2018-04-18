@@ -36,6 +36,8 @@ dependencies {
     api "com.squareup.retrofit2:converter-gson:$retrofit_version"
     api "com.squareup.okhttp3:logging-interceptor:$okhttp3"
 
+    implementation 'com.squareup.okio:okio:1.14.0'
+
     // gson
     api "com.google.code.gson:gson:$gson_version"
 

@@ -17,8 +17,12 @@ import java.util.concurrent.Callable;
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.Single;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import timber.log.Timber;
 
 /**
  * Created by jastrelax on 2018/1/7.
@@ -28,6 +32,7 @@ public class GateioTickerRepository implements GateioTickerRepo {
 
     @Inject
     GateioApi mApi;
+
     @Inject
     GateioTickerDao mDao;
 
@@ -46,9 +51,21 @@ public class GateioTickerRepository implements GateioTickerRepo {
     }
 
     @Override
-    public Flowable<List<GateioTicker>> getLatestTickers(final Date timestamp) {
+    public Single<List<GateioTicker>> getLatestTickers(final Date timestamp) {
         return mApi.tickers()
-                .flattenAsFlowable(new Function<JsonObject, Iterable<GateioTickers.PairTicker>>() {
+                .doOnSuccess(new Consumer<JsonObject>() {
+                    @Override
+                    public void accept(JsonObject jsonObject) throws Exception {
+                        Timber.d(jsonObject.toString());
+                    }
+                })
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Timber.e(throwable);
+                    }
+                })
+                .flattenAsObservable(new Function<JsonObject, Iterable<GateioTickers.PairTicker>>() {
                     @Override
                     public Iterable<GateioTickers.PairTicker> apply(JsonObject jsonObject) throws Exception {
                         return GateioTickersMapper.MAPPER.apply(jsonObject).getTickers();
@@ -60,19 +77,19 @@ public class GateioTickerRepository implements GateioTickerRepo {
                         return pairTicker.toTicker(timestamp);
                     }
                 })
-                .flatMap(new Function<GateioTicker, Publisher<GateioTicker>>() {
+                .flatMap(new Function<GateioTicker, ObservableSource<GateioTicker>>() {
                     @Override
-                    public Publisher<GateioTicker> apply(final GateioTicker gateioTicker) throws Exception {
-                        return Flowable.fromCallable(new Callable<GateioTicker>() {
+                    public ObservableSource<GateioTicker> apply(final GateioTicker gateioTicker) throws Exception {
+                        return Observable.fromCallable(new Callable<GateioTicker>() {
                             @Override
                             public GateioTicker call() throws Exception {
                                 mDao.insert(gateioTicker);
                                 return gateioTicker;
                             }
                         }).onErrorReturnItem(gateioTicker);
+
                     }
                 })
-                .toList()
-                .toFlowable();
+                .toList();
     }
 }

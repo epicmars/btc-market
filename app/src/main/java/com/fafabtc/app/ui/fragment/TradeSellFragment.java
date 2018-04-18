@@ -139,24 +139,24 @@ public class TradeSellFragment extends BaseFragment<FragmentTradeSellBinding> {
         binding.tradeView.etVolume.setText(NumberUtils.formatPrice(volume));
     }
 
-    private Observer<Ticker> tickerObserver = new Observer<Ticker>() {
+    private Observer<Resource<Ticker>> tickerObserver = new Observer<Resource<Ticker>>() {
         @Override
-        public void onChanged(@Nullable Ticker ticker) {
+        public void onChanged(@Nullable Resource<Ticker> ticker) {
         }
     };
 
-    private Observer<BlockchainAssets> balanceObserver = new Observer<BlockchainAssets>() {
+    private Observer<Resource<BlockchainAssets>> balanceObserver = new Observer<Resource<BlockchainAssets>>() {
         @Override
-        public void onChanged(@Nullable BlockchainAssets balanceAssets) {
+        public void onChanged(@Nullable Resource<BlockchainAssets> balanceAssets) {
             if (balanceAssets == null) return;
-            binding.tradeView.tvBalanceAvailable.setText(NumberUtils.formatBlockchainQuantity(balanceAssets.getAvailable()));
+            binding.tradeView.tvBalanceAvailable.setText(NumberUtils.formatBlockchainQuantity(balanceAssets.data.getAvailable()));
         }
     };
 
     private Observer<Resource<Boolean>> orderCreationObserver = new Observer<Resource<Boolean>>() {
         @Override
         public void onChanged(@Nullable Resource<Boolean> booleanResource) {
-            if (booleanResource.isSuccess()) {
+            if (booleanResource != null && booleanResource.isSuccess()) {
                 getContext().sendBroadcast(new Intent(Broadcasts.Actions.ACTION_ORDER_CREATED));
                 viewModel.updateBaseBalance();
             }

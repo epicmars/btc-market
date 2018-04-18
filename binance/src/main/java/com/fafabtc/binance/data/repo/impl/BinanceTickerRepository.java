@@ -68,6 +68,7 @@ public class BinanceTickerRepository implements BinanceTickerRepo {
                     @Override
                     public BinanceTicker apply(BinanceTicker binanceTicker) throws Exception {
                         binanceTicker.setTimestamp(timestamp);
+                        dao.insert(binanceTicker);
                         return binanceTicker;
                     }
                 })

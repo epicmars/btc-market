@@ -42,13 +42,13 @@ public class TradeViewModel extends ViewModel {
 
     private Ticker ticker;
 
-    private MutableLiveData<Ticker> tickerLiveData = new MutableLiveData<>();
+    private MutableLiveData<Resource<Ticker>> tickerLiveData = new MutableLiveData<>();
 
     private MutableLiveData<Resource<Boolean>> isOrderCreated = new MutableLiveData<>();
 
-    private MutableLiveData<BlockchainAssets> baseBlockchainAssets = new MutableLiveData<>();
+    private MutableLiveData<Resource<BlockchainAssets>> baseBlockchainAssets = new MutableLiveData<>();
 
-    private MutableLiveData<BlockchainAssets> quoteBlockchainAssets = new MutableLiveData<>();
+    private MutableLiveData<Resource<BlockchainAssets>> quoteBlockchainAssets = new MutableLiveData<>();
 
     @Inject
     public TradeViewModel() {
@@ -66,12 +66,13 @@ public class TradeViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(BlockchainAssets blockchainAssets) {
-                        baseBlockchainAssets.setValue(blockchainAssets);
+                        baseBlockchainAssets.setValue(Resource.success(blockchainAssets));
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Timber.e(e);
+                        baseBlockchainAssets.setValue(Resource.error());
                     }
                 });
     }
@@ -87,12 +88,13 @@ public class TradeViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(BlockchainAssets b) {
-                        quoteBlockchainAssets.setValue(b);
+                        quoteBlockchainAssets.setValue(Resource.success(b));
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Timber.e(e);
+                        quoteBlockchainAssets.setValue(Resource.error());
                     }
                 });
     }
@@ -109,12 +111,13 @@ public class TradeViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(Ticker ticker) {
-                        tickerLiveData.setValue(ticker);
+                        tickerLiveData.setValue(Resource.success(ticker));
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Timber.e(e);
+                        tickerLiveData.setValue(Resource.error());
                     }
                 });
     }
@@ -194,10 +197,10 @@ public class TradeViewModel extends ViewModel {
 
     public void setTicker(Ticker ticker) {
         this.ticker = ticker;
-        this.tickerLiveData.setValue(ticker);
+        this.tickerLiveData.setValue(Resource.loading(ticker));
     }
 
-    public MutableLiveData<Ticker> getTickerLiveData() {
+    public MutableLiveData<Resource<Ticker>> getTickerLiveData() {
         return tickerLiveData;
     }
 
@@ -205,11 +208,11 @@ public class TradeViewModel extends ViewModel {
         return isOrderCreated;
     }
 
-    public MutableLiveData<BlockchainAssets> getBalanceAssets() {
+    public MutableLiveData<Resource<BlockchainAssets>> getBalanceAssets() {
         return quoteBlockchainAssets;
     }
 
-    public MutableLiveData<BlockchainAssets> getBaseBlockchainAssets() {
+    public MutableLiveData<Resource<BlockchainAssets>> getBaseBlockchainAssets() {
         return baseBlockchainAssets;
     }
 }

@@ -1,5 +1,7 @@
 package com.fafabtc.app.ui.viewholder;
 
+import android.graphics.drawable.Drawable;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.view.View;
 
 import com.fafabtc.app.R;
@@ -26,6 +28,8 @@ public class ExchangeEntryViewHolder extends BaseViewHolder<ViewHolderExchangeEn
             return;
         final ExchangeEntry entry = (ExchangeEntry) data;
         mBinding.tvExchangeName.setText(entry.getExchange().getName().toUpperCase());
+        Drawable arrowRight = VectorDrawableCompat.create(itemView.getResources(), R.drawable.ic_keyboard_arrow_right, null);
+        mBinding.tvEaction.setCompoundDrawablesWithIntrinsicBounds(null, null, arrowRight, null);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

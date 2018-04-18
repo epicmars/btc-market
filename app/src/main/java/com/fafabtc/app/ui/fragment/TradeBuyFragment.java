@@ -149,9 +149,9 @@ public class TradeBuyFragment extends BaseFragment<FragmentTradeBuyBinding>{
         binding.tradeView.etVolume.setText(NumberUtils.formatPrice(volume));
     }
 
-    private Observer<Ticker> tickerObserver = new Observer<Ticker>() {
+    private Observer<Resource<Ticker>> tickerObserver = new Observer<Resource<Ticker>>() {
         @Override
-        public void onChanged(@Nullable Ticker ticker) {
+        public void onChanged(@Nullable Resource<Ticker> ticker) {
 
         }
     };
@@ -166,10 +166,12 @@ public class TradeBuyFragment extends BaseFragment<FragmentTradeBuyBinding>{
         }
     };
 
-    private Observer<BlockchainAssets> balanceObserver = new Observer<BlockchainAssets>() {
+    private Observer<Resource<BlockchainAssets>> balanceObserver = new Observer<Resource<BlockchainAssets>>() {
         @Override
-        public void onChanged(@Nullable BlockchainAssets balanceAssets) {
-            binding.tradeView.tvBalanceAvailable.setText(NumberUtils.formatBlockchainQuantity(balanceAssets.getAvailable()));
+        public void onChanged(@Nullable Resource<BlockchainAssets> balanceAssets) {
+            if (balanceAssets.isSuccess()) {
+                binding.tradeView.tvBalanceAvailable.setText(NumberUtils.formatBlockchainQuantity(balanceAssets.data.getAvailable()));
+            }
         }
     };
 }

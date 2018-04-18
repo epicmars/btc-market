@@ -21,6 +21,7 @@ import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.ExchangeAssets;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -118,7 +119,8 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                         sendExchangeBroadcast(exchangeName, DataBroadcasts.Actions.ACTION_INITIATE_ASSETS, null);
                     }
                 })
-                .concatWith(assetsStateRepository.setAssetsInitialized(exchangeName, true));
+                .concatWith(assetsStateRepository.setAssetsInitialized(exchangeName, true))
+                .onErrorComplete();
 
         return initExchange
                 .concatWith(initExchangeAssets)
@@ -242,7 +244,8 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                 .fromCallable(new Callable<ExchangeAssets[]>() {
                     @Override
                     public ExchangeAssets[] call() throws Exception {
-                        return GsonHelper.gson().fromJson(FileUtils.readFile(fileName), ExchangeAssets[].class);
+                        File assetsFile = FileUtils.getExternalFile(fileName, DIR_DOCUMENTS, DIR_DEFAULT);
+                        return GsonHelper.gson().fromJson(FileUtils.readFile(assetsFile), ExchangeAssets[].class);
                     }
                 })
                 .onErrorReturn(new Function<Throwable, ExchangeAssets[]>() {
@@ -522,6 +525,12 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                 .onErrorReturnItem(false);
     }
 
+    /**
+     * Save exchange assets to a file.
+     *
+     * @param exchange the exchange whose assets is to be cached.
+     * @return a Completable
+     */
     @Override
     public Completable cacheExchangeAssetsToFile(final Exchange exchange) {
         return getAllExchangeAssetsOfExchange(exchange)
@@ -532,7 +541,8 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                             @Override
                             public void run() throws Exception {
                                 if (!exchangeAssets.isEmpty()) {
-                                    FileUtils.writeFile(exchange.getName() + ASSETS_DATA_FILE, GsonHelper.prettyGson().toJson(exchangeAssets));
+                                    File assetsDataFile = FileUtils.getExternalFile(exchange.getName() + ASSETS_DATA_FILE, DIR_DOCUMENTS, DIR_DEFAULT);
+                                    FileUtils.writeFile(assetsDataFile, GsonHelper.prettyGson().toJson(exchangeAssets));
                                 }
                             }
                         });
@@ -540,6 +550,12 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                 });
     }
 
+    /**
+     * Send a Broadcast with a action and data.
+     *
+     * @param action action of the broadcast intent
+     * @param data   data of the broadcast intent
+     */
     private void sendBroadcast(String action, Bundle data) {
         Intent intent = new Intent(action);
         if (data != null) {

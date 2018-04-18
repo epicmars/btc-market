@@ -1,5 +1,7 @@
 package com.fafabtc.app.ui.viewholder;
 
+import android.graphics.drawable.Drawable;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.view.View;
 
 import com.fafabtc.app.R;
@@ -25,6 +27,9 @@ public class BlockchainAssetsViewHolder extends BaseViewHolder<ViewHolderBlockch
         final BlockchainAssets assets = (BlockchainAssets) data;
         mBinding.setBlockchainAssets(assets);
         mBinding.executePendingBindings();
+
+        Drawable rightArrowDrawable = VectorDrawableCompat.create(itemView.getResources(), R.drawable.ic_keyboard_arrow_right, null);
+        mBinding.btnDeposit.setCompoundDrawablesWithIntrinsicBounds(null, null, rightArrowDrawable, null);
 
         mBinding.btnDeposit.setOnClickListener(new View.OnClickListener() {
             @Override
