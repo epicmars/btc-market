@@ -48,7 +48,7 @@ public class PortfolioCreateViewModel extends ViewModel {
      * @param assetsName
      */
     public void createPortfolio(final String assetsName) {
-        final Single<Portfolio> created = exchangeAssetsRepo.isExchangeAssetsInitialized()
+        final Single<Portfolio> created = exchangeAssetsRepo.hasExchangeAssetsInitialized()
                 .flatMap(new Function<Boolean, SingleSource<Portfolio>>() {
                     @Override
                     public SingleSource<Portfolio> apply(Boolean aBoolean) throws Exception {

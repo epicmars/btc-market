@@ -34,6 +34,7 @@ dependencies {
     // http
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$adapter_rxjava2_version"
     api "com.squareup.okhttp3:logging-interceptor:$okhttp3"
 
     implementation 'com.squareup.okio:okio:1.14.0'
@@ -43,8 +44,8 @@ dependencies {
 
     // rxjava
     api "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    // rxandroid
     api "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    api "com.squareup.retrofit2:adapter-rxjava2:$adapter_rxjava2_version"
 
     // guava
     api "com.google.guava:guava:$guava_version"

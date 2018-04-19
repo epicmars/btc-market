@@ -159,7 +159,7 @@ public class TradeBuyFragment extends BaseFragment<FragmentTradeBuyBinding>{
     private Observer<Resource<Boolean>> orderCreationObserver = new Observer<Resource<Boolean>>() {
         @Override
         public void onChanged(@Nullable Resource<Boolean> booleanResource) {
-            if (booleanResource.isSuccess()) {
+            if (booleanResource != null && booleanResource.isSuccess()) {
                 getContext().sendBroadcast(new Intent(Broadcasts.Actions.ACTION_ORDER_CREATED));
                 viewModel.updateQuoteBalance();
             }
@@ -169,6 +169,7 @@ public class TradeBuyFragment extends BaseFragment<FragmentTradeBuyBinding>{
     private Observer<Resource<BlockchainAssets>> balanceObserver = new Observer<Resource<BlockchainAssets>>() {
         @Override
         public void onChanged(@Nullable Resource<BlockchainAssets> balanceAssets) {
+            if (balanceAssets == null || balanceAssets.data == null) return;
             if (balanceAssets.isSuccess()) {
                 binding.tradeView.tvBalanceAvailable.setText(NumberUtils.formatBlockchainQuantity(balanceAssets.data.getAvailable()));
             }

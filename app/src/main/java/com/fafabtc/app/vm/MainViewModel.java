@@ -28,7 +28,7 @@ public class MainViewModel extends ViewModel{
     }
 
     public void queryIsDataInitialized() {
-        exchangeAssetsRepo.isExchangeAssetsInitialized()
+        exchangeAssetsRepo.hasExchangeAssetsInitialized()
                 .compose(RxUtils.<Boolean>singleAsyncIO())
                 .subscribe(new SingleObserver<Boolean>() {
                     @Override

@@ -118,8 +118,8 @@ public class BlockchainAssetsRepository implements BlockchainAssetsRepo {
 
     /**
      * Restore block chain assets of an exchange from an {@link ExchangeAssets}.
-     * @param exchangeAssets
-     *              assets belong to an exchange and an assets account.
+     *
+     * @param exchangeAssets assets belong to an exchange and an assets account.
      * @return a Completable
      */
     @Override
@@ -182,32 +182,36 @@ public class BlockchainAssetsRepository implements BlockchainAssetsRepo {
 
     @Override
     public Single<BlockchainAssets> getFromCurrentAccount(final String exchangeName, final String name) {
-        return Single.fromCallable(new Callable<Portfolio>() {
-            @Override
-            public Portfolio call() throws Exception {
-                return portfolioDao.findCurrent();
-            }
-        }).map(new Function<Portfolio, BlockchainAssets>() {
-            @Override
-            public BlockchainAssets apply(Portfolio portfolio) throws Exception {
-                return blockchainAssetsDao.find(portfolio.getUuid(), exchangeName, name);
-            }
-        });
+        return Single
+                .fromCallable(new Callable<Portfolio>() {
+                    @Override
+                    public Portfolio call() throws Exception {
+                        return portfolioDao.findCurrent();
+                    }
+                })
+                .map(new Function<Portfolio, BlockchainAssets>() {
+                    @Override
+                    public BlockchainAssets apply(Portfolio portfolio) throws Exception {
+                        return blockchainAssetsDao.find(portfolio.getUuid(), exchangeName, name);
+                    }
+                });
     }
 
     @Override
     public Single<List<BlockchainAssets>> getFromAccountByName(final String assetsUUID, final String name) {
-        return Single.fromCallable(new Callable<Portfolio>() {
-            @Override
-            public Portfolio call() throws Exception {
-                return portfolioDao.findByUUID(assetsUUID);
-            }
-        }).map(new Function<Portfolio, List<BlockchainAssets>>() {
-            @Override
-            public List<BlockchainAssets> apply(Portfolio portfolio) throws Exception {
-                return blockchainAssetsDao.findByAccountWithName(portfolio.getUuid(), name);
-            }
-        });
+        return Single
+                .fromCallable(new Callable<Portfolio>() {
+                    @Override
+                    public Portfolio call() throws Exception {
+                        return portfolioDao.findByUUID(assetsUUID);
+                    }
+                })
+                .map(new Function<Portfolio, List<BlockchainAssets>>() {
+                    @Override
+                    public List<BlockchainAssets> apply(Portfolio portfolio) throws Exception {
+                        return blockchainAssetsDao.findByAccountWithName(portfolio.getUuid(), name);
+                    }
+                });
     }
 
     @Override

@@ -150,7 +150,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      */
     @Override
     public Completable initExchangeAssets(final String exchangeName) {
-        return isExchangeAssetsInitialized(exchangeName)
+        return hasExchangeAssetsInitialized(exchangeName)
                 .flatMapCompletable(new Function<Boolean, CompletableSource>() {
                     @Override
                     public CompletableSource apply(Boolean isInitialized) throws Exception {
@@ -172,7 +172,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * @return a Single
      */
     @Override
-    public Single<Boolean> isExchangeAssetsInitialized(final String exchange) {
+    public Single<Boolean> hasExchangeAssetsInitialized(final String exchange) {
         final SingleTransformer<List<Portfolio>, Boolean> transformer = new SingleTransformer<List<Portfolio>, Boolean>() {
             @Override
             public SingleSource<Boolean> apply(Single<List<Portfolio>> upstream) {
@@ -496,12 +496,12 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     }
 
     /**
-     * Tell if all exchange assets have been initialized.
+     * Tell if one of the exchange assets has been initialized.
      *
      * @return a Single
      */
     @Override
-    public Single<Boolean> isExchangeAssetsInitialized() {
+    public Single<Boolean> hasExchangeAssetsInitialized() {
         return exchangeRepo.getExchanges()
                 .flattenAsObservable(new Function<Exchange[], Iterable<Exchange>>() {
                     @Override
@@ -518,7 +518,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                 .reduce(new BiFunction<Boolean, Boolean, Boolean>() {
                     @Override
                     public Boolean apply(Boolean aBoolean, Boolean aBoolean2) throws Exception {
-                        return aBoolean && aBoolean2;
+                        return aBoolean || aBoolean2;
                     }
                 })
                 .toSingle()

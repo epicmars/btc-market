@@ -40,7 +40,7 @@ public class PortfolioViewModel extends ViewModel{
     }
 
     public void loadAccountList() {
-        exchangeAssetsRepo.isExchangeAssetsInitialized()
+        exchangeAssetsRepo.hasExchangeAssetsInitialized()
                 .compose(RxUtils.<Boolean>singleAsyncIO())
                 .subscribe(new SingleObserver<Boolean>() {
                     @Override

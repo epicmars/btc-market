@@ -148,7 +148,7 @@ public class TradeSellFragment extends BaseFragment<FragmentTradeSellBinding> {
     private Observer<Resource<BlockchainAssets>> balanceObserver = new Observer<Resource<BlockchainAssets>>() {
         @Override
         public void onChanged(@Nullable Resource<BlockchainAssets> balanceAssets) {
-            if (balanceAssets == null) return;
+            if (balanceAssets == null || balanceAssets.data == null) return;
             binding.tradeView.tvBalanceAvailable.setText(NumberUtils.formatBlockchainQuantity(balanceAssets.data.getAvailable()));
         }
     };

@@ -24,9 +24,9 @@ public interface ExchangeAssetsRepo {
 
     Completable initExchangeAssets(final String exchange);
 
-    Single<Boolean> isExchangeAssetsInitialized();
+    Single<Boolean> hasExchangeAssetsInitialized();
 
-    Single<Boolean> isExchangeAssetsInitialized(String exchange);
+    Single<Boolean> hasExchangeAssetsInitialized(String exchange);
 
     Single<Portfolio> createPortfolioOfExchange(final String assetsName);
 
