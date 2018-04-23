@@ -26,7 +26,7 @@ public interface BlockchainAssetsRepo {
 
     Single<List<BlockchainAssets>> getBalanceFromAccount(String assetsUUID);
 
-    Single<BlockchainAssets> getFromCurrentAccount(String exchangeName, String name);
+    Single<BlockchainAssets> getFromCurrentPortfolio(String exchangeName, String name);
 
     Single<List<BlockchainAssets>> getBaseBlockchainAssets(String assetsUUID, String exchangeName);
 

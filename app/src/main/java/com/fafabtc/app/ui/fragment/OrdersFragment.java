@@ -102,7 +102,7 @@ public class OrdersFragment extends BaseFragment<FragmentOrdersBinding> {
     private Observer<Resource<Boolean>> orderCreationObserver = new Observer<Resource<Boolean>>() {
         @Override
         public void onChanged(@Nullable Resource<Boolean> booleanResource) {
-            if (booleanResource.isSuccess()) {
+            if (booleanResource != null && booleanResource.isSuccess()) {
                 viewModel.loadOrders();
             }
         }

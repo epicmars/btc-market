@@ -17,7 +17,7 @@ import java.util.Date;
  * 即多个订单可以属于同一交易所，或者同一项资产。
  * Created by jastrelax on 2018/1/9.
  */
-@Entity(tableName = "orders", indices = @Index(value = "uuid", unique = true))
+@Entity(tableName = "orders")
 public class Order extends BaseEntity implements Parcelable{
 
     public enum Type {
@@ -38,6 +38,7 @@ public class Order extends BaseEntity implements Parcelable{
     private String exchange;
 
     @NonNull
+    @PrimaryKey
     private String uuid;
 
     /**

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "772064ab205c0d458ba699446c994110",
+    "identityHash": "e887ec5e6d61d7e948db25d2ba732539",
     "entities": [
       {
         "tableName": "portfolio",
@@ -256,7 +256,7 @@
       },
       {
         "tableName": "orders",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `assets_uuid` TEXT, `exchange` TEXT, `uuid` TEXT NOT NULL, `type` TEXT, `state` TEXT, `pair` TEXT, `base` TEXT, `quote` TEXT, `quantity` REAL NOT NULL, `price` REAL NOT NULL, `commission` REAL NOT NULL, `commission_asset` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `timestamp` INTEGER, `assets_uuid` TEXT, `exchange` TEXT, `uuid` TEXT NOT NULL, `type` TEXT, `state` TEXT, `pair` TEXT, `base` TEXT, `quote` TEXT, `quantity` REAL NOT NULL, `price` REAL NOT NULL, `commission` REAL NOT NULL, `commission_asset` TEXT, PRIMARY KEY(`uuid`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -345,20 +345,11 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "uuid"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
-        "indices": [
-          {
-            "name": "index_orders_uuid",
-            "unique": true,
-            "columnNames": [
-              "uuid"
-            ],
-            "createSql": "CREATE UNIQUE INDEX `index_orders_uuid` ON `${TABLE_NAME}` (`uuid`)"
-          }
-        ],
+        "indices": [],
         "foreignKeys": []
       },
       {
@@ -637,7 +628,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"772064ab205c0d458ba699446c994110\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e887ec5e6d61d7e948db25d2ba732539\")"
     ]
   }
 }

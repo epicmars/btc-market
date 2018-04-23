@@ -68,30 +68,32 @@ public class OrderRepository implements OrderRepo {
                                       final String base,
                                       final String quote,
                                       final Order.Type type) {
-        return Single.fromCallable(new Callable<Order>() {
-            @Override
-            public Order call() throws Exception {
-                return dao.createNewOrder(assetsUUID,
-                        exchangeName,
-                        price,
-                        quantity,
-                        pair,
-                        base,
-                        quote,
-                        type);
-            }
-        }).flatMapCompletable(new Function<Order, CompletableSource>() {
-            @Override
-            public CompletableSource apply(final Order order) throws Exception {
-                return Completable.fromAction(new Action() {
+        return Single
+                .fromCallable(new Callable<Order>() {
                     @Override
-                    public void run() throws Exception {
-                        Ticker ticker = tickerDao.getLatest(exchangeName, pair);
-                        dao.dealPendingOrder(order, ticker);
+                    public Order call() throws Exception {
+                        return dao.createNewOrder(assetsUUID,
+                                exchangeName,
+                                price,
+                                quantity,
+                                pair,
+                                base,
+                                quote,
+                                type);
                     }
-                }).onErrorComplete();
-            }
-        });
+                })
+                .flatMapCompletable(new Function<Order, CompletableSource>() {
+                    @Override
+                    public CompletableSource apply(final Order order) throws Exception {
+                        return Completable.fromAction(new Action() {
+                            @Override
+                            public void run() throws Exception {
+                                Ticker ticker = tickerDao.getLatest(exchangeName, pair);
+                                dao.dealPendingOrder(order, ticker);
+                            }
+                        }).onErrorComplete();
+                    }
+                });
     }
 
     @Override

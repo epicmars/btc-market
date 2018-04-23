@@ -181,7 +181,7 @@ public class BlockchainAssetsRepository implements BlockchainAssetsRepo {
     }
 
     @Override
-    public Single<BlockchainAssets> getFromCurrentAccount(final String exchangeName, final String name) {
+    public Single<BlockchainAssets> getFromCurrentPortfolio(final String exchangeName, final String name) {
         return Single
                 .fromCallable(new Callable<Portfolio>() {
                     @Override

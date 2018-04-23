@@ -40,7 +40,7 @@ public class TradeSellViewModel extends ViewModel {
     }
 
     public void updateBaseBalance() {
-        blockchainAssetsRepo.getFromCurrentAccount(ticker.getExchange(), ticker.getBase())
+        blockchainAssetsRepo.getFromCurrentPortfolio(ticker.getExchange(), ticker.getBase())
                 .compose(RxUtils.<BlockchainAssets>singleAsyncIO())
                 .subscribe(new SingleObserver<BlockchainAssets>() {
                     @Override
@@ -61,7 +61,7 @@ public class TradeSellViewModel extends ViewModel {
     }
 
     public void sellBlockchainAssets(final double price, final double quantity) {
-        blockchainAssetsRepo.getFromCurrentAccount(ticker.getExchange(), ticker.getBase())
+        blockchainAssetsRepo.getFromCurrentPortfolio(ticker.getExchange(), ticker.getBase())
                 .flatMapCompletable(new Function<BlockchainAssets, CompletableSource>() {
                     @Override
                     public CompletableSource apply(BlockchainAssets baseAssets) throws Exception {

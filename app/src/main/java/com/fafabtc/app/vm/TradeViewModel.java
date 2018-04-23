@@ -56,7 +56,7 @@ public class TradeViewModel extends ViewModel {
     }
 
     public void updateBaseBalance() {
-        blockchainAssetsRepo.getFromCurrentAccount(ticker.getExchange(), ticker.getBase())
+        blockchainAssetsRepo.getFromCurrentPortfolio(ticker.getExchange(), ticker.getBase())
                 .compose(RxUtils.<BlockchainAssets>singleAsyncIO())
                 .subscribe(new SingleObserver<BlockchainAssets>() {
                     @Override
@@ -78,7 +78,7 @@ public class TradeViewModel extends ViewModel {
     }
 
     public void updateQuoteBalance() {
-        blockchainAssetsRepo.getFromCurrentAccount(ticker.getExchange(), ticker.getQuote())
+        blockchainAssetsRepo.getFromCurrentPortfolio(ticker.getExchange(), ticker.getQuote())
                 .compose(RxUtils.<BlockchainAssets>singleAsyncIO())
                 .subscribe(new SingleObserver<BlockchainAssets>() {
                     @Override
@@ -124,7 +124,7 @@ public class TradeViewModel extends ViewModel {
 
 
     public void buyBlockchainAssets(final double price, final double quantity) {
-        blockchainAssetsRepo.getFromCurrentAccount(ticker.getExchange(), ticker.getQuote())
+        blockchainAssetsRepo.getFromCurrentPortfolio(ticker.getExchange(), ticker.getQuote())
                 .flatMapCompletable(new Function<BlockchainAssets, CompletableSource>() {
                     @Override
                     public CompletableSource apply(BlockchainAssets quoteAssets) throws Exception {
@@ -160,7 +160,7 @@ public class TradeViewModel extends ViewModel {
 
 
     public void sellBlockchainAssets(final double price, final double quantity) {
-        blockchainAssetsRepo.getFromCurrentAccount(ticker.getExchange(), ticker.getBase())
+        blockchainAssetsRepo.getFromCurrentPortfolio(ticker.getExchange(), ticker.getBase())
                 .flatMapCompletable(new Function<BlockchainAssets, CompletableSource>() {
                     @Override
                     public CompletableSource apply(BlockchainAssets baseAssets) throws Exception {
