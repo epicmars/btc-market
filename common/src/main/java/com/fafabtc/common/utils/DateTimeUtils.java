@@ -13,7 +13,9 @@ public class DateTimeUtils {
 
     public static final long ONE_MINUTE = 60 * 1000;
 
-    public static final DateFormat FORMAT_STANDARD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINESE);
+    public static final String STANDARD = "yyyy-MM-dd HH:mm:ss.SSSZ";
+
+    public static final DateFormat FORMAT_STANDARD = new SimpleDateFormat(STANDARD, Locale.CHINESE);
 
     public static String formatStandard(Date date) {
         return FORMAT_STANDARD.format(date);

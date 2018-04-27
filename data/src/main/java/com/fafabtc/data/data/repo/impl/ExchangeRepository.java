@@ -72,7 +72,8 @@ public class ExchangeRepository implements ExchangeRepo {
                 .map(PairMapperFactory.GateioPairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .flatMapCompletable(saveExchangeCompletableMap(GateioRepo.GATEIO_EXCHANGE));
+                .toCompletable()
+                .concatWith(saveExchange(GateioRepo.GATEIO_EXCHANGE));
     }
 
 
@@ -83,7 +84,8 @@ public class ExchangeRepository implements ExchangeRepo {
                 .map(PairMapperFactory.BinancePairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .flatMapCompletable(saveExchangeCompletableMap(BinanceRepo.BINANCE_EXCHANGE));
+                .toCompletable()
+                .concatWith(saveExchange(BinanceRepo.BINANCE_EXCHANGE));
     }
 
     @Override
@@ -93,7 +95,8 @@ public class ExchangeRepository implements ExchangeRepo {
                 .map(PairMapperFactory.HuobiPairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .flatMapCompletable(saveExchangeCompletableMap(HuobiRepo.HUOBI_EXCHANGE));
+                .toCompletable()
+                .concatWith(saveExchange(HuobiRepo.HUOBI_EXCHANGE));
     }
 
     /**
@@ -121,15 +124,21 @@ public class ExchangeRepository implements ExchangeRepo {
         }
     };
 
-    public Function<List<Pair>, CompletableSource> saveExchangeCompletableMap(final String exchangeName) {
-        return new Function<List<Pair>, CompletableSource>() {
+    @Override
+    public Completable saveExchange(final String exchangeName) {
+        return Single.fromCallable(new Callable<Exchange>() {
             @Override
-            public CompletableSource apply(List<Pair> pairList) throws Exception {
+            public Exchange call() throws Exception {
                 Exchange exchange = new Exchange();
                 exchange.setName(exchangeName);
+                return exchange;
+            }
+        }).flatMapCompletable(new Function<Exchange, CompletableSource>() {
+            @Override
+            public CompletableSource apply(Exchange exchange) throws Exception {
                 return save(exchange);
             }
-        };
+        });
     }
 
     @Override

@@ -91,7 +91,7 @@ public class AssetsStateRepository {
 
     }
 
-    private AssetsState[] getUpdatedAssetsState(String exchange, final Boolean assetsInitialized) {
+    private AssetsState[] getAssetsState(String exchange) {
         AssetsState[] assetsStates = sharedDataHelper.find(AssetsState.class, AssetsState[].class);
         List<AssetsState> stateList = new ArrayList<>();
         AssetsState cached = null;
@@ -107,10 +107,7 @@ public class AssetsStateRepository {
         if (cached == null) {
             cached = new AssetsState();
             cached.setExchange(exchange);
-            cached.setAssetsInitialized(assetsInitialized);
             stateList.add(cached);
-        } else {
-            cached.setAssetsInitialized(assetsInitialized);
         }
         assetsStates = new AssetsState[stateList.size()];
         return stateList.toArray(assetsStates);
@@ -159,7 +156,53 @@ public class AssetsStateRepository {
                 if (exchange == null) throw new IllegalArgumentException();
 
                 synchronized (assetsStateLock) {
-                    AssetsState[] assetsStates = getUpdatedAssetsState(exchange, assetsInitialized);
+                    AssetsState[] assetsStates = getAssetsState(exchange);
+                    for (AssetsState state : assetsStates) {
+                        if (exchange.equals(state.getExchange())) {
+                            state.setAssetsInitialized(assetsInitialized);
+                            break;
+                        }
+                    }
+                    sharedDataHelper.save(AssetsState.class, assetsStates);
+                }
+            }
+        });
+    }
+
+    public Single<Boolean> getExchangeInitialized(final String exchange) {
+        return Single.fromCallable(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                if (exchange == null) throw new IllegalArgumentException();
+                Boolean exchangeInitialized = false;
+                AssetsState[] assetsStates = sharedDataHelper.find(AssetsState.class, AssetsState[].class);
+                if (assetsStates != null) {
+                    for (AssetsState assetsState : assetsStates) {
+                        if (exchange.equals(assetsState.getExchange())) {
+                            exchangeInitialized = assetsState.getExchangeInitialized() == null ? exchangeInitialized : assetsState.getExchangeInitialized();
+                            break;
+                        }
+                    }
+                }
+                return exchangeInitialized;
+            }
+        }).onErrorReturnItem(false);
+    }
+
+    public Completable setExchangeInitialized(final String exchange, final Boolean exchangeInitialized) {
+        return Completable.fromAction(new Action() {
+            @Override
+            public void run() throws Exception {
+                if (exchange == null) throw new IllegalArgumentException();
+
+                synchronized (assetsStateLock) {
+                    AssetsState[] assetsStates = getAssetsState(exchange);
+                    for (AssetsState state : assetsStates) {
+                        if (exchange.equals(state.getExchange())) {
+                            state.setExchangeInitialized(exchangeInitialized);
+                            break;
+                        }
+                    }
                     sharedDataHelper.save(AssetsState.class, assetsStates);
                 }
             }

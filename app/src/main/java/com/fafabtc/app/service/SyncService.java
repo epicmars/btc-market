@@ -91,7 +91,7 @@ public class SyncService extends DaggerService {
                     .flatMapCompletable(new Function<Exchange, CompletableSource>() {
                         @Override
                         public CompletableSource apply(final Exchange exchange) throws Exception {
-                            return exchangeAssetsRepo.hasExchangeAssetsInitialized(exchange.getName())
+                            return assetsStateRepository.getAssetsInitialized(exchange.getName())
                                     .flatMapCompletable(new Function<Boolean, CompletableSource>() {
                                         @Override
                                         public CompletableSource apply(Boolean aBoolean) throws Exception {

@@ -30,6 +30,8 @@ public interface ExchangeRepo {
 
     Completable init(String exchange);
 
+    Completable saveExchange(String exchangeName);
+
     Completable save(Exchange exchange);
 
     Single<Exchange[]> getExchanges();

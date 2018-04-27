@@ -1,965 +1,1319 @@
-[{
-  "portfolio": {
-    "balance": 0.0,
-    "locked": 0.0,
-    "name": "我的资产",
-    "state": "CURRENT_ACTIVE",
-    "uuid": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-    "timestamp": "Jan 18, 2018 6:04:03 PM"
-  },
-  "blockchainAssetsList": [
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ada",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ae",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "arn",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bat",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bcd",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bcdn",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bch",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bcx",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bifi",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bnt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bnty",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bot",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 2.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "btc",
-      "principle": 2.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "btf",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "btg",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "btm",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bto",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "bts",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "cdt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ctr",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "cvc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "dai",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "dash",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "data",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "dbc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ddd",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "dgd",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "dnt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "doge",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "dpy",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "drgn",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "elf",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "eos",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "etc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 10.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "eth",
-      "principle": 10.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "fil",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "fuel",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "fun",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "gas",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "gnt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "gnx",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "god",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "gtc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "hsr",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "icx",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ink",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "iota",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "kick",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "knc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "lend",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "link",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "llt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "lrc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "lsk",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ltc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "lun",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "mana",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "mco",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "mda",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "mds",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "mdt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "med",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "mkr",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "nas",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "neo",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "oax",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "omg",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ost",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "pay",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "powr",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "pst",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "qash",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "qbt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "qlc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "qsp",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "qtum",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "rcn",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "rdn",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "rep",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "req",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "rlc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "salt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "sbtc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "smt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "snt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "storj",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "stx",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "theta",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "tio",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "tnt",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "trx",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "tsl",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "ven",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "waves",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "wings",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "xmr",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "xrp",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "xtz",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "zec",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "zrx",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "zsc",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    }
-  ],
-  "exchange": {
-    "commissionRate": 0.0,
-    "name": "gateio",
-    "id": 1,
-    "timestamp": "Jan 18, 2018 4:26:19 PM"
-  },
-  "quoteAssetsList": [
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 2.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "btc",
-      "principle": 2.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 3000.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "usdt",
-      "principle": 3000.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 10.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "eth",
-      "principle": 10.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    },
-    {
-      "assetsUUID": "f7ee7e8f-39db-4b09-8240-e648f30be7f5",
-      "available": 0.0,
-      "exchange": "gateio",
-      "locked": 0.0,
-      "name": "qtum",
-      "principle": 0.0,
-      "timestamp": "Jan 18, 2018 6:04:04 PM"
-    }
-  ]
-}]
+[
+  {
+    "blockchainAssetsList": [
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "abt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.455+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ada",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.464+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ae",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.470+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "arn",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.476+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bat",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.482+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bcd",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.488+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bcdn",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.493+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bch",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.499+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bcx",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.504+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bft",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.510+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bifi",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.515+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "blz",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.532+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bnt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.538+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bnty",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.544+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bot",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.549+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 2.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "btc",
+        "principle": 2.0,
+        "timestamp": "2018-04-27 22:10:14.555+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "btf",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.561+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "btg",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.566+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "btm",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.571+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bto",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.577+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "bts",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.583+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "cdt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.588+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "cofi",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.594+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "cs",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.599+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ctr",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.605+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "cvc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.611+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dadi",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.617+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dai",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.622+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dash",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.628+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "data",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.634+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dbc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.639+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ddd",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.645+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dgd",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.650+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dnt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.656+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dock",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.661+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "doge",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.667+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "dpy",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.673+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "drgn",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.678+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "elec",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.684+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "elf",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.689+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "eos",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.695+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "etc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.701+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 10.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "eth",
+        "principle": 10.0,
+        "timestamp": "2018-04-27 22:10:14.706+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "fil",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.712+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "fuel",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.717+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "fun",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.723+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "gas",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.728+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "gem",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.734+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "gnt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.739+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "gnx",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.745+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "god",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.751+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "gtc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.756+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "gxs",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.762+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "hav",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.767+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "hsr",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.773+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "hur",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.778+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "icx",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.784+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "iht",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.790+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ink",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.795+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "instar",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.801+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "iota",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.806+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "jnt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.812+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "kick",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.818+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "knc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.823+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ledu",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.831+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "lend",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.837+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "link",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.843+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "llt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.849+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "lrc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.856+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "lsk",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.862+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "lst",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.869+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ltc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.898+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "lun",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.904+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "lym",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.910+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "man",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.923+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mana",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.929+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mco",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:14.936+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mda",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.013+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mds",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.020+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mdt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.026+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "med",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.105+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mkr",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.111+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mobi",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.117+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "mtn",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.194+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "nas",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.200+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "neo",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.206+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "oax",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.282+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ocn",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.288+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "omg",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.294+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ont",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.300+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ost",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.376+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "pay",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.382+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "powr",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.387+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "pst",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.466+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "qash",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.472+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "qbt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.477+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "qlc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.554+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "qsp",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.560+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "qtum",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.566+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "rcn",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.571+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "rdn",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.651+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "rem",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.657+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "rep",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.663+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "req",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.739+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "rfr",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.745+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "rlc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.751+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ruff",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.827+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "salt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.833+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "sbtc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.838+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "senc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.844+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ship",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.895+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "smt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.901+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "snet",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.907+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "snt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.936+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "storj",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.942+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "stx",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.948+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "swh",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.954+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "tfd",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.960+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "theta",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.966+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "tio",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.972+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "tips",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.977+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "tnc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.982+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "tnt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.988+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "tomo",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.994+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "trx",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.012+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "tsl",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.018+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "ven",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.024+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "waves",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.030+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "wings",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.035+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "xlm",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.040+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "xmc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.046+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "xmr",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.051+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "xrp",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.056+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "xtz",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.061+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "zec",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.067+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "zil",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.073+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "zpt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.079+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "zrx",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.084+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "zsc",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.089+0800"
+      }
+    ],
+    "exchange": {
+      "commissionRate": 0.0,
+      "name": "gateio",
+      "id": 1,
+      "timestamp": "2018-04-27 22:10:14.361+0800"
+    },
+    "portfolio": {
+      "balance": 0.0,
+      "locked": 0.0,
+      "name": "我的资产",
+      "state": "CURRENT_ACTIVE",
+      "uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+      "id": 1,
+      "timestamp": "2018-04-27 22:10:14.409+0800"
+    },
+    "quoteAssetsList": [
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 10.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "eth",
+        "principle": 10.0,
+        "timestamp": "2018-04-27 22:10:14.706+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "usdt",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:16.095+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 2.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "btc",
+        "principle": 2.0,
+        "timestamp": "2018-04-27 22:10:14.555+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "qtum",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.566+0800"
+      },
+      {
+        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "available": 0.0,
+        "exchange": "gateio",
+        "locked": 0.0,
+        "name": "snet",
+        "principle": 0.0,
+        "timestamp": "2018-04-27 22:10:15.907+0800"
+      }
+    ]
+  }
+]

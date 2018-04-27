@@ -14,6 +14,8 @@ public class AssetsState {
 
     private Boolean isAssetsInitialized;
 
+    private Boolean isExchangeInitialized;
+
     public String getExchange() {
         return exchange;
     }
@@ -36,5 +38,13 @@ public class AssetsState {
 
     public void setAssetsInitialized(Boolean assetsInitialized) {
         isAssetsInitialized = assetsInitialized;
+    }
+
+    public Boolean getExchangeInitialized() {
+        return isExchangeInitialized;
+    }
+
+    public void setExchangeInitialized(Boolean exchangeInitialized) {
+        isExchangeInitialized = exchangeInitialized;
     }
 }

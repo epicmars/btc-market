@@ -1,5 +1,6 @@
 package com.fafabtc.common.json;
 
+import com.fafabtc.common.utils.DateTimeUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -10,30 +11,46 @@ import com.google.gson.GsonBuilder;
 
 public class GsonHelper {
 
-    private static volatile Gson instance;
-    private static volatile Gson pretty;
+    private static volatile GsonHelper instance;
+    private Gson gson;
+    private Gson pretty;
+    private GsonBuilder builder;
 
-    public static Gson gson() {
+    public GsonHelper() {
+        gson = new GsonBuilder()
+                .setDateFormat(DateTimeUtils.STANDARD)
+                .create();
+
+        pretty = new GsonBuilder()
+                .setDateFormat(DateTimeUtils.STANDARD)
+                .setPrettyPrinting()
+                .create();
+    }
+
+    public static GsonHelper instance() {
         if (null == instance) {
             synchronized (GsonHelper.class) {
                 if (null == instance) {
-                    instance = new GsonBuilder().create();
+                    instance = new GsonHelper();
                 }
             }
         }
         return instance;
     }
 
+    public static Gson gson() {
+        return instance().getGson();
+    }
+
     public static Gson prettyGson() {
-        if (null == pretty) {
-            synchronized (GsonHelper.class) {
-                if (null == pretty) {
-                    pretty = new GsonBuilder()
-                            .setPrettyPrinting()
-                            .create();
-                }
-            }
-        }
+        return instance().getPrettyGson();
+    }
+
+    public Gson getGson() {
+        return gson;
+    }
+
+    public Gson getPrettyGson() {
         return pretty;
     }
 }
