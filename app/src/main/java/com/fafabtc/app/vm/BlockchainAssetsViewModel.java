@@ -56,12 +56,6 @@ public class BlockchainAssetsViewModel extends ViewModel{
                 });
     }
 
-    public void loadFromAccount() {
-    }
-
-    public void loadFromExchange() {
-    }
-
     public MutableLiveData<List<BlockchainAssets>> getBlockchainAssetsData() {
         return blockchainAssetsData;
     }

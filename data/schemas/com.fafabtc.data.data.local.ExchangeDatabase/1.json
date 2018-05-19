@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e887ec5e6d61d7e948db25d2ba732539",
+    "identityHash": "a9c0e8fded924b2ffbe45ca75b79cc9a",
     "entities": [
       {
         "tableName": "portfolio",
@@ -79,7 +79,7 @@
       },
       {
         "tableName": "blockchain_assets",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `timestamp` INTEGER, `assets_uuid` TEXT NOT NULL, `exchange` TEXT NOT NULL, `name` TEXT NOT NULL, `principle` REAL NOT NULL, `available` REAL NOT NULL, `locked` REAL NOT NULL, PRIMARY KEY(`assets_uuid`, `exchange`, `name`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `timestamp` INTEGER, `assets_uuid` TEXT NOT NULL, `exchange` TEXT NOT NULL, `name` TEXT NOT NULL COLLATE NOCASE, `principle` REAL NOT NULL, `available` REAL NOT NULL, `locked` REAL NOT NULL, PRIMARY KEY(`assets_uuid`, `exchange`, `name`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -628,7 +628,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e887ec5e6d61d7e948db25d2ba732539\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a9c0e8fded924b2ffbe45ca75b79cc9a\")"
     ]
   }
 }

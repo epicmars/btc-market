@@ -29,6 +29,7 @@ public class BlockchainAssets extends BaseEntity implements Parcelable{
     private String exchange;
 
     @NonNull
+    @ColumnInfo(collate = ColumnInfo.NOCASE)
     private String name;
 
     private double principle;
