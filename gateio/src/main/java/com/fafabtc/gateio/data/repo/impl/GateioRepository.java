@@ -25,7 +25,7 @@ public class GateioRepository implements GateioRepo {
     }
 
     @Override
-    public Single<List<GateioPair>> init() {
+    public Single<List<GateioPair>> initGateioExchange() {
         return gateioPairRepo.getGateioPairs();
     }
 }

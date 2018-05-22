@@ -25,7 +25,7 @@ public class HuobiRepository implements HuobiRepo{
     }
 
     @Override
-    public Single<List<HuobiPair>> init() {
+    public Single<List<HuobiPair>> initHuobiExchange() {
         return huobiPairRepo.getLatestPairs();
     }
 }

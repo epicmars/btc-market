@@ -28,6 +28,8 @@ public interface ExchangeAssetsRepo {
 
     Single<Boolean> hasExchangeAssetsInitialized();
 
+    Single<Boolean> isExchangeAssetsInitialized(String exchange);
+
     Single<Portfolio> createPortfolioOfExchange(final String assetsName);
 
     Single<Portfolio> createPortfolioOfExchange(final String assetsName, final String exchange);

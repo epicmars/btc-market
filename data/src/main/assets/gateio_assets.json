@@ -1,8 +1,8 @@
 [
   {
-    "blockchainAssetsList": [
+    "blockchain_assets_list": [
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -11,7 +11,7 @@
         "timestamp": "2018-04-27 22:10:14.455+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -20,7 +20,7 @@
         "timestamp": "2018-04-27 22:10:14.464+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -29,7 +29,7 @@
         "timestamp": "2018-04-27 22:10:14.470+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -38,7 +38,7 @@
         "timestamp": "2018-04-27 22:10:14.476+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -47,7 +47,7 @@
         "timestamp": "2018-04-27 22:10:14.482+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -56,7 +56,7 @@
         "timestamp": "2018-04-27 22:10:14.488+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -65,7 +65,7 @@
         "timestamp": "2018-04-27 22:10:14.493+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -74,7 +74,7 @@
         "timestamp": "2018-04-27 22:10:14.499+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -83,7 +83,7 @@
         "timestamp": "2018-04-27 22:10:14.504+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -92,7 +92,7 @@
         "timestamp": "2018-04-27 22:10:14.510+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -101,7 +101,7 @@
         "timestamp": "2018-04-27 22:10:14.515+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -110,7 +110,7 @@
         "timestamp": "2018-04-27 22:10:14.532+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -119,7 +119,7 @@
         "timestamp": "2018-04-27 22:10:14.538+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -128,7 +128,7 @@
         "timestamp": "2018-04-27 22:10:14.544+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -137,7 +137,7 @@
         "timestamp": "2018-04-27 22:10:14.549+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 2.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -146,7 +146,7 @@
         "timestamp": "2018-04-27 22:10:14.555+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -155,7 +155,7 @@
         "timestamp": "2018-04-27 22:10:14.561+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -164,7 +164,7 @@
         "timestamp": "2018-04-27 22:10:14.566+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -173,7 +173,7 @@
         "timestamp": "2018-04-27 22:10:14.571+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -182,7 +182,7 @@
         "timestamp": "2018-04-27 22:10:14.577+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -191,7 +191,7 @@
         "timestamp": "2018-04-27 22:10:14.583+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -200,7 +200,7 @@
         "timestamp": "2018-04-27 22:10:14.588+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -209,7 +209,7 @@
         "timestamp": "2018-04-27 22:10:14.594+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -218,7 +218,7 @@
         "timestamp": "2018-04-27 22:10:14.599+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -227,7 +227,7 @@
         "timestamp": "2018-04-27 22:10:14.605+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -236,7 +236,7 @@
         "timestamp": "2018-04-27 22:10:14.611+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -245,7 +245,7 @@
         "timestamp": "2018-04-27 22:10:14.617+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -254,7 +254,7 @@
         "timestamp": "2018-04-27 22:10:14.622+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -263,7 +263,7 @@
         "timestamp": "2018-04-27 22:10:14.628+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -272,7 +272,7 @@
         "timestamp": "2018-04-27 22:10:14.634+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -281,7 +281,7 @@
         "timestamp": "2018-04-27 22:10:14.639+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -290,7 +290,7 @@
         "timestamp": "2018-04-27 22:10:14.645+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -299,7 +299,7 @@
         "timestamp": "2018-04-27 22:10:14.650+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -308,7 +308,7 @@
         "timestamp": "2018-04-27 22:10:14.656+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -317,7 +317,7 @@
         "timestamp": "2018-04-27 22:10:14.661+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -326,7 +326,7 @@
         "timestamp": "2018-04-27 22:10:14.667+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -335,7 +335,7 @@
         "timestamp": "2018-04-27 22:10:14.673+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -344,7 +344,7 @@
         "timestamp": "2018-04-27 22:10:14.678+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -353,7 +353,7 @@
         "timestamp": "2018-04-27 22:10:14.684+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -362,7 +362,7 @@
         "timestamp": "2018-04-27 22:10:14.689+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -371,7 +371,7 @@
         "timestamp": "2018-04-27 22:10:14.695+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -380,7 +380,7 @@
         "timestamp": "2018-04-27 22:10:14.701+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 10.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -389,7 +389,7 @@
         "timestamp": "2018-04-27 22:10:14.706+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -398,7 +398,7 @@
         "timestamp": "2018-04-27 22:10:14.712+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -407,7 +407,7 @@
         "timestamp": "2018-04-27 22:10:14.717+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -416,7 +416,7 @@
         "timestamp": "2018-04-27 22:10:14.723+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -425,7 +425,7 @@
         "timestamp": "2018-04-27 22:10:14.728+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -434,7 +434,7 @@
         "timestamp": "2018-04-27 22:10:14.734+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -443,7 +443,7 @@
         "timestamp": "2018-04-27 22:10:14.739+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -452,7 +452,7 @@
         "timestamp": "2018-04-27 22:10:14.745+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -461,7 +461,7 @@
         "timestamp": "2018-04-27 22:10:14.751+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -470,7 +470,7 @@
         "timestamp": "2018-04-27 22:10:14.756+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -479,7 +479,7 @@
         "timestamp": "2018-04-27 22:10:14.762+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -488,7 +488,7 @@
         "timestamp": "2018-04-27 22:10:14.767+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -497,7 +497,7 @@
         "timestamp": "2018-04-27 22:10:14.773+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -506,7 +506,7 @@
         "timestamp": "2018-04-27 22:10:14.778+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -515,7 +515,7 @@
         "timestamp": "2018-04-27 22:10:14.784+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -524,7 +524,7 @@
         "timestamp": "2018-04-27 22:10:14.790+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -533,7 +533,7 @@
         "timestamp": "2018-04-27 22:10:14.795+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -542,7 +542,7 @@
         "timestamp": "2018-04-27 22:10:14.801+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -551,7 +551,7 @@
         "timestamp": "2018-04-27 22:10:14.806+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -560,7 +560,7 @@
         "timestamp": "2018-04-27 22:10:14.812+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -569,7 +569,7 @@
         "timestamp": "2018-04-27 22:10:14.818+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -578,7 +578,7 @@
         "timestamp": "2018-04-27 22:10:14.823+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -587,7 +587,7 @@
         "timestamp": "2018-04-27 22:10:14.831+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -596,7 +596,7 @@
         "timestamp": "2018-04-27 22:10:14.837+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -605,7 +605,7 @@
         "timestamp": "2018-04-27 22:10:14.843+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -614,7 +614,7 @@
         "timestamp": "2018-04-27 22:10:14.849+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -623,7 +623,7 @@
         "timestamp": "2018-04-27 22:10:14.856+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -632,7 +632,7 @@
         "timestamp": "2018-04-27 22:10:14.862+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -641,7 +641,7 @@
         "timestamp": "2018-04-27 22:10:14.869+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -650,7 +650,7 @@
         "timestamp": "2018-04-27 22:10:14.898+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -659,7 +659,7 @@
         "timestamp": "2018-04-27 22:10:14.904+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -668,7 +668,7 @@
         "timestamp": "2018-04-27 22:10:14.910+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -677,7 +677,7 @@
         "timestamp": "2018-04-27 22:10:14.923+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -686,7 +686,7 @@
         "timestamp": "2018-04-27 22:10:14.929+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -695,7 +695,7 @@
         "timestamp": "2018-04-27 22:10:14.936+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -704,7 +704,7 @@
         "timestamp": "2018-04-27 22:10:15.013+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -713,7 +713,7 @@
         "timestamp": "2018-04-27 22:10:15.020+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -722,7 +722,7 @@
         "timestamp": "2018-04-27 22:10:15.026+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -731,7 +731,7 @@
         "timestamp": "2018-04-27 22:10:15.105+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -740,7 +740,7 @@
         "timestamp": "2018-04-27 22:10:15.111+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -749,7 +749,7 @@
         "timestamp": "2018-04-27 22:10:15.117+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -758,7 +758,7 @@
         "timestamp": "2018-04-27 22:10:15.194+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -767,7 +767,7 @@
         "timestamp": "2018-04-27 22:10:15.200+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -776,7 +776,7 @@
         "timestamp": "2018-04-27 22:10:15.206+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -785,7 +785,7 @@
         "timestamp": "2018-04-27 22:10:15.282+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -794,7 +794,7 @@
         "timestamp": "2018-04-27 22:10:15.288+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -803,7 +803,7 @@
         "timestamp": "2018-04-27 22:10:15.294+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -812,7 +812,7 @@
         "timestamp": "2018-04-27 22:10:15.300+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -821,7 +821,7 @@
         "timestamp": "2018-04-27 22:10:15.376+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -830,7 +830,7 @@
         "timestamp": "2018-04-27 22:10:15.382+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -839,7 +839,7 @@
         "timestamp": "2018-04-27 22:10:15.387+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -848,7 +848,7 @@
         "timestamp": "2018-04-27 22:10:15.466+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -857,7 +857,7 @@
         "timestamp": "2018-04-27 22:10:15.472+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -866,7 +866,7 @@
         "timestamp": "2018-04-27 22:10:15.477+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -875,7 +875,7 @@
         "timestamp": "2018-04-27 22:10:15.554+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -884,7 +884,7 @@
         "timestamp": "2018-04-27 22:10:15.560+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -893,7 +893,7 @@
         "timestamp": "2018-04-27 22:10:15.566+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -902,7 +902,7 @@
         "timestamp": "2018-04-27 22:10:15.571+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -911,7 +911,7 @@
         "timestamp": "2018-04-27 22:10:15.651+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -920,7 +920,7 @@
         "timestamp": "2018-04-27 22:10:15.657+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -929,7 +929,7 @@
         "timestamp": "2018-04-27 22:10:15.663+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -938,7 +938,7 @@
         "timestamp": "2018-04-27 22:10:15.739+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -947,7 +947,7 @@
         "timestamp": "2018-04-27 22:10:15.745+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -956,7 +956,7 @@
         "timestamp": "2018-04-27 22:10:15.751+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -965,7 +965,7 @@
         "timestamp": "2018-04-27 22:10:15.827+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -974,7 +974,7 @@
         "timestamp": "2018-04-27 22:10:15.833+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -983,7 +983,7 @@
         "timestamp": "2018-04-27 22:10:15.838+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -992,7 +992,7 @@
         "timestamp": "2018-04-27 22:10:15.844+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1001,7 +1001,7 @@
         "timestamp": "2018-04-27 22:10:15.895+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1010,7 +1010,7 @@
         "timestamp": "2018-04-27 22:10:15.901+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1019,7 +1019,7 @@
         "timestamp": "2018-04-27 22:10:15.907+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1028,7 +1028,7 @@
         "timestamp": "2018-04-27 22:10:15.936+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1037,7 +1037,7 @@
         "timestamp": "2018-04-27 22:10:15.942+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1046,7 +1046,7 @@
         "timestamp": "2018-04-27 22:10:15.948+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1055,7 +1055,7 @@
         "timestamp": "2018-04-27 22:10:15.954+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1064,7 +1064,7 @@
         "timestamp": "2018-04-27 22:10:15.960+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1073,7 +1073,7 @@
         "timestamp": "2018-04-27 22:10:15.966+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1082,7 +1082,7 @@
         "timestamp": "2018-04-27 22:10:15.972+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1091,7 +1091,7 @@
         "timestamp": "2018-04-27 22:10:15.977+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1100,7 +1100,7 @@
         "timestamp": "2018-04-27 22:10:15.982+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1109,7 +1109,7 @@
         "timestamp": "2018-04-27 22:10:15.988+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1118,7 +1118,7 @@
         "timestamp": "2018-04-27 22:10:15.994+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1127,7 +1127,7 @@
         "timestamp": "2018-04-27 22:10:16.012+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1136,7 +1136,7 @@
         "timestamp": "2018-04-27 22:10:16.018+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1145,7 +1145,7 @@
         "timestamp": "2018-04-27 22:10:16.024+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1154,7 +1154,7 @@
         "timestamp": "2018-04-27 22:10:16.030+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1163,7 +1163,7 @@
         "timestamp": "2018-04-27 22:10:16.035+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1172,7 +1172,7 @@
         "timestamp": "2018-04-27 22:10:16.040+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1181,7 +1181,7 @@
         "timestamp": "2018-04-27 22:10:16.046+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1190,7 +1190,7 @@
         "timestamp": "2018-04-27 22:10:16.051+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1199,7 +1199,7 @@
         "timestamp": "2018-04-27 22:10:16.056+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1208,7 +1208,7 @@
         "timestamp": "2018-04-27 22:10:16.061+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1217,7 +1217,7 @@
         "timestamp": "2018-04-27 22:10:16.067+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1226,7 +1226,7 @@
         "timestamp": "2018-04-27 22:10:16.073+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1235,7 +1235,7 @@
         "timestamp": "2018-04-27 22:10:16.079+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1244,7 +1244,7 @@
         "timestamp": "2018-04-27 22:10:16.084+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1254,7 +1254,7 @@
       }
     ],
     "exchange": {
-      "commissionRate": 0.0,
+      "commission_rate": 0.0,
       "name": "gateio",
       "id": 1,
       "timestamp": "2018-04-27 22:10:14.361+0800"
@@ -1268,9 +1268,9 @@
       "id": 1,
       "timestamp": "2018-04-27 22:10:14.409+0800"
     },
-    "quoteAssetsList": [
+    "quote_assets_list": [
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 10.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1279,7 +1279,7 @@
         "timestamp": "2018-04-27 22:10:14.706+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1288,7 +1288,7 @@
         "timestamp": "2018-04-27 22:10:16.095+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 2.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1297,7 +1297,7 @@
         "timestamp": "2018-04-27 22:10:14.555+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,
@@ -1306,7 +1306,7 @@
         "timestamp": "2018-04-27 22:10:15.566+0800"
       },
       {
-        "assetsUUID": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
+        "assets_uuid": "099b6bfc-25d6-4ca1-b42a-7666208cf7cd",
         "available": 0.0,
         "exchange": "gateio",
         "locked": 0.0,

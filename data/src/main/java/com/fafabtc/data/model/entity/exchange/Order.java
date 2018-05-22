@@ -2,7 +2,6 @@ package com.fafabtc.data.model.entity.exchange;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -32,7 +31,7 @@ public class Order extends BaseEntity implements Parcelable{
     }
 
     @ColumnInfo(name = "assets_uuid")
-    private String assetsUUID;
+    private String assetsUuid;
 
     @ColumnInfo(name = "exchange")
     private String exchange;
@@ -86,12 +85,12 @@ public class Order extends BaseEntity implements Parcelable{
         this.exchange = exchange;
     }
 
-    public String getAssetsUUID() {
-        return assetsUUID;
+    public String getAssetsUuid() {
+        return assetsUuid;
     }
 
-    public void setAssetsUUID(String assetsUUID) {
-        this.assetsUUID = assetsUUID;
+    public void setAssetsUuid(String assetsUuid) {
+        this.assetsUuid = assetsUuid;
     }
 
     public String getBase() {
@@ -176,7 +175,7 @@ public class Order extends BaseEntity implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.assetsUUID);
+        dest.writeString(this.assetsUuid);
         dest.writeString(this.exchange);
         dest.writeString(this.uuid);
         dest.writeInt(this.type == null ? -1 : this.type.ordinal());
@@ -193,7 +192,7 @@ public class Order extends BaseEntity implements Parcelable{
     }
 
     protected Order(Parcel in) {
-        this.assetsUUID = in.readString();
+        this.assetsUuid = in.readString();
         this.exchange = in.readString();
         this.uuid = in.readString();
         int tmpType = in.readInt();

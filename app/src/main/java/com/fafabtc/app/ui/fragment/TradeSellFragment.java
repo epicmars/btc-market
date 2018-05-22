@@ -43,7 +43,7 @@ public class TradeSellFragment extends BaseFragment<FragmentTradeSellBinding> {
         super.onViewCreated(view, savedInstanceState);
         ticker = getArguments().getParcelable(ARGS_TICKER);
 
-        // init view
+        // initAllExchanges view
         String priceBid = NumberUtils.formatPrice(ticker.getBid());
         binding.tradeView.etPrice.setText(priceBid);
         binding.tradeView.etPrice.setSelection(priceBid.length());

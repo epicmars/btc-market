@@ -52,7 +52,7 @@ public class TradeBuyFragment extends BaseFragment<FragmentTradeBuyBinding>{
     }
 
     private void init() {
-        // init view
+        // initAllExchanges view
         String priceAsk = NumberUtils.formatPrice(ticker.getAsk());
         binding.tradeView.etPrice.setText(priceAsk);
         binding.tradeView.etPrice.setSelection(priceAsk.length());

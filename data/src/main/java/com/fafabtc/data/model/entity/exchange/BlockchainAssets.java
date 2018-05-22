@@ -20,12 +20,12 @@ import java.util.Date;
 @Entity(tableName = "blockchain_assets", primaryKeys = {"assets_uuid", "exchange", "name"})
 public class BlockchainAssets extends BaseEntity implements Parcelable{
 
+    @NonNull
     @ColumnInfo(name = "assets_uuid")
-    @NonNull
-    private String assetsUUID;
+    private String assetsUuid;
 
-    @ColumnInfo(name = "exchange")
     @NonNull
+    @ColumnInfo(collate = ColumnInfo.NOCASE)
     private String exchange;
 
     @NonNull
@@ -54,12 +54,12 @@ public class BlockchainAssets extends BaseEntity implements Parcelable{
         this.exchange = exchange;
     }
 
-    public String getAssetsUUID() {
-        return assetsUUID;
+    public String getAssetsUuid() {
+        return assetsUuid;
     }
 
-    public void setAssetsUUID(String assetsUUID) {
-        this.assetsUUID = assetsUUID;
+    public void setAssetsUuid(String assetsUuid) {
+        this.assetsUuid = assetsUuid;
     }
 
     public String getName() {
@@ -93,7 +93,7 @@ public class BlockchainAssets extends BaseEntity implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.assetsUUID);
+        dest.writeString(this.assetsUuid);
         dest.writeString(this.exchange);
         dest.writeString(this.name);
         dest.writeDouble(this.principle);
@@ -107,7 +107,7 @@ public class BlockchainAssets extends BaseEntity implements Parcelable{
     }
 
     protected BlockchainAssets(Parcel in) {
-        this.assetsUUID = in.readString();
+        this.assetsUuid = in.readString();
         this.exchange = in.readString();
         this.name = in.readString();
         this.principle = in.readDouble();

@@ -97,7 +97,7 @@ public abstract class OrderDao {
     public void dealPendingOrder(Order order, Ticker ticker) {
         if (order.getState() != Order.State.PENDING) return;
         final double volume = order.getQuantity() * order.getPrice();
-        final String assetsUUID = order.getAssetsUUID();
+        final String assetsUUID = order.getAssetsUuid();
         final String exchange = order.getExchange();
         BlockchainAssets base = findBlockchainAssets(assetsUUID, exchange, order.getBase());
         BlockchainAssets quote = findBlockchainAssets(assetsUUID, exchange, order.getQuote());
@@ -139,8 +139,8 @@ public abstract class OrderDao {
         Order order = findByUUID(uuid);
         if (order.getState() == Order.State.CANCELLED || order.getState() == Order.State.DONE)
             throw new DaoException("Order has been cancelled or done.");
-        BlockchainAssets base = findBlockchainAssets(order.getAssetsUUID(), order.getExchange(), order.getBase());
-        BlockchainAssets quote = findBlockchainAssets(order.getAssetsUUID(), order.getExchange(), order.getQuote());
+        BlockchainAssets base = findBlockchainAssets(order.getAssetsUuid(), order.getExchange(), order.getBase());
+        BlockchainAssets quote = findBlockchainAssets(order.getAssetsUuid(), order.getExchange(), order.getQuote());
 
         boolean isSelling = order.getType() == Order.Type.SELL;
         BlockchainAssets lockedAssets = isSelling ? base : quote;
@@ -172,7 +172,7 @@ public abstract class OrderDao {
         // create order
         Order order = new Order();
         order.setType(type);
-        order.setAssetsUUID(assetsUUID);
+        order.setAssetsUuid(assetsUUID);
         order.setExchange(exchangeName);
         order.setUuid(UUIDUtils.newUUID());
         order.setPair(pair);

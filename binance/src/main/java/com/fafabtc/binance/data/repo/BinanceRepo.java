@@ -14,5 +14,5 @@ public interface BinanceRepo {
 
     String BINANCE_EXCHANGE = "binance";
 
-    Single<List<BinancePair>> initBinanceData();
+    Single<List<BinancePair>> initBinanceExchange();
 }

@@ -20,7 +20,7 @@ public interface ExchangeDao {
     @Update
     void updateOne(Exchange exchange);
 
-    @Query("select * from exchange where name = :exchangeName limit 1")
+    @Query("select * from exchange where name = :exchangeName COLLATE NOCASE limit 1")
     Exchange findByName(String exchangeName);
 
     @Query("select * from exchange")

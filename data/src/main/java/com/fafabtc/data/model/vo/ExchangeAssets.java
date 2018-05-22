@@ -29,11 +29,11 @@ public class ExchangeAssets {
         this.portfolio = portfolio;
         if (blockchainAssetsList != null) {
             for (BlockchainAssets assets : blockchainAssetsList)
-                assets.setAssetsUUID(portfolio.getUuid());
+                assets.setAssetsUuid(portfolio.getUuid());
         }
         if (quoteAssetsList != null) {
             for (BlockchainAssets assets : quoteAssetsList)
-                assets.setAssetsUUID(portfolio.getUuid());
+                assets.setAssetsUuid(portfolio.getUuid());
         }
     }
 

@@ -3,7 +3,13 @@
 
     <application>
         <provider
-            android:authorities="com.fafabtc.data.provider"
-            android:name=".provider.SharedPreferenceDataProvider" />
+            android:authorities="com.fafabtc.data.provider.xml"
+            android:name=".provider.SharedPreferenceProvider"
+            android:exported="false"/>
+
+        <provider
+            android:authorities="com.fafabtc.data.provider.db"
+            android:name=".provider.ExchangeDatabaseProvider"
+            android:exported="false"/>
     </application>
 </manifest>

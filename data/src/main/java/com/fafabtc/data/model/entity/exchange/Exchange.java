@@ -19,6 +19,7 @@ public class Exchange extends BaseEntity implements Parcelable{
     /**
      * English name or abbr, it's unique.
      */
+    @ColumnInfo(collate = ColumnInfo.NOCASE)
     private String name;
 
     @ColumnInfo(name = "name_cn")

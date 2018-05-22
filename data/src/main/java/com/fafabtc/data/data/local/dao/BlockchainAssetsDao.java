@@ -2,6 +2,7 @@ package com.fafabtc.data.data.local.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
@@ -21,7 +22,7 @@ public abstract class BlockchainAssetsDao {
     @Update
     public abstract void update(BlockchainAssets... blockchainAssets);
 
-    @Query("select * from blockchain_assets where assets_uuid = :assetsUUID and exchange = :exchange and name = :name limit 1")
+    @Query("select * from blockchain_assets where assets_uuid = :assetsUUID and exchange = :exchange and name = :name COLLATE NOCASE limit 1")
     public abstract BlockchainAssets find(String assetsUUID, String exchange, String name);
 
     @Query("select * from blockchain_assets where assets_uuid = :assetsUUID")

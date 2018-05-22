@@ -13,6 +13,6 @@ import io.reactivex.Single;
 public interface HuobiRepo {
     String HUOBI_EXCHANGE = "huobi";
 
-    Single<List<HuobiPair>> init();
+    Single<List<HuobiPair>> initHuobiExchange();
 
 }

@@ -1,6 +1,8 @@
 package com.fafabtc.common.json;
 
 import com.fafabtc.common.utils.DateTimeUtils;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.FieldNamingStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -17,12 +19,14 @@ public class GsonHelper {
     private GsonBuilder builder;
 
     public GsonHelper() {
-        gson = new GsonBuilder()
-                .setDateFormat(DateTimeUtils.STANDARD)
+        GsonBuilder builder = new GsonBuilder()
+//                .registerTypeAdapter(Boolean.class, BooleanTypeAdapter.class)
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .setDateFormat(DateTimeUtils.STANDARD);
+        gson = builder
                 .create();
 
-        pretty = new GsonBuilder()
-                .setDateFormat(DateTimeUtils.STANDARD)
+        pretty = builder
                 .setPrettyPrinting()
                 .create();
     }

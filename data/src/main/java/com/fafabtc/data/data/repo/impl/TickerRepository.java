@@ -10,6 +10,7 @@ import com.fafabtc.binance.model.BinancePair;
 import com.fafabtc.binance.model.BinanceTicker;
 import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.data.global.AssetsStateRepository;
+import com.fafabtc.data.data.global.ExchangeStateRepository;
 import com.fafabtc.data.data.local.dao.TickerDao;
 import com.fafabtc.data.data.repo.TickerRepo;
 import com.fafabtc.data.model.entity.exchange.Ticker;
@@ -67,7 +68,7 @@ public class TickerRepository implements TickerRepo {
     Context context;
 
     @Inject
-    AssetsStateRepository assetsStateRepository;
+    ExchangeStateRepository exchangeStateRepository;
 
     @Inject
     public TickerRepository() {
@@ -115,7 +116,7 @@ public class TickerRepository implements TickerRepo {
 
     @Override
     public Single<List<Ticker>> getLatestTickers(final String exchange, final Date timestamp) {
-        return assetsStateRepository
+        return exchangeStateRepository
                 .getUpdateTime(exchange)
                 .filter(new Predicate<Date>() {
                     @Override
@@ -180,7 +181,7 @@ public class TickerRepository implements TickerRepo {
                         .flatMap(new Function<List<Ticker>, SingleSource<? extends List<Ticker>>>() {
                             @Override
                             public SingleSource<? extends List<Ticker>> apply(List<Ticker> tickers) throws Exception {
-                                return assetsStateRepository.setUpdateTime(exchange, new Date(), !tickers.isEmpty()).toSingleDefault(tickers);
+                                return exchangeStateRepository.setUpdateTime(exchange, new Date(), !tickers.isEmpty()).toSingleDefault(tickers);
                             }
                         });
             }

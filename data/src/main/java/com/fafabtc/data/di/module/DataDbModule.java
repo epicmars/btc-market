@@ -29,7 +29,7 @@ public class DataDbModule {
     @Provides
     @Singleton
     public static ExchangeDatabase provideExchangeDatabase(Context context) {
-        return ExchangeDatabaseHelper.exchangeDatabase(context);
+        return ExchangeDatabaseHelper.instance(context).exchangeDatabase();
     }
 
     @Provides

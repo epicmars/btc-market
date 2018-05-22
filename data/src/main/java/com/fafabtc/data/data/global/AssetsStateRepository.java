@@ -1,10 +1,7 @@
 package com.fafabtc.data.data.global;
 
-import com.fafabtc.common.utils.DateTimeUtils;
+import com.fafabtc.data.model.entity.exchange.AssetsState;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
@@ -13,7 +10,8 @@ import javax.inject.Singleton;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.functions.Action;
-import io.reactivex.functions.Function;
+import io.reactivex.functions.Consumer;
+import timber.log.Timber;
 
 /**
  * Created by jastrelax on 2018/1/19.
@@ -21,191 +19,70 @@ import io.reactivex.functions.Function;
 @Singleton
 public class AssetsStateRepository {
 
-    private SharedPreferenceDataHelper sharedDataHelper;
+    private ExchangeDatabaseProviderHelper helper;
 
     private final Object assetsStateLock = new Object();
 
     @Inject
-    public AssetsStateRepository(SharedPreferenceDataHelper repository) {
-        this.sharedDataHelper = repository;
+    public AssetsStateRepository(ExchangeDatabaseProviderHelper helper) {
+        this.helper = helper;
     }
 
-    public Single<Date> getUpdateTime(final String exchange) {
-        return Single.fromCallable(new Callable<Date>() {
+    private AssetsState getAssetsState(String assetsUUID, String exchange) {
+        AssetsState cached = null;
+        AssetsState[] assetsStates = helper.find(AssetsState[].class,
+                "assets_uuid = ? and exchange = ?",
+                new String[]{assetsUUID, exchange});
+        if (assetsStates != null && assetsStates.length > 0) {
+            cached = assetsStates[0];
+        }
+
+        if (cached == null) {
+            cached = new AssetsState();
+            cached.setExchange(exchange);
+            cached.setAssetsUuid(assetsUUID);
+        }
+        return cached;
+    }
+
+    public Single<Boolean> getAssetsInitialized(final String assetsUUID, final String exchange) {
+        return Single.fromCallable(new Callable<Boolean>() {
             @Override
-            public Date call() throws Exception {
-                if (exchange == null) throw new IllegalArgumentException();
-                Date updateTime = new Date(0);
-                AssetsState[] assetsStates = sharedDataHelper.find(AssetsState.class, AssetsState[].class);
-                if (assetsStates != null) {
-                    for (AssetsState assetsState : assetsStates) {
-                        if (exchange.equals(assetsState.getExchange())) {
-                            updateTime = assetsState.getUpdateTime() == null ? updateTime : assetsState.getUpdateTime();
-                            break;
+            public Boolean call() throws Exception {
+                if (assetsUUID == null || exchange == null)
+                    throw new IllegalArgumentException();
+                AssetsState assetsState = getAssetsState(assetsUUID, exchange);
+                return assetsState.getAssetsInitialized() == null ? false : assetsState.getAssetsInitialized();
+            }
+        }).onErrorReturnItem(false);
+    }
+
+    public Completable setAssetsInitialized(final String assetsUUID, final String exchange, final Boolean assetsInitialized) {
+        return Completable
+                .fromAction(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        if (assetsUUID == null || exchange == null)
+                            throw new IllegalArgumentException();
+                        synchronized (assetsStateLock) {
+                            AssetsState assetsState = getAssetsState(assetsUUID, exchange);
+                            assetsState.setAssetsInitialized(assetsInitialized);
+                            helper.insert(assetsState);
                         }
                     }
-                }
-                return updateTime;
-            }
-        }).onErrorReturnItem(new Date(0));
-    }
-
-    public Completable setUpdateTime(final String exchange, final Date date, final boolean success) {
-        return Completable.fromAction(new Action() {
-            @Override
-            public void run() throws Exception {
-                if (exchange == null) throw new IllegalArgumentException();
-                if (!success) return;
-
-                synchronized (assetsStateLock) {
-                    AssetsState[] assetsStates = getUpdatedAssetsState(exchange, date);
-                    sharedDataHelper.save(AssetsState.class, assetsStates);
-                }
-            }
-        });
-    }
-
-    private AssetsState[] getUpdatedAssetsState(String exchange, final Date date) {
-        AssetsState[] assetsStates = sharedDataHelper.find(AssetsState.class, AssetsState[].class);
-        List<AssetsState> stateList = new ArrayList<>();
-        AssetsState cached = null;
-        if (assetsStates != null) {
-            for (AssetsState assetsState : assetsStates) {
-                stateList.add(assetsState);
-                if (exchange.equals(assetsState.getExchange())) {
-                    cached = assetsState;
-                    break;
-                }
-            }
-        }
-        if (cached == null) {
-            cached = new AssetsState();
-            cached.setExchange(exchange);
-            cached.setUpdateTime(date);
-            stateList.add(cached);
-        } else {
-            cached.setUpdateTime(date);
-        }
-        assetsStates = new AssetsState[stateList.size()];
-        return stateList.toArray(assetsStates);
-
-    }
-
-    private AssetsState[] getAssetsState(String exchange) {
-        AssetsState[] assetsStates = sharedDataHelper.find(AssetsState.class, AssetsState[].class);
-        List<AssetsState> stateList = new ArrayList<>();
-        AssetsState cached = null;
-        if (assetsStates != null) {
-            for (AssetsState assetsState : assetsStates) {
-                stateList.add(assetsState);
-                if (exchange.equals(assetsState.getExchange())) {
-                    cached = assetsState;
-                    break;
-                }
-            }
-        }
-        if (cached == null) {
-            cached = new AssetsState();
-            cached.setExchange(exchange);
-            stateList.add(cached);
-        }
-        assetsStates = new AssetsState[stateList.size()];
-        return stateList.toArray(assetsStates);
-
-    }
-
-    public Single<String> getFormatedUpdateTime(String exchange) {
-        return getUpdateTime(exchange)
-                .map(new Function<Date, String>() {
+                })
+                .doOnError(new Consumer<Throwable>() {
                     @Override
-                    public String apply(Date date) throws Exception {
-                        long updateTime = date.getTime();
-                        String formatDate = "";
-                        if (updateTime > 0) {
-                            formatDate = DateTimeUtils.formatStandard(new Date(updateTime));
-                        }
-                        return formatDate;
+                    public void accept(Throwable throwable) throws Exception {
+                        Timber.e("setAssetsInitialized", throwable);
+                    }
+                })
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Timber.d("asssets: %s of exchange: %s is initialized[%b]", assetsUUID, exchange, assetsInitialized);
                     }
                 });
     }
 
-    public Single<Boolean> getAssetsInitialized(final String exchange) {
-        return Single.fromCallable(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                if (exchange == null) throw new IllegalArgumentException();
-                Boolean assetsInitialized = false;
-                AssetsState[] assetsStates = sharedDataHelper.find(AssetsState.class, AssetsState[].class);
-                if (assetsStates != null) {
-                    for (AssetsState assetsState : assetsStates) {
-                        if (exchange.equals(assetsState.getExchange())) {
-                            assetsInitialized = assetsState.getAssetsInitialized() == null ? assetsInitialized : assetsState.getAssetsInitialized();
-                            break;
-                        }
-                    }
-                }
-                return assetsInitialized;
-            }
-        }).onErrorReturnItem(false);
-    }
-
-    public Completable setAssetsInitialized(final String exchange, final Boolean assetsInitialized) {
-        return Completable.fromAction(new Action() {
-            @Override
-            public void run() throws Exception {
-                if (exchange == null) throw new IllegalArgumentException();
-
-                synchronized (assetsStateLock) {
-                    AssetsState[] assetsStates = getAssetsState(exchange);
-                    for (AssetsState state : assetsStates) {
-                        if (exchange.equals(state.getExchange())) {
-                            state.setAssetsInitialized(assetsInitialized);
-                            break;
-                        }
-                    }
-                    sharedDataHelper.save(AssetsState.class, assetsStates);
-                }
-            }
-        });
-    }
-
-    public Single<Boolean> getExchangeInitialized(final String exchange) {
-        return Single.fromCallable(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                if (exchange == null) throw new IllegalArgumentException();
-                Boolean exchangeInitialized = false;
-                AssetsState[] assetsStates = sharedDataHelper.find(AssetsState.class, AssetsState[].class);
-                if (assetsStates != null) {
-                    for (AssetsState assetsState : assetsStates) {
-                        if (exchange.equals(assetsState.getExchange())) {
-                            exchangeInitialized = assetsState.getExchangeInitialized() == null ? exchangeInitialized : assetsState.getExchangeInitialized();
-                            break;
-                        }
-                    }
-                }
-                return exchangeInitialized;
-            }
-        }).onErrorReturnItem(false);
-    }
-
-    public Completable setExchangeInitialized(final String exchange, final Boolean exchangeInitialized) {
-        return Completable.fromAction(new Action() {
-            @Override
-            public void run() throws Exception {
-                if (exchange == null) throw new IllegalArgumentException();
-
-                synchronized (assetsStateLock) {
-                    AssetsState[] assetsStates = getAssetsState(exchange);
-                    for (AssetsState state : assetsStates) {
-                        if (exchange.equals(state.getExchange())) {
-                            state.setExchangeInitialized(exchangeInitialized);
-                            break;
-                        }
-                    }
-                    sharedDataHelper.save(AssetsState.class, assetsStates);
-                }
-            }
-        });
-    }
 }

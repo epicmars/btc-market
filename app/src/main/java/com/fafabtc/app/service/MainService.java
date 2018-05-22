@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 
 import com.fafabtc.app.utils.ExecutorManager;
 import com.fafabtc.app.utils.RxUtils;
+import com.fafabtc.data.data.global.ExchangeStateRepository;
 import com.fafabtc.data.data.repo.DataRepo;
 import com.fafabtc.data.data.global.AssetsStateRepository;
 import com.fafabtc.data.data.repo.ExchangeRepo;
@@ -43,6 +44,9 @@ public class MainService extends DaggerService {
 
     @Inject
     AssetsStateRepository assetsStateRepository;
+
+    @Inject
+    ExchangeStateRepository exchangeStateRepository;
 
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -140,7 +144,7 @@ public class MainService extends DaggerService {
     private long initialDelay = 0;
     private long getInitialDelay(String exchange) {
         initialDelay = 0;
-        assetsStateRepository.getUpdateTime(exchange)
+        exchangeStateRepository.getUpdateTime(exchange)
                 .subscribe(new SingleObserver<Date>() {
                     @Override
                     public void onSubscribe(Disposable d) {

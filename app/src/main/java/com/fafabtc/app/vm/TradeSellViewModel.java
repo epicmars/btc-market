@@ -65,7 +65,7 @@ public class TradeSellViewModel extends ViewModel {
                 .flatMapCompletable(new Function<BlockchainAssets, CompletableSource>() {
                     @Override
                     public CompletableSource apply(BlockchainAssets baseAssets) throws Exception {
-                        return orderRepo.createNewOrder(baseAssets.getAssetsUUID(),
+                        return orderRepo.createNewOrder(baseAssets.getAssetsUuid(),
                                 baseAssets.getExchange(),
                                 price,
                                 quantity,

@@ -15,7 +15,7 @@ import timber.log.Timber;
 /**
  * Created by jastrelax on 2018/4/7.
  */
-public class SharedPreferenceDataProvider extends ContentProvider {
+public class SharedPreferenceProvider extends ContentProvider {
 
     public static final String DATA_FIELD_NAME = "data";
 

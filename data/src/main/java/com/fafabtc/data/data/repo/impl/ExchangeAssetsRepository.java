@@ -10,6 +10,7 @@ import com.fafabtc.common.file.FileUtils;
 import com.fafabtc.common.json.GsonHelper;
 import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.data.global.AssetsStateRepository;
+import com.fafabtc.data.data.global.ExchangeStateRepository;
 import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.data.repo.BlockchainAssetsRepo;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
@@ -69,6 +70,9 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     AssetsStateRepository assetsStateRepository;
 
     @Inject
+    ExchangeStateRepository exchangeStateRepository;
+
+    @Inject
     TickerRepo tickerRepo;
 
     @Inject
@@ -105,11 +109,11 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      */
     @Override
     public Completable initExchange(final String exchangeName) {
-        Completable initExchange = exchangeRepo.init(exchangeName)
+        Completable initExchange = exchangeRepo.initExchange(exchangeName)
                 .doOnError(new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Timber.e(throwable, "Exchange[%s] initialization failed!", exchangeName);
+                        Timber.w(throwable, "Exchange[%s] initialization failed!", exchangeName);
                     }
                 })
                 .doOnSubscribe(new Consumer<Disposable>() {
@@ -118,13 +122,14 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                         sendExchangeBroadcast(exchangeName, DataBroadcasts.Actions.ACTION_INITIATE_EXCHANGE, null);
                     }
                 })
-                .concatWith(assetsStateRepository.setExchangeInitialized(exchangeName, true));
+                .concatWith(exchangeStateRepository.setExchangeInitialized(exchangeName, true))
+                .onErrorComplete();
 
         Completable initExchangeAssets = initExchangeAssets(exchangeName)
                 .doOnError(new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Timber.e(throwable, "Exchange[%s] assets failed!", exchangeName);
+                        Timber.w(throwable, "Exchange[%s] assets failed!", exchangeName);
                     }
                 })
                 .doOnSubscribe(new Consumer<Disposable>() {
@@ -150,8 +155,8 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * Initiate assets of a exchange.
      * <p>
      * Every blockchain assets belong to a {@link Portfolio} and a {@link Exchange},
-     * If assets of a exchange is already initiated, which means the blockchain assets of
-     * all assets account of an exchange have been initiated.
+     * If assets of a exchange is already initialized, which means the blockchain assets of
+     * all portfolio of an exchange have been initialized.
      * <p>
      * If assets of an exchange is already initialized, initiate it again in case of outdated
      * or missed blockchain assets item. Otherwise initiate it and restore the blockchain assets
@@ -163,23 +168,11 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      */
     @Override
     public Completable initExchangeAssets(final String exchangeName) {
-        return assetsStateRepository.getAssetsInitialized(exchangeName)
-                .flatMap(new Function<Boolean, SingleSource<Boolean>>() {
-                    @Override
-                    public SingleSource<Boolean> apply(Boolean aBoolean) throws Exception {
-                        return doInitExchangeAssets(exchangeName)
-                                .concatWith(assetsStateRepository.setAssetsInitialized(exchangeName, true))
-                                .toSingleDefault(aBoolean);
-                    }
-                })
+        return isExchangeAssetsInitialized(exchangeName)
                 .flatMapCompletable(new Function<Boolean, CompletableSource>() {
                     @Override
-                    public CompletableSource apply(Boolean isInitialized) throws Exception {
-                        if (isInitialized) {
-                            return Completable.complete();
-                        } else {
-                            return restoreExchangeAssetsFromFile(exchangeName);
-                        }
+                    public CompletableSource apply(Boolean aBoolean) throws Exception {
+                        return doInitExchangeAssets(exchangeName).concatWith(aBoolean ? Completable.complete() : restoreExchangeAssetsFromFile(exchangeName));
                     }
                 });
     }
@@ -211,7 +204,12 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                         return GsonHelper.gson().fromJson(AndroidAssetsUtils.readFromAssets(context.getAssets(), fileName), ExchangeAssets[].class);
                     }
                 })
-                .onErrorReturnItem(new ExchangeAssets[0])
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Timber.e("restoreExchangeAssetsFromFile", throwable);
+                    }
+                })
                 .flatMapIterable(new Function<ExchangeAssets[], Iterable<ExchangeAssets>>() {
                     @Override
                     public Iterable<ExchangeAssets> apply(ExchangeAssets[] exchangeAssets) throws Exception {
@@ -221,7 +219,8 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                 .flatMapCompletable(new Function<ExchangeAssets, CompletableSource>() {
                     @Override
                     public CompletableSource apply(final ExchangeAssets exchangeAssets) throws Exception {
-                        return restoreExchangeAssets(exchangeAssets);
+                        return restoreExchangeAssets(exchangeAssets)
+                                .subscribeOn(Schedulers.io());
                     }
                 });
     }
@@ -234,21 +233,20 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      */
     private Completable restoreExchangeAssets(final ExchangeAssets exchangeAssets) {
         final String portfolioName = exchangeAssets.getPortfolio().getName();
-        Single<Portfolio> portfolioSingle = portfolioRepo.getByName(portfolioName)
-                .onErrorResumeNext(createPortfolioOfExchange(portfolioName, exchangeAssets.getExchange().getName()));
-        return portfolioSingle
+        return portfolioRepo.getByName(portfolioName)
+                .onErrorResumeNext(createPortfolioOfExchange(portfolioName, exchangeAssets.getExchange().getName()))
                 .flatMapCompletable(new Function<Portfolio, CompletableSource>() {
                     @Override
                     public CompletableSource apply(Portfolio portfolio) throws Exception {
                         exchangeAssets.setPortfolio(portfolio);
-                        return blockchainAssetsRepo.restoreExchangeBlockchainAssets(exchangeAssets);
+                        return blockchainAssetsRepo.restoreExchangeBlockchainAssets(exchangeAssets)
+                                .concatWith(assetsStateRepository.setAssetsInitialized(portfolio.getUuid(), exchangeAssets.getExchange().getName(), true));
                     }
-                })
-                .onErrorComplete();
+                });
     }
 
     /**
-     * Initiate account assets of an exchange.
+     * Initiate assets of an exchange.
      * <p>
      * Every blockchain assets belong to a {@link Portfolio} and a {@link Exchange},
      * If assets of a exchange is already initiated, which means the blockchain assets of
@@ -266,16 +264,30 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                     @Override
                     public CompletableSource apply(List<Portfolio> portfolioList) throws Exception {
                         if (portfolioList.isEmpty()) {
-                            return createPortfolioOfExchange(Portfolio.DEFAULT_NAME, exchange).toCompletable();
-                        } else {
-                            return Observable.fromIterable(portfolioList)
+                            return createPortfolioOfExchange(Portfolio.DEFAULT_NAME, exchange)
                                     .flatMapCompletable(new Function<Portfolio, CompletableSource>() {
                                         @Override
                                         public CompletableSource apply(Portfolio portfolio) throws Exception {
-                                            return initPortfoliosOfExchange(portfolio, exchange).toCompletable();
+                                            return assetsStateRepository.setAssetsInitialized(portfolio.getUuid(), exchange, true);
+                                        }
+                                    });
+                        } else {
+                            return Observable
+                                    .fromIterable(portfolioList)
+                                    .flatMapCompletable(new Function<Portfolio, CompletableSource>() {
+                                        @Override
+                                        public CompletableSource apply(Portfolio portfolio) throws Exception {
+                                            return initPortfoliosOfExchange(portfolio, exchange).toCompletable()
+                                                    .concatWith(assetsStateRepository.setAssetsInitialized(portfolio.getUuid(), exchange, true));
                                         }
                                     });
                         }
+                    }
+                })
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Timber.e("doInitExchangeAssets", throwable);
                     }
                 });
     }
@@ -287,7 +299,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * When creating a account assets, set it as the current active account.
      * Then initiate it.
      * <p>
-     * If the account assets already existed, no need to save it again. If current
+     * If the account assets already existed, no need to saveExchange it again. If current
      * account assets is not the account assets to be created, update it's state to
      * {@link Portfolio.State#ACTIVE}.
      *
@@ -335,8 +347,8 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     /**
      * Initiate block chain assets of an account assets which belong to an exchange.
      *
-     * @param portfolio the account assets to be initialized
-     * @param exchangeName  the name of the exchange
+     * @param portfolio    the account assets to be initialized
+     * @param exchangeName the name of the exchange
      * @return a Completable
      */
     private Single<Portfolio> initPortfoliosOfExchange(final Portfolio portfolio, final String exchangeName) {
@@ -429,7 +441,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * Get exchange assets of an account assets and an exchange.
      *
      * @param portfolio the account assets
-     * @param exchange      the exchange
+     * @param exchange  the exchange
      * @return a Single
      */
     @Override
@@ -456,6 +468,7 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
 
     /**
      * Check if one of the exchange has been initialized.
+     *
      * @return a Single
      */
     @Override
@@ -470,7 +483,38 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                 .flatMap(new Function<Exchange, ObservableSource<Boolean>>() {
                     @Override
                     public ObservableSource<Boolean> apply(Exchange exchange) throws Exception {
-                        return assetsStateRepository.getExchangeInitialized(exchange.getName()).toObservable();
+                        return exchangeStateRepository.getExchangeInitialized(exchange.getName()).toObservable();
+                    }
+                })
+                .reduce(new BiFunction<Boolean, Boolean, Boolean>() {
+                    @Override
+                    public Boolean apply(Boolean aBoolean, Boolean aBoolean2) throws Exception {
+                        return aBoolean || aBoolean2;
+                    }
+                })
+                .toSingle()
+                .onErrorReturnItem(false);
+    }
+
+    /**
+     * Check is a exchange assets has been initialized.
+     *
+     * @param exchange
+     * @return
+     */
+    @Override
+    public Single<Boolean> isExchangeAssetsInitialized(final String exchange) {
+        return portfolioRepo.getAll()
+                .flattenAsObservable(new Function<List<Portfolio>, Iterable<Portfolio>>() {
+                    @Override
+                    public Iterable<Portfolio> apply(List<Portfolio> portfolios) throws Exception {
+                        return portfolios;
+                    }
+                })
+                .flatMap(new Function<Portfolio, ObservableSource<Boolean>>() {
+                    @Override
+                    public ObservableSource<Boolean> apply(Portfolio portfolio) throws Exception {
+                        return assetsStateRepository.getAssetsInitialized(portfolio.getUuid(), exchange).toObservable();
                     }
                 })
                 .reduce(new BiFunction<Boolean, Boolean, Boolean>() {
@@ -497,10 +541,10 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
                         return Arrays.asList(exchanges);
                     }
                 })
-                .flatMap(new Function<Exchange, ObservableSource<Boolean>>() {
+                .flatMapSingle(new Function<Exchange, SingleSource<Boolean>>() {
                     @Override
-                    public ObservableSource<Boolean> apply(Exchange exchange) throws Exception {
-                        return assetsStateRepository.getAssetsInitialized(exchange.getName()).toObservable();
+                    public SingleSource<Boolean> apply(Exchange exchange) throws Exception {
+                        return isExchangeAssetsInitialized(exchange.getName());
                     }
                 })
                 .reduce(new BiFunction<Boolean, Boolean, Boolean>() {

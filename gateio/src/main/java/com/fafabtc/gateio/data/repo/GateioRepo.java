@@ -14,5 +14,5 @@ public interface GateioRepo {
 
     String GATEIO_EXCHANGE = "gateio";
 
-    Single<List<GateioPair>> init();
+    Single<List<GateioPair>> initGateioExchange();
 }

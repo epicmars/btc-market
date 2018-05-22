@@ -38,11 +38,6 @@ public class WidgetService extends DaggerService {
     @Inject
     AssetsStatisticsRepo assetsStatisticsRepo;
 
-    @Inject
-    AssetsStateRepository assetsStateRepository;
-
-    public static final int MIN_UPDATE_INTERVAL = 60 * 1000;
-
     private boolean isUpdating = false;
 
     public WidgetService() {

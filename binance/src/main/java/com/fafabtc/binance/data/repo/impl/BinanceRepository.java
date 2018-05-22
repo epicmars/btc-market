@@ -25,7 +25,7 @@ public class BinanceRepository implements BinanceRepo{
     }
 
     @Override
-    public Single<List<BinancePair>> initBinanceData() {
+    public Single<List<BinancePair>> initBinanceExchange() {
         return pairRepo.getLatestBinancePairs();
     }
 }

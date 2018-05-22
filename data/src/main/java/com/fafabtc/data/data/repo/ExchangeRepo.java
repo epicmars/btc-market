@@ -20,7 +20,7 @@ public interface ExchangeRepo {
             BinanceRepo.BINANCE_EXCHANGE
     };
 
-    Completable init();
+    Completable initAllExchanges();
 
     Completable initGateio();
 
@@ -28,11 +28,11 @@ public interface ExchangeRepo {
 
     Completable initHuobi();
 
-    Completable init(String exchange);
+    Completable initExchange(String exchange);
 
     Completable saveExchange(String exchangeName);
 
-    Completable save(Exchange exchange);
+    Completable saveExchange(Exchange exchange);
 
     Single<Exchange[]> getExchanges();
 

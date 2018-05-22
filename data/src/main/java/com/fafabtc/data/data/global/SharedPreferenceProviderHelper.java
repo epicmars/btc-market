@@ -8,7 +8,7 @@ import android.net.Uri;
 
 import com.fafabtc.common.json.GsonHelper;
 import com.fafabtc.data.provider.Providers;
-import com.fafabtc.data.provider.SharedPreferenceDataProvider;
+import com.fafabtc.data.provider.SharedPreferenceProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -17,12 +17,12 @@ import javax.inject.Singleton;
  * Created by jastrelax on 2018/4/7.
  */
 @Singleton
-public class SharedPreferenceDataHelper {
+public class SharedPreferenceProviderHelper {
 
     private ContentResolver resolver;
 
     @Inject
-    public SharedPreferenceDataHelper(Context context) {
+    public SharedPreferenceProviderHelper(Context context) {
         this.resolver = context.getContentResolver();
     }
 
@@ -51,7 +51,7 @@ public class SharedPreferenceDataHelper {
         if (obj == null || obj.length == 0) return;
         Uri uri = Uri.parse(Providers.XML_URL + clazz.getSimpleName());
         ContentValues values = new ContentValues();
-        values.put(SharedPreferenceDataProvider.DATA_FIELD_NAME, GsonHelper.gson().toJson(obj));
+        values.put(SharedPreferenceProvider.DATA_FIELD_NAME, GsonHelper.gson().toJson(obj));
         resolver.update(uri, values, null, null);
     }
 }

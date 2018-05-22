@@ -12,18 +12,29 @@ import android.support.annotation.NonNull;
 
 public class ExchangeDatabaseHelper {
 
-    private static volatile ExchangeDatabase exchangeDatabase;
+    private static volatile ExchangeDatabaseHelper instance;
 
-    public static ExchangeDatabase exchangeDatabase(Context context) {
-        if (exchangeDatabase == null) {
+    private ExchangeDatabase exchangeDatabase;
+
+    public ExchangeDatabaseHelper(Context context) {
+        exchangeDatabase = Room.databaseBuilder(context.getApplicationContext(),
+                ExchangeDatabase.class, "exchange.db")
+                .build();
+    }
+
+    public static ExchangeDatabaseHelper instance(Context context) {
+        if (instance == null) {
             synchronized (ExchangeDatabaseHelper.class) {
-                if (exchangeDatabase == null) {
-                    exchangeDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            ExchangeDatabase.class, "exchange.db")
-                            .build();
+                if (instance == null) {
+                    instance = new ExchangeDatabaseHelper(context);
                 }
             }
         }
+
+        return instance;
+    }
+
+    public ExchangeDatabase exchangeDatabase() {
         return exchangeDatabase;
     }
 }

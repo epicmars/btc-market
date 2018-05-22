@@ -56,7 +56,7 @@ public class ExchangeRepository implements ExchangeRepo {
     }
 
     @Override
-    public Completable init() {
+    public Completable initAllExchanges() {
         return Completable.mergeArrayDelayError(
                 initGateio(),
                 initBinance(),
@@ -67,36 +67,42 @@ public class ExchangeRepository implements ExchangeRepo {
     @Override
     public Completable initGateio() {
         // Initiate exchange and assets data, refresh tickers after exchange and assets initiation have complete.
-        return gateioRepo.init()
+        Completable initExchangePairs = gateioRepo.initGateioExchange()
                 .flattenAsObservable(this.<GateioPair>flattenList())
                 .map(PairMapperFactory.GateioPairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .toCompletable()
-                .concatWith(saveExchange(GateioRepo.GATEIO_EXCHANGE));
+                .toCompletable();
+
+        Completable saveExchange = saveExchange(GateioRepo.GATEIO_EXCHANGE);
+        return saveExchange.concatWith(initExchangePairs);
     }
 
 
     @Override
     public Completable initBinance() {
-        return binanceRepo.initBinanceData()
+         Completable initExchangePairs = binanceRepo.initBinanceExchange()
                 .flattenAsObservable(this.<BinancePair>flattenList())
                 .map(PairMapperFactory.BinancePairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .toCompletable()
-                .concatWith(saveExchange(BinanceRepo.BINANCE_EXCHANGE));
+                .toCompletable();
+
+         Completable saveExchange = saveExchange(BinanceRepo.BINANCE_EXCHANGE);
+
+         return saveExchange.concatWith(initExchangePairs);
     }
 
     @Override
     public Completable initHuobi() {
-        return huobiRepo.init()
+        Completable initExchangePairs = huobiRepo.initHuobiExchange()
                 .flattenAsObservable(this.<HuobiPair>flattenList())
                 .map(PairMapperFactory.HuobiPairMapper.MAPPER)
                 .flatMap(savePair)
                 .toList()
-                .toCompletable()
-                .concatWith(saveExchange(HuobiRepo.HUOBI_EXCHANGE));
+                .toCompletable();
+        Completable saveExchange = saveExchange(HuobiRepo.HUOBI_EXCHANGE);
+        return saveExchange.concatWith(initExchangePairs);
     }
 
     /**
@@ -105,7 +111,7 @@ public class ExchangeRepository implements ExchangeRepo {
      * @param exchange a exchange
      * @return a Completable
      */
-    public Completable init(String exchange) {
+    public Completable initExchange(String exchange) {
         switch (exchange) {
             case GateioRepo.GATEIO_EXCHANGE:
                 return initGateio();
@@ -136,13 +142,13 @@ public class ExchangeRepository implements ExchangeRepo {
         }).flatMapCompletable(new Function<Exchange, CompletableSource>() {
             @Override
             public CompletableSource apply(Exchange exchange) throws Exception {
-                return save(exchange);
+                return saveExchange(exchange);
             }
         });
     }
 
     @Override
-    public Completable save(final Exchange exchange) {
+    public Completable saveExchange(final Exchange exchange) {
         return Completable.fromAction(new Action() {
             @Override
             public void run() throws Exception {

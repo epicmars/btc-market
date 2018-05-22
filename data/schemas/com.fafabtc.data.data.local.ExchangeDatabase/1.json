@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a9c0e8fded924b2ffbe45ca75b79cc9a",
+    "identityHash": "62e34a2fd85ca667073068a5a706b693",
     "entities": [
       {
         "tableName": "portfolio",
@@ -79,7 +79,7 @@
       },
       {
         "tableName": "blockchain_assets",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `timestamp` INTEGER, `assets_uuid` TEXT NOT NULL, `exchange` TEXT NOT NULL, `name` TEXT NOT NULL COLLATE NOCASE, `principle` REAL NOT NULL, `available` REAL NOT NULL, `locked` REAL NOT NULL, PRIMARY KEY(`assets_uuid`, `exchange`, `name`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `timestamp` INTEGER, `assets_uuid` TEXT NOT NULL, `exchange` TEXT NOT NULL COLLATE NOCASE, `name` TEXT NOT NULL COLLATE NOCASE, `principle` REAL NOT NULL, `available` REAL NOT NULL, `locked` REAL NOT NULL, PRIMARY KEY(`assets_uuid`, `exchange`, `name`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -94,7 +94,7 @@
             "notNull": false
           },
           {
-            "fieldPath": "assetsUUID",
+            "fieldPath": "assetsUuid",
             "columnName": "assets_uuid",
             "affinity": "TEXT",
             "notNull": true
@@ -143,7 +143,7 @@
       },
       {
         "tableName": "exchange",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `name` TEXT, `name_cn` TEXT, `commission_rate` REAL NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `name` TEXT COLLATE NOCASE, `name_cn` TEXT, `commission_rate` REAL NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -271,7 +271,7 @@
             "notNull": false
           },
           {
-            "fieldPath": "assetsUUID",
+            "fieldPath": "assetsUuid",
             "columnName": "assets_uuid",
             "affinity": "TEXT",
             "notNull": false
@@ -375,7 +375,7 @@
             "notNull": false
           },
           {
-            "fieldPath": "assetsUUID",
+            "fieldPath": "assetsUuid",
             "columnName": "assets_uuid",
             "affinity": "TEXT",
             "notNull": false
@@ -624,11 +624,118 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "AssetsState",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `assets_uuid` TEXT, `is_assets_initialized` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetsUuid",
+            "columnName": "assets_uuid",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isAssetsInitialized",
+            "columnName": "is_assets_initialized",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_AssetsState_exchange_assets_uuid",
+            "unique": true,
+            "columnNames": [
+              "exchange",
+              "assets_uuid"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_AssetsState_exchange_assets_uuid` ON `${TABLE_NAME}` (`exchange`, `assets_uuid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ExchangeState",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER, `exchange` TEXT, `is_exchange_initialized` INTEGER NOT NULL, `update_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exchange",
+            "columnName": "exchange",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isExchangeInitialized",
+            "columnName": "is_exchange_initialized",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateTime",
+            "columnName": "update_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_ExchangeState_exchange",
+            "unique": true,
+            "columnNames": [
+              "exchange"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_ExchangeState_exchange` ON `${TABLE_NAME}` (`exchange`)"
+          }
+        ],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a9c0e8fded924b2ffbe45ca75b79cc9a\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"62e34a2fd85ca667073068a5a706b693\")"
     ]
   }
 }

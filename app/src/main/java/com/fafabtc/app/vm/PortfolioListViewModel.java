@@ -27,9 +27,6 @@ public class PortfolioListViewModel extends ViewModel {
     @Inject
     PortfolioRepo portfolioRepo;
 
-    @Inject
-    AssetsStateRepository assetsStateRepository;
-
     private MutableLiveData<Resource<List<Portfolio>>> portfolioList;
 
 

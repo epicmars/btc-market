@@ -55,7 +55,7 @@ public class PortfolioViewModel extends ViewModel{
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e(e);
+                        Timber.e("loadAccountList", e);
                     }
                 });
     }
@@ -76,7 +76,7 @@ public class PortfolioViewModel extends ViewModel{
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e(e);
+                        Timber.e("loadCurrentAccount", e);
                     }
                 });
     }

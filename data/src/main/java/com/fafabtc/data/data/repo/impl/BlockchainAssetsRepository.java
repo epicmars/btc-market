@@ -24,7 +24,9 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import timber.log.Timber;
 
 /**
  * Created by jastrelax on 2018/1/8.
@@ -106,7 +108,7 @@ public class BlockchainAssetsRepository implements BlockchainAssetsRepo {
                             @Override
                             public void run() throws Exception {
                                 final BlockchainAssets assets = new BlockchainAssets();
-                                assets.setAssetsUUID(assetsUUID);
+                                assets.setAssetsUuid(assetsUUID);
                                 assets.setName(s);
                                 assets.setExchange(exchangeName);
                                 blockchainAssetsDao.insert(assets);

@@ -18,7 +18,7 @@ public class Trade extends BaseEntity {
     private String exchange;
 
     @ColumnInfo(name = "assets_uuid")
-    private String assetsUUID;
+    private String assetsUuid;
 
     /**
      * "buy" or "sell"
@@ -47,12 +47,12 @@ public class Trade extends BaseEntity {
         this.exchange = exchange;
     }
 
-    public String getAssetsUUID() {
-        return assetsUUID;
+    public String getAssetsUuid() {
+        return assetsUuid;
     }
 
-    public void setAssetsUUID(String assetsUUID) {
-        this.assetsUUID = assetsUUID;
+    public void setAssetsUuid(String assetsUuid) {
+        this.assetsUuid = assetsUuid;
     }
 
     public String getType() {

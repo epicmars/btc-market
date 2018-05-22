@@ -4,6 +4,7 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
+import com.fafabtc.data.model.entity.exchange.AssetsState;
 import com.fafabtc.data.data.local.converter.PortfolioStateConverter;
 import com.fafabtc.data.data.local.converter.OrderStateConverter;
 import com.fafabtc.data.data.local.converter.OrderTypeConverter;
@@ -17,6 +18,7 @@ import com.fafabtc.data.data.local.dao.PairDao;
 import com.fafabtc.data.data.local.dao.TickerDao;
 import com.fafabtc.data.data.local.dao.TradeDao;
 import com.fafabtc.data.model.entity.ExchangeRate;
+import com.fafabtc.data.model.entity.exchange.ExchangeState;
 import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Exchange;
@@ -40,7 +42,9 @@ import com.fafabtc.domain.data.local.StringArrayConverter;
                 Order.class,
                 Trade.class,
                 Ticker.class,
-                ExchangeRate.class
+                ExchangeRate.class,
+                AssetsState.class,
+                ExchangeState.class
         },
         version = 1)
 @TypeConverters(

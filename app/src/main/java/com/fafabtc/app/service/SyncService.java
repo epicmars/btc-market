@@ -12,9 +12,12 @@ import com.fafabtc.app.utils.ExecutorManager;
 import com.fafabtc.data.data.global.AssetsStateRepository;
 import com.fafabtc.data.data.repo.ExchangeAssetsRepo;
 import com.fafabtc.data.data.repo.ExchangeRepo;
+import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.model.entity.exchange.Exchange;
+import com.fafabtc.data.model.entity.exchange.Portfolio;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,6 +25,7 @@ import dagger.android.DaggerService;
 import io.reactivex.Completable;
 import io.reactivex.CompletableObserver;
 import io.reactivex.CompletableSource;
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
@@ -39,6 +43,9 @@ public class SyncService extends DaggerService {
 
     @Inject
     ExchangeRepo exchangeRepo;
+
+    @Inject
+    PortfolioRepo portfolioRepo;
 
     @Inject
     AssetsStateRepository assetsStateRepository;
@@ -87,18 +94,29 @@ public class SyncService extends DaggerService {
                             return Arrays.asList(exchanges);
                         }
                     })
-                    .singleOrError()
                     .flatMapCompletable(new Function<Exchange, CompletableSource>() {
                         @Override
                         public CompletableSource apply(final Exchange exchange) throws Exception {
-                            return assetsStateRepository.getAssetsInitialized(exchange.getName())
-                                    .flatMapCompletable(new Function<Boolean, CompletableSource>() {
+                            return portfolioRepo.getAll()
+                                    .flattenAsObservable(new Function<List<Portfolio>, Iterable<Portfolio>>() {
                                         @Override
-                                        public CompletableSource apply(Boolean aBoolean) throws Exception {
-                                            if (aBoolean) {
-                                                return exchangeAssetsRepo.cacheExchangeAssetsToFile(exchange);
-                                            }
-                                            return Completable.complete();
+                                        public Iterable<Portfolio> apply(List<Portfolio> portfolios) throws Exception {
+                                            return portfolios;
+                                        }
+                                    })
+                                    .flatMapCompletable(new Function<Portfolio, CompletableSource>() {
+                                        @Override
+                                        public CompletableSource apply(Portfolio portfolio) throws Exception {
+                                            return assetsStateRepository.getAssetsInitialized(portfolio.getUuid(), exchange.getName())
+                                                    .flatMapCompletable(new Function<Boolean, CompletableSource>() {
+                                                        @Override
+                                                        public CompletableSource apply(Boolean aBoolean) throws Exception {
+                                                            if (aBoolean) {
+                                                                return exchangeAssetsRepo.cacheExchangeAssetsToFile(exchange);
+                                                            }
+                                                            return Completable.complete();
+                                                        }
+                                                    });
                                         }
                                     });
                         }
