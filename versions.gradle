@@ -1,7 +1,7 @@
 ext {
 
-    version_code = 8
-    version_name = '0.1.4'
+    version_code = 9
+    version_name = '0.1.5'
 
     // android
     android = [
