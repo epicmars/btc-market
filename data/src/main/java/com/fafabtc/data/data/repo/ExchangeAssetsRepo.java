@@ -34,9 +34,9 @@ public interface ExchangeAssetsRepo {
 
     Single<Portfolio> createPortfolioOfExchange(final String assetsName, final String exchange);
 
-    Single<List<ExchangeAssets>> getAllExchangeAssetsOfCurrentAccount();
+    Single<List<ExchangeAssets>> getAllExchangeAssetsOfCurrentPortfolio();
 
-    Single<List<ExchangeAssets>> getAllExchangeAssetsOfAccount(Portfolio portfolio);
+    Single<List<ExchangeAssets>> getAllExchangeAssetsOfPortfolio(Portfolio portfolio);
 
     Single<List<ExchangeAssets>> getAllExchangeAssetsOfExchange(Exchange exchange);
 

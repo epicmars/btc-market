@@ -63,7 +63,7 @@ public abstract class PortfolioDao {
     @Transaction
     public Portfolio create(String assetsName) {
         if (assetsName == null)
-            throw new NullPointerException("The new account assets to be created is null.");
+            throw new NullPointerException("The new portfolio to be created is null.");
 
         Portfolio current = findCurrent();
         Portfolio cachedNewAssets = findByName(assetsName);

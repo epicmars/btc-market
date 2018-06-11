@@ -252,8 +252,8 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
      * If assets of a exchange is already initiated, which means the blockchain assets of
      * all assets account of an exchange have been initiated.
      * <p>
-     * If no account assets exist then create a new one with a default name.
-     * Otherwise initiate all the account assets of specified exchange.
+     * If no portfolio exist then create a new one with a default name.
+     * Otherwise initiate all the portfolio of specified exchange.
      *
      * @param exchange the exchange whose assets to be initialized
      * @return a Completable
@@ -294,13 +294,13 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
 
 
     /**
-     * Create account assets which belongs to an exchange.
+     * Create portfolio which belongs to an exchange.
      * <p>
-     * When creating a account assets, set it as the current active account.
+     * When creating a portfolio, set it as the current active account.
      * Then initiate it.
      * <p>
-     * If the account assets already existed, no need to saveExchange it again. If current
-     * account assets is not the account assets to be created, update it's state to
+     * If the portfolio already existed, no need to saveExchange it again. If current
+     * portfolio is not the portfolio to be created, update it's state to
      * {@link Portfolio.State#ACTIVE}.
      *
      * @param assetsName name of the account to be created
@@ -320,10 +320,10 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     }
 
     /**
-     * Create a new account assets and initiate all exchange assets which
+     * Create a new portfolio and initiate all exchange assets which
      * belong to it.
      *
-     * @param assetsName name of the account assets to be created.
+     * @param assetsName name of the portfolio to be created.
      * @return a Single
      */
     @Override
@@ -345,9 +345,9 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     }
 
     /**
-     * Initiate block chain assets of an account assets which belong to an exchange.
+     * Initiate block chain assets of an portfolio which belong to an exchange.
      *
-     * @param portfolio    the account assets to be initialized
+     * @param portfolio    the portfolio to be initialized
      * @param exchangeName the name of the exchange
      * @return a Completable
      */
@@ -366,13 +366,13 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     }
 
     /**
-     * Get all exchange assets which belong to an account assets.
+     * Get all exchange assets which belong to an portfolio.
      *
-     * @param portfolio the account assets
+     * @param portfolio the portfolio
      * @return a Single
      */
     @Override
-    public Single<List<ExchangeAssets>> getAllExchangeAssetsOfAccount(Portfolio portfolio) {
+    public Single<List<ExchangeAssets>> getAllExchangeAssetsOfPortfolio(Portfolio portfolio) {
         return Single.just(portfolio)
                 .flatMapObservable(new Function<Portfolio, ObservableSource<Pair<Portfolio, Exchange>>>() {
                     @Override
@@ -422,25 +422,25 @@ public class ExchangeAssetsRepository implements ExchangeAssetsRepo {
     }
 
     /**
-     * Get all exchange assets of current account assets.
+     * Get all exchange assets of current portfolio.
      *
      * @return a Single
      */
     @Override
-    public Single<List<ExchangeAssets>> getAllExchangeAssetsOfCurrentAccount() {
+    public Single<List<ExchangeAssets>> getAllExchangeAssetsOfCurrentPortfolio() {
         return portfolioRepo.getCurrent()
                 .flatMap(new Function<Portfolio, SingleSource<? extends List<ExchangeAssets>>>() {
                     @Override
                     public SingleSource<? extends List<ExchangeAssets>> apply(Portfolio portfolio) throws Exception {
-                        return getAllExchangeAssetsOfAccount(portfolio);
+                        return getAllExchangeAssetsOfPortfolio(portfolio);
                     }
                 });
     }
 
     /**
-     * Get exchange assets of an account assets and an exchange.
+     * Get exchange assets of an portfolio and an exchange.
      *
-     * @param portfolio the account assets
+     * @param portfolio the portfolio
      * @param exchange  the exchange
      * @return a Single
      */
