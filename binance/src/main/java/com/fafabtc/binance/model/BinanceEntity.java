@@ -1,7 +1,7 @@
 package com.fafabtc.binance.model;
 
 import com.fafabtc.binance.data.repo.BinanceRepo;
-import com.fafabtc.domain.data.local.BaseEntity;
+import com.fafabtc.base.data.local.BaseEntity;
 
 /**
  * Created by jastrelax on 2018/1/13.

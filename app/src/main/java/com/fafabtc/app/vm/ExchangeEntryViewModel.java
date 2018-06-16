@@ -11,7 +11,7 @@ import com.fafabtc.data.data.repo.ExchangeRepo;
 import com.fafabtc.data.model.entity.exchange.Portfolio;
 import com.fafabtc.data.model.entity.exchange.Exchange;
 import com.fafabtc.data.model.vo.ExchangeEntry;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 import java.util.List;
 

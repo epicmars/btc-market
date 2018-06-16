@@ -16,7 +16,7 @@ import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.fragment.LoadingDialog;
 import com.fafabtc.app.vm.BalanceDepositViewModel;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 /**
  * Balance assets deposit through exchange.

@@ -2,7 +2,7 @@ package com.fafabtc.binance.data.remote.mapper;
 
 import com.fafabtc.binance.data.remote.dto.BinanceTicker24hr;
 import com.fafabtc.binance.model.BinanceTicker;
-import com.fafabtc.domain.data.remote.Mapper;
+import com.fafabtc.base.data.remote.Mapper;
 
 import io.reactivex.functions.Function;
 

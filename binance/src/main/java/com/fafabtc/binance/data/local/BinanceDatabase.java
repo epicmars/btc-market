@@ -8,7 +8,7 @@ import com.fafabtc.binance.data.local.dao.BinancePairDao;
 import com.fafabtc.binance.data.local.dao.BinanceTickerDao;
 import com.fafabtc.binance.model.BinancePair;
 import com.fafabtc.binance.model.BinanceTicker;
-import com.fafabtc.domain.data.local.DateConverter;
+import com.fafabtc.base.data.local.DateConverter;
 
 /**
  * Created by jastrelax on 2018/1/13.

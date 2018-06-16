@@ -2,7 +2,7 @@ package com.fafabtc.binance.data.remote.mapper;
 
 import com.fafabtc.binance.data.remote.dto.BinanceExchangeInfo;
 import com.fafabtc.binance.model.BinancePair;
-import com.fafabtc.domain.data.remote.Mapper;
+import com.fafabtc.base.data.remote.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;

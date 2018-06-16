@@ -19,7 +19,7 @@ import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.fragment.ExchangeEntryFragment;
 import com.fafabtc.app.vm.ExchangeEntryViewModel;
 import com.fafabtc.data.model.entity.exchange.Portfolio;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 @Injectable
 @BindLayout(R.layout.activity_exchange_entry)

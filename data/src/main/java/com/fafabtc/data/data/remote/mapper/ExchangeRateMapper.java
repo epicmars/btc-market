@@ -1,7 +1,7 @@
 package com.fafabtc.data.data.remote.mapper;
 
 import com.fafabtc.data.model.entity.ExchangeRate;
-import com.fafabtc.domain.data.remote.Mapper;
+import com.fafabtc.base.data.remote.Mapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 

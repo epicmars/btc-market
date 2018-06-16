@@ -1,4 +1,4 @@
-package com.fafabtc.domain;
+package com.fafabtc.base;
 
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package com.fafabtc.gateio.data.remote.mapper;
 
-import com.fafabtc.domain.data.remote.Mapper;
+import com.fafabtc.base.data.remote.Mapper;
 import com.fafabtc.gateio.data.remote.dto.GateioPairs;
 
 /**

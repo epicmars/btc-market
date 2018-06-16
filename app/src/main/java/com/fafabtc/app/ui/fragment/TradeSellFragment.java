@@ -17,7 +17,7 @@ import com.fafabtc.app.vm.TradeViewModel;
 import com.fafabtc.common.utils.NumberUtils;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Ticker;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 /**
  * Created by jastrelax on 2018/1/9.

@@ -1,4 +1,4 @@
-package com.fafabtc.domain.data.local;
+package com.fafabtc.base.data.local;
 
 import android.arch.persistence.room.TypeConverter;
 

@@ -2,8 +2,8 @@ package com.fafabtc.data.model.entity.mapper;
 
 import com.fafabtc.binance.model.BinancePair;
 import com.fafabtc.data.model.entity.exchange.Pair;
-import com.fafabtc.domain.data.remote.Mapper;
-import com.fafabtc.domain.data.remote.MapperFactory;
+import com.fafabtc.base.data.remote.Mapper;
+import com.fafabtc.base.data.remote.MapperFactory;
 import com.fafabtc.gateio.model.entity.GateioPair;
 import com.fafabtc.huobi.domain.entity.HuobiPair;
 

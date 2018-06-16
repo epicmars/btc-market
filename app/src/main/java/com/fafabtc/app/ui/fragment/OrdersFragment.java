@@ -17,7 +17,7 @@ import com.fafabtc.app.ui.viewholder.OrderViewHolder;
 import com.fafabtc.app.vm.OrdersViewModel;
 import com.fafabtc.app.vm.TradeViewModel;
 import com.fafabtc.data.model.entity.exchange.Order;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 import java.util.List;
 

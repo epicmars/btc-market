@@ -2,7 +2,7 @@ package com.fafabtc.data.model.entity.mapper;
 
 import com.fafabtc.binance.model.BinanceTicker;
 import com.fafabtc.data.model.entity.exchange.Ticker;
-import com.fafabtc.domain.data.remote.Mapper;
+import com.fafabtc.base.data.remote.Mapper;
 import com.fafabtc.gateio.model.entity.GateioTicker;
 import com.fafabtc.huobi.domain.entity.HuobiTicker;
 

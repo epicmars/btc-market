@@ -1,9 +1,9 @@
-package com.fafabtc.domain.model;
+package com.fafabtc.base.model;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import static com.fafabtc.domain.model.Resource.Status.*;
+import static com.fafabtc.base.model.Resource.Status.*;
 
 /**
  * A generic class that holds a value with its loading status.

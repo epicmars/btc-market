@@ -1,4 +1,4 @@
-package com.fafabtc.domain.data.remote;
+package com.fafabtc.base.data.remote;
 
 import io.reactivex.functions.Function;
 

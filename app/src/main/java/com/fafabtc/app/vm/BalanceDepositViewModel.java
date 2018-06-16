@@ -6,7 +6,7 @@ import android.arch.lifecycle.ViewModel;
 import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.repo.BlockchainAssetsRepo;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 import javax.inject.Inject;
 

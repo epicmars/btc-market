@@ -4,7 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 
-import com.fafabtc.domain.data.local.BaseEntity;
+import com.fafabtc.base.data.local.BaseEntity;
 
 /**
  * Exchange rate of different currency.

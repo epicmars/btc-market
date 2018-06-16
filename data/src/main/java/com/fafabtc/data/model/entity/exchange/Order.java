@@ -7,7 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-import com.fafabtc.domain.data.local.BaseEntity;
+import com.fafabtc.base.data.local.BaseEntity;
 
 import java.util.Date;
 

@@ -23,7 +23,7 @@ import com.fafabtc.app.vm.PortfolioListViewModel;
 import com.fafabtc.app.vm.PortfolioViewModel;
 import com.fafabtc.data.consts.DataBroadcasts;
 import com.fafabtc.data.model.entity.exchange.Portfolio;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 import java.util.List;
 

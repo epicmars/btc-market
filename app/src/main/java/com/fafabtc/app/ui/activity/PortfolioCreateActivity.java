@@ -17,7 +17,7 @@ import com.fafabtc.app.ui.base.BindLayout;
 import com.fafabtc.app.ui.fragment.LoadingDialog;
 import com.fafabtc.app.vm.PortfolioCreateViewModel;
 import com.fafabtc.data.model.entity.exchange.Portfolio;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 @BindLayout(R.layout.activity_portfolio_create)
 public class PortfolioCreateActivity extends BaseActivity<ActivityPortfolioCreateBinding> {

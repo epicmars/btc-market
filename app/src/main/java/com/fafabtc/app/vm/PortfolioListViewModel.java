@@ -7,7 +7,7 @@ import com.fafabtc.app.utils.RxUtils;
 import com.fafabtc.data.data.global.AssetsStateRepository;
 import com.fafabtc.data.data.repo.PortfolioRepo;
 import com.fafabtc.data.model.entity.exchange.Portfolio;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 import java.util.ArrayList;
 import java.util.List;

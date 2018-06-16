@@ -1,6 +1,6 @@
 package com.fafabtc.huobi.data.remote.mapper;
 
-import com.fafabtc.domain.data.remote.Mapper;
+import com.fafabtc.base.data.remote.Mapper;
 import com.fafabtc.huobi.data.remote.dto.HuobiCommonSymbols;
 import com.fafabtc.huobi.domain.entity.HuobiPair;
 

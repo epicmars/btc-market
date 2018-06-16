@@ -6,7 +6,7 @@ import android.arch.persistence.room.Index;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.fafabtc.domain.data.local.BaseEntity;
+import com.fafabtc.base.data.local.BaseEntity;
 
 /**
  * Created by jastrelax on 2018/1/18.

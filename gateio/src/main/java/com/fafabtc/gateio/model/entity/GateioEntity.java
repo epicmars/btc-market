@@ -1,6 +1,6 @@
 package com.fafabtc.gateio.model.entity;
 
-import com.fafabtc.domain.data.local.BaseEntity;
+import com.fafabtc.base.data.local.BaseEntity;
 import com.fafabtc.gateio.data.repo.GateioRepo;
 
 /**

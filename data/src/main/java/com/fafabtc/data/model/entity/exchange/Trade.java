@@ -3,7 +3,7 @@ package com.fafabtc.data.model.entity.exchange;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 
-import com.fafabtc.domain.data.local.BaseEntity;
+import com.fafabtc.base.data.local.BaseEntity;
 
 
 /**

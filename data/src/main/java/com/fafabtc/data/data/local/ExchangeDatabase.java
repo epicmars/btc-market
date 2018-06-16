@@ -26,8 +26,8 @@ import com.fafabtc.data.model.entity.exchange.Order;
 import com.fafabtc.data.model.entity.exchange.Pair;
 import com.fafabtc.data.model.entity.exchange.Ticker;
 import com.fafabtc.data.model.entity.exchange.Trade;
-import com.fafabtc.domain.data.local.DateConverter;
-import com.fafabtc.domain.data.local.StringArrayConverter;
+import com.fafabtc.base.data.local.DateConverter;
+import com.fafabtc.base.data.local.StringArrayConverter;
 
 /**
  * Created by jastrelax on 2018/1/8.

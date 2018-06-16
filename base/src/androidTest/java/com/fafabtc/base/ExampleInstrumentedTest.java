@@ -1,4 +1,4 @@
-package com.fafabtc.domain;
+package com.fafabtc.base;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

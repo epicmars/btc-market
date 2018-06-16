@@ -9,7 +9,7 @@ import com.fafabtc.data.data.repo.OrderRepo;
 import com.fafabtc.data.model.entity.exchange.BlockchainAssets;
 import com.fafabtc.data.model.entity.exchange.Order;
 import com.fafabtc.data.model.entity.exchange.Ticker;
-import com.fafabtc.domain.model.Resource;
+import com.fafabtc.base.model.Resource;
 
 import javax.inject.Inject;
 

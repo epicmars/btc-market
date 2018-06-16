@@ -1,4 +1,4 @@
-package com.fafabtc.domain.data.remote;
+package com.fafabtc.base.data.remote;
 
 /**
  * Created by jastrelax on 2018/1/25.

@@ -1,6 +1,6 @@
 package com.fafabtc.huobi.domain.entity;
 
-import com.fafabtc.domain.data.local.BaseEntity;
+import com.fafabtc.base.data.local.BaseEntity;
 import com.fafabtc.huobi.data.repo.HuobiRepo;
 
 /**
