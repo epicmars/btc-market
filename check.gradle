@@ -1,0 +1,29 @@
+apply plugin: 'findbugs'
+
+android.applicationVariants.all { variant ->
+    task("findbugs${variant.name.capitalize()}", type: FindBugs) {
+        description "Analyze ${variant.name} code with the findbugs tool"
+        group "Verification"
+
+        ignoreFailures = true
+        effort = "default"
+        reportLevel = "medium"
+
+        classes = files("$project.buildDir/intermediates/classes/${variant.dirName}")
+        excludeFilter = file("$rootProject.rootDir/findbugs/findbugs-filter.xml")
+        source = variant.javaCompile.source
+        classpath = variant.javaCompile.classpath
+
+        reports {
+            // Only one of HTML or XML can be turned on at the same time
+            html.enabled = true
+            xml.enabled = !html.enabled
+            xml.withMessages = true
+
+            html.destination = file("$project.buildDir/reports/findbugs/findbugs-${variant.name}-output.html")
+            xml.destination = file("$project.buildDir/reports/findbugs/findbugs-${variant.name}-output.xml")
+        }
+
+        dependsOn "compile${variant.name.capitalize()}JavaWithJavac"
+    }
+}

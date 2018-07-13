@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: '../publish.gradle'
+apply from: '../check.gradle'
 
 def keystorePropertiesFile = rootProject.file("local.properties")
 def keystoreProperties = new Properties()
@@ -38,6 +39,10 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 

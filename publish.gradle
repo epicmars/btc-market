@@ -1,27 +1,43 @@
+
 android {
 
-    flavorDimensions "main"
+    flavorDimensions "channel"
 
     productFlavors {
 
         dev {
+            dimension "channel"
             manifestPlaceholders = [APP_CHANNEL: "dev"]
         }
 
-        github {
-            manifestPlaceholders = [APP_CHANNEL: "github"]
-        }
-
-        baidu {
-            manifestPlaceholders = [APP_CHANNEL: "baidu"]
-        }
-
-        tencent {
-            manifestPlaceholders = [APP_CHANNEL: "tencent"]
+        google {
+            dimension "channel"
+            manifestPlaceholders = [APP_CHANNEL: "google"]
         }
 
         alibaba {
+            dimension "channel"
             manifestPlaceholders = [APP_CHANNEL: "alibaba"]
+        }
+
+        tencent {
+            dimension "channel"
+            manifestPlaceholders = [APP_CHANNEL: "tencent"]
+        }
+
+        xiaomi {
+            dimension "channel"
+            manifestPlaceholders = [APP_CHANNEL: "xiaomi"]
+        }
+
+        oppo {
+            dimension "channel"
+            manifestPlaceholders = [APP_CHANNEL: "oppo"]
+        }
+
+        baidu {
+            dimension "channel"
+            manifestPlaceholders = [APP_CHANNEL: "baidu"]
         }
 
     }
