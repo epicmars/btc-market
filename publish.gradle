@@ -6,12 +6,17 @@ android {
     def channels = channelFile.readLines()
 
     productFlavors {
-        channels.each {
-            def channel = it
+        channels.each { channel ->
             productFlavors.create(channel, {
                 dimension "channel"
                 manifestPlaceholders = [APP_CHANNEL: channel]
             })
         }
+    }
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "${variant.name}-${variant.versionName}.apk"
     }
 }
