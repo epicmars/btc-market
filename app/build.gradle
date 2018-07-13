@@ -1,3 +1,5 @@
+import java.util.function.Consumer
+
 apply plugin: 'com.android.application'
 apply from: '../publish.gradle'
 apply from: '../check.gradle'

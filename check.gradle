@@ -10,7 +10,7 @@ android.applicationVariants.all { variant ->
         reportLevel = "medium"
 
         classes = files("$project.buildDir/intermediates/classes/${variant.dirName}")
-        excludeFilter = file("$rootProject.rootDir/findbugs/findbugs-filter.xml")
+        excludeFilter = file("$rootProject.rootDir/config/findbugs/findbugs-filter.xml")
         source = variant.javaCompile.source
         classpath = variant.javaCompile.classpath
 

@@ -1,44 +1,17 @@
-
 android {
 
     flavorDimensions "channel"
 
+    def channelFile = rootProject.file("config/build/channel.csv")
+    def channels = channelFile.readLines()
+
     productFlavors {
-
-        dev {
-            dimension "channel"
-            manifestPlaceholders = [APP_CHANNEL: "dev"]
+        channels.each {
+            def channel = it
+            productFlavors.create(channel, {
+                dimension "channel"
+                manifestPlaceholders = [APP_CHANNEL: channel]
+            })
         }
-
-        google {
-            dimension "channel"
-            manifestPlaceholders = [APP_CHANNEL: "google"]
-        }
-
-        alibaba {
-            dimension "channel"
-            manifestPlaceholders = [APP_CHANNEL: "alibaba"]
-        }
-
-        tencent {
-            dimension "channel"
-            manifestPlaceholders = [APP_CHANNEL: "tencent"]
-        }
-
-        xiaomi {
-            dimension "channel"
-            manifestPlaceholders = [APP_CHANNEL: "xiaomi"]
-        }
-
-        oppo {
-            dimension "channel"
-            manifestPlaceholders = [APP_CHANNEL: "oppo"]
-        }
-
-        baidu {
-            dimension "channel"
-            manifestPlaceholders = [APP_CHANNEL: "baidu"]
-        }
-
     }
 }
