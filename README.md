@@ -1,6 +1,6 @@
 fafabtc
 =================
-主要功能为区块链资产行情查看与市值。通过建立不同的资产组合，可以根据市场行情计算资产市值。
+主要功能为区块链资产行情查看与市值估算。通过建立不同的资产组合，可以根据市场行情计算资产市值。
 
 ![img](docs/imgs/assets_statistics.png) | ![img](docs/imgs/tickers.png) | ![img](docs/imgs/assets_manager.png)
 ---------|--------|----------
