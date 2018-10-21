@@ -17,7 +17,7 @@ android {
 
 android.applicationVariants.all { variant ->
     variant.outputs.all {
-        def name = outputFileName.replaceFirst("app-", "fafabtc-").replace(".apk", "")
+        def name = outputFileName.replaceFirst("app-", "fafabtc-").replaceAll(".apk", "")
         outputFileName = "${name}-${variant.versionName}.apk"
     }
 }

@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ListView
-        android:id="@+id/list_ticker"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        app:fastScrollEnabled="true"
-        app:fastScrollHorizontalThumbDrawable="@drawable/fast_scroll_h_thumb"
-        app:fastScrollHorizontalTrackDrawable="@drawable/fast_scroll_h_track"
-        app:fastScrollVerticalThumbDrawable="@drawable/fast_scroll_vertical_thumb"
-        app:fastScrollVerticalTrackDrawable="@drawable/fast_scroll_vertical_track"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:divider="@android:drawable/divider_horizontal_bright"
-        android:footerDividersEnabled="false"
-        tools:listitem="@layout/view_holder_ticker" />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/list_ticker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            app:fastScrollEnabled="true"
+            app:fastScrollHorizontalThumbDrawable="@drawable/fast_scroll_h_thumb"
+            app:fastScrollHorizontalTrackDrawable="@drawable/fast_scroll_h_track"
+            app:fastScrollVerticalThumbDrawable="@drawable/fast_scroll_vertical_thumb"
+            app:fastScrollVerticalTrackDrawable="@drawable/fast_scroll_vertical_track"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:divider="@android:drawable/divider_horizontal_bright"
+            android:footerDividersEnabled="false"
+            tools:listitem="@layout/view_holder_ticker"
+            android:nestedScrollingEnabled="true"
+            app:layout_behavior="@string/lr_refresh_content_behavior"/>
+    </android.support.design.widget.CoordinatorLayout>
 
 </layout>

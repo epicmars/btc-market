@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply from: '../publish.gradle'
 apply from: '../check.gradle'
 
@@ -63,7 +65,7 @@ dependencies {
 
     implementation "android.arch.lifecycle:runtime:$arch_lifecycle_version"
     implementation "android.arch.lifecycle:extensions:$arch_lifecycle_ext_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_compiler_version"
+    kapt "android.arch.lifecycle:compiler:$arch_lifecycle_compiler_version"
 
     implementation 'com.android.support:multidex:1.0.3'
 
@@ -76,10 +78,16 @@ dependencies {
     implementation "com.google.code.findbugs:jsr305:3.0.1"
 
     // dagger2 android
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
 
     implementation project(':data')
     implementation project(':common')
     implementation project(':analysis')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.androidpi:literefresh:0.9.1-alpha'
+    implementation 'com.androidpi:literefresh-widgets:0.9.1-alpha'
+
 }
+

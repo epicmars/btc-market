@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.rootProject.android.compile_sdk_version
@@ -41,7 +42,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    annotationProcessor "android.arch.persistence.room:compiler:$arch_room_version"
+    kapt "android.arch.persistence.room:compiler:$arch_room_version"
 
     api project(':base')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

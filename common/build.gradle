@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.rootProject.android.compile_sdk_version
@@ -56,11 +58,12 @@ dependencies {
 
     // dagger2
     api "com.google.dagger:dagger:$dagger2_version"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
     // dagger2 android
     api "com.google.dagger:dagger-android:$dagger2_version"
     api "com.google.dagger:dagger-android-support:$dagger2_version"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
 
     implementation project(':analysis')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
